@@ -71,12 +71,12 @@ const Hero = () => {
                 <div className="space-y-3">
                     <h1 className="text-2xl lg:text-5xl text-[#334155] max-w-7xl mx-auto  font-semibold">
                         {/* Wrapping lines in overflow-hidden divs creates the clean "slide up" line-by-line reveal */}
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-1.5">
                             <span className="animate-text-line block">
                                 Building modern, high-performance websites using
                             </span>
                         </div>
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-2">
                             <span className="animate-text-line block">
                                 <span className="text-[#23bcdf] font-bold">Next.js</span>,
                                 <span className="text-[#23bcdf] font-bold"> React</span>, and the
@@ -95,7 +95,7 @@ const Hero = () => {
                 <div className="animate-video w-full max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/40 bg-black">
                     <iframe
                         className="w-full h-full"
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        src="https://www.youtube.com/embed/Xw8ZTeg8YKg?si=pigkOMOeOYwfDcPQ"
                         title="Devkarnel Web Solutions Introduction"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -105,11 +105,11 @@ const Hero = () => {
 
                 {/* 3. BUTTON SECTION */}
 
-                 
-<div className='flex justify-center'>
-       <div className="relative group">
+
+                <div className='flex justify-center cursor-pointer'>
+                    <div className="relative group ">
                         <div
-                            className="relative w-64 h-14 opacity-90 overflow-hidden rounded-xl bg-[#00ADB5] z-10"
+                            className="relative w-58 h-14 opacity-90  overflow-hidden rounded-xl bg-[#00ADB5] z-10"
                         >
                             <div
                                 className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transistion-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12"
@@ -120,22 +120,21 @@ const Hero = () => {
                             >
                                 <button
                                     name="text"
-                                    className="input font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-black"
+                                    className="input cursor-pointer font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
                                 >
-                                    Get Started
-                                </button>
+                                    Book Now                                </button>
                             </div>
                             <div
                                 className="absolute duration-1000 group-hover:animate-spin w-full h-25 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]"
                             ></div>
                         </div>
                     </div>
-</div>
+                </div>
 
 
 
             </div>
-            
+
         </section>
     );
 };

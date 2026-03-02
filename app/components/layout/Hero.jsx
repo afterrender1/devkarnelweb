@@ -29,7 +29,7 @@ const Hero = () => {
                 y: 40,
                 opacity: 0,
                 scale: 0.95,
-                duration: 1,
+                duration: 1.5,
                 ease: "power3.out"
             }, "-=0.4") // Starts slightly before the last text line finishes
 

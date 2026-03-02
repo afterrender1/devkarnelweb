@@ -56,8 +56,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className="selection:bg-[#91e9fd] selection:text-[#334155]"
       >
         {children}
       </body>

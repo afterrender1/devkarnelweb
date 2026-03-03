@@ -69,23 +69,26 @@ const Hero = () => {
 
                 {/* 1. TEXT SECTION */}
                 <div className="space-y-3">
-                    <h1 className="text-2xl lg:text-5xl text-[#334155] max-w-7xl mx-auto  font-semibold">
-                        {/* Wrapping lines in overflow-hidden divs creates the clean "slide up" line-by-line reveal */}
+                    <h1 className="text-2xl lg:text-5xl text-[#334155] max-w-7xl mx-auto font-semibold">
+                        {/* Line 1: Action-oriented opening */}
                         <div className="overflow-hidden pb-1.5">
                             <span className="animate-text-line block">
-                                Building modern, high-performance websites using
+                                Crafting high-performance digital experiences and
                             </span>
                         </div>
+
+                        {/* Line 2: Focus on professional solutions instead of specific tools */}
                         <div className="overflow-hidden pb-2">
                             <span className="animate-text-line block">
-                                <span className="text-[#23bcdf] font-bold">Next.js</span>,
-                                <span className="text-[#23bcdf] font-bold"> React</span>, and the
-                                <span className="text-[#23bcdf] font-bold"> MERN</span> stack.
+                                <span className="text-[#23bcdf] font-bold">Custom Web Solutions</span> designed for
+                                <span className="text-[#23bcdf] font-bold"> Scalability</span>.
                             </span>
                         </div>
+
+                        {/* Line 3: Value proposition */}
                         <div className="overflow-hidden">
                             <span className="animate-text-line block text-xl lg:text-2xl text-slate-500 font-normal">
-                                Scalable, secure, and SEO-optimized solutions for businesses worldwide.
+                                Secure, SEO-optimized, and user-centric platforms for businesses worldwide.
                             </span>
                         </div>
                     </h1>

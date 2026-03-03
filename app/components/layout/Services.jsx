@@ -1,108 +1,194 @@
 "use client";
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Urbanist } from 'next/font/google';
-import Image from 'next/image'; // Import Next.js Image component
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { Code2, LayoutTemplate, Smartphone, Megaphone, Globe, ShieldCheck } from 'lucide-react';
+import { Code2, LayoutTemplate, Smartphone, Megaphone, Globe, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 const urbanist = Urbanist({
     subsets: ["latin"],
-    weight: ["400", "600", "700"],
+    weight: ["300", "400", "500", "600", "700"],
 });
 
 const services = [
     {
         title: "WordPress Development",
         desc: "Custom themes and robust e-commerce solutions built on the world's most popular CMS.",
-        icon: <Globe className="w-6 h-6 text-[#23bcdf]" />,
-        image: "/wp.png"
+        icon: Globe,
+        image: "/wp.png",
+        tag: "CMS & Themes",
+        accent: "#1a73e8",
     },
     {
         title: "Node.js Solutions",
         desc: "Scalable, real-time backend architectures and API development for high-traffic apps.",
-        icon: <Code2 className="w-6 h-6 text-[#23bcdf]" />,
-        image: "/node.png"
+        icon: Code2,
+        image: "/node.png",
+        tag: "Backend & APIs",
+        accent: "#0f9d58",
     },
-  
     {
         title: "Landing Page Design",
         desc: "High-converting, performance-optimized landing pages designed to drive leads.",
-        icon: <LayoutTemplate className="w-6 h-6 text-[#23bcdf]" />,
-        image: "/lp.png"
+        icon: LayoutTemplate,
+        image: "/lp.png",
+        tag: "Design & UX",
+        accent: "#f4511e",
     },
-      {
+    {
         title: "Shopify E-commerce",
         desc: "Specialized online store setups, Liquid customization, and seamless app integrations.",
-        icon: <Smartphone className="w-6 h-6 text-[#23bcdf]" />,
-        image: "/shopify.png"
+        icon: Smartphone,
+        image: "/shopify.png",
+        tag: "E-commerce",
+        accent: "#7b1fa2",
     },
     {
         title: "SEO Optimization",
         desc: "Data-driven strategies to dominate search rankings and increase organic traffic.",
-        icon: <ShieldCheck className="w-6 h-6 text-[#23bcdf]" />,
-        image: "/seo.png"
+        icon: ShieldCheck,
+        image: "/seo.png",
+        tag: "Growth & Traffic",
+        accent: "#e37400",
     },
-
 ];
-const Services = () => {
 
-
+const ServiceCard = ({ service, index }) => {
+    const [hovered, setHovered] = useState(false);
+    const Icon = service.icon;
 
     return (
-        <section
-            className={`py-24 bg-[#f8fafc] overflow-hidden ${urbanist.className}`}
+        <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className="group relative bg-white rounded-2xl overflow-hidden flex flex-col cursor-pointer"
+            style={{
+                boxShadow: hovered
+                    ? '0 8px 32px rgba(60,64,67,0.15), 0 2px 8px rgba(60,64,67,0.08)'
+                    : '0 1px 3px rgba(60,64,67,0.12), 0 1px 2px rgba(60,64,67,0.08)',
+                transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+                transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+            }}
         >
-            <div className="max-w-7xl mx-auto px-6">
+            {/* Image Area */}
+            <div className="relative w-full h-44 overflow-hidden bg-slate-50">
+                <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                    style={{
+                        transition: 'transform 0.4s ease',
+                        transform: hovered ? 'scale(1.04)' : 'scale(1)',
+                    }}
+                />
+                {/* Subtle top accent bar */}
+                <div
+                    className="absolute top-0 left-0 right-0 h-0.75"
+                    style={{ backgroundColor: service.accent, opacity: hovered ? 1 : 0, transition: 'opacity 0.25s ease' }}
+                />
+                {/* Tag pill */}
+                <div className="absolute top-3 left-3">
+                    <span
+                        className="text-[11px] font-semibold px-2.5 py-1 rounded-full tracking-wide"
+                        style={{
+                            backgroundColor: `${service.accent}18`,
+                            color: service.accent,
+                        }}
+                    >
+                        {service.tag}
+                    </span>
+                </div>
+            </div>
 
-                {/* Header Section */}
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="services-title text-3xl md:text-5xl font-bold text-[#334155]">
-                        Our <span className="text-[#23bcdf]">Specialized</span> Services
-                    </h2>
-                    <p className="services-title text-slate-500 max-w-2xl mx-auto text-lg">
-                        Empowering your business with cutting-edge technology and world-class design solutions.
-                    </p>
+            {/* Content */}
+            <div className="flex flex-col flex-1 p-6">
+                {/* Icon */}
+                <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300"
+                    style={{ backgroundColor: hovered ? `${service.accent}14` : '#f8fafc' }}
+                >
+                    <Icon
+                        className="w-5 h-5 transition-colors duration-300"
+                        style={{ color: hovered ? service.accent : '#64748b' }}
+                    />
                 </div>
 
-                {/* Services Grid */}
-                <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Title */}
+                <h3
+                    className="text-[17px] font-semibold mb-2 transition-colors duration-300"
+                    style={{ color: hovered ? service.accent : '#202124' }}
+                >
+                    {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-[#5f6368] leading-relaxed flex-1">
+                    {service.desc}
+                </p>
+
+                {/* Footer link */}
+                <div className="mt-5 flex items-center gap-1.5">
+                    <span
+                        className="text-sm font-medium transition-colors duration-300"
+                        style={{ color: service.accent }}
+                    >
+                        Learn more
+                    </span>
+                    <ArrowUpRight
+                        className="w-4 h-4 transition-all duration-300"
+                        style={{
+                            color: service.accent,
+                            transform: hovered ? 'translate(2px, -2px)' : 'translate(0,0)',
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const Services = () => {
+    return (
+        <section className={`py-24 bg-[#f8f9fa] ${urbanist.className}`}>
+            <div className="max-w-6xl mx-auto px-6">
+
+                {/* Header */}
+                <div className="mb-14">
+                    {/* Eyebrow */}
+                    <p className="text-sm font-semibold text-[#1a73e8] tracking-widest uppercase mb-3">
+                        What We Do
+                    </p>
+
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                        <h2 className="text-4xl md:text-[2.75rem] font-bold text-[#202124] leading-tight max-w-lg">
+                            Services built for{' '}
+                            <span className="text-[#1a73e8]">modern businesses</span>
+                        </h2>
+                        <p className="text-[#5f6368] text-base max-w-sm leading-relaxed">
+                            End-to-end digital solutions — from design to deployment — that help you grow faster and smarter.
+                        </p>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="mt-8 h-px bg-[#e8eaed]" />
+                </div>
+
+                {/* Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {services.map((service, index) => (
-                        <div
-                            key={index}
-                            className="service-card group relative p-[1.5px] rounded-2xl transition-all duration-300 hover:scale-[1.02]"
-                        >
-                            {/* GRADIENT BORDER EFFECT */}
-                            <div className="absolute inset-0 rounded-2xl bg-linear-to-tr from-[#3b82f6] via-[#20b2aa] to-[#ff8c00] opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
-
-                            {/* Card Content Wrapper */}
-                            <div className="relative h-full bg-white rounded-[calc(1rem-1px)] overflow-hidden z-10 flex flex-col">
-
-                                {/* Image Space */}
-                                <div className="relative w-full h-48 overflow-hidden">
-                                    <img
-                                        src={service.image}
-                                        alt={service.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 "
-                                    />
-                                </div>
-
-                                {/* Text Content Area */}
-                                <div className="p-8">
-                                    <div className="mb-4 inline-block p-2.5 bg-slate-50 rounded-lg group-hover:bg-[#23bcdf]/10 transition-colors">
-                                        {service.icon}
-                                    </div>
-                                    <h3 className="text-xl font-bold text-[#334155] mb-3 transition-colors group-hover:text-[#23bcdf]">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-slate-500 leading-relaxed">
-                                        {service.desc}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <ServiceCard key={index} service={service} index={index} />
                     ))}
                 </div>
+
+                {/* Bottom CTA */}
+                <div className="mt-14 flex justify-center">
+                    <button
+                        className="flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:shadow-lg active:scale-95"
+                        style={{ backgroundColor: '#1a73e8' }}
+                    >
+                        View all services
+                        <ArrowUpRight className="w-4 h-4" />
+                    </button>
+                </div>
+
             </div>
         </section>
     );

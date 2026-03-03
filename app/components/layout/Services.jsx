@@ -153,14 +153,14 @@ const Services = () => {
                 {/* Header */}
                 <div className="mb-14">
                     {/* Eyebrow */}
-                    <p className="text-sm font-semibold text-[#1a73e8] tracking-widest uppercase mb-3">
+                    <p className="text-sm font-semibold text-[#23bcdf] tracking-widest uppercase mb-3">
                         What We Do
                     </p>
 
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                         <h2 className="text-4xl md:text-[2.75rem] font-bold text-[#202124] leading-tight max-w-lg">
                             Services built for{' '}
-                            <span className="text-[#1a73e8]">modern businesses</span>
+                            <span className="text-[#23bcdf]">modern businesses</span>
                         </h2>
                         <p className="text-[#5f6368] text-base max-w-sm leading-relaxed">
                             End-to-end digital solutions — from design to deployment — that help you grow faster and smarter.
@@ -179,14 +179,29 @@ const Services = () => {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-14 flex justify-center">
-                    <button
-                        className="flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:shadow-lg active:scale-95"
-                        style={{ backgroundColor: '#1a73e8' }}
-                    >
-                        View all services
-                        <ArrowUpRight className="w-4 h-4" />
-                    </button>
+                      <div className='mt-14 flex justify-center cursor-pointer'>
+                    <div className="relative group ">
+                        <div
+                            className="relative w-70 h-14 opacity-90  overflow-hidden rounded-xl bg-[#00ADB5] z-10"
+                        >
+                            <div
+                                className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transistion-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12"
+                            ></div>
+
+                            <div
+                                className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black"
+                            >
+                                <button
+                                    name="text"
+                                    className="input cursor-pointer font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
+                                >
+                                    View all services                               </button>
+                            </div>
+                            <div
+                                className="absolute duration-1000 group-hover:animate-spin w-full h-25 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]"
+                            ></div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

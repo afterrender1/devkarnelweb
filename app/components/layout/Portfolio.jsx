@@ -595,7 +595,7 @@ const Portfolio = () => {
                         className="group flex items-center justify-center gap-2
                        w-full sm:w-auto
                        px-7 py-3.5
-                       rounded-full text-white font-semibold
+                       rounded-xl text-white font-semibold
                        text-sm sm:text-[15px]
                        transition-all duration-200 hover:shadow-lg hover:shadow-teal-200 active:scale-95"
                         style={{ backgroundColor: "#084948" }}

@@ -250,7 +250,7 @@ const Testimonials = () => {
                         <div className='mt-14 flex justify-center cursor-pointer'>
                             <div className="relative group ">
                                 <div
-                                    className="relative w-70 h-14 opacity-90  overflow-hidden rounded-xl bg-[#00ADB5] z-10"
+                                    className="relative w-85 h-14 opacity-90  overflow-hidden rounded-xl bg-[#00ADB5] z-10"
                                 >
                                     <div
                                         className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transistion-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12"
@@ -263,7 +263,7 @@ const Testimonials = () => {
                                             name="text"
                                             className="input cursor-pointer font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
                                         >
-                                            View all services                               </button>
+                                            Read Success Stories                              </button>
                                     </div>
                                     <div
                                         className="absolute duration-1000 group-hover:animate-spin w-full h-25 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]"
@@ -367,13 +367,30 @@ const Testimonials = () => {
                         }}
                         className="mb-2"
                     >
-                        <button
-                            className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gray-900 text-white font-semibold w-full sm:w-auto justify-center transition-all duration-200 hover:bg-[#23bcdf] hover:shadow-xl hover:shadow-cyan-100 active:scale-[0.97]"
-                            style={{ fontSize: "13.5px", letterSpacing: "0.01em" }}
-                        >
-                            Read Success Stories
-                            <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
-                        </button>
+                        <div className='mt-14 flex justify-center cursor-pointer'>
+                            <div className="relative group ">
+                                <div
+                                    className="relative w-80 h-14 opacity-90  overflow-hidden rounded-xl bg-[#00ADB5] z-10"
+                                >
+                                    <div
+                                        className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transistion-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12"
+                                    ></div>
+
+                                    <div
+                                        className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black"
+                                    >
+                                        <button
+                                            name="text"
+                                            className="input cursor-pointer font-semibold text-base h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
+                                        >
+                                            Read Success Stories                              </button>
+                                    </div>
+                                    <div
+                                        className="absolute duration-1000 group-hover:animate-spin w-full h-25 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Mobile photo grid */}

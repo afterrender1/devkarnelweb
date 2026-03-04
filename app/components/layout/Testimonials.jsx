@@ -174,7 +174,7 @@ const Testimonials = () => {
     }, []);
 
     return (
-        <section className={`relative w-full overflow-hidden bg-white ${urbanist.className}`}>
+        <section id="tesimonials" className={`relative w-full overflow-hidden bg-white ${urbanist.className}`}>
 
             {/* Dot grid */}
             <div

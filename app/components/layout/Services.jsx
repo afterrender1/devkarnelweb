@@ -69,7 +69,7 @@ const ServiceCard = ({ service, index }) => {
             }}
         >
             {/* Image Area */}
-            <div className="relative w-full h-44 overflow-hidden bg-slate-50">
+            <div className="relative w-full h-44 lg:h-72 overflow-hidden bg-slate-50">
                 <img
                     src={service.image}
                     alt={service.title}
@@ -148,7 +148,7 @@ const ServiceCard = ({ service, index }) => {
 const Services = () => {
     return (
         <section className={`py-24 bg-[#f8f9fa] ${urbanist.className}`}>
-            <div className="max-w-6xl mx-auto px-6">
+            <div className="max-w-400 mx-auto px-6">
 
                 {/* Header */}
                 <div className="mb-14">

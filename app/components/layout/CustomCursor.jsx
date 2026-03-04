@@ -54,7 +54,7 @@ const CustomCursor = () => {
 
             <div
                 ref={followerRef}
-                className="fixed top-0 left-0 w-10 h-10 border border-[#23bcdf] rounded-full pointer-events-none z-999 -translate-x-1/2 -translate-y-1/2"
+                className="fixed hidden lg:block top-0 left-0 w-10 h-10 border border-[#23bcdf] rounded-full pointer-events-none z-999 -translate-x-1/2 -translate-y-1/2"
             />
         </>
     );

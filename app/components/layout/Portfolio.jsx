@@ -459,7 +459,7 @@ const Portfolio = () => {
     }, []);
 
     return (
-        <section className={`w-full py-16 sm:py-24 lg:py-32 bg-[#f8f9fa] ${urbanist.className}`}>
+        <section id="portfolio" className={`w-full py-16 sm:py-24 lg:py-32 bg-[#f8f9fa] ${urbanist.className}`}>
             <div className="w-full max-w-400 mx-auto px-4 sm:px-6 lg:px-10">
 
                 {/* ── HEADER ── */}

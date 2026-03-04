@@ -147,7 +147,7 @@ const ServiceCard = ({ service, index }) => {
 
 const Services = () => {
     return (
-        <section className={`py-24 bg-[#f8f9fa] ${urbanist.className}`}>
+        <section id='services' className={`py-24 bg-[#f8f9fa] ${urbanist.className}`}>
             <div className="max-w-400 mx-auto px-6">
 
                 {/* Header */}

@@ -1,5 +1,6 @@
 import { Urbanist } from 'next/font/google';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const urbanist = Urbanist({
@@ -12,6 +13,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
 
                 {/* LOGO SECTION */}
+           <Link href={"/"}>
                 <div className="relative w-32 h-12 md:w-42 md:h-12 transition-transform duration-300 group-hover:scale-105">
                     <Image
                         src="/logo.png"
@@ -21,6 +23,8 @@ const Navbar = () => {
                         priority // Loads the logo immediately (best for LCP/SEO)
                     />
                 </div>
+           
+           </Link>
 
                 {/* NAVIGATION LINKS */}
                 <div className="hidden md:flex items-center gap-10">

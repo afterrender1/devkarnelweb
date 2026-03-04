@@ -1,3 +1,4 @@
+import Contact from "./components/layout/Contact";
 import CustomCursor from "./components/layout/CustomCursor";
 import Hnsanimation from "./components/layout/Hnsanimation";
 import Navbar from "./components/layout/Navbar";
@@ -14,6 +15,7 @@ export default function Home() {
       <CustomCursor />
       <Portfolio />
       <Testimonials />
+      <Contact />
 
     </>
   );

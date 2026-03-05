@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Urbanist } from 'next/font/google';
-import { Code2, LayoutTemplate, Smartphone, Megaphone, Globe, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Code2, LayoutTemplate, Smartphone, ShieldCheck, Globe, ArrowUpRight } from 'lucide-react';
 
 const urbanist = Urbanist({
     subsets: ["latin"],
@@ -51,7 +51,8 @@ const services = [
     },
 ];
 
-const ServiceCard = ({ service, index }) => {
+/* ─── Card ─── */
+const ServiceCard = ({ service }) => {
     const [hovered, setHovered] = useState(false);
     const Icon = service.icon;
 
@@ -59,7 +60,8 @@ const ServiceCard = ({ service, index }) => {
         <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="group relative bg-white rounded-2xl overflow-hidden flex flex-col cursor-pointer"
+            // FIX 1: removed max-w-100 (was capping card width) → w-full fills grid cell
+            className="group relative bg-white rounded-2xl overflow-hidden flex flex-col cursor-pointer w-full"
             style={{
                 boxShadow: hovered
                     ? '0 8px 32px rgba(60,64,67,0.15), 0 2px 8px rgba(60,64,67,0.08)'
@@ -68,8 +70,12 @@ const ServiceCard = ({ service, index }) => {
                 transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
             }}
         >
-            {/* Image Area */}
-            <div className="relative w-full h-44 lg:h-72 overflow-hidden bg-slate-50">
+            {/* Image */}
+            {/* FIX 2: removed w-80 (fixed 320px regardless of card width) → w-full */}
+            <div
+                className="relative w-full overflow-hidden bg-slate-50"
+                style={{ aspectRatio: '16/10' }}
+            >
                 <img
                     src={service.image}
                     alt={service.title}
@@ -79,15 +85,19 @@ const ServiceCard = ({ service, index }) => {
                         transform: hovered ? 'scale(1.04)' : 'scale(1)',
                     }}
                 />
-                {/* Subtle top accent bar */}
+                {/* Top accent bar */}
                 <div
-                    className="absolute top-0 left-0 right-0 h-0.75"
-                    style={{ backgroundColor: service.accent, opacity: hovered ? 1 : 0, transition: 'opacity 0.25s ease' }}
+                    className="absolute top-0 left-0 right-0 h-0.5"
+                    style={{
+                        backgroundColor: service.accent,
+                        opacity: hovered ? 1 : 0,
+                        transition: 'opacity 0.25s ease',
+                    }}
                 />
-                {/* Tag pill */}
+                {/* Tag */}
                 <div className="absolute top-3 left-3">
                     <span
-                        className="text-[11px] font-semibold px-2.5 py-1 rounded-full tracking-wide"
+                        className="text-[10.5px] font-semibold px-2.5 py-1 rounded-full tracking-wide"
                         style={{
                             backgroundColor: `${service.accent}18`,
                             color: service.accent,
@@ -99,44 +109,51 @@ const ServiceCard = ({ service, index }) => {
             </div>
 
             {/* Content */}
-            <div className="flex flex-col flex-1 p-6">
+            <div className="flex flex-col flex-1 p-4 sm:p-5 lg:p-6">
                 {/* Icon */}
                 <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-colors duration-300"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center mb-3 sm:mb-4 transition-colors duration-300"
                     style={{ backgroundColor: hovered ? `${service.accent}14` : '#f8fafc' }}
                 >
                     <Icon
-                        className="w-5 h-5 transition-colors duration-300"
-                        style={{ color: hovered ? service.accent : '#64748b' }}
+                        size={18}
+                        style={{ color: hovered ? service.accent : '#64748b', transition: 'color 0.3s' }}
                     />
                 </div>
 
                 {/* Title */}
                 <h3
-                    className="text-[17px] font-semibold mb-2 transition-colors duration-300"
-                    style={{ color: hovered ? service.accent : '#202124' }}
+                    className="font-semibold mb-1.5 sm:mb-2 leading-snug transition-colors duration-300"
+                    style={{
+                        fontSize: 'clamp(14px, 2vw, 17px)',
+                        color: hovered ? service.accent : '#202124',
+                    }}
                 >
                     {service.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-sm text-[#5f6368] leading-relaxed flex-1">
+                {/* Desc */}
+                <p
+                    className="text-[#5f6368] leading-relaxed flex-1"
+                    style={{ fontSize: 'clamp(12.5px, 1.5vw, 14px)' }}
+                >
                     {service.desc}
                 </p>
 
-                {/* Footer link */}
-                <div className="mt-5 flex items-center gap-1.5">
+                {/* Link */}
+                <div className="mt-4 sm:mt-5 flex items-center gap-1.5">
                     <span
-                        className="text-sm font-medium transition-colors duration-300"
-                        style={{ color: service.accent }}
+                        className="font-medium transition-colors duration-300"
+                        style={{ fontSize: 'clamp(12px, 1.4vw, 14px)', color: service.accent }}
                     >
                         Learn more
                     </span>
                     <ArrowUpRight
-                        className="w-4 h-4 transition-all duration-300"
+                        size={15}
                         style={{
                             color: service.accent,
-                            transform: hovered ? 'translate(2px, -2px)' : 'translate(0,0)',
+                            transform: hovered ? 'translate(2px,-2px)' : 'translate(0,0)',
+                            transition: 'transform 0.3s ease',
                         }}
                     />
                 </div>
@@ -145,61 +162,64 @@ const ServiceCard = ({ service, index }) => {
     );
 };
 
+/* ─── Main ─── */
 const Services = () => {
     return (
-        <section id='services' className={`py-24     ${urbanist.className}`}>
-            <div className="max-w-350 mx-auto px-6">
+        <section id="services" className={`py-14 sm:py-20 lg:py-24 ${urbanist.className}`}>
+            {/* FIX 3: max-w-350 is a broken Tailwind arbitrary → max-w-[1200px] */}
+            <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* Header */}
-                <div className="mb-14">
-                    {/* Eyebrow */}
-                    <p className="text-sm font-semibold text-[#23bcdf] tracking-widest uppercase mb-3">
+                {/* ── Header ── */}
+                <div className="mb-8 sm:mb-11 lg:mb-14">
+                    <p className="text-[11px] sm:text-sm font-semibold text-[#23bcdf] tracking-[0.18em] uppercase mb-2 sm:mb-3">
                         What We Do
                     </p>
 
-                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-                        <h2 className="text-4xl md:text-[2.75rem] font-bold text-[#202124] leading-tight max-w-lg">
+                    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 sm:gap-4">
+                        <h2
+                            className="font-bold text-[#202124] leading-tight"
+                            style={{ fontSize: 'clamp(1.5rem, 4.5vw, 2.75rem)' }}
+                        >
                             Services built for{' '}
                             <span className="text-[#23bcdf]">modern businesses</span>
                         </h2>
-                        <p className="text-[#5f6368] text-base max-w-sm leading-relaxed">
+                        <p
+                            className="text-[#5f6368] leading-relaxed md:max-w-xs lg:max-w-sm"
+                            style={{ fontSize: 'clamp(13px, 1.8vw, 16px)' }}
+                        >
                             End-to-end digital solutions — from design to deployment — that help you grow faster and smarter.
                         </p>
                     </div>
 
-                    {/* Divider */}
-                    <div className="mt-8 h-px bg-[#e8eaed]" />
+                    <div className="mt-6 sm:mt-8 h-px bg-[#e8eaed]" />
                 </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {/* ── Grid ── */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {services.map((service, index) => (
-                        <ServiceCard key={index} service={service} index={index} />
+                        <div
+                            key={index}
+                            className={index === 4 ? 'lg:col-start-2' : ''}
+                        >
+                            <ServiceCard service={service} />
+                        </div>
                     ))}
                 </div>
 
-                {/* Bottom CTA */}
-                      <div className='mt-14 flex justify-center cursor-pointer'>
-                    <div className="relative group ">
-                        <div
-                            className="relative w-70 h-14 opacity-90  overflow-hidden rounded-xl bg-[#00ADB5] z-10"
-                        >
-                            <div
-                                className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transistion-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12"
-                            ></div>
-
-                            <div
-                                className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black"
-                            >
-                                <button
-                                    name="text"
-                                    className="input cursor-pointer font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
-                                >
-                                    View all services                               </button>
+                {/* ── CTA ── */}
+                <div className="mt-10 sm:mt-14 flex justify-center">
+                    <div className="relative group w-full sm:w-auto">
+                        <div className="relative w-full sm:w-72 h-13 sm:h-14 opacity-90 overflow-hidden rounded-xl bg-[#00ADB5] z-10">
+                            {/* Shimmer */}
+                            <div className="absolute z-10 -translate-x-44 group-hover:translate-x-[30rem] ease-in transition-all duration-700 h-full w-44 bg-gradient-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12" />
+                            {/* Inner button */}
+                            <div className="absolute flex items-center justify-center text-white z-[1] opacity-90 rounded-2xl inset-0.5 bg-black">
+                                <button className="cursor-pointer font-semibold text-base sm:text-lg h-full w-full px-6 sm:px-16 py-3 rounded-xl bg-[#084948]">
+                                    View all services
+                                </button>
                             </div>
-                            <div
-                                className="absolute duration-1000 group-hover:animate-spin w-full h-25 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]"
-                            ></div>
+                            {/* Glow */}
+                            <div className="absolute duration-1000 group-hover:animate-spin w-full h-24 bg-gradient-to-r from-green-500 to-yellow-500 blur-[30px]" />
                         </div>
                     </div>
                 </div>

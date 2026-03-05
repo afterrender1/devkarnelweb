@@ -13,22 +13,22 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
 
                 {/* LOGO SECTION */}
-           <Link href={"/"}>
-                <div className="relative w-32 h-12 md:w-42 md:h-12 transition-transform duration-300 group-hover:scale-105">
-                    <Image
-                        src="/logo.png"
-                        alt="Devkarnel Logo"
-                        fill
-                        className="object-contain" // Ensures the logo isn't stretched
-                        priority // Loads the logo immediately (best for LCP/SEO)
-                    />
-                </div>
-           
-           </Link>
+                <Link href={"/"}>
+                    <div className="relative w-32 h-12 md:w-42 md:h-12 transition-transform duration-300 group-hover:scale-105">
+                        <Image
+                            src="/logo.png"
+                            alt="Devkarnel Logo"
+                            fill
+                            className="object-contain" // Ensures the logo isn't stretched
+                            priority // Loads the logo immediately (best for LCP/SEO)
+                        />
+                    </div>
+
+                </Link>
 
                 {/* NAVIGATION LINKS */}
                 <div className="hidden md:flex items-center gap-6">
-                    {['Services', 'Portfolio', 'About' , 'Tesimonials' , 'Contact'].map((item) => (
+                    {['Services', 'Portfolio', 'About', 'Tesimonials', 'Contact'].map((item) => (
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}
@@ -52,8 +52,13 @@ const Navbar = () => {
                             {/* Inner Black Button Layer: Inset reduced for a thinner border look */}
                             <div className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-[7px] inset-[1.5px] bg-black">
                                 <button
+                                    style={{
+                                        background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+
+                                    }}
+
                                     name="text"
-                                    className="cursor-pointer font-bold text-sm md:text-base h-full w-full px-4 md:px-8 rounded-lg bg-[#084948] hover:bg-[#0a5a59] transition-colors whitespace-nowrap"
+                                    className="cursor-pointer font-bold text-sm md:text-base h-full w-full px-4 md:px-8 rounded-lg  hover:bg-[#0a5a59] transition-colors whitespace-nowrap"
                                 >
                                     Book Now
                                 </button>

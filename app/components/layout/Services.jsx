@@ -199,7 +199,13 @@ const Services = () => {
                             {/* Shimmer */}
                             <div className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transition-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12" />
                             <div className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black">
-                                <button className="cursor-pointer font-semibold text-base sm:text-lg h-full w-full px-6 sm:px-16 py-3 rounded-xl bg-[#084948]">
+                                <button
+                                
+                                   style={{
+                         background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+                        
+                        }}
+                                className="cursor-pointer font-semibold text-base sm:text-lg h-full w-full px-6 sm:px-16 py-3 rounded-xl ">
                                     View all services
                                 </button>
                             </div>

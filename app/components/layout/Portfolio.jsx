@@ -598,7 +598,10 @@ const Portfolio = () => {
                        rounded-xl text-white font-semibold
                        text-sm sm:text-[15px]
                        transition-all duration-200 hover:shadow-lg hover:shadow-teal-200 active:scale-95"
-                        style={{ backgroundColor: "#084948" }}
+                         style={{
+                         background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+                         
+                        }}
                     >
                         Start Your Project
                         <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />

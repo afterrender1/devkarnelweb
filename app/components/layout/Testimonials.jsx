@@ -260,8 +260,13 @@ const Testimonials = () => {
                                         className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black"
                                     >
                                         <button
+
+                                            style={{
+                                                background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+
+                                            }}
                                             name="text"
-                                            className="input cursor-pointer font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
+                                            className="input cursor-pointer font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl "
                                         >
                                             Read Success Stories                              </button>
                                     </div>
@@ -380,8 +385,12 @@ const Testimonials = () => {
                                         className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black"
                                     >
                                         <button
+                                            style={{
+                                                background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+
+                                            }}
                                             name="text"
-                                            className="input cursor-pointer font-semibold text-base h-full opacity-90 w-full px-16 py-3 rounded-xl bg-[#084948]"
+                                            className="input cursor-pointer font-semibold text-base h-full opacity-90 w-full px-16 py-3 rounded-xl "
                                         >
                                             Read Success Stories                              </button>
                                     </div>

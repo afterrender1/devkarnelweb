@@ -221,7 +221,7 @@ const ProjectCard = ({ project, colIndex }) => {
     return (
         <div
             ref={cardRef}
-            className="relative flex flex-col bg-white rounded-2xl overflow-hidden border cursor-pointer"
+            className="relative flex flex-col p-3 bg-white rounded-2xl overflow-hidden border cursor-pointer"
             style={{
                 opacity: 0,
                 transition: "box-shadow 0.3s ease, border-color 0.3s ease",
@@ -234,7 +234,7 @@ const ProjectCard = ({ project, colIndex }) => {
             onMouseLeave={() => setHovered(false)}
         >
             {/* ── Thumbnail ── */}
-            <div className="relative w-full overflow-hidden bg-gray-50" style={{ aspectRatio: "16/10" }}>
+            <div className="relative rounded-2xl w-full overflow-hidden bg-gray-50" style={{ aspectRatio: "16/10" }}>
                 <img
                     src={project.thumbnail}
                     alt={project.title}

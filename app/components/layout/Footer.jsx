@@ -103,7 +103,7 @@ const Footer = () => {
                         ref={bannerRef}
                         className="relative rounded-2xl overflow-hidden flex flex-col sm:flex-row items-stretch"
                         style={{
-                            background: "linear-gradient(110deg, #4361ee 0%, #3a86ff 60%, #5e9bff 100%)",
+                         background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
                             minHeight: "200px",
                             opacity: 0,
                         }}
@@ -142,8 +142,15 @@ const Footer = () => {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         className="flex-1 bg-transparent outline-none text-[12.5px] text-gray-700 placeholder:text-gray-300 min-w-0"
+
                                     />
-                                    <button className="bg-[#3a86ff] hover:bg-[#2d6fe8] text-white text-[11.5px] font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 active:scale-95 shrink-0 whitespace-nowrap">
+                                    <button 
+                                    
+                                       style={{
+                         background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+                          
+                        }}
+                                    className=" text-white text-[11.5px] font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 active:scale-95 shrink-0 whitespace-nowrap">
                                         Subscribe
                                     </button>
                                 </div>
@@ -180,8 +187,15 @@ const Footer = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="flex-1 bg-transparent outline-none text-[13px] text-gray-700 placeholder:text-gray-300 min-w-0"
+
                                 />
-                                <button className="bg-[#3a86ff] hover:bg-[#2d6fe8] text-white text-[12.5px] font-semibold px-4 py-1.5 rounded-full transition-all duration-200 hover:shadow-md active:scale-95 shrink-0">
+                                <button
+                                   style={{
+                         background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+                           
+                        }}
+                                
+                                className=" text-white text-[12.5px] font-semibold px-4 py-1.5 rounded-full transition-all duration-200 hover:shadow-md active:scale-95 shrink-0">
                                     Subscribe
                                 </button>
                             </div>
@@ -209,7 +223,13 @@ const Footer = () => {
                 {/* Brand col */}
                 <div className="col-span-2 sm:col-span-3 lg:col-span-1 col-anim flex flex-col gap-4">
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-[#3a86ff] flex items-center justify-center shrink-0">
+                        <div
+                        
+                           style={{
+                         background: "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)",
+                          
+                        }}
+                        className="w-8 h-8 rounded-full  flex items-center justify-center shrink-0">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M8 2C5.5 2 4 4 4 6c0 2.5 2 4 4 5 2-1 4-2.5 4-5 0-2-1.5-4-4-4z" fill="white" />
                             </svg>

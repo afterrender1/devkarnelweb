@@ -29,7 +29,7 @@ const About = () => {
     }, []);
 
     return (
-        <section ref={containerRef} className={`w-full bg-white ${urbanist.className}`}>
+        <section id="about" ref={containerRef} className={`w-full bg-white ${urbanist.className}`}>
             <div className="max-w-7xl mx-auto px-5 py-1 md:py-16 lg:py-3">
 
                 {/* --- Hero Section --- */}

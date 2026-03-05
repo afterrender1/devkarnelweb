@@ -167,7 +167,7 @@ const Services = () => {
     return (
         <section id="services" className={`py-14 sm:py-20 lg:py-24 ${urbanist.className}`}>
             {/* FIX 3: max-w-350 is a broken Tailwind arbitrary → max-w-[1200px] */}
-            <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="w-full max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* ── Header ── */}
                 <div className="mb-8 sm:mb-11 lg:mb-14">
@@ -211,15 +211,15 @@ const Services = () => {
                     <div className="relative group w-full sm:w-auto">
                         <div className="relative w-full sm:w-72 h-13 sm:h-14 opacity-90 overflow-hidden rounded-xl bg-[#00ADB5] z-10">
                             {/* Shimmer */}
-                            <div className="absolute z-10 -translate-x-44 group-hover:translate-x-[30rem] ease-in transition-all duration-700 h-full w-44 bg-gradient-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12" />
+                            <div className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transition-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12" />
                             {/* Inner button */}
-                            <div className="absolute flex items-center justify-center text-white z-[1] opacity-90 rounded-2xl inset-0.5 bg-black">
+                            <div className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black">
                                 <button className="cursor-pointer font-semibold text-base sm:text-lg h-full w-full px-6 sm:px-16 py-3 rounded-xl bg-[#084948]">
                                     View all services
                                 </button>
                             </div>
                             {/* Glow */}
-                            <div className="absolute duration-1000 group-hover:animate-spin w-full h-24 bg-gradient-to-r from-green-500 to-yellow-500 blur-[30px]" />
+                            <div className="absolute duration-1000 group-hover:animate-spin w-full h-24 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]" />
                         </div>
                     </div>
                 </div>

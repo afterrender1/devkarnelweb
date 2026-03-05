@@ -1,3 +1,4 @@
+import About from "./components/layout/About";
 import Contact from "./components/layout/Contact";
 import CustomCursor from "./components/layout/CustomCursor";
 import Footer from "./components/layout/Footer";
@@ -14,6 +15,7 @@ export default function Home() {
 
       <Hnsanimation />
       <Testimonials />
+      <About />
       <CustomCursor />
       <Portfolio />
       <Contact />

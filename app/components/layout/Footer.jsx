@@ -70,7 +70,7 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer className={`w-full pt-32 bg-[#f0eeef] ${urbanist.className}`}>
+        <footer className={`w-full pt-32  ${urbanist.className}`}>
 
 
             <div className="max-w-245 -mb-22 mx-auto px-4 sm:px-6 pt-6 sm:pt-10">

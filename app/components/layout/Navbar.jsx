@@ -28,7 +28,7 @@ const Navbar = () => {
 
                 {/* NAVIGATION LINKS */}
                 <div className="hidden md:flex items-center gap-6">
-                    {['Services', 'Portfolio', 'About', 'Tesimonials', 'Contact'].map((item) => (
+                    {['About', 'Services', 'Tesimonials', 'Portfolio', 'Contact'].map((item) => (
                         <a
                             key={item}
                             href={`#${item.toLowerCase()}`}

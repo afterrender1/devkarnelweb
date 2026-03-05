@@ -298,16 +298,16 @@ const Footer = () => {
                         <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#3a86ff] flex items-center justify-center shrink-0 transition-colors duration-200">
                             <Phone size={13} className="text-[#3a86ff] group-hover:text-white transition-colors duration-200" />
                         </div>
-                        <span className="text-[13px] leading-snug">(91) 98765 4321 54</span>
+                        <span className="text-[13px] leading-snug">(92) 34765 4321 54</span>
                     </a>
                     <a
-                        href="mailto:support@mail.com"
+                        href="mailto:contact@devkarnel.com"
                         className="flex items-start gap-2.5 text-gray-500 hover:text-[#3a86ff] transition-colors duration-150 group"
                     >
                         <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#3a86ff] flex items-center justify-center shrink-0 transition-colors duration-200">
                             <Mail size={13} className="text-[#3a86ff] group-hover:text-white transition-colors duration-200" />
                         </div>
-                        <span className="text-[13px] leading-snug">support@mail.com</span>
+                        <span className="text-[13px] leading-snug">contact@devkarnel.com</span>
                     </a>
                 </div>
             </div>

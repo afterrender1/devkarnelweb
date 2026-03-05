@@ -60,7 +60,6 @@ const ServiceCard = ({ service }) => {
         <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            // FIX 1: removed max-w-100 (was capping card width) → w-full fills grid cell
             className="group relative bg-white rounded-2xl overflow-hidden flex flex-col cursor-pointer w-full"
             style={{
                 boxShadow: hovered
@@ -70,8 +69,6 @@ const ServiceCard = ({ service }) => {
                 transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
             }}
         >
-            {/* Image */}
-            {/* FIX 2: removed w-80 (fixed 320px regardless of card width) → w-full */}
             <div
                 className="relative w-full overflow-hidden bg-slate-50"
                 style={{ aspectRatio: '16/10' }}
@@ -85,7 +82,6 @@ const ServiceCard = ({ service }) => {
                         transform: hovered ? 'scale(1.04)' : 'scale(1)',
                     }}
                 />
-                {/* Top accent bar */}
                 <div
                     className="absolute top-0 left-0 right-0 h-0.5"
                     style={{
@@ -94,7 +90,6 @@ const ServiceCard = ({ service }) => {
                         transition: 'opacity 0.25s ease',
                     }}
                 />
-                {/* Tag */}
                 <div className="absolute top-3 left-3">
                     <span
                         className="text-[10.5px] font-semibold px-2.5 py-1 rounded-full tracking-wide"
@@ -108,7 +103,6 @@ const ServiceCard = ({ service }) => {
                 </div>
             </div>
 
-            {/* Content */}
             <div className="flex flex-col flex-1 p-4 sm:p-5 lg:p-6">
                 {/* Icon */}
                 <div
@@ -121,7 +115,6 @@ const ServiceCard = ({ service }) => {
                     />
                 </div>
 
-                {/* Title */}
                 <h3
                     className="font-semibold mb-1.5 sm:mb-2 leading-snug transition-colors duration-300"
                     style={{
@@ -132,7 +125,6 @@ const ServiceCard = ({ service }) => {
                     {service.title}
                 </h3>
 
-                {/* Desc */}
                 <p
                     className="text-[#5f6368] leading-relaxed flex-1"
                     style={{ fontSize: 'clamp(12.5px, 1.5vw, 14px)' }}
@@ -140,7 +132,6 @@ const ServiceCard = ({ service }) => {
                     {service.desc}
                 </p>
 
-                {/* Link */}
                 <div className="mt-4 sm:mt-5 flex items-center gap-1.5">
                     <span
                         className="font-medium transition-colors duration-300"
@@ -162,14 +153,11 @@ const ServiceCard = ({ service }) => {
     );
 };
 
-/* ─── Main ─── */
 const Services = () => {
     return (
         <section id="services" className={`py-14 sm:py-20 lg:py-24 ${urbanist.className}`}>
-            {/* FIX 3: max-w-350 is a broken Tailwind arbitrary → max-w-[1200px] */}
             <div className="w-full max-w-300 mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* ── Header ── */}
                 <div className="mb-8 sm:mb-11 lg:mb-14">
                     <p className="text-[11px] sm:text-sm font-semibold text-[#23bcdf] tracking-[0.18em] uppercase mb-2 sm:mb-3">
                         What We Do
@@ -194,7 +182,6 @@ const Services = () => {
                     <div className="mt-6 sm:mt-8 h-px bg-[#e8eaed]" />
                 </div>
 
-                {/* ── Grid ── */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {services.map((service, index) => (
                         <div
@@ -206,19 +193,16 @@ const Services = () => {
                     ))}
                 </div>
 
-                {/* ── CTA ── */}
                 <div className="mt-10 sm:mt-14 flex justify-center">
                     <div className="relative group w-full sm:w-auto">
                         <div className="relative w-full sm:w-72 h-13 sm:h-14 opacity-90 overflow-hidden rounded-xl bg-[#00ADB5] z-10">
                             {/* Shimmer */}
                             <div className="absolute z-10 -translate-x-44 group-hover:translate-x-120 ease-in transition-all duration-700 h-full w-44 bg-linear-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12" />
-                            {/* Inner button */}
                             <div className="absolute flex items-center justify-center text-white z-1 opacity-90 rounded-2xl inset-0.5 bg-black">
                                 <button className="cursor-pointer font-semibold text-base sm:text-lg h-full w-full px-6 sm:px-16 py-3 rounded-xl bg-[#084948]">
                                     View all services
                                 </button>
                             </div>
-                            {/* Glow */}
                             <div className="absolute duration-1000 group-hover:animate-spin w-full h-24 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px]" />
                         </div>
                     </div>

@@ -13,9 +13,9 @@ export default function Home() {
 
 
       <Hnsanimation />
+      <Testimonials />
       <CustomCursor />
       <Portfolio />
-      <Testimonials />
       <Contact />
       <Footer />
 

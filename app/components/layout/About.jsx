@@ -6,93 +6,252 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FounderSection from "../ui/FounderSection";
 
 gsap.registerPlugin(ScrollTrigger);
-const urbanist = Urbanist({ subsets: ["latin"], weight: ["400", "600", "700", "800"] });
 
-const About = () => {
-    const containerRef = useRef(null);
+const urbanist = Urbanist({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
+
+const STATS = [
+    { num: 300, suffix: "+", label: "Happy Clients" },
+    { num: 600, suffix: "+", label: "Projects Done" },
+    { num: 150, suffix: "+", label: "Expert Workers" },
+    { num: 99, suffix: "%", label: "Satisfaction" },
+];
+
+/* ─── Animated stat counter ─── */
+const StatItem = ({ num, suffix, label }) => {
+    const numRef = useRef(null);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".reveal", {
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",
-                }
-            });
-        }, containerRef);
-        return () => ctx.revert();
+        const el = numRef.current;
+        if (!el) return;
+        const obj = { n: 0 };
+
+        const st = ScrollTrigger.create({
+            trigger: el,
+            start: "top 88%",
+            once: true,
+            onEnter() {
+                gsap.to(obj, {
+                    n: num,
+                    duration: 1.8,
+                    ease: "power2.out",
+                    onUpdate() { el.textContent = Math.round(obj.n) + suffix; },
+                    onComplete() { el.textContent = num + suffix; },
+                });
+            },
+        });
+
+        return () => st.kill();
+    }, [num, suffix]);
+
+    return (
+        <div className="flex flex-col gap-1.5">
+            <span
+                ref={numRef}
+                className="font-black text-gray-900 leading-none tabular-nums"
+                style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", letterSpacing: "-0.03em" }}
+            >
+                {num}{suffix}
+            </span>
+            <p className="text-gray-400 font-semibold uppercase tracking-[0.18em]" style={{ fontSize: "10px" }}>
+                {label}
+            </p>
+        </div>
+    );
+};
+
+const About = () => {
+    const gsapCtx = useRef(null);
+    const sectionRef = useRef(null);
+    const textRef = useRef(null);
+    const imageRef = useRef(null);
+    const statsRef = useRef(null);
+
+    useEffect(() => {
+        const raf = requestAnimationFrame(() => {
+            gsapCtx.current = gsap.context(() => {
+
+                /* ── Left text col: words stagger up ── */
+                gsap.fromTo(
+                    textRef.current?.querySelectorAll(".t-anim"),
+                    { y: 32, opacity: 0 },
+                    {
+                        y: 0, opacity: 1,
+                        stagger: 0.12,
+                        duration: 0.7,
+                        ease: "power3.out",
+                        scrollTrigger: { trigger: textRef.current, start: "top 82%", once: true },
+                    }
+                );
+
+                /* ── Image: subtle rise + slight scale ── */
+                gsap.fromTo(
+                    imageRef.current,
+                    { y: 40, scale: 0.97, opacity: 0 },
+                    {
+                        y: 0, scale: 1, opacity: 1,
+                        duration: 0.9,
+                        ease: "power3.out",
+                        scrollTrigger: { trigger: imageRef.current, start: "top 84%", once: true },
+                    }
+                );
+
+                /* ── Stats divider line draw ── */
+                gsap.fromTo(
+                    statsRef.current?.querySelector(".stat-line"),
+                    { scaleX: 0, transformOrigin: "left center" },
+                    {
+                        scaleX: 1, duration: 1.1, ease: "power2.out",
+                        scrollTrigger: { trigger: statsRef.current, start: "top 86%", once: true },
+                    }
+                );
+
+                /* ── Stat items stagger ── */
+                gsap.fromTo(
+                    statsRef.current?.querySelectorAll(".s-anim"),
+                    { y: 22, opacity: 0 },
+                    {
+                        y: 0, opacity: 1,
+                        stagger: 0.1,
+                        duration: 0.55,
+                        ease: "power3.out",
+                        scrollTrigger: { trigger: statsRef.current, start: "top 84%", once: true },
+                    }
+                );
+
+            }, sectionRef);
+        });
+
+        return () => {
+            cancelAnimationFrame(raf);
+            gsapCtx.current?.revert();
+        };
     }, []);
 
     return (
-        <section id="about" ref={containerRef} className={`w-full bg-white ${urbanist.className}`}>
-            <div className="max-w-7xl mx-auto px-5 py-1 md:py-16 lg:py-3">
+        <section
+            id="about"
+            ref={sectionRef}
+            className={`w-full bg-white ${urbanist.className}`}
+        >
+            <div className="max-w-290 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
 
-                {/* --- Hero Section --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
-                    <div className="reveal">
-                        <div className="flex items-center gap-3 mb-6 text-[#23bcdf] font-bold text-[11px] uppercase tracking-[0.2em]">
-                            <span className="w-6 h-0.5 bg-[#23bcdf]"></span>
-                            <span>Discover / Design / Develop</span>
+                {/* ══════════════════════════════════════
+                    HERO — text left / image right
+                ══════════════════════════════════════ */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-20 lg:mb-24">
+
+                    {/* Left text */}
+                    <div ref={textRef} className="flex flex-col">
+
+                        {/* Eyebrow */}
+                        <div className="t-anim flex items-center gap-2.5 mb-5" style={{ opacity: 0 }}>
+                            <span className="block w-5 h-0.5 bg-[#23bcdf]" />
+                            <span
+                                className="text-[#23bcdf] font-bold uppercase"
+                                style={{ fontSize: "10.5px", letterSpacing: "0.2em" }}
+                            >
+                                Discover / Design / Develop
+                            </span>
                         </div>
 
-                        <h1 className="text-gray-900 font-bold leading-[1.1] mb-6 text-[clamp(2.5rem,6vw,3.5rem)] tracking-tight">
-                            Hardworking team of <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#084948] to-[#23bcdf]">
+                        {/* Heading */}
+                        <h1
+                            className="t-anim font-black text-gray-900 leading-[1.08] tracking-tight mb-5"
+                            style={{ fontSize: "clamp(2rem, 5.5vw, 3.5rem)", opacity: 0 }}
+                        >
+                            Hardworking team of{" "}
+                            <br className="hidden sm:block" />
+                            <span
+                                className="text-transparent bg-clip-text"
+                                style={{ backgroundImage: "linear-gradient(110deg,#084948 0%,#23bcdf 100%)" }}
+                            >
                                 marketing experts.
                             </span>
                         </h1>
 
-                        <p className="text-gray-500 text-xs md:text-base  leading-relaxed mb-10 max-w-xl">
-                            We help ambitious brands reach their full potential through strategic design
-                            and cutting-edge development. Focused on data, refined by creativity.
+                        {/* Body */}
+                        <p
+                            className="t-anim text-gray-500 leading-relaxed mb-9 max-w-lg"
+                            style={{ fontSize: "clamp(13.5px, 1.7vw, 15px)", opacity: 0 }}
+                        >
+                            We help ambitious brands reach their full potential through strategic
+                            design and cutting-edge development. Focused on data, refined by creativity.
                         </p>
 
-                        <div className="flex flex-wrap items-center gap-6">
-                            <div className="flex -space-x-3">
+                        {/* Avatars + trust line */}
+                        <div className="t-anim flex flex-wrap items-center gap-5" style={{ opacity: 0 }}>
+                            <div className="flex -space-x-2.5">
                                 {[1, 2, 3, 4].map(i => (
-                                    <img key={i} className="w-10 h-10 rounded-full border-2 border-white" src={`https://i.pravatar.cc/100?u=${i}`} alt="user" />
+                                    <img
+                                        key={i}
+                                        src={`https://i.pravatar.cc/100?u=${i}`}
+                                        alt="user"
+                                        className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white object-cover shadow-sm"
+                                    />
                                 ))}
                             </div>
-                            <p className="text-xs font-bold text-gray-900 uppercase tracking-wider">
-                                Trusted by 500+ <span className="text-gray-400 block font-medium">Global Creators</span>
-                            </p>
+                            <div>
+                                <p className="font-black text-gray-900" style={{ fontSize: "12.5px", letterSpacing: "0.06em" }}>
+                                    Trusted by 500+
+                                </p>
+                                <p className="text-gray-400 font-medium" style={{ fontSize: "12px" }}>
+                                    Global Creators
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="reveal relative">
-                        <div className="rounded-2xl overflow-hidden shadow-2xl aspect-4/3 lg:aspect-square">
+                    {/* Right image */}
+                    <div
+                        ref={imageRef}
+                        className="w-full"
+                        style={{ opacity: 0 }}
+                    >
+                        <div className="relative rounded-2xl overflow-hidden shadow-xl w-full"
+                            style={{ aspectRatio: "4/3" }}>
                             <img
                                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80"
-                                alt="Workspace"
+                                alt="Team workspace"
                                 className="w-full h-full object-cover"
                             />
+                            {/* Subtle tint overlay */}
+                            <div
+                                className="absolute inset-0 pointer-events-none"
+                                style={{ background: "linear-gradient(180deg, transparent 50%, rgba(8,73,72,0.18) 100%)" }}
+                            />
+                        </div>
+
+                        {/* Floating badge */}
+                        <div className="flex justify-end mt-4">
+                            <div className="inline-flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2 shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                                <span className="text-gray-700 font-semibold" style={{ fontSize: "12px" }}>
+                                    600+ Projects delivered
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* --- Stats Grid --- */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-gray-100 mb-1">
-                    {[
-                        { num: "300", label: "Happy Clients", suffix: "+" },
-                        { num: "600", label: "Projects Done", suffix: "+" },
-                        { num: "150", label: "Expert Workers", suffix: "+" },
-                        { num: "99", label: "Satisfaction", suffix: "%" },
-                    ].map((stat, i) => (
-                        <div key={i} className="reveal text-center md:text-left">
-                            <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-2 tracking-tighter">
-                                {stat.num}<span className="text-[#23bcdf]">{stat.suffix}</span>
-                            </h3>
-                            <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px]">{stat.label}</p>
-                        </div>
-                    ))}
+                {/* ══════════════════════════════════════
+                    STATS
+                ══════════════════════════════════════ */}
+                <div ref={statsRef}>
+                    <div className="stat-line h-px bg-gray-100 mb-10 sm:mb-12 w-full" />
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-0">
+                        {STATS.map((s, i) => (
+                            <div key={i} className="s-anim" style={{ opacity: 0 }}>
+                                <StatItem num={s.num} suffix={s.suffix} label={s.label} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
+                {/* ══════════════════════════════════════
+                    FOUNDER / TRUSTED BRANDS
+                ══════════════════════════════════════ */}
                 <FounderSection />
+
             </div>
         </section>
     );

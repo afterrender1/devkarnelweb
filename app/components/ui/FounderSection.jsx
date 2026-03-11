@@ -1,52 +1,111 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { Urbanist } from "next/font/google";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const urbanist = Urbanist({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const BRANDS = [
+    { name: "facebook", style: { fontWeight: 900, letterSpacing: "-0.03em", textTransform: "lowercase" } },
+    { name: "twitch", style: { fontWeight: 900, fontStyle: "italic", letterSpacing: "-0.02em" } },
+    { name: "Pinterest", style: { fontWeight: 900, letterSpacing: "-0.01em" } },
+    { name: "YouTube", style: { fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.04em" } },
+    { name: "webflow", style: { fontWeight: 900, textTransform: "lowercase", letterSpacing: "-0.02em" } },
+];
+
 const FounderSection = () => {
     const sectionRef = useRef(null);
-    const brandGradient = "linear-gradient(110deg, #084948 0%, #0c7371 60%, #159e9b 100%)";
+    const labelRef = useRef(null);
+    const lineRef = useRef(null);
+    const brandsRef = useRef([]);
 
     useEffect(() => {
-        const el = sectionRef.current;
-        const revealElements = el.querySelectorAll(".reveal-fs");
+        const ctx = gsap.context(() => {
 
-        gsap.fromTo(revealElements,
-            { y: 30, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
+            // Label + line entrance
+            gsap.fromTo(
+                [labelRef.current, lineRef.current],
+                { y: 12, opacity: 0 },
+                {
+                    y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: "power2.out",
+                    scrollTrigger: { trigger: sectionRef.current, start: "top 85%", once: true },
                 }
-            }
-        );
+            );
+
+            // Brand names stagger in
+            gsap.fromTo(
+                brandsRef.current,
+                { y: 20, opacity: 0 },
+                {
+                    y: 0, opacity: 1,
+                    stagger: 0.08,
+                    duration: 0.55,
+                    ease: "power3.out",
+                    scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true },
+                    delay: 0.2,
+                }
+            );
+
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        <div ref={sectionRef} className="py-10 md:py-12 border-t border-gray-100 overflow-hidden">
-            {/* Logos Section - Clean Grid */}
-            <div className="mb-20 reveal-fs">
-                <p className="text-gray-400 font-bold mb-8 text-[10px] uppercase tracking-[0.2em]">
-                    Trusted By Industry Leaders
-                </p>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-                    <span className="text-xl md:text-2xl font-black tracking-tighter text-center lg:text-left">facebook</span>
-                    <span className="text-xl md:text-2xl font-black italic text-center lg:text-left">twitch</span>
-                    <span className="text-xl md:text-2xl font-black text-center lg:text-left">Pinterest</span>
-                    <span className="text-xl md:text-2xl font-black text-center lg:text-left uppercase">YouTube</span>
-                    <span className="text-xl md:text-2xl font-black lowercase text-center lg:text-left">webflow</span>
-                </div>
-            </div>
+        <div
+            ref={sectionRef}
+            className={`w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-18 lg:py-20 border-t border-gray-100 ${urbanist.className}`}
+        >
+            <div className="max-w-275 mx-auto">
 
-         
+                {/* Label row */}
+                <div className="flex items-center gap-4 mb-10 sm:mb-12">
+                    <p
+                        ref={labelRef}
+                        className="text-gray-400 font-semibold uppercase whitespace-nowrap"
+                        style={{ fontSize: "10.5px", letterSpacing: "0.2em", opacity: 0 }}
+                    >
+                        Trusted by industry leaders
+                    </p>
+                    {/* Extending line */}
+                    <div
+                        ref={lineRef}
+                        className="flex-1 h-px bg-gray-200"
+                        style={{ opacity: 0 }}
+                    />
+                </div>
+
+                {/* Brand grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-6 sm:gap-x-10">
+                    {BRANDS.map((brand, i) => (
+                        <div
+                            key={brand.name}
+                            ref={(el) => (brandsRef.current[i] = el)}
+                            className="flex items-center justify-start"
+                            style={{ opacity: 0 }}
+                        >
+                            <span
+                                className="text-gray-300 hover:text-gray-700 transition-colors duration-300 cursor-default select-none"
+                                style={{
+                                    ...brand.style,
+                                    fontSize: "clamp(17px, 2.2vw, 22px)",
+                                    lineHeight: 1,
+                                    fontFamily: "inherit",
+                                }}
+                            >
+                                {brand.name}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+
+            </div>
         </div>
     );
 };

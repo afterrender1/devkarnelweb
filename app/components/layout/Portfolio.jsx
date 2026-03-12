@@ -159,6 +159,18 @@ const projects = [
         accent: "#0891b2",
         accentBg: "rgba(8,145,178,0.09)",
     },
+    {
+        id: 13,
+        title: "Outdoor Adventure Car Wash Landing Page",
+        subtitle: "SaaS Landing Page",
+        category: "Business",
+        platform: "WordPress",
+        thumbnail: "/images/our-work/outdoor.png",
+        liveUrl: "https://steelblue-otter-789796.hostingersite.com/",
+        tags: ["WordPress", "Elementor", "Astra"],
+        accent: "#0891b2",
+        accentBg: "rgba(8,145,178,0.09)",
+    },
 ];
 
 const FILTERS = [

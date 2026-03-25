@@ -52,7 +52,9 @@ export const metadata = {
     description:
       "Modern web development agency specializing in Next.js and MERN stack solutions.",
   },
+  
 };
+<meta name="google-site-verification" content="oUXQaTT_eWALgmCQeRgd5gKX6TLZpvJ2_bg2nWA5g60" />
 
 export default function RootLayout({ children }) {
   return (

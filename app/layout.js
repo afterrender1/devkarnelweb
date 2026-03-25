@@ -1,7 +1,5 @@
 import "./globals.css";
 
-
-
 export const metadata = {
   title: {
     default: "Devkarnel Web Solutions | Modern Web Development Agency",
@@ -32,11 +30,14 @@ export const metadata = {
     "Business Website Development",
     "Landing Page Design",
     "Performance Optimized Websites",
-    "Website Maintenance Services"
+    "Website Maintenance Services",
   ],
   authors: [{ name: "Devkarnel Web Solutions" }],
   creator: "Devkarnel Web Solutions",
-  metadataBase: new URL("https://devskarnel.com/"), 
+  metadataBase: new URL("https://devskarnel.com/"),
+  verification: {
+    google: "oUXQaTT_eWALgmCQeRgd5gKX6TLZpvJ2_bg2nWA5g60",
+  },
   openGraph: {
     title: "Devkarnel Web Solutions | Modern Web Development Agency",
     description:
@@ -52,15 +53,12 @@ export const metadata = {
     description:
       "Modern web development agency specializing in Next.js and MERN stack solutions.",
   },
-  
 };
-<meta name="google-site-verification" content="oUXQaTT_eWALgmCQeRgd5gKX6TLZpvJ2_bg2nWA5g60" />
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className="selection:bg-[#91e9fd] selection:text-[#334155]"
-      >
+      <body className="selection:bg-[#91e9fd] selection:text-[#334155]">
         {children}
       </body>
     </html>

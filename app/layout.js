@@ -36,12 +36,12 @@ export const metadata = {
   ],
   authors: [{ name: "Devkarnel Web Solutions" }],
   creator: "Devkarnel Web Solutions",
-  metadataBase: new URL("https://yourdomain.com"), // change to your real domain
+  metadataBase: new URL("https://devskarnel.com/"), 
   openGraph: {
     title: "Devkarnel Web Solutions | Modern Web Development Agency",
     description:
       "We create fast, scalable, and SEO-friendly web applications using modern technologies like Next.js and MERN stack.",
-    url: "https://yourdomain.com",
+    url: "https://devskarnel.com/",
     siteName: "Devkarnel Web Solutions",
     locale: "en_US",
     type: "website",

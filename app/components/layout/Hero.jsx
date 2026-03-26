@@ -35,26 +35,16 @@ const Hero = () => {
     return (
         <section
             ref={container}
-            className={`relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white ${urbanist.className}`}
+            className={`relative w-full min-h-screen flex flex-col items-center justify-center  overflow-hidden ${urbanist.className}`}
         >
             {/* Background image */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none bg-center bg-cover bg-no-repeat"
+                className="absolute inset-0 z-0 rounded-4xl pointer-events-none bg-center bg-cover bg-no-repeat"
                 style={{ backgroundImage: "url(/bg1.png)" }}
             />
 
             {/* Grid + glow overlay */}
-            <div
-                className="hero-bg absolute inset-0 z-0 pointer-events-none"
-                style={{
-                    backgroundImage: `
-                        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(26,115,232,0.07) 0%, transparent 70%),
-                        linear-gradient(rgba(232,234,237,0.45) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(232,234,237,0.45) 1px, transparent 1px)
-                    `,
-                    backgroundSize: 'auto, 48px 48px, 48px 48px',
-                }}
-            />
+    
 
             {/* Page content */}
             <div className="relative z-10 w-full max-w-6xl mx-auto

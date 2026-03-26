@@ -27,7 +27,7 @@ const Hnsanimation = () => {
             });
         });
 
-        return () => ctx.revert(); // Cleanup to prevent memory leaks/double triggers
+        return () => ctx.revert(); 
     }, []);
 
     return (

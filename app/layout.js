@@ -46,6 +46,14 @@ export const metadata = {
       "We build fast, scalable, and SEO-friendly web applications using Next.js and MERN stack.",
     url: "https://devskarnel.com/",
     siteName: "Devskarnel",
+    images:[
+      {
+        url : 'favicon.ico',
+        width: 1200,
+        height: 630,
+        alt: 'Devskarnel - Web Development Agency',
+      }
+    ],
     locale: "en_US",
     type: "website",
   },

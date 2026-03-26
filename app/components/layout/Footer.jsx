@@ -301,13 +301,13 @@ const Footer = () => {
                         <span className="text-[13px] leading-snug">(92) 34765 4321 54</span>
                     </a>
                     <a
-                        href="mailto:contact@devkarnel.com"
+                        href="mailto:contact@devskarnel.com"
                         className="flex items-start gap-2.5 text-gray-500 hover:text-[#3a86ff] transition-colors duration-150 group"
                     >
                         <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#3a86ff] flex items-center justify-center shrink-0 transition-colors duration-200">
                             <Mail size={13} className="text-[#3a86ff] group-hover:text-white transition-colors duration-200" />
                         </div>
-                        <span className="text-[13px] leading-snug">contact@devkarnel.com</span>
+                        <span className="text-[13px] leading-snug">contact@devskarnel.com</span>
                     </a>
                 </div>
             </div>
@@ -318,7 +318,7 @@ const Footer = () => {
             <div className="border-t border-gray-200 ">
                 <div className="max-w-275 mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
                     <p className="text-gray-400 text-[12.5px] text-center sm:text-left">
-                        © Copyright by <span className="font-semibold text-gray-600">DevKarnel</span>. All rights reserved.
+                        © Copyright by <span className="font-semibold text-gray-600">DevsKarnel</span>. All rights reserved.
                     </p>
                     <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
                         {["Privacy Policy", "Terms of Use", "Legal", "Site Map"].map((item) => (

@@ -17,7 +17,7 @@ const Navbar = () => {
                     <div className="relative w-32 h-12 md:w-42 md:h-12 transition-transform duration-300 group-hover:scale-105">
                         <Image
                             src="/logo.png"
-                            alt="Devkarnel Logo"
+                            alt="Devskarnel"
                             fill
                             className="object-contain" // Ensures the logo isn't stretched
                             priority // Loads the logo immediately (best for LCP/SEO)

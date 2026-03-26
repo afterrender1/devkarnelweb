@@ -190,7 +190,7 @@ const Hero = () => {
                             <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#34a853] shrink-0" />
                             <div className="ml-1.5 sm:ml-3 flex-1 h-3.5 sm:h-5 rounded-full bg-white border border-[#e8eaed] flex items-center px-2 sm:px-3">
                                 <span className="text-[8px] sm:text-[10px] text-[#9aa0a6] font-medium truncate">
-                                    devkarnel.com
+                                    Devskarnel
                                 </span>
                             </div>
                         </div>
@@ -198,7 +198,7 @@ const Hero = () => {
                         <iframe
                             className="w-full h-full pt-6 sm:pt-9"
                             src="https://www.youtube.com/embed/Xw8ZTeg8YKg?si=pigkOMOeOYwfDcPQ"
-                            title="Devkarnel Web Solutions Introduction"
+                            title="Devskarnel Web Solutions Introduction"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen

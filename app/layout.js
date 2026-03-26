@@ -4,12 +4,12 @@ export const metadata = {
   metadataBase: new URL("https://devskarnel.com"),
 
   title: {
-    default: "Devskarnel | Next.js & MERN Web Development Agency",
+    default: "Devskarnel – Web Development Agency",
     template: "%s | Devskarnel",
   },
 
   description:
-    "Devskarnel is a web development agency building fast, SEO-optimized websites using Next.js, React, and MERN stack. We help businesses grow online with modern, scalable solutions.",
+    "Devskarnel is a web development agency building fast, SEO-optimized websites using Next.js, React, and MERN stack.",
 
   keywords: [
     "Devskarnel",
@@ -17,11 +17,14 @@ export const metadata = {
     "Next.js Developer",
     "MERN Stack Developer",
     "React Developer",
-    "Custom Web Applications",
-    "SEO Optimized Websites",
+    "SEO-Friendly Web Development",
+    "Fast Web Applications",
+    "Scalable Web Solutions",
+    "Custom Web Development",
+    "Full-Stack Development",
     "WordPress Development",
     "Shopify Development",
-    "Ecommerce Website Development",
+    
   ],
 
   authors: [{ name: "Devskarnel" }],
@@ -38,7 +41,7 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Devskarnel | Next.js & MERN Web Development Agency",
+    title: "Devskarnel – Web Development Agency",
     description:
       "We build fast, scalable, and SEO-friendly web applications using Next.js and MERN stack.",
     url: "https://devskarnel.com/",
@@ -50,8 +53,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Devskarnel",
-    description:
-      "Modern web development agency specializing in Next.js and MERN stack.",
+    description: "Next.js & MERN Web Development Agency",
   },
 
   icons: {
@@ -60,31 +62,47 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const jsonLd = {
+  // 🔹 Organization Schema
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Devskarnel",
     url: "https://devskarnel.com",
     logo: "https://devskarnel.com/logo.png",
-    sameAs: [
-      "https://www.linkedin.com",
-      "https://github.com",
-    ],
+  };
+
+  // 🔥 MOST IMPORTANT (Site Name fix)
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Devskarnel",
+    alternateName: "Devskarnel Web Solutions",
+    url: "https://devskarnel.com/",
   };
 
   return (
     <html lang="en">
       <body className="selection:bg-[#91e9fd] selection:text-[#334155]">
 
-        {/* Hidden SEO H1 */}
+        {/* 🔥 Hidden SEO H1 */}
         <h1 className="hidden">
           Devskarnel Web Development Agency - Next.js & MERN Experts
         </h1>
 
-        {/* Structured Data */}
+        {/* 🔹 Organization Schema */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
+        {/* 🔥 Website Schema (Fixes name in Google) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
         />
 
         {children}

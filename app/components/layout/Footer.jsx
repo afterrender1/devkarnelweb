@@ -175,7 +175,7 @@ const Footer = () => {
                                 Subscribe to our newsletter to get<br />
                                 updates to our latest collections
                             </h3>
-                            <p className="text-white/75 text-[13px] mb-5">
+                            <p className="text-white/75 text-[11px] mb-5">
                                 Get 20% off on your first order just by subscribing to our newsletter
                             </p>
 
@@ -186,7 +186,7 @@ const Footer = () => {
                                     placeholder="Enter your email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className="flex-1 bg-transparent outline-none text-[13px] text-gray-700 placeholder:text-gray-300 min-w-0"
+                                    className="flex-1 bg-transparent outline-none text-[11px] text-gray-700 placeholder:text-gray-300 min-w-0"
 
                                 />
                                 <button
@@ -237,7 +237,7 @@ const Footer = () => {
                         <span className="font-bold text-gray-900 text-[17px] tracking-tight">Stay Clean</span>
                     </div>
 
-                    <p className="text-gray-400 text-[13px] leading-relaxed max-w-50">
+                    <p className="text-gray-400 text-[11px] leading-relaxed max-w-50">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis.
                     </p>
 
@@ -280,7 +280,7 @@ const Footer = () => {
                             <a
                                 key={item}
                                 href="#"
-                                className="text-gray-500 text-[13px] hover:text-[#3a86ff] transition-colors duration-150 w-fit"
+                                className="text-gray-500 text-[11px] hover:text-[#3a86ff] transition-colors duration-150 w-fit"
                             >
                                 {item}
                             </a>
@@ -293,21 +293,21 @@ const Footer = () => {
                     <h4 className="font-bold text-gray-900 text-[14px] mb-1">Contact Us</h4>
                     <a
                         href="tel:+919876543215"
-                        className="flex items-start gap-2.5 text-gray-500 hover:text-[#3a86ff] transition-colors duration-150 group"
+                        className="flex items-start gap-2.5 text-gray-500 hover:text-[#00ADB5] transition-colors duration-150 group"
                     >
-                        <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#3a86ff] flex items-center justify-center shrink-0 transition-colors duration-200">
-                            <Phone size={13} className="text-[#3a86ff] group-hover:text-white transition-colors duration-200" />
+                        <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#00ADB5] flex items-center justify-center shrink-0 transition-colors duration-200">
+                            <Phone size={13} className="text-[#00ADB5] group-hover:text-white transition-colors duration-200" />
                         </div>
-                        <span className="text-[13px] leading-snug">(92) 34765 4321 54</span>
+                        <span className="text-[11px] leading-snug">(92) 34765 4321 54</span>
                     </a>
                     <a
                         href="mailto:contact@devskarnel.com"
-                        className="flex items-start gap-2.5 text-gray-500 hover:text-[#3a86ff] transition-colors duration-150 group"
+                        className="flex items-start gap-2.5 text-gray-500 hover:text-[#00ADB5] transition-colors duration-150 group"
                     >
-                        <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#3a86ff] flex items-center justify-center shrink-0 transition-colors duration-200">
-                            <Mail size={13} className="text-[#3a86ff] group-hover:text-white transition-colors duration-200" />
+                        <div className="w-7 h-7 rounded-full bg-[#3a86ff]/10 group-hover:bg-[#00ADB5] flex items-center justify-center shrink-0 transition-colors duration-200">
+                            <Mail size={13} className="text-[#00ADB5] group-hover:text-white transition-colors duration-200" />
                         </div>
-                        <span className="text-[13px] leading-snug">contact@devskarnel.com</span>
+                        <span className="text-[11px] leading-snug">contact@devskarnel.com</span>
                     </a>
                 </div>
             </div>

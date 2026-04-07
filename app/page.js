@@ -17,7 +17,7 @@ export default function Home() {
       <Testimonials />
       <About />
       <CustomCursor />
-      <Portfolio />
+      {/* <Portfolio /> */}
       <Contact />
       <Footer />
 

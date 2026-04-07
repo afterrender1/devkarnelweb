@@ -1,46 +1,70 @@
 "use client";
-import React, { useLayoutEffect, useRef } from 'react';
-import Hero from './Hero';
-import Services from './Services';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useLayoutEffect, useRef } from "react";
+import Hero from "./Hero";
+import Services from "./Services";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Hnsanimation — wraps Hero with a scroll-driven scale+fade out,
+ * then renders Services below it.
+ *
+ * Optimised:
+ * - useLayoutEffect (avoids FOUC)
+ * - gsap.context() for scoped, auto-cleaned-up animations
+ * - will-change only while animation is active (removed on complete)
+ * - GPU-friendly properties only (opacity, scale via transform)
+ */
 const Hnsanimation = () => {
-    const heroRef = useRef(null);
+  const heroRef = useRef(null);
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            // Animation logic
-            gsap.to(heroRef.current, {
-                opacity: 0,
-                scale: 0.8, // Adjust scale down intensity here
-                ease: "none",
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: "top top",      // Start when the top of hero hits top of viewport
-                    end: "bottom 5%",        // Animation finishes when 15% of the scroll is done
-                    scrub: true,           // Links animation to scrollbar
-                    // markers: true,      // Uncomment this to see the start/end lines for debugging
-                }
-            });
-        });
+  useLayoutEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
 
-        return () => ctx.revert(); 
-    }, []);
+    // Apply will-change only during scroll animation, remove after
+    el.style.willChange = "transform, opacity";
 
-    return (
-        <>
-            <div ref={heroRef} style={{ overflow: 'hidden' }}>
-                <Hero />
-            </div>
+    const ctx = gsap.context(() => {
+      gsap.to(el, {
+        opacity: 0,
+        scale: 0.88,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top top",
+          end: "bottom 10%",
+          scrub: 1,             // scrub:1 adds a small lag = smoother feel
+          onLeave: () => {
+            el.style.willChange = "auto";
+          },
+          onEnterBack: () => {
+            el.style.willChange = "transform, opacity";
+          },
+        },
+      });
+    });
 
-            <div>
-                <Services />
-            </div>
-        </>
-    );
+    return () => {
+      ctx.revert();
+      el.style.willChange = "auto";
+    };
+  }, []);
+
+  return (
+    <>
+      {/* overflow:hidden prevents scale from causing horizontal scrollbar */}
+      <div ref={heroRef} style={{ overflow: "hidden", transformOrigin: "center top" }}>
+        <Hero />
+      </div>
+
+      <div>
+        <Services />
+      </div>
+    </>
+  );
 };
 
 export default Hnsanimation;

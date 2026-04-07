@@ -11,42 +11,34 @@ const urbanist = Urbanist({
 
 const SERVICES = [
   {
-    title: "WordPress Development",
-    desc: "Custom themes and robust e-commerce solutions built on the world's most popular CMS.",
-    icon: Globe,
-    image: "/wp.png",
-    tag: "CMS & Themes",
-    accent: "#1a73e8",
-  },
-  {
-    title: "Node.js Solutions",
-    desc: "Scalable, real-time backend architectures and API development for high-traffic apps.",
-    icon: Code2,
-    image: "/node.png",
-    tag: "Backend & APIs",
+    title: "App Development",
+    desc: "High-performance mobile and web applications built with modern technologies for scalability and speed.",
+    icon: Smartphone,
+    image: "/appdev.png",
+    tag: "Mobile & Web Apps",
     accent: "#0f9d58",
   },
   {
-    title: "Landing Page Design",
-    desc: "High-converting, performance-optimized landing pages designed to drive leads.",
+    title: "Web Development",
+    desc: "Custom, scalable websites and web apps using Next.js, MERN stack, and modern frameworks.",
+    icon: Globe,
+    image: "/webdev.png",
+    tag: "Frontend & Backend",
+    accent: "#1a73e8",
+  },
+  {
+    title: "UI/UX Design",
+    desc: "User-centered designs focused on seamless experience, modern aesthetics, and high conversion.",
     icon: LayoutTemplate,
-    image: "/lp.png",
-    tag: "Design & UX",
+    image: "/uiux.png",
+    tag: "Design & Experience",
     accent: "#f4511e",
   },
   {
-    title: "Shopify E-commerce",
-    desc: "Specialized online store setups, Liquid customization, and seamless app integrations.",
-    icon: Smartphone,
-    image: "/shopify.png",
-    tag: "E-commerce",
-    accent: "#7b1fa2",
-  },
-  {
     title: "SEO Optimization",
-    desc: "Data-driven strategies to dominate search rankings and increase organic traffic.",
+    desc: "Strategic SEO solutions to boost rankings, increase visibility, and drive organic traffic.",
     icon: ShieldCheck,
-    image: "/seo.png",
+    image: "/seo1.png",
     tag: "Growth & Traffic",
     accent: "#e37400",
   },
@@ -123,9 +115,9 @@ const ServiceCard = ({ service }) => {
         </p>
 
         <div className="mt-4 sm:mt-5 flex items-center gap-1.5" aria-hidden="true">
-          <span className="font-medium transition-colors duration-300" style={{ fontSize: "clamp(12px,1.4vw,14px)", color: service.accent }}>
-            Learn more
-          </span>
+          <a href="#contact" className="font-medium transition-colors duration-300" style={{ fontSize: "clamp(12px,1.4vw,14px)", color: service.accent }}>
+            Get Started
+          </a>
           <ArrowUpRight
             size={15}
             style={{
@@ -186,7 +178,7 @@ const Services = () => (
         <div className="mt-6 sm:mt-8 h-px bg-[#e8eaed]" aria-hidden="true" />
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-5">
         {SERVICES.map((service, index) => (
           <div key={index} className={index === 4 ? "lg:col-start-2" : ""}>
             <ServiceCard service={service} />

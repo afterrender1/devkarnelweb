@@ -51,10 +51,10 @@ const FounderSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-18 lg:py-20 border-t border-gray-100 ${urbanist.className}`}
+      className={`w-full px-0 sm:px-0 lg:px-0 py-12 sm:py-18 lg:py-20 border-t border-gray-100 ${urbanist.className}`}
       aria-label="Trusted by industry leaders"
     >
-      <div className="max-w-275 mx-auto">
+      <div className="max-w-420 mx-auto">
 
         {/* Label row */}
         <div className="flex items-center gap-4 mb-10 sm:mb-12">

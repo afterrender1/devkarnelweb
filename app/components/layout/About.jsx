@@ -14,9 +14,9 @@ const urbanist = Urbanist({
 });
 
 const STATS = [
-  { num: 300, suffix: "+", label: "Happy Clients" },
-  { num: 600, suffix: "+", label: "Projects Done" },
-  { num: 150, suffix: "+", label: "Expert Workers" },
+  { num: 100, suffix: "+", label: "Happy Clients" },
+  { num: 150, suffix: "+", label: "Projects Done" },
+  { num: 20, suffix: "+", label: "Expert Workers" },
   { num: 99,  suffix: "%", label: "Satisfaction" },
 ];
 
@@ -56,13 +56,13 @@ const StatItem = ({ num, suffix, label }) => {
     <div className="flex flex-col gap-1.5">
       <span
         ref={numRef}
-        className="font-black text-gray-900 leading-none tabular-nums"
+        className=" text-gray-900 leading-none tabular-nums"
         style={{ fontSize: "clamp(2.2rem,4.5vw,3.5rem)", letterSpacing: "-0.03em" }}
         aria-label={`${num}${suffix}`}
       >
         {num}{suffix}
       </span>
-      <p className="text-gray-400 font-semibold uppercase tracking-[0.18em]" style={{ fontSize: "10px" }}>
+      <p className="text-gray-400 font-bold uppercase tracking-[0.18em]" style={{ fontSize: "10px" }}>
         {label}
       </p>
     </div>
@@ -143,10 +143,10 @@ const About = () => {
 
   return (
     <section id="about" ref={sectionRef} className={`w-full bg-white ${urbanist.className}`}>
-      <div className="max-w-290 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+      <div className="max-w-290 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-18">
 
         {/* ══ Hero: text left / image right ══ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-20 lg:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-20 lg:mb-2">
 
           {/* Left text */}
           <div ref={textRef} className="flex flex-col">
@@ -161,8 +161,7 @@ const About = () => {
 
             {/* Heading */}
             <h2
-              className="t-anim font-black text-gray-900 leading-[1.08] tracking-tight mb-5"
-              style={{ fontSize: "clamp(2rem,5.5vw,3.5rem)", opacity: 0 }}
+              className="t-anim font-semibold text-[3rem] text-gray-900 leading-[1.08] tracking-tight mb-5"
             >
               Hardworking team of{" "}
               <br className="hidden sm:block" />
@@ -176,7 +175,7 @@ const About = () => {
 
             {/* Body */}
             <p
-              className="t-anim text-gray-500 leading-relaxed mb-9 max-w-lg"
+              className="t-anim text-gray-500 leading-relaxed mb-8 max-w-lg"
               style={{ fontSize: "clamp(13.5px,1.7vw,15px)", opacity: 0 }}
             >
               We help ambitious brands reach their full potential through strategic design and cutting-edge development.
@@ -208,8 +207,8 @@ const About = () => {
           </div>
 
           {/* Right image */}
-          <div ref={imageRef} className="w-full" style={{ opacity: 0 }}>
-            <div className="relative rounded-2xl overflow-hidden shadow-xl w-full" style={{ aspectRatio: "4/3" }}>
+          <div ref={imageRef} className="w-full" style={{ opacity: 100 }}>
+            <div className="relative rounded-xl overflow-hidden w-full" style={{ aspectRatio: "4/3" }}>
               <Image
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80"
                 alt="Team collaborating in a modern workspace"
@@ -227,8 +226,7 @@ const About = () => {
 
             {/* Floating badge */}
             <div className="flex justify-end mt-4">
-              <div className="inline-flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2">
                 <span className="text-gray-700 font-semibold" style={{ fontSize: "12px" }}>
                   600+ Projects delivered
                 </span>
@@ -239,7 +237,7 @@ const About = () => {
 
         {/* ══ Stats ══ */}
         <div ref={statsRef}>
-          <div className="stat-line h-px bg-gray-100 mb-10 sm:mb-12 w-full" aria-hidden="true" />
+          <div className="stat-line h-px bg-gray-100 mb-10 sm:mb-2 w-full" aria-hidden="true" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
             {STATS.map((s, i) => (
               <div key={i} className="s-anim" style={{ opacity: 0 }}>
@@ -249,7 +247,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* ══ Founder / Trusted Brands ══ */}
         <FounderSection />
 
       </div>

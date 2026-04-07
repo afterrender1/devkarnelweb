@@ -163,10 +163,7 @@ const SuccessStoriesBtn = ({ wide = false }) => (
             Read Success Stories
           </button>
         </div>
-        {/* Glow ring — only renders on hover */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-          <div className="w-full h-24 bg-linear-to-r from-green-500 to-yellow-500 blur-[30px] group-hover:animate-spin" />
-        </div>
+       
       </div>
     </div>
   </div>

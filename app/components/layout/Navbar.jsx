@@ -16,7 +16,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
 
-  // Animate navbar in on mount — GPU-friendly (opacity + y only)
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -37,7 +36,6 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-16 md:h-20 flex items-center justify-between gap-4">
 
-        {/* Logo */}
         <Link href="/" aria-label="Devskarnel home" className="shrink-0">
           <div className="relative w-28 h-10 sm:w-32 sm:h-12 md:w-40 md:h-12 transition-transform duration-300 hover:scale-105">
             <Image
@@ -51,7 +49,6 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-4 lg:gap-8" role="menubar">
           {NAV_LINKS.map((item) => (
             <a
@@ -61,15 +58,12 @@ const Navbar = () => {
               className="text-sm lg:text-base font-semibold text-slate-600 hover:text-[#23bcdf] transition-colors relative group whitespace-nowrap"
             >
               {item}
-              {/* Underline — transform-based, GPU friendly */}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#23bcdf] transition-[width] duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
 
-        {/* CTA Button */}
         <div className="flex items-center shrink-0 gap-3">
-          {/* Hamburger — mobile only */}
           <button
             className="md:hidden p-2 rounded-lg text-slate-600 hover:text-[#23bcdf] transition-colors"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -92,12 +86,9 @@ const Navbar = () => {
             </svg>
           </button>
 
-          {/* Book Now — shimmer button */}
           <div className="relative group">
             <div className="relative min-w-25 sm:min-w-30 md:min-w-37.5 h-9 md:h-12 overflow-hidden rounded-lg bg-[#00ADB5] z-10">
-              {/* Shine sweep — transform only */}
               <div className="absolute z-10 -translate-x-full group-hover:translate-x-[200%] ease-in transition-transform duration-700 h-full w-24 bg-linear-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none" />
-              {/* Inner button */}
               <div className="absolute inset-[1.5px] rounded-[7px] overflow-hidden flex items-center justify-center">
                 <button
                   style={{ background: "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)" }}
@@ -106,13 +97,11 @@ const Navbar = () => {
                   Book Now
                 </button>
               </div>
-              {/* Border glow — kept but reduced on hover only */}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
       {menuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-white/20 px-4 pb-4 flex flex-col gap-3" role="menu">
           {NAV_LINKS.map((item) => (

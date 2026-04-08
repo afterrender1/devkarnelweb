@@ -12,7 +12,6 @@ const urbanist = Urbanist({
 
 const TRUST_BADGES = ["WordPress Experts", "SEO-Optimized", "99.9% Uptime"];
 
-// ─── Slide Data ─────────────────────────────────────────────────────────────────
 const SLIDES = [
   { src: "/images/our-work/magnetik.png",    alt: "Magnetik"    },
   { src: "/images/our-work/coffee.png",      alt: "Coffee"      },
@@ -26,7 +25,6 @@ const N     = SLIDES.length;
 const LOWER = -Math.floor((N - 1) / 2); // -2
 const UPPER =  Math.floor(N       / 2); //  3
 
-// ─── Slot → CSS props ───────────────────────────────────────────────────────────
 function slotToProps(pos) {
   switch (pos) {
     case  0: return { x: "0%",    scale: 1,    opacity: 1,   zIndex: 4 };
@@ -41,7 +39,6 @@ function slotToProps(pos) {
   }
 }
 
-// ─── Initial slot assignment ────────────────────────────────────────────────────
 function buildInitialSlots() {
   return Array.from({ length: N }, (_, i) => {
     const s = i;
@@ -49,7 +46,6 @@ function buildInitialSlots() {
   });
 }
 
-// ─── Dot Indicators ─────────────────────────────────────────────────────────────
 const DotIndicators = ({ activeRef, goTo }) => {
   const dotsRef = useRef([]);
   const prevRef = useRef(-1);
@@ -108,7 +104,6 @@ const DotIndicators = ({ activeRef, goTo }) => {
   );
 };
 
-// ─── Nav Button ─────────────────────────────────────────────────────────────────
 const NavBtn = ({ side, onClick }) => (
   <button
     aria-label={side === "prev" ? "Previous slide" : "Next slide"}
@@ -144,7 +139,6 @@ const NavBtn = ({ side, onClick }) => (
   </button>
 );
 
-// ─── Image Carousel ─────────────────────────────────────────────────────────────
 const ImageCarousel = () => {
   const slideEls     = useRef([]);
   const slotsRef     = useRef(buildInitialSlots());
@@ -153,14 +147,12 @@ const ImageCarousel = () => {
   const pausedRef    = useRef(false);
   const timerRef     = useRef(null);
 
-  // Seed initial positions — no animation, just set
   useLayoutEffect(() => {
     slideEls.current.forEach((el, i) => {
       if (el) gsap.set(el, slotToProps(slotsRef.current[i]));
     });
   }, []);
 
-  // Core slide function — all slides animate simultaneously, no src swaps ever
   const slide = useCallback((direction) => {
     if (animatingRef.current) return;
     animatingRef.current = true;
@@ -168,7 +160,6 @@ const ImageCarousel = () => {
     // Shift every slot
     const next = slotsRef.current.map((s) => s - direction);
 
-    // Teleport any slide that left the valid range (it's off-screen, jump is invisible)
     next.forEach((pos, i) => {
       let adjusted = pos;
       if (pos < LOWER) adjusted = pos + N;
@@ -182,14 +173,12 @@ const ImageCarousel = () => {
     slotsRef.current = next;
     activeRef.current = (activeRef.current + direction + N) % N;
 
-    // Fix zIndex instantly so overlaps are correct during tween
     next.forEach((pos, i) => {
       if (slideEls.current[i]) {
         gsap.set(slideEls.current[i], { zIndex: slotToProps(pos).zIndex });
       }
     });
 
-    // Animate all slides to their new positions at the same time
     const tl = gsap.timeline({ onComplete: () => { animatingRef.current = false; } });
     next.forEach((pos, i) => {
       const { x, scale, opacity } = slotToProps(pos);
@@ -201,7 +190,6 @@ const ImageCarousel = () => {
     });
   }, []);
 
-  // Jump to specific slide — picks shortest path
   const goTo = useCallback((targetIndex) => {
     const steps = targetIndex - activeRef.current;
     if (steps === 0) return;
@@ -235,7 +223,6 @@ const ImageCarousel = () => {
       onMouseEnter={() => { pausedRef.current = true;  }}
       onMouseLeave={() => { pausedRef.current = false; }}
     >
-      {/* All slides in DOM always — absolutely stacked, no src swapping ever */}
       {SLIDES.map((s, i) => (
         <div
           key={i}
@@ -272,7 +259,6 @@ const ImageCarousel = () => {
   );
 };
 
-// ─── Hero ────────────────────────────────────────────────────────────────────────
 const Hero = () => {
   const containerRef = useRef(null);
 
@@ -297,17 +283,14 @@ const Hero = () => {
       aria-label="Hero section"
       className={`relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden ${urbanist.className}`}
     >
-      {/* Background */}
       <div
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
         style={{ backgroundImage: "url(/bg1.png)" }}
         aria-hidden="true"
       />
 
-      {/* Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-14 md:pb-16 flex flex-col items-center text-center">
 
-        {/* Eyebrow badge */}
         <div className="hero-badge inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#e8f0fe] border border-[#c5d8fd] mb-5 sm:mb-7">
           <span
             className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#1a73e8] animate-pulse shrink-0"
@@ -318,7 +301,6 @@ const Hero = () => {
           </span>
         </div>
 
-        {/* Headline */}
         <h1 className="font-bold text-[#202124] tracking-tight leading-[1.18] w-full text-[1.6rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem]">
           <div className="overflow-hidden">
             <span className="hero-h1-line block">Crafting high-performance</span>
@@ -346,12 +328,10 @@ const Hero = () => {
           </div>
         </h1>
 
-        {/* Subheading */}
         <p className="hero-sub mt-4 sm:mt-6 text-[#383838] leading-relaxed text-sm sm:text-base md:text-lg max-w-[85vw] sm:max-w-md md:max-w-xl">
           Secure, SEO-optimized, and user-centric platforms — from WordPress to Shopify — crafted for businesses worldwide.
         </p>
 
-        {/* CTAs */}
         <div className="hero-actions mt-7 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
           <button
             aria-label="Book a free consultation"
@@ -374,7 +354,6 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* Trust badges */}
         <div
           className="hero-trust mt-5 sm:mt-7 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2"
           aria-label="Trust indicators"
@@ -393,7 +372,6 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Image Carousel */}
         <div className="hero-video mt-5 sm:mt-6 w-full max-w-3xl mx-auto">
           <ImageCarousel />
         </div>

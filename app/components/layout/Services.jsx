@@ -44,7 +44,6 @@ const SERVICES = [
   },
 ];
 
-/* ─── Card ─── */
 const ServiceCard = ({ service }) => {
   const [hovered, setHovered] = useState(false);
   const Icon = service.icon;
@@ -53,10 +52,8 @@ const ServiceCard = ({ service }) => {
     <article
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      // Use CSS transitions only — no GSAP per-card (removes dozens of event listeners)
       className="group relative bg-white rounded-2xl overflow-hidden flex flex-col cursor-pointer w-full service-card"
       style={{
-        // Only animate box-shadow via CSS (cheap repaint), transform via GPU
         boxShadow: hovered
           ? "0 8px 32px rgba(60,64,67,0.15),0 2px 8px rgba(60,64,67,0.08)"
           : "0 1px 3px rgba(60,64,67,0.12),0 1px 1px rgba(60,64,67,0.01)",
@@ -66,7 +63,6 @@ const ServiceCard = ({ service }) => {
       }}
       aria-label={service.title}
     >
-      {/* Image */}
       <div className="relative w-full overflow-hidden bg-slate-50" style={{ aspectRatio: "16/10" }}>
         <Image
           src={service.image}
@@ -76,13 +72,11 @@ const ServiceCard = ({ service }) => {
           className="object-cover transition-transform duration-400"
           style={{ transform: hovered ? "scale(1.04)" : "scale(1)" }}
         />
-        {/* Accent line — transform-based, GPU */}
         <div
           className="absolute top-0 left-0 right-0 h-0.5 transition-opacity duration-250"
           style={{ backgroundColor: service.accent, opacity: hovered ? 1 : 0 }}
           aria-hidden="true"
         />
-        {/* Tag */}
         <div className="absolute top-3 left-3">
           <span
             className="text-[10.5px] font-semibold px-2.5 py-1 rounded-full tracking-wide"
@@ -93,7 +87,6 @@ const ServiceCard = ({ service }) => {
         </div>
       </div>
 
-      {/* Body */}
       <div className="flex flex-col flex-1 p-4 sm:p-5 lg:p-6">
         <div
           className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center mb-3 sm:mb-4 transition-colors duration-300"
@@ -132,7 +125,6 @@ const ServiceCard = ({ service }) => {
   );
 };
 
-/* ─── Shimmer CTA Button ─── */
 const ShimmerButton = ({ children }) => (
   <div className="relative group w-full sm:w-auto">
     <div className="relative w-full sm:w-72 h-13 sm:h-14 overflow-hidden rounded-xl bg-[#00ADB5] z-10">
@@ -146,13 +138,11 @@ const ShimmerButton = ({ children }) => (
           {children}
         </button>
       </div>
-      {/* Spin glow — only on hover, opacity 0 at rest */}
      
     </div>
   </div>
 );
 
-/* ─── Main ─── */
 const Services = () => (
   <section id="services" aria-label="Our services" className={`py-14 sm:py-20 lg:py-24 ${urbanist.className}`}>
     <div className="w-full max-w-300 mx-auto px-4 sm:px-6 lg:px-8">

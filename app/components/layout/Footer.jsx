@@ -29,7 +29,6 @@ const BOTTOM_LINKS = ["Privacy Policy","Terms of Use","Legal","Site Map"];
 const GRADIENT_BG = "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)";
 const BANNER_BG   = "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)";
 
-/* ─── Email subscribe button — shared ─── */
 const SubscribeBtn = () => (
   <button
     type="submit"
@@ -40,7 +39,6 @@ const SubscribeBtn = () => (
   </button>
 );
 
-/* ─── Google icon ─── */
 const GoogleIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -50,7 +48,6 @@ const GoogleIcon = () => (
   </svg>
 );
 
-/* ─── Main ─── */
 const Footer = () => {
   const [email, setEmail] = useState("");
   const footerRef  = useRef(null);
@@ -61,24 +58,20 @@ const Footer = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
-      // Banner card entrance — scrub
       gsap.fromTo(bannerRef.current,
         { y: 55, opacity: 0, scale: 0.97 },
         { y: 0, opacity: 1, scale: 1, ease: "none",
           scrollTrigger: { trigger: bannerRef.current, start: "top 90%", end: "top 55%", scrub: 1.1 } }
       );
 
-      // Floating image — slides from left + perpetual float
       gsap.fromTo(imageRef.current,
         { x: -45, opacity: 0 },
         { x: 0, opacity: 1, ease: "none",
           scrollTrigger: { trigger: bannerRef.current, start: "top 88%", end: "top 50%", scrub: 1 } }
       );
 
-      // Idle float — subtle
       gsap.to(imageRef.current, { y: -8, duration: 2.6, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
-      // Link columns stagger
       const colEls = linksRef.current?.querySelectorAll(".col-anim");
       if (colEls?.length) {
         gsap.fromTo(colEls,
@@ -96,11 +89,9 @@ const Footer = () => {
   return (
     <footer ref={footerRef} className={`w-full pt-32 ${urbanist.className}`}>
 
-      {/* ══ Newsletter banner ══ */}
       <div className="max-w-245 -mb-22 mx-auto px-4 sm:px-6 pt-6 sm:pt-10">
         <div className="relative" style={{ isolation: "isolate" }}>
 
-          {/* Floating illustration — desktop only */}
           <div
             ref={imageRef}
             className="absolute hidden sm:block pointer-events-none"
@@ -117,18 +108,15 @@ const Footer = () => {
             />
           </div>
 
-          {/* Banner card */}
           <div
             ref={bannerRef}
             className="relative rounded-2xl overflow-hidden flex flex-col sm:flex-row items-stretch"
             style={{ background: BANNER_BG, minHeight: "200px", opacity: 0 }}
           >
-            {/* Sparkle dots — visual only */}
             <div className="absolute top-5 left-[35%] w-2 h-2 rounded-full bg-white/40 hidden sm:block" aria-hidden="true" />
             <div className="absolute top-10 left-[40%] w-1.5 h-1.5 rounded-full bg-white/30 hidden sm:block" aria-hidden="true" />
             <div className="absolute top-6 left-[38%] w-1 h-1 rounded-full bg-white/50 hidden sm:block" aria-hidden="true" />
 
-            {/* Mobile layout */}
             <div className="flex sm:hidden flex-col items-center w-full px-5 pt-7 pb-8 gap-5">
               <div className="relative h-36 w-auto aspect-3/4">
                 <Image src="/images/footer.png" alt="Newsletter illustration" fill className="object-contain drop-shadow-xl" />
@@ -161,7 +149,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Desktop layout */}
             <div
               className="hidden sm:flex flex-col w-full px-8 py-10"
               style={{ paddingLeft: "clamp(20px,24vw,310px)" }}
@@ -195,12 +182,10 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ══ Links grid ══ */}
       <div
         ref={linksRef}
         className="max-w-350 bg-white mx-auto px-4 sm:px-18 py-28 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-0"
       >
-        {/* Brand column */}
         <div className="col-span-2 sm:col-span-3 lg:col-span-1 col-anim flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: GRADIENT_BG }} aria-hidden="true">
@@ -214,7 +199,6 @@ const Footer = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis.
           </p>
 
-          {/* Socials */}
           <nav aria-label="Social media links" className="flex items-center gap-3 mt-1 flex-wrap">
             {SOCIAL_LINKS.map(({ Icon, href, label }) => (
               <a
@@ -232,7 +216,6 @@ const Footer = () => {
           </nav>
         </div>
 
-        {/* Link columns */}
         {Object.entries(LINKS).map(([title, items]) => (
           <nav key={title} className="col-anim flex flex-col gap-3" aria-label={title}>
             <h3 className="font-bold text-gray-900 text-[14px] mb-1">{title}</h3>
@@ -244,7 +227,6 @@ const Footer = () => {
           </nav>
         ))}
 
-        {/* Contact column */}
         <div className="col-anim flex flex-col gap-3">
           <h3 className="font-bold text-gray-900 text-[14px] mb-1">Contact Us</h3>
           <a
@@ -268,7 +250,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ══ Bottom bar ══ */}
       <div className="border-t border-gray-200">
         <div className="max-w-275 mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-gray-400 text-[12.5px] text-center sm:text-left">

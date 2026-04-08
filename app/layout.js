@@ -70,7 +70,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // 🔹 Organization Schema
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -79,7 +78,6 @@ export default function RootLayout({ children }) {
     logo: "https://devskarnel.com/logo.png",
   };
 
-  // 🔥 MOST IMPORTANT (Site Name fix)
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -92,12 +90,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="selection:bg-[#91e9fd] selection:text-[#334155]">
 
-        {/* 🔥 Hidden SEO H1 */}
         <h1 className="hidden">
           Devskarnel Web Development Agency - Next.js & MERN Experts
         </h1>
 
-        {/* 🔹 Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -105,7 +101,6 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* 🔥 Website Schema (Fixes name in Google) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

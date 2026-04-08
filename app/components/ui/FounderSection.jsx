@@ -25,7 +25,6 @@ const FounderSection = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
-      // Label + line — single timeline
       const tl = gsap.timeline({
         scrollTrigger: { trigger: sectionRef.current, start: "top 85%", once: true },
       });
@@ -35,7 +34,6 @@ const FounderSection = () => {
         { y: 0, opacity: 1, stagger: 0.1, duration: 0.55, ease: "power2.out" }
       );
 
-      // Brands — stagger in with a single ScrollTrigger
       tl.fromTo(
         brandsRef.current.filter(Boolean),
         { y: 18, opacity: 0 },
@@ -56,7 +54,6 @@ const FounderSection = () => {
     >
       <div className="max-w-420 mx-auto">
 
-        {/* Label row */}
         <div className="flex items-center gap-4 mb-10 sm:mb-12">
           <p
             ref={labelRef}
@@ -68,7 +65,6 @@ const FounderSection = () => {
           <div ref={lineRef} className="flex-1 h-px bg-gray-200" style={{ opacity: 0 }} aria-hidden="true" />
         </div>
 
-        {/* Brand grid */}
         <ul
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-6 sm:gap-x-10"
           aria-label="Partner brands"

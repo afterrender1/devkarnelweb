@@ -9,14 +9,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const urbanist = Urbanist({ subsets: ["latin"], weight: ["300","400","500","600","700","800"] });
 
-/* ─── Photo data ─── */
 const LEFT_COL_A  = [{ id: 1,  src: "/images/clients/bighots.png",    mt: "mt-16", h: "h-32", w: "w-[90px]",  name: "James R." }];
 const LEFT_COL_B  = [{ id: 2,  src: "/images/clients/crypto.png",     mt: "mt-4",  h: "h-36", w: "w-[110px]", name: "Marco L." }, { id: 3, src: "/images/clients/deborah.png", mt: "mt-4", h: "h-24", w: "w-[90px]", name: "Aisha K." }];
 const RIGHT_COL_A = [{ id: 6,  src: "/images/clients/finep.png",      mt: "mt-8",  h: "h-28", w: "w-[110px]", name: "Claire M." }, { id: 7, src: "/images/clients/metabolic.png", mt: "mt-3", h: "h-32", w: "w-[110px]", name: "Daniel W." }];
 const RIGHT_COL_B = [{ id: 9,  src: "/images/clients/traction.png",   mt: "mt-20", h: "h-28", w: "w-[90px]",  name: "Ethan B." }];
 const ALL_PHOTOS  = [...LEFT_COL_A, ...LEFT_COL_B, ...RIGHT_COL_A, ...RIGHT_COL_B];
 
-/* ─── Single animated photo ─── */
 const Photo = ({ photo, fromX }) => {
   const ref = useRef(null);
 
@@ -27,7 +25,6 @@ const Photo = ({ photo, fromX }) => {
     el.style.willChange = "transform, opacity";
     gsap.set(el, { x: fromX, opacity: 0, scale: 0.9 });
 
-    // Scroll entrance
     const st = ScrollTrigger.create({
       trigger: el,
       start: "top 95%",
@@ -39,7 +36,6 @@ const Photo = ({ photo, fromX }) => {
       onLeave: () => { el.style.willChange = "auto"; },
     });
 
-    // Idle float — keep it subtle (4–9px range)
     const floatTween = gsap.to(el, {
       y: `+=${4 + (photo.id % 4) * 2}`,
       duration: 2.4 + (photo.id % 5) * 0.4,
@@ -68,7 +64,6 @@ const Photo = ({ photo, fromX }) => {
         sizes="110px"
         className="object-cover"
       />
-      {/* Name reveal on hover */}
       <div
         className="absolute inset-0 flex items-end pb-2.5 px-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         style={{ background: "linear-gradient(to top,rgba(0,0,0,0.52) 0%,transparent 60%)" }}
@@ -80,14 +75,12 @@ const Photo = ({ photo, fromX }) => {
   );
 };
 
-/* ─── Photo Column ─── */
 const PhotoCol = ({ photos, fromX, className = "" }) => (
   <div className={`flex flex-col items-center ${className}`}>
     {photos.map((p) => <Photo key={p.id} photo={p} fromX={fromX} />)}
   </div>
 );
 
-/* ─── Vertical divider line ─── */
 const VLine = ({ className = "" }) => {
   const ref = useRef(null);
 
@@ -110,7 +103,6 @@ const VLine = ({ className = "" }) => {
   return <div ref={ref} className={`w-px bg-gray-300 self-stretch ${className}`} style={{ opacity: 0, minHeight: "220px" }} aria-hidden="true" />;
 };
 
-/* ─── Mobile photo grid ─── */
 const MobilePhotoGrid = () => {
   const ref = useRef(null);
 

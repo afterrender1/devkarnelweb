@@ -6,7 +6,6 @@ import { Urbanist } from "next/font/google";
 
 const urbanist = Urbanist({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
 
-/* ─── DATA ─── */
 const PROJECTS = [
   { id: 0, title: "Prime Supps", subtitle: "Premium Supplements & Gym", category: "E-Commerce", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png", liveUrl: "https://prime-supps.vercel.app", tags: ["Next.js","Fitness","E-Commerce"], accent: "#ef4444", accentBg: "rgba(239,68,68,0.09)" },
   { id: 1, title: "Magnetik", subtitle: "TikTok Shop Marketing", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/magnetik.png", liveUrl: "https://magnetik.vercel.app/", tags: ["Marketing","Strategy","TikTok"], accent: "#8b5cf6", accentBg: "rgba(139,92,246,0.09)" },
@@ -40,13 +39,11 @@ const PLATFORM_COLORS = {
   "Custom Code": "#23bcdf",
 };
 
-/* ─── Project Card — lightweight, no scroll animations ─── */
 const ProjectCard = ({ project }) => {
   const [hovered, setHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef(null);
 
-  // Simple fade-in with Intersection Observer (no scroll tracking)
   useEffect(() => {
     const el = cardRef.current;
     if (!el) return;
@@ -79,7 +76,6 @@ const ProjectCard = ({ project }) => {
       onMouseLeave={() => setHovered(false)}
       aria-label={project.title}
     >
-      {/* Thumbnail */}
       <div className="relative rounded-2xl w-full overflow-hidden bg-gray-50" style={{ aspectRatio: "16/10" }}>
         <Image
           src={project.thumbnail}
@@ -91,7 +87,6 @@ const ProjectCard = ({ project }) => {
           onError={(e) => { e.target.src = `https://picsum.photos/seed/${project.id + 20}/800/500`; }}
         />
 
-        {/* Hover overlay */}
         <div
           className="absolute inset-0 flex items-center justify-center transition-opacity duration-280"
           style={{
@@ -122,7 +117,6 @@ const ProjectCard = ({ project }) => {
           </a>
         </div>
 
-        {/* Platform badge */}
         <div
           className="absolute top-2.5 left-2.5 flex items-center gap-1.5 rounded-full px-2.5 py-1 bg-white/93 border border-white/50"
           style={{ backdropFilter: "blur(8px)", fontSize: "9.5px", fontWeight: 600, color: "#374151", letterSpacing: "0.04em" }}
@@ -131,7 +125,6 @@ const ProjectCard = ({ project }) => {
           {project.platform}
         </div>
 
-        {/* ID badge */}
         <div
           className="absolute top-2.5 right-2.5 rounded-lg px-2 py-1"
           style={{ background: "rgba(0,0,0,0.36)", backdropFilter: "blur(4px)", color: "rgba(255,255,255,0.62)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em" }}
@@ -141,7 +134,6 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
 
-      {/* Body */}
       <div className="flex flex-col flex-1 px-4 pt-3.5 pb-4 sm:px-5 sm:pt-4 sm:pb-5">
         <div className="flex gap-1.5 flex-wrap mb-2.5">
           {project.tags.slice(0, 3).map((t) => (
@@ -188,7 +180,6 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
 
-      {/* Accent bar — simple CSS transform, GPU-friendly */}
       <div
         className="absolute bottom-0 left-0 right-0"
         style={{
@@ -204,7 +195,6 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-/* ─── Filter pill ─── */
 const FilterPill = ({ label, isActive, onClick }) => (
   <button
     onClick={onClick}
@@ -224,7 +214,6 @@ const FilterPill = ({ label, isActive, onClick }) => (
   </button>
 );
 
-/* ─── Main ─── */
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -272,7 +261,6 @@ const Portfolio = () => {
           <div className="mt-6 h-px bg-gray-200" aria-hidden="true" />
         </header>
 
-        {/* Filters */}
         <div className="flex flex-wrap gap-2 mb-8 sm:mb-10" role="group" aria-label="Filter projects">
           {FILTERS.map((f) => (
             <FilterPill
@@ -284,7 +272,6 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {filtered.length === 0 ? (
             <div className="col-span-full flex flex-col items-center justify-center py-20 text-gray-300">
@@ -301,7 +288,6 @@ const Portfolio = () => {
           )}
         </div>
 
-        {/* CTA */}
         <div className="flex justify-center mt-10 sm:mt-12">
           <button
             className="group flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-xl text-white font-semibold text-sm sm:text-[15px] transition-[box-shadow,transform] duration-200 hover:shadow-lg hover:shadow-teal-200 active:scale-95"

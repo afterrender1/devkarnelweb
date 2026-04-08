@@ -15,7 +15,6 @@ const COUNTRY_CODES = ["US","UK","PK","IN","CA","AU"];
 const inputCls =
   "w-full border border-gray-200 rounded-lg px-3.5 py-2.5 text-[13.5px] text-gray-800 bg-white outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-gray-300 focus:border-[#23bcdf] focus:ring-2 focus:ring-[#23bcdf]/10";
 
-/* ─── Checkbox — pure CSS interaction, no GSAP ─── */
 const Checkbox = ({ label, checked, onToggle }) => (
   <label className="flex items-center gap-2.5 cursor-pointer select-none group">
     <span
@@ -37,7 +36,6 @@ const Checkbox = ({ label, checked, onToggle }) => (
   </label>
 );
 
-/* ─── Field wrapper ─── */
 const Field = ({ label, children, htmlFor }) => (
   <div className="flex flex-col gap-1.5">
     <label htmlFor={htmlFor} className="text-[12.5px] font-semibold text-gray-600 tracking-wide">{label}</label>
@@ -45,7 +43,6 @@ const Field = ({ label, children, htmlFor }) => (
   </div>
 );
 
-/* ─── Contact form ─── */
 const ContactForm = () => {
   const [values, setValues] = useState({ name: "", email: "", phone: "", message: "", services: [] });
 
@@ -111,7 +108,6 @@ const ContactForm = () => {
   );
 };
 
-/* ─── Heading words ─── */
 const HEADING_WORDS = ["→", "Let's", "level", "up", "your", "brand,", "together"];
 
 /* ─── Main ─── */
@@ -123,7 +119,6 @@ const Contact = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Single shared ScrollTrigger for card, left, right — avoids 3 separate scroll listeners
       const sharedTrigger = {
         trigger: cardRef.current,
         start: "top 85%",
@@ -135,7 +130,6 @@ const Contact = () => {
       gsap.fromTo(leftRef.current,  { x: -36, opacity: 0 }, { x: 0, opacity: 1, ease: "none", scrollTrigger: sharedTrigger });
       gsap.fromTo(rightRef.current, { x: 36,  opacity: 0 }, { x: 0, opacity: 1, ease: "none", scrollTrigger: sharedTrigger });
 
-      // Heading word stagger — one ScrollTrigger for all words
       if (headingRef.current) {
         gsap.fromTo(
           headingRef.current.querySelectorAll(".word"),
@@ -154,14 +148,12 @@ const Contact = () => {
   return (
     <section id="contact" aria-label="Contact us" className={`w-full min-h-screen flex items-center justify-center p-0 sm:p-6 lg:p-10 ${urbanist.className}`}>
 
-      {/* Card */}
       <div
         ref={cardRef}
         className="flex flex-col md:flex-row w-full max-w-280 min-h-screen md:min-h-0 md:rounded-2xl overflow-hidden shadow-2xl shadow-black/10"
         style={{ opacity: 0, willChange: "transform, opacity" }}
       >
 
-        {/* Left — image panel */}
         <div
           ref={leftRef}
           className="relative w-full h-56 md:h-auto md:w-[42%] shrink-0 overflow-hidden"
@@ -180,7 +172,6 @@ const Contact = () => {
             priority
           />
 
-          {/* Overlay text — md+ only */}
           <div
             className="absolute inset-0 hidden md:flex flex-col justify-end p-8 pointer-events-none"
             style={{ background: "linear-gradient(to top,rgba(0,0,0,0.38) 0%,transparent 55%)" }}
@@ -191,13 +182,11 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Right — form panel */}
         <div
           ref={rightRef}
           className="flex-1 bg-white flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 overflow-y-auto"
           style={{ opacity: 0, willChange: "transform, opacity" }}
         >
-          {/* Heading */}
           <div ref={headingRef} className="mb-7 overflow-hidden">
             <h2
               className="font-extrabold text-gray-900 leading-[1.15] tracking-tight"

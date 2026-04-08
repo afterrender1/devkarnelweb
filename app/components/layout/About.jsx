@@ -20,7 +20,6 @@ const STATS = [
   { num: 99,  suffix: "%", label: "Satisfaction" },
 ];
 
-/* ─── Animated counter ─── */
 const StatItem = ({ num, suffix, label }) => {
   const numRef = useRef(null);
 
@@ -69,7 +68,6 @@ const StatItem = ({ num, suffix, label }) => {
   );
 };
 
-/* ─── Main ─── */
 const About = () => {
   const sectionRef = useRef(null);
   const textRef    = useRef(null);
@@ -79,7 +77,6 @@ const About = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
 
-      /* Text column — batch all .t-anim in one timeline */
       const textEls = textRef.current?.querySelectorAll(".t-anim");
       if (textEls?.length) {
         gsap.fromTo(
@@ -95,7 +92,6 @@ const About = () => {
         );
       }
 
-      /* Image — single tween, no scale (avoids blurring text in siblings) */
       gsap.fromTo(
         imageRef.current,
         { y: 36, opacity: 0 },
@@ -107,7 +103,6 @@ const About = () => {
         }
       );
 
-      /* Stats divider line */
       const line = statsRef.current?.querySelector(".stat-line");
       if (line) {
         gsap.fromTo(
@@ -120,7 +115,6 @@ const About = () => {
         );
       }
 
-      /* Stat cards */
       const statEls = statsRef.current?.querySelectorAll(".s-anim");
       if (statEls?.length) {
         gsap.fromTo(
@@ -145,10 +139,8 @@ const About = () => {
     <section id="about" ref={sectionRef} className={`w-full bg-white ${urbanist.className}`}>
       <div className="max-w-290 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-18">
 
-        {/* ══ Hero: text left / image right ══ */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 sm:mb-20 lg:mb-2">
 
-          {/* Left text */}
           <div ref={textRef} className="flex flex-col">
 
             {/* Eyebrow */}
@@ -159,7 +151,6 @@ const About = () => {
               </span>
             </div>
 
-            {/* Heading */}
             <h2
               className="t-anim font-semibold text-[3rem] text-gray-900 leading-[1.08] tracking-tight mb-5"
             >
@@ -173,7 +164,6 @@ const About = () => {
               </span>
             </h2>
 
-            {/* Body */}
             <p
               className="t-anim text-gray-500 leading-relaxed mb-8 max-w-lg"
               style={{ fontSize: "clamp(13.5px,1.7vw,15px)", opacity: 0 }}
@@ -182,7 +172,6 @@ const About = () => {
               Focused on data, refined by creativity.
             </p>
 
-            {/* Avatars */}
             <div className="t-anim flex flex-wrap items-center gap-5" style={{ opacity: 0 }}>
               <div className="flex -space-x-2.5" aria-label="Client avatars">
                 {[1, 2, 3, 4].map((i) => (
@@ -206,7 +195,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right image */}
           <div ref={imageRef} className="w-full" style={{ opacity: 100 }}>
             <div className="relative rounded-xl overflow-hidden w-full" style={{ aspectRatio: "4/3" }}>
               <Image
@@ -216,7 +204,6 @@ const About = () => {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-              {/* Tint overlay */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{ background: "linear-gradient(180deg,transparent 50%,rgba(8,73,72,0.18) 100%)" }}
@@ -224,7 +211,6 @@ const About = () => {
               />
             </div>
 
-            {/* Floating badge */}
             <div className="flex justify-end mt-4">
               <div className="inline-flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2">
                 <span className="text-gray-700 font-semibold" style={{ fontSize: "12px" }}>
@@ -235,7 +221,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* ══ Stats ══ */}
         <div ref={statsRef}>
           <div className="stat-line h-px bg-gray-100 mb-10 sm:mb-2 w-full" aria-hidden="true" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">

@@ -10,7 +10,7 @@ const urbanist = Urbanist({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const TRUST_BADGES = ["WordPress Experts", "SEO-Optimized", "99.9% Uptime"];
+const TRUST_BADGES = ["Development Experts", "SEO-Optimized", "99.9% Uptime"];
 
 const SLIDES = [
   { src: "/images/our-work/magnetik.png",    alt: "Magnetik"    },

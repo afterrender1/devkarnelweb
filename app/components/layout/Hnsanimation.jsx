@@ -29,7 +29,6 @@ const Hnsanimation = () => {
 
     const ctx = gsap.context(() => {
       gsap.to(el, {
-        opacity: 0,
         scale: 0.88,
         ease: "none",
         scrollTrigger: {

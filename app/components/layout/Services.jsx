@@ -59,7 +59,7 @@ const ServiceCard = ({ service }) => {
         // Only animate box-shadow via CSS (cheap repaint), transform via GPU
         boxShadow: hovered
           ? "0 8px 32px rgba(60,64,67,0.15),0 2px 8px rgba(60,64,67,0.08)"
-          : "0 1px 3px rgba(60,64,67,0.12),0 1px 2px rgba(60,64,67,0.08)",
+          : "0 1px 3px rgba(60,64,67,0.12),0 1px 1px rgba(60,64,67,0.01)",
         transition: "box-shadow 0.25s ease, transform 0.25s ease",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
         willChange: "transform",

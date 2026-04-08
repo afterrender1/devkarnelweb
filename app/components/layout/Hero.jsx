@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { Urbanist } from "next/font/google";
 import gsap from "gsap";
@@ -12,13 +12,272 @@ const urbanist = Urbanist({
 
 const TRUST_BADGES = ["WordPress Experts", "SEO-Optimized", "99.9% Uptime"];
 
+// ─── Slide Data ─────────────────────────────────────────────────────────────────
+const SLIDES = [
+  { src: "/images/our-work/magnetik.png",    alt: "Magnetik"    },
+  { src: "/images/our-work/coffee.png",      alt: "Coffee"      },
+  { src: "/images/our-work/outdoor.png",     alt: "Outdoor"     },
+  { src: "/images/our-work/jave.png",        alt: "Jave"        },
+  { src: "/images/our-work/renderstore.png", alt: "Renderstore" },
+  { src: "/images/our-work/zeroice.png",     alt: "Zeroice"     },
+];
+
+const N     = SLIDES.length;
+const LOWER = -Math.floor((N - 1) / 2); // -2
+const UPPER =  Math.floor(N       / 2); //  3
+
+// ─── Slot → CSS props ───────────────────────────────────────────────────────────
+function slotToProps(pos) {
+  switch (pos) {
+    case  0: return { x: "0%",    scale: 1,    opacity: 1,   zIndex: 4 };
+    case -1: return { x: "-89%",  scale: 0.87, opacity: 0.6, zIndex: 3 };
+    case  1: return { x:  "89%",  scale: 0.87, opacity: 0.6, zIndex: 3 };
+    case -2: return { x: "-195%", scale: 0.74, opacity: 0,   zIndex: 2 };
+    case  2: return { x:  "195%", scale: 0.74, opacity: 0,   zIndex: 2 };
+    default: {
+      const sign = pos < 0 ? -1 : 1;
+      return { x: `${sign * 310}%`, scale: 0.7, opacity: 0, zIndex: 1 };
+    }
+  }
+}
+
+// ─── Initial slot assignment ────────────────────────────────────────────────────
+function buildInitialSlots() {
+  return Array.from({ length: N }, (_, i) => {
+    const s = i;
+    return s > UPPER ? s - N : s;
+  });
+}
+
+// ─── Dot Indicators ─────────────────────────────────────────────────────────────
+const DotIndicators = ({ activeRef, goTo }) => {
+  const dotsRef = useRef([]);
+  const prevRef = useRef(-1);
+
+  useLayoutEffect(() => {
+    const tick = () => {
+      const cur = activeRef.current;
+      if (cur === prevRef.current) return;
+      prevRef.current = cur;
+      dotsRef.current.forEach((dot, i) => {
+        if (!dot) return;
+        gsap.to(dot, {
+          width:   i === cur ? 18 : 6,
+          opacity: i === cur ? 1  : 0.4,
+          duration: 0.35,
+          ease: "power2.out",
+        });
+      });
+    };
+    gsap.ticker.add(tick);
+    return () => gsap.ticker.remove(tick);
+  }, [activeRef]);
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        bottom: 14,
+        left: "50%",
+        transform: "translateX(-50%)",
+        display: "flex",
+        gap: 6,
+        zIndex: 10,
+      }}
+    >
+      {SLIDES.map((_, i) => (
+        <button
+          key={i}
+          aria-label={`Go to slide ${i + 1}`}
+          onClick={() => goTo(i)}
+          ref={(el) => { dotsRef.current[i] = el; }}
+          style={{
+            height: 6,
+            width: i === 0 ? 18 : 6,
+            borderRadius: 99,
+            background: "#084948",
+            opacity: i === 0 ? 1 : 0.4,
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+            flexShrink: 0,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// ─── Nav Button ─────────────────────────────────────────────────────────────────
+const NavBtn = ({ side, onClick }) => (
+  <button
+    aria-label={side === "prev" ? "Previous slide" : "Next slide"}
+    onClick={onClick}
+    onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.95)"; }}
+    onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.78)"; }}
+    style={{
+      position: "absolute",
+      [side === "prev" ? "left" : "right"]: 12,
+      top: "50%",
+      transform: "translateY(-50%)",
+      background: "rgba(255,255,255,0.78)",
+      border: "none",
+      borderRadius: "50%",
+      width: 32,
+      height: 32,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      zIndex: 10,
+      backdropFilter: "blur(6px)",
+      WebkitBackdropFilter: "blur(6px)",
+      transition: "background 0.2s",
+    }}
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      {side === "prev"
+        ? <path d="M10 12L6 8l4-4" stroke="#202124" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        : <path d="M6 4l4 4-4 4"  stroke="#202124" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      }
+    </svg>
+  </button>
+);
+
+// ─── Image Carousel ─────────────────────────────────────────────────────────────
+const ImageCarousel = () => {
+  const slideEls     = useRef([]);
+  const slotsRef     = useRef(buildInitialSlots());
+  const activeRef    = useRef(0);
+  const animatingRef = useRef(false);
+  const pausedRef    = useRef(false);
+  const timerRef     = useRef(null);
+
+  // Seed initial positions — no animation, just set
+  useLayoutEffect(() => {
+    slideEls.current.forEach((el, i) => {
+      if (el) gsap.set(el, slotToProps(slotsRef.current[i]));
+    });
+  }, []);
+
+  // Core slide function — all slides animate simultaneously, no src swaps ever
+  const slide = useCallback((direction) => {
+    if (animatingRef.current) return;
+    animatingRef.current = true;
+
+    // Shift every slot
+    const next = slotsRef.current.map((s) => s - direction);
+
+    // Teleport any slide that left the valid range (it's off-screen, jump is invisible)
+    next.forEach((pos, i) => {
+      let adjusted = pos;
+      if (pos < LOWER) adjusted = pos + N;
+      else if (pos > UPPER) adjusted = pos - N;
+      if (adjusted !== pos) {
+        gsap.set(slideEls.current[i], slotToProps(adjusted));
+        next[i] = adjusted;
+      }
+    });
+
+    slotsRef.current = next;
+    activeRef.current = (activeRef.current + direction + N) % N;
+
+    // Fix zIndex instantly so overlaps are correct during tween
+    next.forEach((pos, i) => {
+      if (slideEls.current[i]) {
+        gsap.set(slideEls.current[i], { zIndex: slotToProps(pos).zIndex });
+      }
+    });
+
+    // Animate all slides to their new positions at the same time
+    const tl = gsap.timeline({ onComplete: () => { animatingRef.current = false; } });
+    next.forEach((pos, i) => {
+      const { x, scale, opacity } = slotToProps(pos);
+      tl.to(
+        slideEls.current[i],
+        { x, scale, opacity, duration: 0.7, ease: "power3.inOut" },
+        0,
+      );
+    });
+  }, []);
+
+  // Jump to specific slide — picks shortest path
+  const goTo = useCallback((targetIndex) => {
+    const steps = targetIndex - activeRef.current;
+    if (steps === 0) return;
+    const direction = ((steps % N) + N) % N <= N / 2 ? 1 : -1;
+    slide(direction);
+  }, [slide]);
+
+  const stopTimer  = useCallback(() => clearInterval(timerRef.current), []);
+  const startTimer = useCallback(() => {
+    timerRef.current = setInterval(() => {
+      if (!pausedRef.current) slide(1);
+    }, 3500);
+  }, [slide]);
+
+  useLayoutEffect(() => {
+    startTimer();
+    return () => {
+      stopTimer();
+      gsap.killTweensOf(slideEls.current);
+    };
+  }, [startTimer, stopTimer]);
+
+  return (
+    <div
+      className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden"
+      style={{
+        boxShadow:
+          "0 4px 6px -1px rgba(60,64,67,0.08),0 20px 60px -10px rgba(60,64,67,0.18)",
+        border: "1px solid rgba(232,234,237,0.9)",
+      }}
+      onMouseEnter={() => { pausedRef.current = true;  }}
+      onMouseLeave={() => { pausedRef.current = false; }}
+    >
+      {/* All slides in DOM always — absolutely stacked, no src swapping ever */}
+      {SLIDES.map((s, i) => (
+        <div
+          key={i}
+          ref={(el) => { slideEls.current[i] = el; }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            willChange: "transform, opacity",
+            transformOrigin: "center center",
+            borderRadius: "inherit",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src={s.src}
+            alt={s.alt}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 768px"
+            priority={i < 3}
+            style={{
+              objectFit: "cover",
+              userSelect: "none",
+              pointerEvents: "none",
+            }}
+            draggable={false}
+          />
+        </div>
+      ))}
+
+      <DotIndicators activeRef={activeRef} goTo={goTo} />
+      <NavBtn side="prev" onClick={() => { stopTimer(); slide(-1); startTimer(); }} />
+      <NavBtn side="next" onClick={() => { stopTimer(); slide( 1); startTimer(); }} />
+    </div>
+  );
+};
+
+// ─── Hero ────────────────────────────────────────────────────────────────────────
 const Hero = () => {
   const containerRef = useRef(null);
 
-  // useLayoutEffect prevents flash-of-unstyled content before GSAP sets initial states
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Single timeline — better performance than scattered gsap.from() calls
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.from(".hero-badge",   { y: 16, opacity: 0, duration: 0.55 })
@@ -38,7 +297,7 @@ const Hero = () => {
       aria-label="Hero section"
       className={`relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden ${urbanist.className}`}
     >
-      {/* Background — CSS bg, no JS needed */}
+      {/* Background */}
       <div
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
         style={{ backgroundImage: "url(/bg1.png)" }}
@@ -50,13 +309,16 @@ const Hero = () => {
 
         {/* Eyebrow badge */}
         <div className="hero-badge inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#e8f0fe] border border-[#c5d8fd] mb-5 sm:mb-7">
-          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#1a73e8] animate-pulse shrink-0" aria-hidden="true" />
+          <span
+            className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#1a73e8] animate-pulse shrink-0"
+            aria-hidden="true"
+          />
           <span className="text-[11px] sm:text-[13px] font-semibold text-[#084948] tracking-wide whitespace-nowrap">
             Full-Stack Web Agency
           </span>
         </div>
 
-        {/* Headline — overflow:hidden per line prevents layout shift during animation */}
+        {/* Headline */}
         <h1 className="font-bold text-[#202124] tracking-tight leading-[1.18] w-full text-[1.6rem] xs:text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem]">
           <div className="overflow-hidden">
             <span className="hero-h1-line block">Crafting high-performance</span>
@@ -78,7 +340,8 @@ const Hero = () => {
           </div>
           <div className="overflow-hidden mt-2">
             <span className="hero-h1-line block font-medium text-[#5f6368] text-base sm:text-xl md:text-2xl lg:text-3xl">
-              designed for <span className="font-bold text-[#202124]">Scalability</span>.
+              designed for{" "}
+              <span className="font-bold text-[#202124]">Scalability</span>.
             </span>
           </div>
         </h1>
@@ -96,7 +359,10 @@ const Hero = () => {
             style={{ background: "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)" }}
           >
             Book a Free Consultation
-            <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+            <ArrowRight
+              className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
           </button>
 
           <button
@@ -109,52 +375,27 @@ const Hero = () => {
         </div>
 
         {/* Trust badges */}
-        <div className="hero-trust mt-5 sm:mt-7 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2" aria-label="Trust indicators">
+        <div
+          className="hero-trust mt-5 sm:mt-7 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2"
+          aria-label="Trust indicators"
+        >
           {TRUST_BADGES.map((label) => (
-            <div key={label} className="flex items-center gap-1.5 text-[11px] sm:text-[13px] text-[#383838]">
-              <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0f9d58] shrink-0" aria-hidden="true" />
+            <div
+              key={label}
+              className="flex items-center gap-1.5 text-[11px] sm:text-[13px] text-[#383838]"
+            >
+              <CheckCircle2
+                className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0f9d58] shrink-0"
+                aria-hidden="true"
+              />
               {label}
             </div>
           ))}
         </div>
 
-        {/* Divider */}
-        <div className="mt-10 sm:mt-14 w-full max-w-3xl mx-auto flex items-center gap-3 sm:gap-4" aria-hidden="true">
-          <div className="flex-1 h-px bg-[#e8eaed]" />
-          <p className="text-[9px] sm:text-[11px] font-semibold text-[#525151] uppercase tracking-widest whitespace-nowrap">
-            See us in action
-          </p>
-          <div className="flex-1 h-px bg-[#e8eaed]" />
-        </div>
-
-        {/* Video embed */}
+        {/* Image Carousel */}
         <div className="hero-video mt-5 sm:mt-6 w-full max-w-3xl mx-auto">
-          <div
-            className="relative w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden"
-            style={{
-              boxShadow: "0 4px 6px -1px rgba(60,64,67,0.08),0 20px 60px -10px rgba(60,64,67,0.18)",
-              border: "1px solid rgba(232,234,237,0.9)",
-            }}
-          >
-            {/* Browser chrome */}
-            <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-1.5 sm:gap-2 h-6 sm:h-9 px-2.5 sm:px-4 bg-[#f8f9fa] border-b border-[#e8eaed]" aria-hidden="true">
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#ea4335] shrink-0" />
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#fbbc04] shrink-0" />
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#34a853] shrink-0" />
-              <div className="ml-1.5 sm:ml-3 flex-1 h-3.5 sm:h-5 rounded-full bg-white border border-[#e8eaed] flex items-center px-2 sm:px-3">
-                <span className="text-[8px] sm:text-[10px] text-[#9aa0a6] font-medium truncate">Devskarnel</span>
-              </div>
-            </div>
-            <iframe
-              className="w-full h-full pt-6 sm:pt-9"
-              src="https://www.youtube.com/embed/Xw8ZTeg8YKg?si=pigkOMOeOYwfDcPQ"
-              title="Devskarnel Web Solutions Introduction"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          <ImageCarousel />
         </div>
 
       </div>

@@ -94,8 +94,7 @@ const Navbar = () => {
                   style={{ background: "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)" }}
                   className="cursor-pointer font-bold text-xs sm:text-sm md:text-base h-full w-full px-3 sm:px-6 md:px-8 text-white rounded-lg whitespace-nowrap"
                 >
-                  Book Now
-                </button>
+Get Started                </button>
               </div>
             </div>
           </div>

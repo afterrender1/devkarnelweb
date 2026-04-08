@@ -44,34 +44,57 @@ const Field = ({ label, children, htmlFor }) => (
 );
 
 const ContactForm = () => {
-  const [values, setValues] = useState({ name: "", email: "", phone: "", message: "", services: [] });
+  const [values, setValues] = useState({ name: "", email: "", phone: "", countryCode: "US", message: "", services: [] });
+  const [status, setStatus] = useState("");
 
   const handle = (e) => setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
-  const toggleService = (s) =>
-    setValues((v) => ({
-      ...v,
-      services: v.services.includes(s) ? v.services.filter((x) => x !== s) : [...v.services, s],
-    }));
+  const toggleService = (s) => setValues((v) => ({ ...v, services: v.services.includes(s) ? v.services.filter(x => x !== s) : [...v.services, s] }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const data = await res.json();
+      setStatus(data.message);
+
+      if (res.ok) {
+        setValues({ name: "", email: "", phone: "", countryCode: "US", message: "", services: [] });
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("Failed to send message. Try again later.");
+    }
+  };
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()} noValidate>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Field label="Name" htmlFor="name">
-          <input id="name" name="name" type="text" placeholder="Your name" value={values.name} onChange={handle} className={inputCls} autoComplete="name" />
+          <input id="name" name="name" type="text" placeholder="Your name" value={values.name} onChange={handle} className={inputCls} autoComplete="name" required />
         </Field>
         <Field label="Email" htmlFor="email">
-          <input id="email" name="email" type="email" placeholder="you@company.com" value={values.email} onChange={handle} className={inputCls} autoComplete="email" />
+          <input id="email" name="email" type="email" placeholder="you@company.com" value={values.email} onChange={handle} className={inputCls} autoComplete="email" required />
         </Field>
       </div>
 
       <Field label="Phone number" htmlFor="phone">
         <div className="flex gap-2">
           <select
+            name="countryCode"
             aria-label="Country code"
+            value={values.countryCode}
+            onChange={handle}
             className="border border-gray-200 rounded-lg px-2.5 py-2.5 text-[13px] text-gray-700 bg-white outline-none cursor-pointer shrink-0 focus:border-[#23bcdf] focus:ring-2 focus:ring-[#23bcdf]/10 transition-[border-color,box-shadow] duration-200"
             style={{ width: "72px" }}
           >
-            {COUNTRY_CODES.map((c) => <option key={c}>{c}</option>)}
+            {COUNTRY_CODES.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
           <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" value={values.phone} onChange={handle} className={`${inputCls} flex-1`} autoComplete="tel" />
         </div>
@@ -86,6 +109,7 @@ const ContactForm = () => {
           value={values.message}
           onChange={handle}
           className={`${inputCls} resize-none`}
+          required
         />
       </Field>
 
@@ -104,13 +128,14 @@ const ContactForm = () => {
       >
         Get started →
       </button>
+
+      {status && <p className="text-sm mt-2 text-gray-600">{status}</p>}
     </form>
   );
 };
 
 const HEADING_WORDS = ["→", "Let's", "level", "up", "your", "brand,", "together"];
 
-/* ─── Main ─── */
 const Contact = () => {
   const cardRef    = useRef(null);
   const leftRef    = useRef(null);
@@ -147,13 +172,11 @@ const Contact = () => {
 
   return (
     <section id="contact" aria-label="Contact us" className={`w-full min-h-screen flex items-center justify-center p-0 sm:p-6 lg:p-10 ${urbanist.className}`}>
-
       <div
         ref={cardRef}
         className="flex flex-col md:flex-row w-full max-w-280 min-h-screen md:min-h-0 md:rounded-2xl overflow-hidden shadow-2xl shadow-black/10"
         style={{ opacity: 0, willChange: "transform, opacity" }}
       >
-
         <div
           ref={leftRef}
           className="relative w-full h-56 md:h-auto md:w-[42%] shrink-0 overflow-hidden"
@@ -171,7 +194,6 @@ const Contact = () => {
             className="object-cover object-center"
             priority
           />
-
           <div
             className="absolute inset-0 hidden md:flex flex-col justify-end p-8 pointer-events-none"
             style={{ background: "linear-gradient(to top,rgba(0,0,0,0.38) 0%,transparent 55%)" }}
@@ -204,10 +226,8 @@ const Contact = () => {
             </h2>
             <p className="text-gray-400 text-[13.5px] mt-2.5">Fill out the form and our team will get back to you within 24 hours.</p>
           </div>
-
           <ContactForm />
         </div>
-
       </div>
     </section>
   );

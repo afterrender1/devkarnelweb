@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const urbanist = Urbanist({ subsets: ["latin"], weight: ["300","400","500","600","700","800"] });
 
-const SERVICES = ["Website Design","Content Creation","UX Design","Strategy & Consulting","User Research","Other"];
+const SERVICES = ["Website Development","UI / UX Design","App Development","SEO","Other"];
 const COUNTRY_CODES = ["US","UK","PK","IN","CA","AU"];
 
 const inputCls =

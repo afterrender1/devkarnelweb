@@ -1,12 +1,8 @@
 "use client";
-import React, { useState, useLayoutEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, ExternalLink, Layers } from "lucide-react";
 import { Urbanist } from "next/font/google";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const urbanist = Urbanist({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
 
@@ -44,44 +40,38 @@ const PLATFORM_COLORS = {
   "Custom Code": "#23bcdf",
 };
 
-/* ─── Project Card — no per-card GSAP, only CSS transitions ─── */
-const ProjectCard = ({ project, colIndex, totalCols }) => {
+/* ─── Project Card — lightweight, no scroll animations ─── */
+const ProjectCard = ({ project }) => {
   const [hovered, setHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef(null);
 
-  // Slide-in on scroll — GPU-friendly, per card
-  useLayoutEffect(() => {
+  // Simple fade-in with Intersection Observer (no scroll tracking)
+  useEffect(() => {
     const el = cardRef.current;
     if (!el) return;
 
-    const x = totalCols === 1 ? 0 : colIndex === 0 ? -60 : colIndex === totalCols - 1 ? 60 : 0;
-    const y = totalCols === 1 || (totalCols === 3 && colIndex === 1) ? 50 : 0;
-
-    gsap.set(el, { x, y, opacity: 0, scale: 0.95, willChange: "transform, opacity" });
-
-    const st = ScrollTrigger.create({
-      trigger: el,
-      start: "top 92%",
-      end: "top 55%",
-      scrub: 1.2,
-      onUpdate: (s) => {
-        gsap.set(el, { x: x * (1 - s.progress), y: y * (1 - s.progress), opacity: s.progress, scale: 0.95 + 0.05 * s.progress });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
       },
-      onLeave: () => {
-        el.style.willChange = "auto";
-      },
-    });
+      { threshold: 0.1 }
+    );
 
-    return () => st.kill();
-  }, [colIndex, totalCols]);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <article
       ref={cardRef}
       className="relative flex flex-col p-3 bg-white rounded-2xl overflow-hidden border project-card"
       style={{
-        opacity: 0,
-        transition: "box-shadow 0.3s ease, border-color 0.3s ease",
+        opacity: isVisible ? 1 : 0.6,
+        transition: "opacity 0.6s ease-out, box-shadow 0.3s ease, border-color 0.3s ease",
         boxShadow: hovered ? "0 20px 56px rgba(0,0,0,0.11),0 6px 16px rgba(0,0,0,0.06)" : "0 2px 6px rgba(0,0,0,0.05)",
         borderColor: hovered ? "#e2e2e2" : "#f0f0f0",
       }}
@@ -198,7 +188,7 @@ const ProjectCard = ({ project, colIndex, totalCols }) => {
         </div>
       </div>
 
-      {/* Accent bar — transform, GPU */}
+      {/* Accent bar — simple CSS transform, GPU-friendly */}
       <div
         className="absolute bottom-0 left-0 right-0"
         style={{
@@ -237,55 +227,25 @@ const FilterPill = ({ label, isActive, onClick }) => (
 /* ─── Main ─── */
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const headingRef   = useRef(null);
-  const filterBarRef = useRef(null);
-  const sectionRef   = useRef(null);
 
   const filtered = PROJECTS.filter((p) =>
     activeFilter === "All" ? true : p.platform === activeFilter || p.category === activeFilter
   );
 
-  // Determine column count for slide direction calculation
-  const getColCount = () => (typeof window !== "undefined" ? window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3 : 3);
-
-  // Header + filter animations — only once
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      // Use ScrollTrigger.batch for header elements — more efficient than individual triggers
-      const headingEls = headingRef.current?.querySelectorAll(".anim-el");
-      if (headingEls?.length) {
-        gsap.fromTo(headingEls, { y: 24, opacity: 0 }, {
-          y: 0, opacity: 1, stagger: 0.1, duration: 0.7, ease: "power3.out",
-          scrollTrigger: { trigger: headingRef.current, start: "top 88%", once: true },
-        });
-      }
-
-      const filterEls = filterBarRef.current?.querySelectorAll(".filter-pill");
-      if (filterEls?.length) {
-        gsap.fromTo(filterEls, { y: 14, opacity: 0 }, {
-          y: 0, opacity: 1, stagger: 0.06, duration: 0.5, ease: "power3.out",
-          scrollTrigger: { trigger: filterBarRef.current, start: "top 90%", once: true },
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section id="portfolio" ref={sectionRef} aria-label="Portfolio" className={`w-full py-16 sm:py-24 lg:py-32 ${urbanist.className}`}>
+    <section id="portfolio" aria-label="Portfolio" className={`w-full py-16 sm:py-24 lg:py-32 ${urbanist.className}`}>
       <div className="w-full max-w-350 mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Header */}
-        <header ref={headingRef} className="mb-10 sm:mb-12">
-          <div className="anim-el flex items-center gap-2 mb-4 sm:mb-5">
+        <header className="mb-10 sm:mb-12">
+          <div className="flex items-center gap-2 mb-4 sm:mb-5">
             <div className="w-5 h-px bg-[#23bcdf]" aria-hidden="true" />
             <span className="text-[#23bcdf] font-semibold uppercase tracking-[0.18em]" style={{ fontSize: "10.5px" }}>
               Our Portfolio
             </span>
           </div>
 
-          <div className="anim-el flex flex-col gap-3 mb-2 md:flex-row md:items-end md:justify-between md:gap-6">
+          <div className="flex flex-col gap-3 mb-2 md:flex-row md:items-end md:justify-between md:gap-6">
             <h2
               className="text-gray-900 font-extrabold leading-[1.1]"
               style={{ fontSize: "clamp(1.75rem,5vw,3.25rem)", letterSpacing: "-0.025em" }}
@@ -304,16 +264,16 @@ const Portfolio = () => {
             </p>
           </div>
 
-          <p className="anim-el font-medium text-gray-300 mt-2.5" style={{ fontSize: "12.5px" }}>
+          <p className="font-medium text-gray-300 mt-2.5" style={{ fontSize: "12.5px" }}>
             Showing {filtered.length} project{filtered.length !== 1 ? "s" : ""}
             {activeFilter !== "All" && <span className="text-[#23bcdf] ml-1">· {activeFilter}</span>}
           </p>
 
-          <div className="anim-el mt-6 h-px bg-gray-200" aria-hidden="true" />
+          <div className="mt-6 h-px bg-gray-200" aria-hidden="true" />
         </header>
 
         {/* Filters */}
-        <div ref={filterBarRef} className="flex flex-wrap gap-2 mb-8 sm:mb-10" role="group" aria-label="Filter projects">
+        <div className="flex flex-wrap gap-2 mb-8 sm:mb-10" role="group" aria-label="Filter projects">
           {FILTERS.map((f) => (
             <FilterPill
               key={f.key}
@@ -332,12 +292,10 @@ const Portfolio = () => {
               <p className="text-sm font-medium">No projects match this filter</p>
             </div>
           ) : (
-            filtered.map((project, i) => (
+            filtered.map((project) => (
               <ProjectCard
                 key={`${activeFilter}-${project.id}`}
                 project={project}
-                colIndex={i % 3}
-                totalCols={3}
               />
             ))
           )}

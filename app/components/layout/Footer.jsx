@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Urbanist } from "next/font/google";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail , Lock } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +24,7 @@ const SOCIAL_LINKS = [
   { Icon: Linkedin, href: "#", label: "LinkedIn" },
 ];
 
-const BOTTOM_LINKS = ["Privacy Policy","Terms of Use","Legal","Site Map"];
+const BOTTOM_LINKS = ["Privacy Policy","Terms of Use"];
 
 const GRADIENT_BG = "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)";
 const BANNER_BG   = "linear-gradient(110deg,#084948 0%,#0c7371 60%,#159e9b 100%)";
@@ -253,7 +253,7 @@ Secure, SEO-optimized, and user-centric platforms — from WordPress to Shopify 
           <nav aria-label="Footer legal links" className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             {BOTTOM_LINKS.map((item) => (
               <a key={item} href="#" className="text-gray-400 text-[12.5px] hover:text-[#3a86ff] transition-colors duration-150 whitespace-nowrap">
-                {item}
+                {item} <Lock size={10} className="inline-block ml-0.5 text-gray-400" aria-hidden="true" />
               </a>
             ))}
           </nav>

@@ -39,7 +39,7 @@ const CustomCursor = () => {
       gsap.set(dot, { x, y });
 
       // Ring lags behind
-      gsap.to(ring, { x, y, duration: 0.42, ease: "power3.out", overwrite: true });
+      gsap.to(ring, { x, y, duration: 0.20, ease: "power3.out", overwrite: true });
 
       // Trails with increasing lag
       trails.forEach((trail, i) => {

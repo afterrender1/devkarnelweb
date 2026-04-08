@@ -188,16 +188,11 @@ const Footer = () => {
       >
         <div className="col-span-2 sm:col-span-3 lg:col-span-1 col-anim flex flex-col gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: GRADIENT_BG }} aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M8 2C5.5 2 4 4 4 6c0 2.5 2 4 4 5 2-1 4-2.5 4-5 0-2-1.5-4-4-4z" fill="white" />
-              </svg>
-            </div>
-            <span className="font-bold text-gray-900 text-[17px] tracking-tight">Stay Clean</span>
+            <Image src="/dklogo.png" alt="DevsKarnel logo" width={124} height={24} className="w-36 h-12 object-contain" />
+         
           </div>
           <p className="text-gray-400 text-[11px] leading-relaxed max-w-50">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis.
-          </p>
+Secure, SEO-optimized, and user-centric platforms — from WordPress to Shopify — crafted for businesses worldwide.          </p>
 
           <nav aria-label="Social media links" className="flex items-center gap-3 mt-1 flex-wrap">
             {SOCIAL_LINKS.map(({ Icon, href, label }) => (

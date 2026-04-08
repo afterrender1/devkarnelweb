@@ -16,7 +16,7 @@ const TRUST_BADGES = ["WordPress Experts", "SEO-Optimized", "99.9% Uptime"];
 const SLIDES = [
   { src: "/images/our-work/magnetik.png",    alt: "Magnetik"    },
   { src: "/images/our-work/coffee.png",      alt: "Coffee"      },
-  { src: "/images/our-work/outdoor.png",     alt: "Outdoor"     },
+  { src: "/images/our-work/tmgvan1.png",     alt: "Outdoor"     },
   { src: "/images/our-work/jave.png",        alt: "Jave"        },
   { src: "/images/our-work/renderstore.png", alt: "Renderstore" },
   { src: "/images/our-work/zeroice.png",     alt: "Zeroice"     },

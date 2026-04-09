@@ -86,9 +86,7 @@ const Testimonials = () => {
                 willChange: "opacity",
             }}
         className={`relative w-full py-20 overflow-hidden ${urbanist.className}`}>
-            {/* Seamless Gradient Blend with Services */}
 
-            {/* Subtle Emerald Glow to match Services */}
 
             <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { inter, urbanist } from "../fonts";
+import { urbanist } from "../fonts";
 
 const funnelSteps = [
   { label: "Market study,\nBenchmarking", active: false },
@@ -93,14 +93,15 @@ export default function Hero() {
         0.6
       );
 
+      // Background gradient enhancement after heading animation ends
       tl.to(
         bgGradientRef.current,
         {
           opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
+          duration: 1.2,
+          ease: "power2.out",
         },
-        0.65
+        1.2
       );
     });
 
@@ -212,81 +213,7 @@ export default function Hero() {
 function FunnelDiagram() {
   return (
     <div className="relative flex flex-col items-center gap-1.5 w-full max-w-85">
-      {funnelSteps.map((step, i) => {
-        const widthPercent = 100 - i * 14;
-        const isActive = step.active;
-
-        return (
-          <div key={i} className="relative flex items-center justify-center" style={{ width: "100%" }}>
-            <div
-              className="relative flex items-center justify-center py-3 transition-all duration-300"
-              style={{
-                width: `${widthPercent}%`,
-                clipPath: "polygon(4% 0%, 96% 0%, 100% 100%, 0% 100%)",
-                backgroundColor: isActive
-                  ? "rgba(45,232,176,0.12)"
-                  : "rgba(255,255,255,0.04)",
-                border: isActive
-                  ? "1px solid rgba(45,232,176,0.55)"
-                  : "1px solid rgba(255,255,255,0.12)",
-                minHeight: "52px",
-              }}
-            >
-              {isActive && (
-                <div
-                  className="absolute right-0 top-0 bottom-0 w-0.5"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom, rgba(45,232,176,0.8), rgba(45,232,176,0.2))",
-                  }}
-                />
-              )}
-
-              <span
-                className="text-center text-[0.78rem] font-medium leading-tight whitespace-pre-line px-4"
-                style={{
-                  color: isActive ? "#2de8b0" : "rgba(255,255,255,0.6)",
-                  fontWeight: isActive ? 700 : 400,
-                }}
-              >
-                {step.label}
-              </span>
-            </div>
-
-            {i < funnelSteps.length - 1 && (
-              <div
-                className="absolute right-0 top-1/2 -translate-y-1/2"
-                style={{
-                  width: `${i * 7}%`,
-                  height: "1px",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  right: `-${i * 7}%`,
-                }}
-              />
-            )}
-          </div>
-        );
-      })}
-
-      <div
-        className="absolute right-4.5 top-0 bottom-0 flex flex-col"
-        style={{ width: "2px" }}
-      >
-        <div
-          className="flex-1"
-          style={{
-            borderRight: "1px solid rgba(255,255,255,0.12)",
-            borderTop: "1px solid rgba(255,255,255,0.12)",
-          }}
-        />
-        <div
-          className="flex-1"
-          style={{
-            borderRight: "1px solid rgba(255,255,255,0.12)",
-            borderBottom: "1px solid rgba(255,255,255,0.12)",
-          }}
-        />
-      </div>
+  
     </div>
   );
 }

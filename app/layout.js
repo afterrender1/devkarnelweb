@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className="selection:bg-[#91e9fd] selection:text-[#334155]">
+      <body className="">
 
         <h1 className="hidden">
           Devskarnel Web Development Agency - Next.js & MERN Experts

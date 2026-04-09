@@ -66,8 +66,8 @@ const Testimonials = () => {
     };
 
     return (
-        <section 
-        style={{
+        <section
+            style={{
                 background: `
     radial-gradient(circle at 10% 10%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.9) 20%, transparent 50%),
     radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
@@ -85,11 +85,12 @@ const Testimonials = () => {
   `,
                 willChange: "opacity",
             }}
-        className={`relative w-full py-20 overflow-hidden ${urbanist.className}`}>
+            className={`relative w-full py-20 overflow-hidden ${urbanist.className}`}>
 
+            <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
 
             <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+                <div className="text-center mb-16">
                     <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
                         <svg className="w-4 h-4 text-[#2de8b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

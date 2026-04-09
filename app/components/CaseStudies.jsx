@@ -95,24 +95,33 @@ export default function CaseStudies() {
     return (
         <section
 
-            style={{
-                background: `
-    radial-gradient(circle at 10% 10%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.9) 20%, transparent 50%),
-    radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
-    radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
-    radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 25%, transparent 45%),
+       style={{
+  background: `
+    /* 1. Force black corners - increased spread to 70% to kill edge glow */
+    radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%),
+    radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%),
+    radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%),
+    radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%),
+
+    /* 2. Strong Central Spotlight (Bright only in the middle) */
+    radial-gradient(
+      circle at 50% 50%, 
+      rgba(45, 232, 176, 0.8) 0%, 
+      transparent 60%
+    ),
+
+    /* 3. The "Pinched" Linear Base - Solid black for 40% of the height */
     linear-gradient(
-      360deg,
-      #24E8B2 0%,
-      #1BC497 5%,
-      #0F7C6E 40%,
-      #0A4A42 60%,
-      #062B24 80%,
-      #010504 100%
+      180deg,
+      #000000 0%,
+      #000000 40%,      /* Stay black longer from top */
+      #0F7C6E 50%,      /* Bright center pop */
+      #000000 60%,      /* Get black faster toward bottom */
+      #000000 100%
     )
   `,
-                willChange: "opacity",
-            }}
+  willChange: "opacity",
+}}
             className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:pb-20 overflow-hidden ${urbanist.className}`}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
 

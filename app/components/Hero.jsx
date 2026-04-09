@@ -137,12 +137,12 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full"
         style={{
           background: `
-    radial-gradient(circle at 10% 10%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
+    radial-gradient(circle at 10% 70%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
     radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
     radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
     radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%),
     linear-gradient(
-      280deg,
+      180deg,
       #24E8B2 0%,
       #1BC497 5%,
       #0F7C6E 40%,

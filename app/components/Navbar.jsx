@@ -132,12 +132,12 @@ export default function Navbar() {
                 {/* Nav Links - centered */}
                 <div
                     ref={linksRef}
-                    className="flex items-center border-[0.5px] border-gray-600 rounded-lg overflow-hidden"
+                    className="flex items-center border-[0.5px] border-gray-400 rounded-lg overflow-hidden"
                 >
                     {navLinks.map(({ label, hasDropdown }, index) => (
                         <button
                             key={label}
-                            className="group flex items-center px-3.5 py-1.5 text-[1rem] font-medium text-white/70 hover:text-white hover:bg-white/6 transition-all duration-200 cursor-pointer select-none border-r border-gray-600 last:border-r-0"
+                            className="group flex items-center px-3.5 py-1.5 text-[1rem] font-medium text-white/70 hover:text-white hover:bg-white/6 transition-all duration-200 cursor-pointer select-none border-r border-gray-400 last:border-r-0"
                         >
                             {label}
                             {hasDropdown && (

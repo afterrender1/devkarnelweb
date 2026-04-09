@@ -114,9 +114,9 @@ export default function CaseStudies() {
                 willChange: "opacity",
             }}
             className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:py-24 overflow-hidden ${urbanist.className}`}>
-            <div className="absolute bg-black inset-0 w-full h-full opacity-40"/> 
-                
-            <div className="relative z-10 max-w-420 mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
+
+            <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
                 <div className="text-center mb-12">
@@ -136,8 +136,8 @@ export default function CaseStudies() {
                             key={tab.id}
                             onClick={() => handleTabChange(tab.id)}
                             className={`relative w-full py-4 transition-all duration-300 font-medium text-sm sm:text-base ${activeTab === tab.id
-                                    ? "bg-white/85 text-black"
-                                    : "bg-black/10 backdrop-blur-2xl text-white/50 hover:bg-white/5 hover:text-white/70"
+                                ? "bg-white/85 text-black"
+                                : "bg-black/10 backdrop-blur-2xl text-white/50 hover:bg-white/5 hover:text-white/70"
                                 }`}
                         >
                             <span className="tracking-wide uppercase">{tab.name}</span>

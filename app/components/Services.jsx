@@ -112,8 +112,8 @@ const Services = () => {
   `
             }}
         >
-            <div className="absolute bg-black inset-0 w-full h-full opacity-40"/> 
-            <div className="relative z-10 max-w-420 mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
+            <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
                 <div className="text-center mb-16">

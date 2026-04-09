@@ -154,7 +154,7 @@ export default function Hero() {
           willChange: "opacity",
         }}
       />
-            <div className="absolute bg-black inset-0 w-full h-full opacity-40"/> 
+      <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
 
       <div
         className="absolute bottom-0 left-0 right-0 h-32 z-5 pointer-events-none"
@@ -178,7 +178,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-420 mx-auto px-4 sm:px-6 pt-2 pb-20 sm:pb-24 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-8 lg:pt-12">
+      <div className="relative z-10 w-full max-w-400 mx-auto px-4 sm:px-6 pt-2 pb-20 sm:pb-24 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-8 lg:pt-12">
         {/* Left: Text */}
         <div className="w-full lg:w-auto lg:max-w-4xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-semibold leading-[1.20] tracking-tight text-white mb-6 lg:mb-8">

@@ -19,6 +19,7 @@ export default function Hero() {
   const btnsRef = useRef(null);
   const bgGradientRef = useRef(null);
   const funnelRef = useRef(null);
+  const bgRevealRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -29,6 +30,11 @@ export default function Hero() {
       });
 
       gsap.set(bgGradientRef.current, { opacity: 0.6 });
+
+      // Set initial opacity for background reveal
+      gsap.set(bgRevealRef.current, {
+        opacity: 0.4,
+      });
 
       const tl = gsap.timeline();
 
@@ -97,8 +103,19 @@ export default function Hero() {
       tl.to(
         bgGradientRef.current,
         {
-          opacity: 1,
+          opacity: 0,
           duration: 1.2,
+          ease: "power2.out",
+        },
+        1.2
+      );
+
+      // Background reveal animation - opacity fade in
+      tl.to(
+        bgRevealRef.current,
+        {
+          opacity: 1,
+          duration: 1.3,
           ease: "power2.out",
         },
         1.2
@@ -112,7 +129,14 @@ export default function Hero() {
     <section
       className={`relative min-h-screen w-full flex items-center overflow-hidden ${urbanist.className}`}
       style={{
-        background: `
+        backgroundColor: "#010504",
+      }}
+    >
+      <div
+        ref={bgRevealRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background: `
     radial-gradient(circle at 10% 10%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
     radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
     radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
@@ -126,9 +150,11 @@ export default function Hero() {
       #062B24 80%,
       #010504 100%
     )
-  `
-      }}
-    >
+  `,
+          willChange: "opacity",
+        }}
+      />
+
       <div
         className="absolute bottom-0 left-0 right-0 h-32 z-5 pointer-events-none"
         style={{
@@ -213,7 +239,7 @@ export default function Hero() {
 function FunnelDiagram() {
   return (
     <div className="relative flex flex-col items-center gap-1.5 w-full max-w-85">
-  
+
     </div>
   );
 }

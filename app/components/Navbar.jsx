@@ -132,7 +132,7 @@ export default function Navbar() {
                 {/* Nav Links - centered */}
                 <div
                     ref={linksRef}
-                    className="flex items-center border border-gray-700 rounded-lg overflow-hidden"
+                    className="flex items-center border-[0.5px] border-gray-600 rounded-lg overflow-hidden"
                 >
                     {navLinks.map(({ label, hasDropdown }, index) => (
                         <button

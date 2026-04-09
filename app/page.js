@@ -1,5 +1,6 @@
 import CaseStudies from "./components/CaseStudies";
 import Hero from "./components/Hero";
+import Contact from "./components/Contact";
 
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
@@ -13,6 +14,7 @@ export default function Home() {
       <CaseStudies/>
       <Services/>
       <Testimonials/>
+      <Contact/>
 
 
     </>

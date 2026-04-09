@@ -69,18 +69,28 @@ const Testimonials = () => {
         <section
             style={{
                 background: `
-    radial-gradient(circle at 10% 10%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.9) 20%, transparent 50%),
-    radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
-    radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
-    radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 25%, transparent 45%),
+    /* 1. Heavy Corner Vignettes (Total black-out of all 4 corners) */
+    radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 60%),
+    radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 60%),
+
+    /* 2. Intense Central Glow (Increased opacity to 0.6 and widened) */
+    radial-gradient(
+      circle at 50% 50%, 
+      rgba(45, 232, 176, 0.6) 0%, 
+      rgba(45, 232, 176, 0.2) 25%,
+      transparent 75%
+    ),
+
+    /* 3. The High-Brightness Base Gradient */
     linear-gradient(
-      360deg,
-      #24E8B2 0%,
-      #1BC497 5%,
-      #0F7C6E 40%,
-      #0A4A42 60%,
-      #062B24 80%,
-      #010504 100%
+      180deg,
+      #000000 0%,
+      #000000 15%,      /* Pitch black top */
+      #24E8B2 50%,      /* VIBRANT Emerald Peak (Brightest center) */
+      #000000 65%,      /* Pitch black bottom */
+      #000000 100%
     )
   `,
                 willChange: "opacity",

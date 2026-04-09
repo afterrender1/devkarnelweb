@@ -120,7 +120,7 @@ export default function Navbar() {
                 borderBottom: "1px solid transparent",
             }}
         >
-            <div className="max-w-400 mx-auto px-6 h-20 flex items-center justify-between gap-6">
+            <div className="max-w-420 mx-auto px-6 h-20 flex items-center justify-between gap-6">
 
                 {/* Logo */}
                 <div ref={logoRef} className="shrink-0">

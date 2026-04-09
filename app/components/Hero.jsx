@@ -150,10 +150,10 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-400 mx-auto px-4 sm:px-6 pt-2 pb-20 sm:pb-24 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-8 lg:pt-12">
+      <div className="relative z-10 w-full max-w-420 mx-auto px-4 sm:px-6 pt-2 pb-20 sm:pb-24 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-8 lg:pt-12">
         {/* Left: Text */}
-        <div className="w-full lg:w-auto lg:max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.8rem] font-semibold leading-[1.20] tracking-tight text-white mb-6 lg:mb-8">
+        <div className="w-full lg:w-auto lg:max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-semibold leading-[1.20] tracking-tight text-white mb-6 lg:mb-8">
             <span
               ref={headingLine1Ref}
               className="block"
@@ -165,14 +165,14 @@ export default function Hero() {
               ref={headingLine2Ref}
               className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent"
             >
-              digital experiences and
+              Digital experiences and
             </span>
 
             <span
               ref={headingLine3Ref}
               className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent"
             >
-               bespoke web solutions
+              Bespoke web solutions
             </span>
           </h1>
 
@@ -186,7 +186,7 @@ export default function Hero() {
 
           <div ref={btnsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <button
-              className="px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[0.85rem] font-semibold text-black transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
+              className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
               style={{
                 backgroundColor: "#2de8b0",
                 boxShadow: "0 8px 30px rgba(45,232,176,0.25)",
@@ -196,10 +196,9 @@ export default function Hero() {
             </button>
 
             <button
-              className="px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[0.85rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
+              className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
             >
-              View demo
-            </button>
+              Request a quote            </button>
           </div>
         </div>
 

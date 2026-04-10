@@ -44,8 +44,8 @@ const CloseIcon = () => (
 
 // --- Config ---
 const navLinks = [
-    { 
-        label: "Solutions", 
+    {
+        label: "Solutions",
         hasDropdown: true,
         dropdownItems: [
             { label: "Website Development", href: "/services/website-development" },
@@ -121,9 +121,11 @@ export default function Navbar() {
             gsap.to(sidebarRef.current, { x: 0, duration: 0.4, ease: "power3.out" });
             document.body.style.overflow = "hidden";
         } else {
-            gsap.to(overlayRef.current, { opacity: 0, duration: 0.3, onComplete: () => {
-                if (overlayRef.current) overlayRef.current.style.display = "none";
-            }});
+            gsap.to(overlayRef.current, {
+                opacity: 0, duration: 0.3, onComplete: () => {
+                    if (overlayRef.current) overlayRef.current.style.display = "none";
+                }
+            });
             gsap.to(sidebarRef.current, { x: "100%", duration: 0.4, ease: "power3.in" });
             document.body.style.overflow = "";
         }
@@ -132,12 +134,12 @@ export default function Navbar() {
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.set([logoRef.current, linksRef.current, iconsRef.current, ctaRef.current], { opacity: 0, y: -12 });
-            
+
             const tl = gsap.timeline();
             tl.to(logoRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.1)
-              .to(linksRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.2)
-              .to(iconsRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.3)
-              .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.4);
+                .to(linksRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.2)
+                .to(iconsRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.3)
+                .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.4);
 
             const handleScroll = () => {
                 const scrollY = window.scrollY;
@@ -158,7 +160,7 @@ export default function Navbar() {
         <>
             <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${urbanist.className}`}>
                 <div className="max-w-400 mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-6">
-                    
+
                     {/* Logo */}
                     <div ref={logoRef} className="shrink-0">
                         <Link href="/" className="text-white font-bold text-xl sm:text-2xl tracking-tight select-none">
@@ -169,8 +171,8 @@ export default function Navbar() {
                     {/* Desktop Links */}
                     <div ref={linksRef} className="hidden lg:flex items-center border-[0.5px] border-white/10 rounded-lg overflow-visible backdrop-blur-sm bg-white/5">
                         {navLinks.map(({ label, hasDropdown, dropdownItems, href }) => (
-                            <div 
-                                key={label} 
+                            <div
+                                key={label}
                                 className="relative h-full"
                                 onMouseEnter={hasDropdown ? handleMouseEnter : undefined}
                                 onMouseLeave={hasDropdown ? handleMouseLeave : undefined}
@@ -225,7 +227,7 @@ export default function Navbar() {
                                 </button>
                             ))}
                         </div>
-                        
+
                         <div ref={ctaRef}>
                             <button className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95">
                                 Request a quote
@@ -257,7 +259,7 @@ export default function Navbar() {
                             <div key={label} className="w-full">
                                 {hasDropdown ? (
                                     <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5">
-                                        <button 
+                                        <button
                                             onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
                                             className="w-full flex justify-between items-center px-5 py-4 text-white/80 font-medium"
                                         >
@@ -266,9 +268,9 @@ export default function Navbar() {
                                         </button>
                                         <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? 'max-h-48' : 'max-h-0'}`}>
                                             {dropdownItems.map(item => (
-                                                <Link 
-                                                    key={item.label} 
-                                                    href={item.href} 
+                                                <Link
+                                                    key={item.label}
+                                                    href={item.href}
                                                     onClick={(e) => handleNavClick(item.href, e)}
                                                     className="block px-8 py-3 text-sm text-white/60 border-t border-white/5"
                                                 >
@@ -278,7 +280,7 @@ export default function Navbar() {
                                         </div>
                                     </div>
                                 ) : (
-                                    <Link 
+                                    <Link
                                         href={href}
                                         onClick={(e) => handleNavClick(href, e)}
                                         className="block w-full text-left px-5 py-4 text-white/80 font-medium bg-white/5 border border-white/5 rounded-xl"

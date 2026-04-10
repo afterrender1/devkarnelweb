@@ -86,8 +86,8 @@ const Services = () => {
     return (
         <section
             className={`relative w-full  py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#010504] ${urbanist.className}`}
-style={{
-    background: `
+            style={{
+                background: `
         /* 1. Aggressive Top-Down Shadow (for seamless blend) */
         linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 20%, transparent 60%),
 
@@ -112,7 +112,7 @@ style={{
             #010504 100%
         )
     `
-}}
+            }}
         >
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
             <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">

@@ -94,9 +94,9 @@ export default function CaseStudies() {
 
     return (
         <section
-id="casestudies"
-       style={{
-  background: `
+            id="casestudies"
+            style={{
+                background: `
     /* 1. Force black corners - increased spread to 70% to kill edge glow */
     radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%),
     radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%),
@@ -120,8 +120,8 @@ id="casestudies"
       #000000 100%
     )
   `,
-  willChange: "opacity",
-}}
+                willChange: "opacity",
+            }}
             className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:pb-20 overflow-hidden ${urbanist.className}`}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
 

@@ -125,7 +125,7 @@ export default function CaseStudies() {
             className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:pb-20 overflow-hidden ${urbanist.className}`}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
 
-            <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
                 <div className="text-center mb-12">

@@ -1,6 +1,7 @@
 import CaseStudies from '@/app/components/CaseStudies'
 import Contact from '@/app/components/Contact'
 import LogoHero from '@/app/components/logo-components/LogoHero'
+import LogoPricing from '@/app/components/logo-components/LogoPricing'
 import React from 'react'
 
 const page = () => {
@@ -8,6 +9,7 @@ const page = () => {
     <>
     <LogoHero/>
     <CaseStudies/>
+    <LogoPricing/>
     <Contact/>
     
     

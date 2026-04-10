@@ -180,11 +180,11 @@ const Contact = () => {
                     className="flex flex-col md:flex-row w-full max-w-280 min-h-screen md:min-h-0 md:rounded-3xl overflow-hidden backdrop-blur-3xl bg-white/5 border border-white/10 shadow-2xl"
                     style={{ opacity: 0 }}
                 >
-                    
+
 
                     {/* Left Visual Side */}
                     <div className="relative w-full h-56 md:h-auto md:w-[42%] shrink-0 overflow-hidden ">
-                        
+
                         <Image
                             src="/images/contact.png"
                             alt="Contact"

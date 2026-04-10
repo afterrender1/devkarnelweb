@@ -94,7 +94,7 @@ export default function CaseStudies() {
 
     return (
         <section
-
+id="casestudies"
        style={{
   background: `
     /* 1. Force black corners - increased spread to 70% to kill edge glow */

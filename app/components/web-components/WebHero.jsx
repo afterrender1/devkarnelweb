@@ -6,11 +6,18 @@ import { urbanist } from "@/app/fonts"; // Adjust path as needed
 
 // Carousel Images
 const carouselImages = [
-  "/images/our-work/magnetik.png",
-  "/images/our-work/tmgvan1.png",
-  "/images/our-work/jave.png",
-  "/images/our-work/coffee.png",
-  "/images/our-work/zeroice.png"
+  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905816/mag-cropped_ynegzt.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905815/tmgcropped_clpgiu.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905816/javecropped_jvo8uy.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905812/darkdrop-coffee.vercel.app__hd1aro.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905817/icecropped_cnutjn.png"
+];
+
+const featureTags = [
+  "SEO Optimized",
+  "Mobile-First",
+  "AI-Powered",
+  "Fast Loading"
 ];
 
 export default function WebHero() {
@@ -171,17 +178,18 @@ export default function WebHero() {
           </div>
         </div>
 
-        {/* Carousel */}
-        <div className="w-full lg:w-3/5 flex justify-center lg:justify-end">
+        {/* Carousel + Feature Tags Container */}
+        <div className="w-full lg:w-3/5 flex flex-col gap-6 justify-center lg:justify-end">
+          {/* Carousel */}
           <div
             ref={carouselRef}
             onClick={handleNext}
-            className="group relative w-full aspect-5/3 max-w-180 cursor-pointer"
+            className="group relative w-full aspect-4/3 max-w-180 cursor-pointer mx-auto lg:mx-0"
           >
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 z-30 flex justify-between pointer-events-none">
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 flex justify-between pointer-events-none">
               <button
                 onClick={handlePrev}
-                className="pointer-events-auto p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white hover:bg-[#2de8b0] hover:text-black transition-all duration-300"
+                className="pointer-events-auto p-3 h-19  cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0]  transition-all duration-300"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 18-6-6 6-6" />
@@ -189,7 +197,7 @@ export default function WebHero() {
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                className="pointer-events-auto p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white hover:bg-[#2de8b0] hover:text-black transition-all duration-300"
+                className="pointer-events-auto p-3 h-19  cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0]  transition-all duration-300"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 18 6-6-6-6" />
@@ -197,26 +205,61 @@ export default function WebHero() {
               </button>
             </div>
 
-            <div className="relative w-full h-full rounded-2xl border border-white/10 overflow-hidden bg-white/5 shadow-2xl">
+            <div className="relative w-full h-full rounded border border-white/10 overflow-hidden bg-black shadow-2xl">
               {carouselImages.map((src, i) => (
                 <div key={i} className="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                  <img src={src} alt="Portfolio" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                  {/* Blurred Background Layer */}
+                  <div className="absolute inset-0 w-full h-full">
+                    <img 
+                      src={src} 
+                      alt="" 
+                      className="w-full h-full object-cover  scale-110 opacity-40"
+                    />
+                  </div>
+
+                  {/* Dark Gradient Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+
+                  {/* Main Image (Sharp, Centered) */}
+                  <div className="relative z-10 w-full h-full  flex items-center justify-center p-4">
+                    <img 
+                      src={src} 
+                      alt="Portfolio" 
+                      className="w-full h-full  object-contain"
+                    />
+                  </div>
+
+                  {/* Bottom Info Bar */}
+                  <div className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end">
+                    <div>
+                      <p className="text-[#2de8b0] text-xs font-bold uppercase tracking-widest mb-1">Portfolio</p>
+                      <p className="text-white font-medium">Click to explore</p>
+                    </div>
+                    <div className="flex gap-1.5">
+                      {carouselImages.map((_, idx) => (
+                        <div 
+                          key={idx} 
+                          className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-6 bg-[#2de8b0]' : 'w-2 bg-white/20'}`} 
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               ))}
-              <div className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end">
-                <div>
-                  <p className="text-[#2de8b0] text-xs font-bold uppercase tracking-widest mb-1">Portfolio</p>
-                  <p className="text-white font-medium">Click to explore</p>
-                </div>
-                <div className="flex gap-1.5">
-                  {carouselImages.map((_, i) => (
-                    <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === activeIndex ? 'w-6 bg-[#2de8b0]' : 'w-2 bg-white/20'}`} />
-                  ))}
-                </div>
-              </div>
             </div>
             <div className="absolute -inset-4 bg-[#2de8b0]/10 blur-3xl -z-10 group-hover:bg-[#2de8b0]/20 transition-colors duration-500" />
+          </div>
+
+          {/* Feature Tags */}
+          <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 px-2">
+            {featureTags.map((tag, i) => (
+              <div
+                key={i}
+                className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-default"
+              >
+                {tag}
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -6,11 +6,13 @@ import { urbanist } from "@/app/fonts"; // Adjust path as needed
 
 // Carousel Images - Your Logo Portfolio
 const carouselImages = [
-    "/images/our-work/magnetik.png",
-    "/images/our-work/tmgvan1.png",
-    "/images/our-work/jave.png",
-    "/images/our-work/coffee.png",
-    "/images/our-work/zeroice.png"
+    "/images/arl.png",
+    "/images/arfl.png",
+
+    "/images/dkfl.png",
+
+    "/images/dkl.png",
+
 ];
 
 export default function LogoHero() {
@@ -36,36 +38,51 @@ export default function LogoHero() {
         setActiveIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
     };
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // --- Initial States ---
-            gsap.set([headingLine1Ref.current, headingLine2Ref.current, headingLine3Ref.current, subRef.current, btnsRef.current], {
-                opacity: 0,
-                y: 40,
-                filter: "blur(10px)",
-            });
+useEffect(() => {
+    const ctx = gsap.context(() => {
 
+        const elements = [
+            headingLine1Ref.current,
+            headingLine2Ref.current,
+            headingLine3Ref.current,
+            subRef.current,
+            btnsRef.current
+        ].filter(Boolean); // ✅ remove nulls
+
+        gsap.set(elements, {
+            opacity: 0,
+            y: 40,
+            filter: "blur(10px)",
+        });
+
+        if (bgRevealRef.current) {
             gsap.set(bgRevealRef.current, { opacity: 0 });
+        }
+
+        if (carouselRef.current) {
             gsap.set(carouselRef.current, { opacity: 0, x: 40 });
+        }
 
-            const tl = gsap.timeline();
+        const tl = gsap.timeline();
 
-            // Entrance Animations
+        if (bgRevealRef.current) {
             tl.to(bgRevealRef.current, {
                 opacity: 1,
                 duration: 1,
                 ease: "power2.out"
             }, 0);
+        }
 
-            tl.to([headingLine1Ref.current, headingLine2Ref.current, headingLine3Ref.current], {
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-                duration: 0.7,
-                stagger: 0.15,
-                ease: "power2.out",
-            }, 0.2);
+        tl.to(elements.slice(0, 3), {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.7,
+            stagger: 0.15,
+            ease: "power2.out",
+        }, 0.2);
 
+        if (subRef.current) {
             tl.to(subRef.current, {
                 opacity: 1,
                 y: 0,
@@ -73,7 +90,9 @@ export default function LogoHero() {
                 duration: 0.6,
                 ease: "power2.out",
             }, 0.5);
+        }
 
+        if (btnsRef.current) {
             tl.to(btnsRef.current, {
                 opacity: 1,
                 y: 0,
@@ -81,17 +100,21 @@ export default function LogoHero() {
                 duration: 0.6,
                 ease: "power2.out",
             }, 0.7);
+        }
 
+        if (carouselRef.current) {
             tl.to(carouselRef.current, {
                 opacity: 1,
                 x: 0,
                 duration: 0.8,
                 ease: "power3.out"
             }, 0.8);
-        });
+        }
 
-        return () => ctx.revert();
-    }, []);
+    });
+
+    return () => ctx.revert();
+}, []);
 
     useEffect(() => {
         const slides = gsap.utils.toArray(".carousel-slide");
@@ -116,9 +139,9 @@ export default function LogoHero() {
                 {/* Left Side: Content */}
                 <div className="w-full lg:w-3/5">
                     <h1 className="text-4xl sm:text-5xl lg:text-[4.8rem] font-bold leading-[1.1] tracking-tight text-white mb-8">
-                        <span ref={headingLine1Ref} className="block">Defining iconic</span>
-                        <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">Brand Identities &</span>
-                        <span ref={headingLine3Ref} className="block text-[#2de8b0]">Visual Storytelling</span>
+                        {/* <span ref={headingLine1Ref} className="block">Defining iconic</span> */}
+                        <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">Logo</span>
+                        <span ref={headingLine3Ref} className="ml-8 block text-[#2de8b0]">Design</span>
                     </h1>
                     <p ref={subRef} className="text-white/60 text-base sm:text-[0.95rem] leading-relaxed mb-10 max-w-md">
                         We craft timeless logos that capture the essence of your business. Our design philosophy blends geometric precision with creative flair to build brands that stand out.
@@ -144,11 +167,11 @@ export default function LogoHero() {
                         </div>
 
                         {/* Image Container */}
-                        <div className="relative w-full h-full rounded-2xl border border-white/10 overflow-hidden bg-white/5 shadow-2xl">
+                        <div className="relative w-full h-full  overflow-hidden  ">
                             {carouselImages.map((src, i) => (
                                 <div key={i} className="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                                    <img src={src} alt="Logo Design" className="w-full h-full object-cover" />
-                                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
+                                    <img src={src} alt="Logo Design" className="w-full h-full object-contain" />
+                                    {/* <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" /> */}
                                 </div>
                             ))}
                             <div className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end">

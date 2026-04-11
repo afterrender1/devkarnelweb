@@ -187,7 +187,7 @@ export default function Navbar() {
                                         </button>
 
                                         {isDropdownOpen && (
-                                            <div ref={dropdownRef} className="absolute top-[120%] left-0 w-64 bg-[#0d1117] border border-white/10 rounded-xl overflow-hidden shadow-2xl z-100">
+                                            <div ref={dropdownRef} className="absolute top-[120%] left-0 w-64 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-lg overflow-hidden shadow-2xl z-100">
                                                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/10 blur-3xl pointer-events-none" />
                                                 <div className="relative">
                                                     {dropdownItems.map((item) => (
@@ -229,9 +229,13 @@ export default function Navbar() {
                         </div>
 
                         <div ref={ctaRef}>
+                            <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer">
+
+
                             <button className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95">
                                 Request a quote
                             </button>
+                            </a>
                         </div>
 
                         <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-all">

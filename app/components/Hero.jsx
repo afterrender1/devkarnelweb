@@ -213,6 +213,8 @@ export default function Hero() {
           </p>
 
           <div ref={btnsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+            <a href="#contact">
+
             <button
               className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
               style={{
@@ -223,10 +225,17 @@ export default function Hero() {
               Contact us
             </button>
 
-            <button
-              className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
-            >
-              Request a quote            </button>
+            </a>
+            <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer">
+
+
+
+              <button
+                className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
+              >
+                Request a quote            </button>
+            </a>
+
           </div>
         </div>
 

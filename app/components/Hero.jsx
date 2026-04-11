@@ -180,76 +180,67 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-400 mx-auto px-4 sm:px-6 pt-2 pb-20 sm:pb-24 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-8 lg:pt-12">
         {/* Left: Text */}
-        <div className="w-full lg:w-auto lg:max-w-4xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-semibold leading-[1.20] tracking-tight text-white mb-6 lg:mb-8">
-            <span
-              ref={headingLine1Ref}
-              className="block"
-            >
-              Crafting high-performance
-            </span>
-
-            <span
-              ref={headingLine2Ref}
-              className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent"
-            >
-              Digital experiences and
-            </span>
-
-            <span
-              ref={headingLine3Ref}
-              className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent"
-            >
-              Bespoke web solutions
-            </span>
-          </h1>
-
-          <p
-            ref={subRef}
-            className="text-white/60 text-sm sm:text-[0.95rem] leading-relaxed mb-8 sm:mb-10 max-w-md"
-          >
-            Generate application-specific answers and demonstrate performance
-            with speed, clarity, and precision.
-          </p>
-
-          <div ref={btnsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-            <a href="#contact">
-
-            <button
-              className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
-              style={{
-                backgroundColor: "#2de8b0",
-                boxShadow: "0 8px 30px rgba(45,232,176,0.25)",
-              }}
-            >
-              Contact us
-            </button>
-
-            </a>
-            <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer">
-
-
-
-              <button
-                className="cursor-pointer px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20 sm:pb-24 flex flex-col items-center justify-center text-center">
+          {/* Content Wrapper */}
+          <div className="w-full flex flex-col items-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-semibold leading-[1.20] tracking-tight text-white mb-6 lg:mb-8">
+              <span
+                ref={headingLine1Ref}
+                className="block"
               >
-                Request a quote            </button>
-            </a>
+                Crafting high-performance
+              </span>
 
+              <span
+                ref={headingLine2Ref}
+                className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent"
+              >
+                Digital experiences and
+              </span>
+
+              <span
+                ref={headingLine3Ref}
+                className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent"
+              >
+                Bespoke web solutions
+              </span>
+            </h1>
+
+            <p
+              ref={subRef}
+              className="text-white/60 text-sm sm:text-[0.95rem] leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto"
+            >
+              Generate application-specific answers and demonstrate performance
+              with speed, clarity, and precision.
+            </p>
+
+            <div ref={btnsRef} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+              <a href="#contact" className="w-full sm:w-auto">
+                <button
+                  className="w-full sm:w-auto cursor-pointer px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
+                  style={{
+                    backgroundColor: "#2de8b0",
+                    boxShadow: "0 8px 30px rgba(45,232,176,0.25)",
+                  }}
+                >
+                  Contact us
+                </button>
+              </a>
+
+              <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <button
+                  className="w-full sm:w-auto cursor-pointer px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
+                >
+                  Request a quote
+                </button>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="hidden lg:flex flex-1 justify-end items-center">
-        </div>
+
       </div>
     </section>
   );
 }
 
-function FunnelDiagram() {
-  return (
-    <div className="relative flex flex-col items-center gap-1.5 w-full max-w-85">
-
-    </div>
-  );
-}

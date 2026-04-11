@@ -187,7 +187,7 @@ export default function Navbar() {
                                         </button>
 
                                         {isDropdownOpen && (
-                                            <div ref={dropdownRef} className="absolute top-[120%] left-0 w-64 bg-black/40 backdrop-blur-3xl border border-white/10 rounded-lg overflow-hidden shadow-2xl z-100">
+                                            <div ref={dropdownRef} className="absolute top-[120%] left-0 w-64 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-sm overflow-hidden shadow-2xl z-100">
                                                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/10 blur-3xl pointer-events-none" />
                                                 <div className="relative">
                                                     {dropdownItems.map((item) => (

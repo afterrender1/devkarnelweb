@@ -1,4 +1,3 @@
-import CaseStudies from '@/app/components/CaseStudies'
 import CTASection from '@/app/components/web-components/CTASection'
 import DevskarnelSection from '@/app/components/web-components/DevskarnelSection'
 import ServicesSection from '@/app/components/web-components/ServicesSection'
@@ -13,7 +12,6 @@ const page = () => {
     <ServicesSection/>
     <DevskarnelSection/>
     <WebFAQ/>
-    <CaseStudies/>
     <CTASection/>
     
     </>

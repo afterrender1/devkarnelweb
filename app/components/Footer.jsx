@@ -112,7 +112,7 @@ export default function Footer() {
                         <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3 tracking-tight">
                             Devskarnel
                         </h3>
-                        <p className="text-white/60 text-sm lg:text-base mb-6 max-w-xs mx-auto md:mx-0">
+                        <p className="text-white/60 text-base lg:text-base mb-6 max-w-xs mx-auto md:mx-0">
                             Crafting digital experiences that inspire and engage.
                         </p>
 
@@ -144,7 +144,7 @@ export default function Footer() {
                     <div className="footer-animate lg:col-span-1 grid grid-cols-2 gap-8 md:gap-12 text-center md:text-left">
                         {/* Solutions */}
                         <div>
-                            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                            <h4 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
                                 Solutions
                             </h4>
                             <ul className="space-y-3">
@@ -152,7 +152,7 @@ export default function Footer() {
                                     <li key={link.name}>
                                         <a
                                             href={link.url}
-                                            className="text-white/60 text-sm hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                            className="text-white/60 text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
                                         >
                                             {link.name}
                                         </a>
@@ -163,7 +163,7 @@ export default function Footer() {
 
                         {/* Pages */}
                         <div>
-                            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                            <h4 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
                                 Company
                             </h4>
                             <ul className="space-y-3">
@@ -171,7 +171,7 @@ export default function Footer() {
                                     <li key={link.name}>
                                         <a
                                             href={link.url}
-                                            className="text-white/60 text-sm hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                            className="text-white/60 text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
                                         >
                                             {link.name}
                                         </a>
@@ -183,12 +183,12 @@ export default function Footer() {
 
                     {/* Right Section - Legal */}
                     {/* <div className="footer-animate text-center md:text-left lg:text-right">
-                        <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                        <h4 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
                             Legal
                         </h4>
                         <a
                             href="#"
-                            className="inline-block text-white/60 text-sm hover:text-[#2de8b0] transition-colors duration-300"
+                            className="inline-block text-white/60 text-base hover:text-[#2de8b0] transition-colors duration-300"
                         >
                             Privacy Policy
                         </a>
@@ -198,7 +198,7 @@ export default function Footer() {
                 {/* Bottom Border */}
                 <div className="footer-animate border-t border-white/10 pt-8">
                     <div className="text-center">
-                        <p className="text-white/40 text-sm">
+                        <p className="text-white/40 text-base">
                             © {new Date().getFullYear()} Devskarnel. All rights reserved.
                         </p>
                     </div>

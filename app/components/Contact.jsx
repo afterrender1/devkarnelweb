@@ -203,7 +203,7 @@ const Contact = () => {
 
                         <div className="mb-7 flex justify-between">
                             <div>
-                                <h2 className="text-[1rem] lg:text-[2.4rem] font-extrabold text-white leading-[1.15] tracking-tight text-[clamp(1.5rem,3vw,2.2rem)]">
+                                <h2 className="text-[1rem] lg:text-[2.4rem] font-extrabold text-white leading-[1.15] tracking-tight">
                                     Let&apos;s level up your <span className="text-[#2de8b0]">brand,</span> together
                                 </h2>
                                 <p className="text-white/40 text-[1rem] lg:text-[1.1rem] mt-2.5">Fill out the form and our team will get back to you within 24 hours.</p>

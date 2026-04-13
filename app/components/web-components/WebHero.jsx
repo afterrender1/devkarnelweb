@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { urbanist } from "@/app/fonts"; // Adjust path as needed
 
-// Carousel Images
+// Carousel Images - trailing spaces removed
 const carouselImages = [
   "https://res.cloudinary.com/dlurrugno/image/upload/v1775905816/mag-cropped_ynegzt.png",
   "https://res.cloudinary.com/dlurrugno/image/upload/v1775905815/tmgcropped_clpgiu.png",
@@ -31,18 +31,137 @@ export default function WebHero() {
   // Background & Carousel Refs
   const bgRevealRef = useRef(null);
   const carouselRef = useRef(null);
+  const slidesContainerRef = useRef(null);
+  const slidesRef = useRef([]);
+
+  // Auto-play refs - using refs to avoid stale closures
+  const intervalRef = useRef(null);
+  const isHoveredRef = useRef(false);
+  const isAnimatingRef = useRef(false);
+  const activeIndexRef = useRef(0);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % carouselImages.length);
-  };
+  // Sync ref with state
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
-  const handlePrev = (e) => {
+  // Auto-play interval duration (milliseconds)
+  const AUTO_PLAY_INTERVAL = 3500;
+
+  // Clear interval helper
+  const clearAutoPlay = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  // Start auto-play helper - uses ref to get latest state
+  const startAutoPlay = useCallback(() => {
+    // Only start if not already running and not hovered
+    if (intervalRef.current || isHoveredRef.current) return;
+
+    intervalRef.current = setInterval(() => {
+      const nextIndex = (activeIndexRef.current + 1) % carouselImages.length;
+      setActiveIndex(nextIndex);
+    }, AUTO_PLAY_INTERVAL);
+  }, []);
+
+  // Animate slides - scoped to container ref
+  const animateSlides = useCallback((index) => {
+    const slides = slidesRef.current;
+
+    // Guard: ensure slides exist
+    if (!slides || slides.length === 0 || !slides[index]) return;
+
+    // Guard: prevent rapid animation calls
+    if (isAnimatingRef.current) {
+      // Kill any existing tweens before starting new ones
+      slides.forEach((slide) => {
+        if (slide) gsap.killTweensOf(slide);
+      });
+    }
+
+    isAnimatingRef.current = true;
+
+    // Animate all slides to inactive state
+    slides.forEach((slide, i) => {
+      if (!slide) return;
+
+      if (i === index) {
+        gsap.to(slide, {
+          opacity: 1,
+          scale: 1,
+          zIndex: 10,
+          duration: 0.6,
+          ease: "power3.out",
+          onComplete: () => {
+            isAnimatingRef.current = false;
+          }
+        });
+      } else {
+        gsap.to(slide, {
+          opacity: 0,
+          scale: 0.95,
+          zIndex: 0,
+          duration: 0.5,
+          ease: "power2.inOut"
+        });
+      }
+    });
+  }, []);
+
+  // Handle next with timer reset
+  const handleNext = useCallback((e) => {
+    if (e) {
+      e.stopPropagation();
+    }
+
+    // Prevent rapid clicks
+    if (isAnimatingRef.current) return;
+
+    const nextIndex = (activeIndexRef.current + 1) % carouselImages.length;
+    setActiveIndex(nextIndex);
+
+    // Reset timer on manual navigation for better UX
+    clearAutoPlay();
+    startAutoPlay();
+  }, [clearAutoPlay, startAutoPlay]);
+
+  // Handle previous with timer reset
+  const handlePrev = useCallback((e) => {
     e.stopPropagation();
-    setActiveIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
-  };
 
+    // Prevent rapid clicks
+    if (isAnimatingRef.current) return;
+
+    const prevIndex = (activeIndexRef.current - 1 + carouselImages.length) % carouselImages.length;
+    setActiveIndex(prevIndex);
+
+    // Reset timer on manual navigation for better UX
+    clearAutoPlay();
+    startAutoPlay();
+  }, [clearAutoPlay, startAutoPlay]);
+
+  // Hover handlers with debounce protection
+  const handleMouseEnter = useCallback(() => {
+    isHoveredRef.current = true;
+    clearAutoPlay();
+  }, [clearAutoPlay]);
+
+  const handleMouseLeave = useCallback(() => {
+    isHoveredRef.current = false;
+    // Small delay to prevent rapid enter/leave flickering
+    requestAnimationFrame(() => {
+      if (!isHoveredRef.current) {
+        startAutoPlay();
+      }
+    });
+  }, [startAutoPlay]);
+
+  // Initial entrance animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       // --- Initial States ---
@@ -100,24 +219,32 @@ export default function WebHero() {
     return () => ctx.revert();
   }, []);
 
-  // Carousel Image Transitions
+  // Auto-play effect - only runs once on mount
   useEffect(() => {
-    const slides = gsap.utils.toArray(".carousel-slide");
-    gsap.to(slides, {
-      opacity: 0,
-      scale: 0.95,
-      zIndex: 0,
-      duration: 0.5,
-      ease: "power2.inOut"
-    });
-    gsap.to(slides[activeIndex], {
-      opacity: 1,
-      scale: 1,
-      zIndex: 10,
-      duration: 0.6,
-      ease: "power3.out"
-    });
-  }, [activeIndex]);
+    // Edge case: don't start if no images
+    if (carouselImages.length === 0) return;
+
+    // Start auto-play after component mounts
+    const timer = setTimeout(() => {
+      startAutoPlay();
+    }, 100);
+
+    // Cleanup on unmount
+    return () => {
+      clearTimeout(timer);
+      clearAutoPlay();
+    };
+  }, []); // Empty deps - only run on mount
+
+  // Carousel Image Transitions - triggered when activeIndex changes
+  useEffect(() => {
+    animateSlides(activeIndex);
+  }, [activeIndex, animateSlides]);
+
+  // Edge case: empty images array
+  if (carouselImages.length === 0) {
+    return null;
+  }
 
   return (
     <section
@@ -183,21 +310,23 @@ export default function WebHero() {
           {/* Carousel */}
           <div
             ref={carouselRef}
-            onClick={handleNext}
+            onClick={() => handleNext()}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             className="group relative w-full aspect-4/3 max-w-180 cursor-pointer mx-auto lg:mx-0"
           >
             <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 flex justify-between pointer-events-none">
               <button
                 onClick={handlePrev}
-                className="pointer-events-auto p-3 h-19  cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0]  transition-all duration-300"
+                className="pointer-events-auto p-3 h-19 cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0] transition-all duration-300"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 18-6-6 6-6" />
                 </svg>
               </button>
               <button
-                onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                className="pointer-events-auto p-3 h-19  cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0]  transition-all duration-300"
+                onClick={handleNext}
+                className="pointer-events-auto p-3 h-19 cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0] transition-all duration-300"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 18 6-6-6-6" />
@@ -205,15 +334,21 @@ export default function WebHero() {
               </button>
             </div>
 
-            <div className="relative w-full h-full rounded border border-white/10 overflow-hidden bg-black shadow-2xl">
+            <div ref={slidesContainerRef} className="relative w-full h-full rounded border border-white/10 overflow-hidden bg-black shadow-2xl">
               {carouselImages.map((src, i) => (
-                <div key={i} className="carousel-slide absolute inset-0 w-full h-full opacity-0">
+                <div
+                  key={i}
+                  ref={(el) => { slidesRef.current[i] = el; }}
+                  className="absolute inset-0 w-full h-full opacity-0"
+                  style={{ zIndex: i === 0 ? 10 : 0 }}
+                >
                   {/* Blurred Background Layer */}
                   <div className="absolute inset-0 w-full h-full">
-                    <img 
-                      src={src} 
-                      alt="" 
-                      className="w-full h-full object-cover  scale-110 opacity-40"
+                    <img
+                      src={src}
+                      alt=""
+                      className="w-full h-full object-cover scale-110 opacity-40"
+                      loading={i <= 1 ? "eager" : "lazy"}
                     />
                   </div>
 
@@ -221,11 +356,12 @@ export default function WebHero() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
 
                   {/* Main Image (Sharp, Centered) */}
-                  <div className="relative z-10 w-full h-full  flex items-center justify-center p-4">
-                    <img 
-                      src={src} 
-                      alt="Portfolio" 
-                      className="w-full h-full  object-contain"
+                  <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
+                    <img
+                      src={src}
+                      alt="Portfolio"
+                      className="w-full h-full object-contain"
+                      loading={i <= 1 ? "eager" : "lazy"}
                     />
                   </div>
 
@@ -237,9 +373,9 @@ export default function WebHero() {
                     </div>
                     <div className="flex gap-1.5">
                       {carouselImages.map((_, idx) => (
-                        <div 
-                          key={idx} 
-                          className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-6 bg-[#2de8b0]' : 'w-2 bg-white/20'}`} 
+                        <div
+                          key={idx}
+                          className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-6 bg-[#2de8b0]' : 'w-2 bg-white/20'}`}
                         />
                       ))}
                     </div>

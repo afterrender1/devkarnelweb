@@ -30,13 +30,13 @@ const Checkbox = ({ label, checked, onToggle }) => (
                 </svg>
             )}
         </span>
-        <span className="text-[13px] text-white/50 group-hover:text-white/80 transition-colors duration-150 font-medium">{label}</span>
+        <span className="text-[1rem] lg:text-[1rem] text-white/50 group-hover:text-white/80 transition-colors duration-150 font-medium">{label}</span>
     </label>
 );
 
 const Field = ({ label, children, htmlFor }) => (
     <div className="flex flex-col gap-1.5">
-        <label htmlFor={htmlFor} className="text-[12.5px] font-semibold text-white/40 tracking-wide uppercase">{label}</label>
+        <label htmlFor={htmlFor} className="text-[0.7rem] lg:text-[0.8rem] font-semibold text-white/40 tracking-wide uppercase">{label}</label>
         {children}
     </div>
 );
@@ -82,7 +82,7 @@ const ContactForm = () => {
                         name="countryCode"
                         value={values.countryCode}
                         onChange={handle}
-                        className="border border-white/10 rounded-lg px-2 text-[13px] text-white bg-white/5 outline-none cursor-pointer focus:border-[#2de8b0] transition-all"
+                        className="border border-white/10 rounded-lg px-2 text-[1rem] lg:text-[0.8rem] text-white bg-white/5 outline-none cursor-pointer focus:border-[#2de8b0] transition-all"
                         style={{ width: "72px" }}
                     >
                         {COUNTRY_CODES.map((c) => <option key={c} value={c} className="bg-[#0a4a42] text-white">{c}</option>)}
@@ -96,7 +96,7 @@ const ContactForm = () => {
             </Field>
 
             <fieldset>
-                <legend className="text-[12.5px] font-semibold text-white/40 tracking-wide uppercase mb-1.5">Services</legend>
+                <legend className="text-[1rem] lg:text-[0.8rem] font-semibold text-white/40 tracking-wide uppercase mb-1.5">Services</legend>
                 <div className="grid grid-cols-2 gap-y-3 gap-x-4 pt-0.5">
                     {SERVICES.map((s) => (
                         <Checkbox key={s} label={s} checked={values.services.includes(s)} onToggle={() => toggleService(s)} />
@@ -203,14 +203,12 @@ const Contact = () => {
 
                         <div className="mb-7 flex justify-between">
                             <div>
-                                <h2 className="font-extrabold text-white leading-[1.15] tracking-tight text-[clamp(1.5rem,3vw,2.2rem)]">
+                                <h2 className="text-[1rem] lg:text-[2.4rem] font-extrabold text-white leading-[1.15] tracking-tight text-[clamp(1.5rem,3vw,2.2rem)]">
                                     Let&apos;s level up your <span className="text-[#2de8b0]">brand,</span> together
                                 </h2>
-                                <p className="text-white/40 text-[13.5px] mt-2.5">Fill out the form and our team will get back to you within 24 hours.</p>
+                                <p className="text-white/40 text-[1rem] lg:text-[1.1rem] mt-2.5">Fill out the form and our team will get back to you within 24 hours.</p>
                             </div>
-                            <div>
-                                h
-                            </div>
+                        
                         </div>
 
                         <ContactForm />

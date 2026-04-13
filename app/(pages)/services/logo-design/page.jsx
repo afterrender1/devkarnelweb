@@ -1,4 +1,3 @@
-import CaseStudies from '@/app/components/CaseStudies'
 import Contact from '@/app/components/Contact'
 import LogoHero from '@/app/components/logo-components/LogoHero'
 import LogoPricing from '@/app/components/logo-components/LogoPricing'
@@ -8,7 +7,6 @@ const page = () => {
   return (
     <>
     <LogoHero/>
-    <CaseStudies/>
     <LogoPricing/>
     <Contact/>
     

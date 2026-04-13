@@ -163,7 +163,7 @@ export default function Navbar() {
 
                     {/* Logo */}
                     <div ref={logoRef} className="shrink-0">
-                        <Link href="/" className="text-white font-bold text-xl sm:text-2xl tracking-tight select-none">
+                        <Link href="/" className="text-white font-bold text-xl sm:text-4xl tracking-tight select-none">
                             DEVS<span className="text-emerald-400">KARNEL</span>
                         </Link>
                     </div>

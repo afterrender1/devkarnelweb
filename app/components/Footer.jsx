@@ -57,10 +57,10 @@ export default function Footer() {
             { name: 'Website Development', url: '#' },
         ],
         pages: [
-            { name: 'Case Studies', url: '#casestudies' },
-            { name: 'Services', url: '#' },
-            { name: 'Testimonials', url: '#' },
-            { name: 'Contact', url: '#' },
+            // { name: 'Case Studies', url: '#casestudies' },
+            { name: 'Services', url: '#services' },
+            { name: 'Testimonials', url: '#reviews' },
+            { name: 'Contact', url: '#contact' },
         ],
     };
 
@@ -182,7 +182,7 @@ export default function Footer() {
                     </div>
 
                     {/* Right Section - Legal */}
-                    <div className="footer-animate text-center md:text-left lg:text-right">
+                    {/* <div className="footer-animate text-center md:text-left lg:text-right">
                         <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
                             Legal
                         </h4>
@@ -192,7 +192,7 @@ export default function Footer() {
                         >
                             Privacy Policy
                         </a>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Bottom Border */}

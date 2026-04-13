@@ -67,6 +67,8 @@ const Testimonials = () => {
 
     return (
         <section
+
+        id='reviews'
             style={{
                 background: `
     /* 1. Heavy Corner Vignettes (Total black-out of all 4 corners) */
@@ -140,7 +142,7 @@ const Testimonials = () => {
                                 key={index}
                                 className="min-w-full md:min-w-[calc(50%-10px)] lg:min-w-[calc(25%-15px)] group"
                             >
-                                <div className="relative h-112.5 rounded-3xl overflow-hidden border border-white/10">
+                                <div className="relative h-112.5 rounded overflow-hidden border border-white/10">
                                     {/* Image Base */}
                                     <img
                                         src={item.image}

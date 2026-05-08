@@ -104,12 +104,12 @@ const Testimonials = () => {
                                 key={index}
                                 className="min-w-full md:min-w-[calc(50%-10px)] lg:min-w-[calc(25%-15px)] group"
                             >
-                                <div className="relative h-112.5 rounded overflow-hidden border border-white/10">
+                                <div className="relative h-112.5 rounded-3xl overflow-hidden">
                                     {/* Image Base */}
                                     <img
                                         src={item.image}
                                         alt={item.name}
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                                        className="w-full h-full object-cover  transition-all duration-700 scale-105 group-hover:scale-100"
                                     />
 
                                     {/* Dark Overlay Gradient (Matching your image) */}

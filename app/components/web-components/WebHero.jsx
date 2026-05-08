@@ -247,136 +247,68 @@ export default function WebHero() {
   }
 
   return (
-    <section
-      className={`relative min-h-screen w-full flex items-center overflow-hidden bg-[#010504] ${urbanist.className}`}
-    >
+    <section className={`relative min-h-screen w-full flex items-center overflow-hidden bg-[#010504] ${urbanist.className}`}>
       {/* Background Layers (Static) */}
-      <div
-        ref={bgRevealRef}
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background: `
-                        radial-gradient(circle at 10% 70%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
-                        radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
-                        radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
-                        radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%),
-                        linear-gradient(180deg, #24E8B2 0%, #1BC497 5%, #0F7C6E 40%, #0A4A42 60%, #062B24 80%, #010504 100%)
-                    `,
+      <div ref={bgRevealRef} className="absolute inset-0 w-full h-full" style={{
+          background: `radial-gradient(circle at 10% 70%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%), radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%), radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%), radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%), linear-gradient(180deg, #24E8B2 0%, #1BC497 5%, #0F7C6E 40%, #0A4A42 60%, #062B24 80%, #010504 100%)`,
           backgroundSize: "cover",
-        }}
-      />
-
+      }} />
       <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
       <div className="absolute inset-0 w-full h-full opacity-20" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(45,232,176,0.1) 0%, transparent 70%)" }} />
-
       {/* Content */}
-      <div className="relative z-10 w-full max-w-400 mx-auto px-6 sm:px-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-12 py-20 mt-10">
-
-        <div className="w-full lg:w-3/5">
-          <h1 className="text-4xl sm:text-5xl lg:text-[4.8rem] font-bold leading-[1.1] tracking-tight text-white mb-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16 py-16 sm:py-20 lg:py-24">
+        <div className="w-full lg:w-1/2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
             <span ref={headingLine1Ref} className="block">Architecting high-end</span>
-            <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">
-              Scalable Websites &
-            </span>
-            <span ref={headingLine3Ref} className="block text-[#2de8b0]">
-              Digital Ecosystems
-            </span>
+            <span ref={headingLine2Ref} className="block bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Scalable Websites &</span>
+            <span ref={headingLine3Ref} className="block text-[#2de8b0]">Digital Ecosystems</span>
           </h1>
-
-          <p ref={subRef} className="text-white/60 text-base sm:text-[0.95rem] leading-relaxed mb-10 max-w-md">
-            We build lightning-fast web applications using Next.js and GSAP.
-            From bespoke design systems to complex e-commerce engines, we prioritize
-            performance, SEO, and conversion-driven user experiences.
+          <p ref={subRef} className="text-white/60 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-md">
+            We build lightning-fast web applications using Next.js and GSAP. From bespoke design systems to complex e-commerce engines, we prioritize performance, SEO, and conversion-driven user experiences.
           </p>
-
-          <div ref={btnsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <button
-              className="cursor-pointer px-8 py-3.5 rounded-lg text-[1rem] font-bold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
-              style={{
-                backgroundColor: "#2de8b0",
-                boxShadow: "0 8px 30px rgba(45,232,176,0.25)",
-              }}
-            >
+          <div ref={btnsRef} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <button className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-bold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25">
               Start Your Project
             </button>
-            <button className="cursor-pointer px-8 py-3.5 rounded-lg text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap">
+            <button className="px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10">
               View Case Studies
             </button>
           </div>
         </div>
-
         {/* Carousel + Feature Tags Container */}
-        <div className="w-full lg:w-3/5 flex flex-col gap-6 justify-center lg:justify-end">
+        <div className="w-full lg:w-1/2 flex flex-col gap-4 sm:gap-6 justify-center lg:justify-end">
           {/* Carousel */}
-          <div
-            ref={carouselRef}
-            onClick={() => handleNext()}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="group relative w-full aspect-4/3 max-w-180 cursor-pointer mx-auto lg:mx-0"
-          >
+          <div ref={carouselRef} onClick={() => handleNext()} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="group relative w-full aspect-video max-w-xl cursor-pointer mx-auto lg:mx-0">
             <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-30 flex justify-between pointer-events-none">
-              <button
-                onClick={handlePrev}
-                className="pointer-events-auto p-3 h-19 cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0] transition-all duration-300"
-              >
+              <button onClick={handlePrev} className="pointer-events-auto p-2 sm:p-3 h-12 sm:h-16 cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0] transition-all duration-300">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 18-6-6 6-6" />
                 </svg>
               </button>
-              <button
-                onClick={handleNext}
-                className="pointer-events-auto p-3 h-19 cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0] transition-all duration-300"
-              >
+              <button onClick={handleNext} className="pointer-events-auto p-2 sm:p-3 h-12 sm:h-16 cursor-pointer bg-white/90 backdrop-blur-md border border-white/10 text-black/90 hover:text-white/90 hover:bg-[#2de8b0] transition-all duration-300">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m9 18 6-6-6-6" />
                 </svg>
               </button>
             </div>
-
             <div ref={slidesContainerRef} className="relative w-full h-full rounded border border-white/10 overflow-hidden bg-black shadow-2xl">
               {carouselImages.map((src, i) => (
-                <div
-                  key={i}
-                  ref={(el) => { slidesRef.current[i] = el; }}
-                  className="absolute inset-0 w-full h-full opacity-0"
-                  style={{ zIndex: i === 0 ? 10 : 0 }}
-                >
-                  {/* Blurred Background Layer */}
+                <div key={i} ref={(el) => { slidesRef.current[i] = el; }} className="absolute inset-0 w-full h-full opacity-0" style={{ zIndex: i === 0 ? 10 : 0 }}>
                   <div className="absolute inset-0 w-full h-full">
-                    <img
-                      src={src}
-                      alt=""
-                      className="w-full h-full object-cover scale-110 opacity-40"
-                      loading={i <= 1 ? "eager" : "lazy"}
-                    />
+                    <img src={src} alt="" className="w-full h-full object-cover scale-110 opacity-40" loading={i <= 1 ? "eager" : "lazy"} />
                   </div>
-
-                  {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-
-                  {/* Main Image (Sharp, Centered) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
-                    <img
-                      src={src}
-                      alt="Portfolio"
-                      className="w-full h-full object-contain"
-                      loading={i <= 1 ? "eager" : "lazy"}
-                    />
+                    <img src={src} alt="Portfolio" className="w-full h-full object-contain" loading={i <= 1 ? "eager" : "lazy"} />
                   </div>
-
-                  {/* Bottom Info Bar */}
-                  <div className="absolute bottom-6 left-6 right-6 z-20 flex justify-between items-end">
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-20 flex justify-between items-end">
                     <div>
                       <p className="text-[#2de8b0] text-xs font-bold uppercase tracking-widest mb-1">Portfolio</p>
-                      <p className="text-white font-medium">Click to explore</p>
+                      <p className="text-white font-medium text-sm">Click to explore</p>
                     </div>
                     <div className="flex gap-1.5">
                       {carouselImages.map((_, idx) => (
-                        <div
-                          key={idx}
-                          className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-6 bg-[#2de8b0]' : 'w-2 bg-white/20'}`}
-                        />
+                        <div key={idx} className={`h-1 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-6 bg-[#2de8b0]' : 'w-2 bg-white/20'}`} />
                       ))}
                     </div>
                   </div>
@@ -385,14 +317,10 @@ export default function WebHero() {
             </div>
             <div className="absolute -inset-4 bg-[#2de8b0]/10 blur-3xl -z-10 group-hover:bg-[#2de8b0]/20 transition-colors duration-500" />
           </div>
-
           {/* Feature Tags */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 px-2">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-2 px-2">
             {featureTags.map((tag, i) => (
-              <div
-                key={i}
-                className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-default"
-              >
+              <div key={i} className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-default">
                 {tag}
               </div>
             ))}

@@ -37,53 +37,24 @@ const Services = () => {
     ];
 
     return (
-        <section
-        id='services'
-            className={`relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#010504] ${urbanist.className}`}
-            style={{
-                background: `
-                    /* 1. Aggressive Top-Down Shadow (for seamless blend) */
-                    linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 20%, transparent 60%),
-
-                    /* 2. Side Vignettes (Darkens Left and Right edges) */
-                    radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%),
-                    radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%),
-
-                    /* 3. High-Intensity Center Glow (The "Bright" Part) */
-                    radial-gradient(
-                        circle at 50% 45%, 
-                        rgba(45, 232, 176, 0.35) 0%, 
-                        rgba(45, 232, 176, 0.1) 30%,
-                        transparent 70%
-                    ),
-                    
-                    /* 4. The Base Emerald Gradient */
-                    linear-gradient(
-                        180deg,
-                        #0F7C6E 0%,
-                        #0A4A42 40%,
-                        #062B24 75%,
-                        #010504 100%
-                    )
-                `
-            }}
-        >
+        <section id='services' className={`relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#010504] ${urbanist.className}`}
+        style={{
+            background: `linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 20%, transparent 60%), radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 50% 45%, rgba(45, 232, 176, 0.35) 0%, rgba(45, 232, 176, 0.1) 30%, transparent 70%), linear-gradient(180deg, #0F7C6E 0%, #0A4A42 40%, #062B24 75%, #010504 100%)`
+        }}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
-
-            <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                <div className="text-center mb-12 sm:mb-16">
+                    <div className="inline-flex items-center gap-2 mb-3 sm:mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
                         <svg className="w-4 h-4 text-[#2de8b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        <span className="text-sm text-white/70 uppercase tracking-wider font-medium">Our Services</span>
+                        <span className="text-xs sm:text-sm text-white/70 uppercase tracking-wider font-medium">Our Services</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-4">Services we offer</h2>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-0">Services we offer</h2>
                 </div>
-
                 {/* Bento Grid Layout */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {servicesData.map((service, index) => (
                         <div
                             key={index}

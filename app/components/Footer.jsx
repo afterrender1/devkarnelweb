@@ -101,23 +101,19 @@ export default function Footer() {
             </div>
 
             {/* Content */}
-            <div ref={contentRef} className="relative max-w-400 mx-auto px-6 lg:px-8 py-16 lg:py-20">
+            <div ref={contentRef} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
                 {/* Top Border */}
-                <div className="footer-animate border-t border-white/10 mb-12" />
-
+                <div className="footer-animate border-t border-white/10 mb-10 sm:mb-12" />
                 {/* Main Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8 mb-10 sm:mb-12">
                     {/* Left Section - Brand */}
                     <div className="footer-animate text-center md:text-left">
-                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3 tracking-tight">
-                            Devskarnel
-                        </h3>
-                        <p className="text-white/60 text-base lg:text-base mb-6 max-w-xs mx-auto md:mx-0">
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">Devskarnel</h3>
+                        <p className="text-white/60 text-sm sm:text-base mb-4 sm:mb-6 max-w-xs mx-auto md:mx-0">
                             Crafting digital experiences that inspire and engage.
                         </p>
-
                         {/* Social Icons */}
-                        <div className="flex gap-4 justify-center md:justify-start">
+                        <div className="flex gap-3 justify-center md:justify-start">
                             {socialLinks.map((social) => (
                                 <a
                                     key={social.name}

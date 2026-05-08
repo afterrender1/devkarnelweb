@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
-  :root {
-    scroll-behavior: smooth;
-    background-color: #0000;
-  }
+:root {
+  scroll-behavior: smooth;
+  background-color: #0000;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 
 

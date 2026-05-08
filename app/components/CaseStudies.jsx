@@ -93,51 +93,23 @@ export default function CaseStudies() {
     const currentCases = caseStudiesData[activeTab] || [];
 
     return (
-        <section
-            id="casestudies"
-            style={{
-                background: `
-    /* 1. Force black corners - increased spread to 70% to kill edge glow */
-    radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%),
-    radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%),
-    radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%),
-    radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 2. Strong Central Spotlight (Bright only in the middle) */
-    radial-gradient(
-      circle at 50% 50%, 
-      rgba(45, 232, 176, 0.8) 0%, 
-      transparent 60%
-    ),
-
-    /* 3. The "Pinched" Linear Base - Solid black for 40% of the height */
-    linear-gradient(
-      180deg,
-      #000000 0%,
-      #000000 40%,      /* Stay black longer from top */
-      #0F7C6E 50%,      /* Bright center pop */
-      #000000 60%,      /* Get black faster toward bottom */
-      #000000 100%
-    )
-  `,
+        <section id="casestudies" style={{
+                background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.8) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 40%, #0F7C6E 50%, #000000 60%, #000000 100%)`,
                 willChange: "opacity",
             }}
-            className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:pb-20 overflow-hidden ${urbanist.className}`}>
+            className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:py-24 overflow-hidden ${urbanist.className}`}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
-
-            <div className="relative z-10 max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
-
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5">
+                <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+                    <div className="inline-flex items-center gap-2 mb-3 sm:mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5">
                         <svg className="w-4 h-4 text-[#2de8b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        <span className="text-sm text-white/70 uppercase tracking-wider font-medium">Case Studies</span>
+                        <span className="text-xs sm:text-sm text-white/70 uppercase tracking-wider font-medium">Case Studies</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-4">Our customer stories</h2>
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Our customer stories</h2>
                 </div>
-
                 {/* Navigation Tabs */}
                 <div className="flex border border-white/20 rounded-t overflow-hidden">
                     {tabs.map((tab) => (

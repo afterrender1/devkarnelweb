@@ -92,72 +92,39 @@ export default function ServicesSection() {
     }, []);
 
     return (
-        <section
-
-            style={{
-                background: `
-    /* 1. TOP-LEFT CORNER SHADOW */
-    radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 2. TOP-RIGHT CORNER SHADOW */
-    radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 3. BOTTOM-LEFT CORNER SHADOW */
-    radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 4. BOTTOM-RIGHT CORNER SHADOW */
-    radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 5. THE CENTER GLOW (Spotlight) */
-    /* This sits on top of the base to give it a soft, circular neon feel */
-    radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, transparent 60%),
-
-    /* 6. THE "SANDWICH" BASE */
-    /* This defines the horizontal bands of color. 
-       0-35% is solid black (top)
-       50% is the emerald peak
-       65-100% is solid black (bottom) */
-    linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)
-  `
-            }} className={`bg-black py-24 px-6 ${urbanist.className}`}>
-            <div className="max-w-400 mx-auto" ref={containerRef}>
+        <section style={{
+                background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)`
+            }} className={`bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 ${urbanist.className}`}>
+            <div className="max-w-7xl mx-auto" ref={containerRef}>
                 {/* Header Text */}
-                <div className="mb-16">
-                    <h2 className="text-[#b4f481] text-sm font-bold uppercase tracking-[0.3em] mb-4">Our Expertise</h2>
-                    <p className="text-white text-4xl md:text-5xl font-bold max-w-2xl leading-tight">
+                <div className="mb-12 sm:mb-16">
+                    <h2 className="text-[#b4f481] text-xs sm:text-sm font-bold uppercase tracking-wider mb-3 sm:mb-4">Our Expertise</h2>
+                    <p className="text-white text-2xl sm:text-3xl lg:text-5xl font-bold max-w-3xl leading-tight">
                         Tailored digital solutions for modern brands.
                     </p>
                 </div>
-
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                     {services.map((service, index) => (
-                        <div
-                            key={index}
-                            ref={(el) => (itemsRef.current[index] = el)}
-                            className="group relative p-8 rounded-3xl bg-white/3 border border-white/10 hover:border-[#b4f481]/30 transition-all duration-500 overflow-hidden"
-                        >
+                        <div key={index} ref={(el) => (itemsRef.current[index] = el)} className="group relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/3 border border-white/10 hover:border-[#b4f481]/30 transition-all duration-500 overflow-hidden">
                             {/* Subtle Gradient Hover Effect */}
-                            <div className="absolute inset-0 bg-linear-to-br from-[#b4f481]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#b4f481]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             {/* Icon Container */}
-                            <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#b4f481]/10 flex items-center justify-center text-[#b4f481] mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <div className="relative z-10 w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-[#b4f481]/10 flex items-center justify-center text-[#b4f481] mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
                                 {service.icon}
                             </div>
-
                             {/* Content */}
                             <div className="relative z-10">
-                                <h3 className="text-white text-xl font-bold mb-3 group-hover:text-[#b4f481] transition-colors duration-300">
+                                <h3 className="text-white text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-[#b4f481] transition-colors duration-300">
                                     {service.title}
                                 </h3>
                                 <p className="text-white/50 leading-relaxed text-sm group-hover:text-white/70 transition-colors duration-300">
                                     {service.desc}
                                 </p>
                             </div>
-
                             {/* Corner Accent */}
-                            <div className="absolute bottom-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <svg className="w-5 h-5 text-[#b4f481]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="absolute bottom-0 right-0 p-3 sm:p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#b4f481]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </div>

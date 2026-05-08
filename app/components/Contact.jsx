@@ -12,31 +12,23 @@ const urbanist = Urbanist({ subsets: ["latin"], weight: ["300", "400", "500", "6
 const SERVICES = ["Website Development", "UI / UX Design", "App Development", "SEO", "Logo Design", "Other"];
 const COUNTRY_CODES = ["US", "UK", "PK", "IN", "CA", "AU"];
 
-const inputCls =
-    "w-full border border-white/10 rounded-lg px-3.5 py-2.5 text-[13.5px] text-white bg-white/5 outline-none transition-all duration-200 placeholder:text-white/20 focus:border-[#2de8b0] focus:ring-2 focus:ring-[#2de8b0]/10 focus:bg-white/10";
+const inputCls = "w-full border border-white/10 rounded-lg px-3 sm:px-3.5 py-2 sm:py-2.5 text-xs sm:text-sm text-white bg-white/5 outline-none transition-all duration-200 placeholder:text-white/20 focus:border-[#2de8b0] focus:ring-2 focus:ring-[#2de8b0]/10 focus:bg-white/10";
 
 const Checkbox = ({ label, checked, onToggle }) => (
-    <label className="flex items-center gap-2.5 cursor-pointer select-none group">
-        <span
-            onClick={onToggle}
-            role="checkbox"
-            aria-checked={checked}
-            className="w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all duration-150"
-            style={{ border: `1.5px solid ${checked ? "#2de8b0" : "rgba(255,255,255,0.2)"}`, background: checked ? "#2de8b0" : "transparent" }}
-        >
-            {checked && (
-                <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                    <path d="M1 3.5L3.2 5.8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            )}
+    <label className="flex items-center gap-2 cursor-pointer select-none group">
+        <span onClick={onToggle} role="checkbox" aria-checked={checked} className="w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all duration-150"
+            style={{ border: `1.5px solid ${checked ? "#2de8b0" : "rgba(255,255,255,0.2)"}`, background: checked ? "#2de8b0" : "transparent" }}>
+            {checked && <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                <path d="M1 3.5L3.2 5.8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>}
         </span>
-        <span className="text-[1rem] lg:text-[1rem] text-white/50 group-hover:text-white/80 transition-colors duration-150 font-medium">{label}</span>
+        <span className="text-sm lg:text-base text-white/50 group-hover:text-white/80 transition-colors duration-150 font-medium">{label}</span>
     </label>
 );
 
 const Field = ({ label, children, htmlFor }) => (
-    <div className="flex flex-col gap-1.5">
-        <label htmlFor={htmlFor} className="text-[0.7rem] lg:text-[0.8rem] font-semibold text-white/40 tracking-wide uppercase">{label}</label>
+    <div className="flex flex-col gap-1">
+        <label htmlFor={htmlFor} className="text-xs lg:text-sm font-semibold text-white/40 tracking-wide uppercase">{label}</label>
         {children}
     </div>
 );
@@ -66,8 +58,8 @@ const ContactForm = () => {
     };
 
     return (
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <form className="flex flex-col gap-3 sm:gap-4" onSubmit={handleSubmit} noValidate>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <Field label="Name" htmlFor="name">
                     <input id="name" name="name" type="text" placeholder="Your name" value={values.name} onChange={handle} className={inputCls} required />
                 </Field>
@@ -75,43 +67,29 @@ const ContactForm = () => {
                     <input id="email" name="email" type="email" placeholder="you@company.com" value={values.email} onChange={handle} className={inputCls} required />
                 </Field>
             </div>
-
             <Field label="Phone number" htmlFor="phone">
                 <div className="flex gap-2">
-                    <select
-                        name="countryCode"
-                        value={values.countryCode}
-                        onChange={handle}
-                        className="border border-white/10 rounded-lg px-2 text-[1rem] lg:text-[0.8rem] text-white bg-white/5 outline-none cursor-pointer focus:border-[#2de8b0] transition-all"
-                        style={{ width: "72px" }}
-                    >
+                    <select name="countryCode" value={values.countryCode} onChange={handle} className="border border-white/10 rounded-lg px-2 text-sm text-white bg-white/5 outline-none cursor-pointer focus:border-[#2de8b0] transition-all" style={{ width: "72px" }}>
                         {COUNTRY_CODES.map((c) => <option key={c} value={c} className="bg-[#0a4a42] text-white">{c}</option>)}
                     </select>
                     <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" value={values.phone} onChange={handle} className={`${inputCls} flex-1`} />
                 </div>
             </Field>
-
             <Field label="How can we help?" htmlFor="message">
                 <textarea id="message" name="message" rows={4} placeholder="Tell us about the project..." value={values.message} onChange={handle} className={`${inputCls} resize-none`} required />
             </Field>
-
             <fieldset>
-                <legend className="text-[1rem] lg:text-[0.8rem] font-semibold text-white/40 tracking-wide uppercase mb-1.5">Services</legend>
-                <div className="grid grid-cols-2 gap-y-3 gap-x-4 pt-0.5">
+                <legend className="text-xs lg:text-sm font-semibold text-white/40 tracking-wide uppercase mb-2">Services</legend>
+                <div className="grid grid-cols-2 gap-y-2 gap-x-3">
                     {SERVICES.map((s) => (
                         <Checkbox key={s} label={s} checked={values.services.includes(s)} onToggle={() => toggleService(s)} />
                     ))}
                 </div>
             </fieldset>
-
-            <button
-                type="submit"
-                className="group mt-1 w-full py-3.5 rounded-xl bg-[#2de8b0] text-black font-bold text-[14px] tracking-wide transition-all duration-300 hover:bg-[#1bc497] hover:shadow-[0_0_20px_rgba(45,232,176,0.3)] active:scale-[0.98]"
-            >
+            <button type="submit" className="group mt-2 w-full py-3 sm:py-3.5 rounded-xl bg-[#2de8b0] text-black font-bold text-sm sm:text-base tracking-wide transition-all duration-300 hover:bg-[#1bc497] hover:shadow-lg hover:shadow-[#2de8b0]/30 active:scale-[0.98]">
                 Get started →
             </button>
-
-            {status && <p className="text-sm mt-2 text-center text-[#2de8b0]">{status}</p>}
+            {status && <p className="text-xs sm:text-sm mt-2 text-center text-[#2de8b0]">{status}</p>}
         </form>
     );
 };
@@ -143,47 +121,13 @@ const Contact = () => {
 
     return (
         <>
-            <section
-                id="contact"
-                ref={containerRef}
-                className={`relative w-full min-h-screen flex items-center justify-center p-0 sm:p-6 lg:p-10 ${urbanist.className}`}
+            <section id="contact" ref={containerRef} className={`relative w-full min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 ${urbanist.className}`}
                 style={{
-                    background: `
-    /* 1. TOP-LEFT CORNER SHADOW */
-    radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 2. TOP-RIGHT CORNER SHADOW */
-    radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 3. BOTTOM-LEFT CORNER SHADOW */
-    radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 4. BOTTOM-RIGHT CORNER SHADOW */
-    radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%),
-
-    /* 5. THE CENTER GLOW (Spotlight) */
-    /* This sits on top of the base to give it a soft, circular neon feel */
-    radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, transparent 60%),
-
-    /* 6. THE "SANDWICH" BASE */
-    /* This defines the horizontal bands of color. 
-       0-35% is solid black (top)
-       50% is the emerald peak
-       65-100% is solid black (bottom) */
-    linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)
-  `
-                }}
-            >
-
-                <div
-                    ref={cardRef}
-                    className="flex flex-col md:flex-row w-full max-w-280 min-h-screen md:min-h-0 md:rounded-3xl overflow-hidden backdrop-blur-3xl bg-white/5 border border-white/10 shadow-2xl"
-                    style={{ opacity: 0 }}
-                >
-
-
+                    background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)`
+                }}>
+                <div ref={cardRef} className="flex flex-col md:flex-row w-full max-w-7xl min-h-screen md:min-h-auto md:rounded-3xl overflow-hidden backdrop-blur-3xl bg-white/5 border border-white/10 shadow-2xl" style={{ opacity: 0 }}>
                     {/* Left Visual Side */}
-                    <div className="relative w-full h-56 md:h-auto md:w-[42%] shrink-0 overflow-hidden ">
+                    <div className="relative w-full h-48 sm:h-56 md:h-auto md:w-[42%] shrink-0 overflow-hidden">
 
                         <Image
                             src="/images/contact.png"
@@ -199,18 +143,13 @@ const Contact = () => {
                     </div>
 
                     {/* Right Form Side */}
-                    <div className="flex-1 flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 overflow-y-auto">
-
-                        <div className="mb-7 flex justify-between">
-                            <div>
-                                <h2 className="text-[1rem] lg:text-[2.4rem] font-extrabold text-white leading-[1.15] tracking-tight ">
-                                    Let&apos;s level up your <span className="text-[#2de8b0]">brand,</span> together
-                                </h2>
-                                <p className="text-white/40 text-[1rem] lg:text-[1.1rem] mt-2.5">Fill out the form and our team will get back to you within 24 hours.</p>
-                            </div>
-                        
+                    <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12 overflow-y-auto">
+                        <div className="mb-6 sm:mb-8">
+                            <h2 className="text-lg sm:text-2xl lg:text-4xl font-bold text-white leading-tight mb-2 sm:mb-3">
+                                Let&apos;s level up your <span className="text-[#2de8b0]">brand,</span> together
+                            </h2>
+                            <p className="text-white/40 text-sm sm:text-base">Fill out the form and our team will get back to you within 24 hours.</p>
                         </div>
-
                         <ContactForm />
                     </div>
                 </div>

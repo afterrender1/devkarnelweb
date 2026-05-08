@@ -66,74 +66,36 @@ const Testimonials = () => {
     };
 
     return (
-        <section
-
-        id='reviews'
-            style={{
-                background: `
-    /* 1. Heavy Corner Vignettes (Total black-out of all 4 corners) */
-    radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 60%),
-    radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 60%),
-    radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 60%),
-
-    /* 2. Intense Central Glow (Increased opacity to 0.6 and widened) */
-    radial-gradient(
-      circle at 50% 50%, 
-      rgba(45, 232, 176, 0.6) 0%, 
-      rgba(45, 232, 176, 0.2) 25%,
-      transparent 75%
-    ),
-
-    /* 3. The High-Brightness Base Gradient */
-    linear-gradient(
-      180deg,
-      #000000 0%,
-      #000000 15%,      /* Pitch black top */
-      #24E8B2 50%,      /* VIBRANT Emerald Peak (Brightest center) */
-      #000000 65%,      /* Pitch black bottom */
-      #000000 100%
-    )
-  `,
+        <section id='reviews' style={{
+                background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 60%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 60%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 60%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 60%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, rgba(45, 232, 176, 0.2) 25%, transparent 75%), linear-gradient(180deg, #000000 0%, #000000 15%, #24E8B2 50%, #000000 65%, #000000 100%)`,
                 willChange: "opacity",
             }}
-            className={`relative w-full py-20 overflow-hidden ${urbanist.className}`}>
-
+            className={`relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden ${urbanist.className}`}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
-
-            <div className="relative z-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-12 sm:mb-16">
+                    <div className="inline-flex items-center gap-2 mb-3 sm:mb-4 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
                         <svg className="w-4 h-4 text-[#2de8b0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        <span className="text-sm text-white/70 uppercase tracking-wider font-medium">Testimonials</span>
+                        <span className="text-xs sm:text-sm text-white/70 uppercase tracking-wider font-medium">Testimonials</span>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-4">What our clients say</h2>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white">What our clients say</h2>
                 </div>
                 {/* Header with Navigation */}
-                <div className="flex justify-between items-end mb-12">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 sm:gap-8 mb-10 sm:mb-12">
                     <div>
-                        <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-2">What our clients say</h2>
-                        <p className="text-white/50">Trusted by entrepreneurs and industry leaders worldwide.</p>
+                        <p className="text-white/50 text-sm sm:text-base">Trusted by entrepreneurs and industry leaders worldwide.</p>
                     </div>
-
-                    <div className="flex gap-3">
-                        <button
-                            onClick={() => slide('prev')}
-                            className="p-3 rounded-full border border-white/10 bg-white/5 hover:bg-[#2de8b0] hover:text-black transition-all duration-300 text-white"
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                    <div className="flex gap-2 sm:gap-3">
+                        <button onClick={() => slide('prev')} className="p-2 sm:p-3 rounded-full border border-white/10 bg-white/5 hover:bg-[#2de8b0] hover:text-black transition-all duration-300 text-white">
+                            <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                         </button>
-                        <button
-                            onClick={() => slide('next')}
-                            className="p-3 rounded-full border border-white/10 bg-white/5 hover:bg-[#2de8b0] hover:text-black transition-all duration-300 text-white"
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                        <button onClick={() => slide('next')} className="p-2 sm:p-3 rounded-full border border-white/10 bg-white/5 hover:bg-[#2de8b0] hover:text-black transition-all duration-300 text-white">
+                            <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                         </button>
                     </div>
                 </div>
-
                 {/* Carousel Container */}
                 <div ref={containerRef} className="overflow-visible">
                     <div ref={sliderRef} className="flex gap-5">

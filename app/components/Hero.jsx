@@ -1,15 +1,7 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { urbanist } from "../fonts";
-
-const funnelSteps = [
-  { label: "Market study,\nBenchmarking", active: false },
-  { label: "Concept\nexploration", active: true },
-  { label: "System\nspecification", active: false },
-  { label: "Component\nspecification", active: false },
-];
 
 export default function Hero() {
   const headingLine1Ref = useRef(null);
@@ -18,227 +10,67 @@ export default function Hero() {
   const subRef = useRef(null);
   const btnsRef = useRef(null);
   const bgGradientRef = useRef(null);
-  const funnelRef = useRef(null);
   const bgRevealRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set([headingLine1Ref.current, headingLine2Ref.current, headingLine3Ref.current, subRef.current, btnsRef.current], {
-        opacity: 0,
-        y: 40,
-        filter: "blur(10px)",
+        opacity: 0, y: 40, filter: "blur(10px)",
       });
-
       gsap.set(bgGradientRef.current, { opacity: 0.6 });
-
-      // Set initial opacity for background reveal
-      gsap.set(bgRevealRef.current, {
-        opacity: 0.4,
-      });
+      gsap.set(bgRevealRef.current, { opacity: 0.4 });
 
       const tl = gsap.timeline();
-
-      // Line 1 of heading
-      tl.to(
-        headingLine1Ref.current,
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.7,
-          ease: "power2.out",
-        },
-        0
-      );
-
-      tl.to(
-        headingLine2Ref.current,
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.7,
-          ease: "power2.out",
-        },
-        0.15
-      );
-
-      tl.to(
-        headingLine3Ref.current,
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.7,
-          ease: "power2.out",
-        },
-        0.3
-      );
-
-      tl.to(
-        subRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        0.45
-      );
-
-      tl.to(
-        btnsRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        0.6
-      );
-
-      // Background gradient enhancement after heading animation ends
-      tl.to(
-        bgGradientRef.current,
-        {
-          opacity: 0,
-          duration: 1.2,
-          ease: "power2.out",
-        },
-        1.2
-      );
-
-      // Background reveal animation - opacity fade in
-      tl.to(
-        bgRevealRef.current,
-        {
-          opacity: 1,
-          duration: 1.3,
-          ease: "power2.out",
-        },
-        1.2
-      );
+      tl.to(headingLine1Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0)
+        .to(headingLine2Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0.15)
+        .to(headingLine3Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0.3)
+        .to(subRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.45)
+        .to(btnsRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.6)
+        .to(bgGradientRef.current, { opacity: 0, duration: 1.2, ease: "power2.out" }, 1.2)
+        .to(bgRevealRef.current, { opacity: 1, duration: 1.3, ease: "power2.out" }, 1.2);
     });
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <section
-      className={`relative min-h-screen w-full flex items-center overflow-hidden ${urbanist.className}`}
-      style={{
-        backgroundColor: "#010504",
-      }}
-    >
-      <div
-        ref={bgRevealRef}
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background: `
-    radial-gradient(circle at 10% 70%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
-    radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
-    radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
-    radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%),
-    linear-gradient(
-      180deg,
-      #24E8B2 0%,
-      #1BC497 5%,
-      #0F7C6E 40%,
-      #0A4A42 60%,
-      #062B24 80%,
-      #010504 100%
-    )
-  `,
-          willChange: "opacity",
-        }}
-      />
+    <section className={`relative min-h-screen w-full flex items-center overflow-hidden bg-[#010504] ${urbanist.className}`}>
+      <div ref={bgRevealRef} className="absolute inset-0 w-full h-full" style={{
+        background: `radial-gradient(circle at 10% 70%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%), radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%), radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%), radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%), linear-gradient(180deg, #24E8B2 0%, #1BC497 5%, #0F7C6E 40%, #0A4A42 60%, #062B24 80%, #010504 100%)`,
+        willChange: "opacity",
+      }} />
       <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
-
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 z-5 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(1,5,4,0.6) 100%)",
-        }}
-      />
-
-      <div
-        className="absolute inset-0 w-full h-full opacity-20"
-        style={{
-          background: "radial-gradient(ellipse at 50% 0%, rgba(45,232,176,0.1) 0%, transparent 70%)",
-        }}
-      />
-
-      <div
-        ref={bgGradientRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 30% 50%, rgba(45,232,176,0.05) 0%, transparent 60%)",
-        }}
-      />
-
-      <div className="relative z-10 w-full max-w-400 mx-auto px-4 sm:px-6 pt-2 pb-20 sm:pb-24 flex flex-col lg:flex-row items-center gap-12 sm:gap-16 lg:gap-8 lg:pt-12">
-        {/* Left: Text */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-20 sm:pb-24 flex flex-col items-center justify-center text-center">
-          {/* Content Wrapper */}
-          <div className="w-full flex flex-col items-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-semibold leading-[1.20] tracking-tight text-white mb-6 lg:mb-8">
-              <span
-                ref={headingLine1Ref}
-                className="block"
-              >
-                Crafting high-performance
-              </span>
-
-              <span
-                ref={headingLine2Ref}
-                className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent"
-              >
-                Digital experiences and
-              </span>
-
-              <span
-                ref={headingLine3Ref}
-                className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent"
-              >
-                Bespoke web solutions
-              </span>
-            </h1>
-
-            <p
-              ref={subRef}
-              className="text-white/60 text-sm sm:text-[0.95rem] leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto"
-            >
-              Generate application-specific answers and demonstrate performance
-              with speed, clarity, and precision.
-            </p>
-
-            <div ref={btnsRef} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-              <a href="#contact" className="w-full sm:w-auto">
-                <button
-                  className="w-full sm:w-auto cursor-pointer px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 whitespace-nowrap"
-                  style={{
-                    backgroundColor: "#2de8b0",
-                    boxShadow: "0 8px 30px rgba(45,232,176,0.25)",
-                  }}
-                >
-                  Contact us
-                </button>
-              </a>
-
-              <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <button
-                  className="w-full sm:w-auto cursor-pointer px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-[1rem] font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 whitespace-nowrap"
-                >
-                  Request a quote
-                </button>
-              </a>
-            </div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 z-5 pointer-events-none" style={{
+        background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(1,5,4,0.6) 100%)",
+      }} />
+      <div className="absolute inset-0 w-full h-full opacity-20" style={{
+        background: "radial-gradient(ellipse at 50% 0%, rgba(45,232,176,0.1) 0%, transparent 70%)",
+      }} />
+      <div ref={bgGradientRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{
+        background: "radial-gradient(circle at 30% 50%, rgba(45,232,176,0.05) 0%, transparent 60%)",
+      }} />
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
+        <div className="w-full flex flex-col items-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
+            <span ref={headingLine1Ref} className="block">Crafting high-performance</span>
+            <span ref={headingLine2Ref} className="block bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Digital experiences and</span>
+            <span ref={headingLine3Ref} className="block bg-gradient-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent">Bespoke web solutions</span>
+          </h1>
+          <p ref={subRef} className="text-white/60 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-2xl">
+            Generate application-specific answers and demonstrate performance with speed, clarity, and precision.
+          </p>
+          <div ref={btnsRef} className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+            <a href="#contact" className="w-full sm:w-auto">
+              <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25">
+                Contact us
+              </button>
+            </a>
+            <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10">
+                Request a quote
+              </button>
+            </a>
           </div>
         </div>
-
-
       </div>
     </section>
   );

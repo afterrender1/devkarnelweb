@@ -258,7 +258,7 @@ export default function WebHero() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16 py-16 sm:py-20 lg:py-24">
         <div className="w-full lg:w-1/2">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
             <span ref={headingLine1Ref} className="block">Architecting high-end</span>
             <span ref={headingLine2Ref} className="block bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Scalable Websites &</span>
             <span ref={headingLine3Ref} className="block text-[#2de8b0]">Digital Ecosystems</span>

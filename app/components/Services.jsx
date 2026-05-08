@@ -62,13 +62,12 @@ const Services = () => {
                                 ${service.colSpan} 
                                 relative group 
                                 overflow-hidden 
-                                rounded 
+                                rounded-3xl 
                                 min-h-87.5 sm:min-h-100 lg:min-h-112.5
                                 transition-all duration-500 ease-out
                                 hover:scale-[1.02]
                                 hover:border-[#2de8b0]/50
                                 hover:shadow-[0_0_60px_rgba(45,232,176,0.15)]
-                                border border-white/10
                                 bg-white/5
                                 backdrop-blur-xl
                                 cursor-pointer

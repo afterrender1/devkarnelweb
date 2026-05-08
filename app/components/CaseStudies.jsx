@@ -94,9 +94,9 @@ export default function CaseStudies() {
 
     return (
         <section id="casestudies" style={{
-                background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.8) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 40%, #0F7C6E 50%, #000000 60%, #000000 100%)`,
-                willChange: "opacity",
-            }}
+            background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.8) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 40%, #0F7C6E 50%, #000000 60%, #000000 100%)`,
+            willChange: "opacity",
+        }}
             className={`relative w-full bg-[#0a0f0d] py-16 sm:py-20 lg:py-24 overflow-hidden ${urbanist.className}`}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

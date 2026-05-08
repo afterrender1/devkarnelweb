@@ -58,8 +58,8 @@ export default function CTASection() {
 
     return (
         <section style={{
-                background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.4) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #064e3b 50%, #000000 65%, #000000 100%)`
-            }} ref={containerRef} className={`relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden ${urbanist.className}`}>
+            background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.4) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #064e3b 50%, #000000 65%, #000000 100%)`
+        }} ref={containerRef} className={`relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden ${urbanist.className}`}>
             {/* Background Radial Glow */}
             <div ref={backgroundGlowRef} className="absolute -bottom-32 sm:-bottom-48 -left-32 sm:-left-48 w-96 sm:w-[600px] h-96 sm:h-[600px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none opacity-30 z-0" />
             <div className="relative z-10 max-w-7xl mx-auto text-center">
@@ -77,11 +77,11 @@ export default function CTASection() {
                 {/* CTA Button and Contact */}
                 <div ref={buttonRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8">
                     <button className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl bg-emerald-500 text-white font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:bg-emerald-400 hover:scale-[1.03] hover:shadow-lg hover:shadow-emerald-500/40 active:scale-[0.97]">
-                       Request a Quote
+                        Request a Quote
                     </button>
                     <span className="text-white/50 text-base sm:text-lg font-medium">or</span>
                     <a href="mailto:devskarnel@gmail.com" className="text-white text-sm sm:text-base lg:text-lg font-semibold border-b-2 border-emerald-500/30 hover:border-emerald-500 transition-colors pb-1">
-                       devskarnel@gmail.com
+                        devskarnel@gmail.com
                     </a>
                 </div>
             </div>

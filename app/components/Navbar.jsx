@@ -232,9 +232,9 @@ export default function Navbar() {
                             <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer">
 
 
-                            <button className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95">
-                                Request a quote
-                            </button>
+                                <button className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95">
+                                    Request a quote
+                                </button>
                             </a>
                         </div>
 

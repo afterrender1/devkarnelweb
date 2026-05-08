@@ -93,8 +93,8 @@ export default function ServicesSection() {
 
     return (
         <section style={{
-                background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)`
-            }} className={`bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 ${urbanist.className}`}>
+            background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.6) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)`
+        }} className={`bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 ${urbanist.className}`}>
             <div className="max-w-7xl mx-auto" ref={containerRef}>
                 {/* Header Text */}
                 <div className="mb-12 sm:mb-16">

@@ -38,9 +38,9 @@ const Services = () => {
 
     return (
         <section id='services' className={`relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden bg-[#010504] ${urbanist.className}`}
-        style={{
-            background: `linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 20%, transparent 60%), radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 50% 45%, rgba(45, 232, 176, 0.35) 0%, rgba(45, 232, 176, 0.1) 30%, transparent 70%), linear-gradient(180deg, #0F7C6E 0%, #0A4A42 40%, #062B24 75%, #010504 100%)`
-        }}>
+            style={{
+                background: `linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 20%, transparent 60%), radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 50% 45%, rgba(45, 232, 176, 0.35) 0%, rgba(45, 232, 176, 0.1) 30%, transparent 70%), linear-gradient(180deg, #0F7C6E 0%, #0A4A42 40%, #062B24 75%, #010504 100%)`
+            }}>
             <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}

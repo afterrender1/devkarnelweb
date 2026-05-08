@@ -220,13 +220,13 @@ export default function Navbar() {
 
                     {/* Right Actions */}
                     <div className="flex items-center gap-3">
-                        <div ref={iconsRef} className="hidden sm:flex items-center gap-1">
+                        {/* <div ref={iconsRef} className="hidden sm:flex items-center gap-1">
                             {iconActions.map(({ icon, label }) => (
                                 <button key={label} aria-label={label} className="p-2 text-white/60 hover:text-white hover:bg-white/8 rounded-lg transition-all">
                                     {icon}
                                 </button>
                             ))}
-                        </div>
+                        </div> */}
 
                         <div ref={ctaRef}>
                             <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer">

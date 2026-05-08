@@ -1,5 +1,6 @@
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import LenisProvider from "./providers/LenisProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -26,7 +27,7 @@ export const metadata = {
     "Full-Stack Development",
     "WordPress Development",
     "Shopify Development",
-    
+
   ],
 
   authors: [{ name: "Devskarnel" }],
@@ -48,9 +49,9 @@ export const metadata = {
       "We build fast, scalable, and SEO-friendly web applications using Next.js and MERN stack.",
     url: "https://devskarnel.com/",
     siteName: "Devskarnel",
-    images:[
+    images: [
       {
-        url : 'favicon.ico',
+        url: 'favicon.ico',
         width: 1200,
         height: 630,
         alt: 'Devskarnel - Web Development Agency',
@@ -91,29 +92,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="">
+        <LenisProvider>
+          <h1 className="hidden">
+            Devskarnel Web Development Agency - Next.js & MERN Experts
+          </h1>
 
-        <h1 className="hidden">
-          Devskarnel Web Development Agency - Next.js & MERN Experts
-        </h1>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(organizationSchema),
+            }}
+          />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
-          }}
-        />
-      <Navbar />
-
-
-        {children}
-      <Footer/>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(websiteSchema),
+            }}
+          />
+          <Navbar />
+          {children}
+          <Footer />
+        </LenisProvider>
       </body>
     </html>
   );

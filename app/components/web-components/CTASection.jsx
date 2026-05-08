@@ -61,12 +61,12 @@ export default function CTASection() {
             background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.4) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #064e3b 50%, #000000 65%, #000000 100%)`
         }} ref={containerRef} className={`relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden ${urbanist.className}`}>
             {/* Background Radial Glow */}
-            <div ref={backgroundGlowRef} className="absolute -bottom-32 sm:-bottom-48 -left-32 sm:-left-48 w-96 sm:w-[600px] h-96 sm:h-[600px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none opacity-30 z-0" />
+            <div ref={backgroundGlowRef} className="absolute -bottom-32 sm:-bottom-48 -left-32 sm:-left-48 w-96 sm:w-150 h-96 sm:h-150 bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none opacity-30 z-0" />
             <div className="relative z-10 max-w-7xl mx-auto text-center">
                 {/* Main Headline */}
                 <h2 ref={headlineRef} className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white">
                     Ready to Get a Website That <br className="hidden sm:inline" />
-                    <span className="bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-emerald-400 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
                         Actually Grows Your Business?
                     </span>
                 </h2>

@@ -260,7 +260,7 @@ export default function WebHero() {
         <div className="w-full lg:w-1/2">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
             <span ref={headingLine1Ref} className="block">Architecting high-end</span>
-            <span ref={headingLine2Ref} className="block bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Scalable Websites &</span>
+            <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">Scalable Websites &</span>
             <span ref={headingLine3Ref} className="block text-[#2de8b0]">Digital Ecosystems</span>
           </h1>
           <p ref={subRef} className="text-white/60 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-md">
@@ -297,7 +297,7 @@ export default function WebHero() {
                   <div className="absolute inset-0 w-full h-full">
                     <img src={src} alt="" className="w-full h-full object-cover scale-110 opacity-40" loading={i <= 1 ? "eager" : "lazy"} />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="relative z-10 w-full h-full flex items-center justify-center p-4">
                     <img src={src} alt="Portfolio" className="w-full h-full object-contain" loading={i <= 1 ? "eager" : "lazy"} />
                   </div>

@@ -108,7 +108,7 @@ export default function ServicesSection() {
                     {services.map((service, index) => (
                         <div key={index} ref={(el) => (itemsRef.current[index] = el)} className="group relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/3 border border-white/10 hover:border-[#b4f481]/30 transition-all duration-500 overflow-hidden">
                             {/* Subtle Gradient Hover Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#b4f481]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-linear-to-br from-[#b4f481]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             {/* Icon Container */}
                             <div className="relative z-10 w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-[#b4f481]/10 flex items-center justify-center text-[#b4f481] mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
                                 {service.icon}

@@ -52,8 +52,8 @@ export default function Hero() {
         <div className="w-full flex flex-col items-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
             <span ref={headingLine1Ref} className="block">Crafting high-performance</span>
-            <span ref={headingLine2Ref} className="block bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Digital experiences and</span>
-            <span ref={headingLine3Ref} className="block bg-gradient-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent">Bespoke web solutions</span>
+            <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">Digital experiences and</span>
+            <span ref={headingLine3Ref} className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent">Bespoke web solutions</span>
           </h1>
           <p ref={subRef} className="text-white/60 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-2xl">
             Generate application-specific answers and demonstrate performance with speed, clarity, and precision.

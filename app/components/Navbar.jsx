@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
-import { urbanist } from "../fonts";
+import { truculenta, urbanist } from "../fonts";
 
 // --- Icons ---
 const SearchIcon = () => (
@@ -162,7 +162,7 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4 sm:gap-6">
 
                     {/* Logo */}
-                    <div ref={logoRef} className="shrink-0">
+                    <div ref={logoRef} className={`shrink-0 ${truculenta.className}`}>
                         <Link href="/" className="text-white font-bold text-xl sm:text-4xl tracking-tight select-none">
                             DEVS<span className="text-emerald-400">KARNEL</span>
                         </Link>

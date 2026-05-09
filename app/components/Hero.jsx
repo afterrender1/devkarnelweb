@@ -50,7 +50,7 @@ export default function Hero() {
       }} />
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
         <div className="w-full flex flex-col items-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-semibold leading-none tracking-tight text-white mb-4 sm:mb-6">
             <span ref={headingLine1Ref} className="block">Crafting high-performance</span>
             <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent">Digital experiences and</span>
             <span ref={headingLine3Ref} className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent">Bespoke web solutions</span>

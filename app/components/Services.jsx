@@ -8,7 +8,7 @@ const Services = () => {
             title: "App Development",
             desc: "Building high-performance native and cross-platform mobile solutions.",
             colSpan: "lg:col-span-1",
-            image: "/images/service_images/appdev.png"
+            image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325978/Adobe_Express_-_file_lctvwl.png"
         },
         {
             title: "Web Development",
@@ -20,13 +20,13 @@ const Services = () => {
             title: "UI / UX Design",
             desc: "Crafting intuitive interfaces and seamless user journeys that convert.",
             colSpan: "lg:col-span-1",
-            image: "/images/service_images/uiux.png"
+            image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325979/Gemini_Generated_Image_y8divby8divby8di_1_iwcwda.png"
         },
         {
             title: "SEO Optimization",
             desc: "Boosting visibility and organic growth through data-driven strategies.",
             colSpan: "lg:col-span-1",
-            image: "/images/service_images/seo1.png"
+            image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325979/Gemini_Generated_Image_8fs9m78fs9m78fs9_1_hea4am.png"
         },
         {
             title: "Logo Design",
@@ -68,7 +68,6 @@ const Services = () => {
                                 hover:scale-[1.02]
                                 hover:border-[#2de8b0]/50
                                 hover:shadow-[0_0_60px_rgba(45,232,176,0.15)]
-                                bg-white/5
                                 backdrop-blur-xl
                                 cursor-pointer
                             `}

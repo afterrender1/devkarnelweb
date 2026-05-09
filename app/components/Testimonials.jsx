@@ -9,37 +9,37 @@ const testimonials = [
         name: "Sarah Thompson",
         date: "3 months ago",
         text: "A year ago I was struggling to keep up with my debt payments, but their team provided a clear path forward...",
-        image: "https://randomuser.me/api/portraits/men/6.jpg"
+        image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778324487/Gemini_Generated_Image_30bf0x30bf0x30bf_epjjvk.png"
     },
     {
         name: "Daniel Martinez",
         date: "2 months ago",
         text: "The team was supportive and transparent throughout the process. I finally feel in control of my finances.",
-        image: "https://randomuser.me/api/portraits/men/2.jpg"
+        image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778324488/Gemini_Generated_Image_es9d40es9d40es9d_sgosrf.png"
     },
     {
         name: "Emily Carter",
         date: "4 months ago",
         text: "I had multiple debts and didn't know where to start. Their strategy was easy to follow and highly effective.",
-        image: "https://randomuser.me/api/portraits/women/3.jpg"
+        image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778324487/Gemini_Generated_Image_snm57hsnm57hsnm5_xgzepg.png"
     },
     {
         name: "Michael Chen",
         date: "3 months ago",
         text: "Professional, trustworthy, and very responsive. They handled everything with care. Highly recommended!",
-        image: "https://randomuser.me/api/portraits/men/4.jpg"
+        image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778324488/Gemini_Generated_Image_lnm5imlnm5imlnm5_fqc9ao.png"
     },
     {
         name: "Jessica Blair",
         date: "1 month ago",
         text: "The digital transformation they led for our app was seamless. Code quality is top-tier.",
-        image: "https://randomuser.me/api/portraits/women/5.jpg"
+        image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778324487/Gemini_Generated_Image_nroht7nroht7nroh_vhjuqp.png"
     },
     {
         name: "Marcus Wright",
         date: "5 months ago",
         text: "Excellent communication and even better results. Our SEO traffic has doubled since launch.",
-        image: "https://randomuser.me/api/portraits/women/1.jpg"
+        image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778324486/Gemini_Generated_Image_vos73avos73avos7_gg4zle.png"
     }
 ];
 

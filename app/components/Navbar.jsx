@@ -143,11 +143,16 @@ export default function Navbar() {
 
             const handleScroll = () => {
                 const scrollY = window.scrollY;
-                const opacity = Math.min(scrollY / 80, 0.95);
                 if (navRef.current) {
-                    navRef.current.style.backgroundColor = `rgba(13, 17, 23, ${opacity})`;
-                    navRef.current.style.backdropFilter = scrollY > 10 ? "blur(16px)" : "blur(0px)";
-                    navRef.current.style.borderBottom = scrollY > 10 ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent";
+                    if (scrollY > 10) {
+                        navRef.current.style.backgroundColor = "transparent";
+                        navRef.current.style.backdropFilter = "blur(32px)";
+                        navRef.current.style.borderBottom = "1px solid rgba(255,255,255,0.08)";
+                    } else {
+                        navRef.current.style.backgroundColor = "transparent";
+                        navRef.current.style.backdropFilter = "blur(0px)";
+                        navRef.current.style.borderBottom = "1px solid transparent";
+                    }
                 }
             };
             window.addEventListener("scroll", handleScroll, { passive: true });

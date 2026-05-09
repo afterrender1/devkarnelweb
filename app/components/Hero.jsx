@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { urbanist } from "../fonts";
 
-// ─── images ───────────────────────────────────────────────────────────────────
 const images = [
   "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png",
   "https://res.cloudinary.com/dlurrugno/image/upload/v1778329047/tmg_sp66wu.png",
@@ -13,14 +12,11 @@ const images = [
   "https://res.cloudinary.com/dlurrugno/image/upload/v1778329174/javewe_k6n8sg.png",
 ];
 
-// Triple the array so wrapping is always invisible
 const LOOP = [...images, ...images, ...images];
-const START = images.length; // index 6 — begin in the middle set
-const GAP = 16;              // px — keep in sync with the CSS below
+const START = images.length;
+const GAP = 16;             
 
-// ─── focus helpers ────────────────────────────────────────────────────────────
 
-/** How many cards are visible at the current viewport width. */
 function getCardsPerView() {
   if (typeof window === "undefined") return 1;
   if (window.innerWidth >= 1024) return 3;
@@ -29,7 +25,6 @@ function getCardsPerView() {
 }
 
 export default function Hero() {
-  // ── heading / bg refs ─────────────────────────────────────────────────────
   const headingLine1Ref = useRef(null);
   const headingLine2Ref = useRef(null);
   const headingLine3Ref = useRef(null);
@@ -38,11 +33,11 @@ export default function Hero() {
   const bgGradientRef = useRef(null);
   const bgRevealRef = useRef(null);
 
-  const wrapRef = useRef(null);   // overflow-hidden viewport
-  const trackRef = useRef(null);  // flex row containing all 18 cards
-  const idxRef = useRef(START);   // current logical index
-  const busyRef = useRef(false);  // guard: prevents overlapping tweens
-  const pausedRef = useRef(false);// hover pause flag — no interval teardown needed
+  const wrapRef = useRef(null);   
+  const trackRef = useRef(null); 
+  const idxRef = useRef(START);   
+  const busyRef = useRef(false);  
+  const pausedRef = useRef(false);
 
   /**
    * Applies scale + blur to every card so the centre one is in focus and
@@ -79,7 +74,6 @@ export default function Hero() {
     });
   };
 
-  // ── entrance animation ─────────────────────────────────────────────────────
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(
@@ -104,7 +98,6 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // ── initial snap + resize handler ──────────────────────────────────────────
   useEffect(() => {
     const snap = (animate = false) => {
       const firstCard = trackRef.current?.firstElementChild;
@@ -133,10 +126,8 @@ export default function Hero() {
     return () => { cancelAnimationFrame(raf); ro.disconnect(); };
   }, []);
 
-  // ── auto-advance interval ──────────────────────────────────────────────────
   useEffect(() => {
     const advance = () => {
-      // ← paused (hover) or mid-tween: skip this tick entirely, no state reset
       if (pausedRef.current || busyRef.current || !trackRef.current) return;
       busyRef.current = true;
 
@@ -152,7 +143,6 @@ export default function Hero() {
         duration: 0.9,
         ease: "power3.inOut",
         onComplete: () => {
-          // Seamless teleport back to the middle set when we reach the end
           if (idxRef.current >= images.length * 2) {
             idxRef.current = START;
             gsap.set(trackRef.current, { x: -(START * (itemW + GAP)) });
@@ -165,7 +155,7 @@ export default function Hero() {
 
     const id = setInterval(advance, 2000);
     return () => clearInterval(id);
-  }, []); // empty — all mutations go through refs, no stale-closure risk
+  }, []); 
 
   // ── hover handlers (attached as React props on wrapRef's JSX element) ──────
   const handleMouseEnter = () => { pausedRef.current = true; };
@@ -177,7 +167,6 @@ export default function Hero() {
       className={`relative min-h-screen w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
     >
 
-      {/* ── backgrounds ─────────────────────────────────────────────────── */}
       <div
         ref={bgRevealRef}
         className="absolute inset-0 w-full h-full"
@@ -207,11 +196,9 @@ export default function Hero() {
         style={{ background: "radial-gradient(circle at 30% 50%,rgba(45,232,176,0.05) 0%,transparent 60%)" }}
       />
 
-      {/* ── content ─────────────────────────────────────────────────────── */}
       <div className="relative z-10 w-full max-w-500 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
         <div className="w-full flex flex-col items-center">
 
-          {/* heading ──────────────────────────────────────────────────────── */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-none tracking-tight text-white mb-4 sm:mb-6">
             <span ref={headingLine1Ref} className="block">
               Crafting high-performance
@@ -230,7 +217,6 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* ── GALLERY ─────────────────────────────────────────────────── */}
           <div className="w-full mb-8 sm:mb-12">
 
 
@@ -349,7 +335,6 @@ export default function Hero() {
             `}</style>
           </div>
 
-          {/* buttons ──────────────────────────────────────────────────────── */}
           <div
             ref={btnsRef}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto"

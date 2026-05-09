@@ -9,6 +9,7 @@ const Services = () => {
             desc: "Building high-performance native and cross-platform mobile solutions.",
             colSpan: "lg:col-span-1",
             image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325978/Adobe_Express_-_file_lctvwl.png"
+            
         },
         {
             title: "Web Development",

@@ -87,7 +87,7 @@ const Services = () => {
                             <div className="absolute inset-0 z-10 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
 
                             {/* Additional Glassmorphism Layer */}
-                            <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+                            {/* <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" /> */}
 
                             {/* Content - Bottom Left Positioned */}
                             <div className="absolute bottom-0 left-0 right-0 z-20 p-6 sm:p-8">

@@ -43,6 +43,21 @@ const CloseIcon = () => (
 );
 
 // --- Config ---
+const ecommerceSubmenu = [
+    "Shopify Automation",
+    "Ebay Automation",
+    "Walmart Automation",
+    "TikTok Shop Automation",
+    "Temu Automation",
+    "Shopee Marketplace Growth Service",
+    "WooCommerce Store Development & Management",
+    "Penties Automation",
+    "Telehealth Automation",
+    "Etsy Shop Automation",
+    "Amazon Zore Setup & Growth Services",
+    "Shopify Merchandies"
+];
+
 const navLinks = [
     {
         label: "Solutions",
@@ -50,7 +65,11 @@ const navLinks = [
         dropdownItems: [
             { label: "UI/UX Design", href: "#contact" },
             { label: "Web Design", href: "/services/website-development" },
-            { label: "E-commerce", href: "#contact" },
+            {
+                label: "E-commerce",
+                href: "#contact",
+                subItems: ecommerceSubmenu
+            },
             { label: "Branding", href: "#contact" },
             { label: "Mobile App", href: "#contact" },
             { label: "SEO", href: "#contact" },
@@ -81,6 +100,8 @@ export default function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+    const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
+    const [hoveredSubmenu, setHoveredSubmenu] = useState(null);
 
     // --- Navigation Logic ---
     const handleNavClick = (href, e) => {
@@ -200,17 +221,45 @@ export default function Navbar() {
                                             <div ref={dropdownRef} className="absolute top-[120%] left-0 w-64 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-sm overflow-hidden shadow-2xl z-100">
                                                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/10 blur-3xl pointer-events-none" />
                                                 <div className="relative">
-                                                    {dropdownItems.map((item) => (
-                                                        <Link
-                                                            key={item.label}
-                                                            href={item.href}
-                                                            onClick={(e) => handleNavClick(item.href, e)}
-                                                            className="flex items-center gap-3 px-5 py-4 text-white/70 hover:text-emerald-400 hover:bg-white/5 transition-all duration-200 text-sm font-medium border-b border-white/5 last:border-b-0"
-                                                        >
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                                                            {item.label}
-                                                        </Link>
-                                                    ))}
+                                                    {dropdownItems.map((item) => {
+                                                        const hasSubItems = Array.isArray(item.subItems) && item.subItems.length > 0;
+
+                                                        return (
+                                                            <div
+                                                                key={item.label}
+                                                                className={hasSubItems ? "relative" : ""}
+                                                                onMouseEnter={hasSubItems ? () => setHoveredSubmenu(item.label) : undefined}
+                                                                onMouseLeave={hasSubItems ? () => setHoveredSubmenu(null) : undefined}
+                                                            >
+                                                                <Link
+                                                                    href={item.href}
+                                                                    onClick={(e) => handleNavClick(item.href, e)}
+                                                                    className="flex items-center justify-between gap-3 px-5 py-4 text-white/70 hover:text-emerald-400 hover:bg-white/5 transition-all duration-200 text-sm font-medium border-b border-white/5 last:border-b-0"
+                                                                >
+                                                                    <span className="flex items-center gap-3">
+                                                                        <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+                                                                        {item.label}
+                                                                    </span>
+                                                                    {hasSubItems && <span className="text-base text-white/50">›</span>}
+                                                                </Link>
+
+                                                                {hasSubItems && (
+                                                                    <div className={`pointer-events-auto absolute left-full top-0 ml-2 ${hoveredSubmenu === item.label ? 'flex' : 'hidden'} w-72 flex-col bg-[#111827] border border-white/10 shadow-2xl rounded-md overflow-hidden z-50`}>
+                                                                        {item.subItems.map((subItem) => (
+                                                                            <Link
+                                                                                key={subItem}
+                                                                                href="#contact"
+                                                                                onClick={(e) => handleNavClick("#contact", e)}
+                                                                                className="px-4 py-3 text-sm text-white/70 hover:text-emerald-400 hover:bg-white/5 border-b border-white/5 last:border-b-0"
+                                                                            >
+                                                                                {subItem}
+                                                                            </Link>
+                                                                        ))}
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        );
+                                                    })}
                                                 </div>
                                             </div>
                                         )}
@@ -281,17 +330,47 @@ export default function Navbar() {
                                             {label}
                                             <span className={`transition-transform ${isMobileSolutionsOpen ? 'rotate-180' : ''}`}><ChevronDown /></span>
                                         </button>
-                                        <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? 'max-h-96' : 'max-h-0'}`}>
-                                            {dropdownItems.map(item => (
-                                                <Link
-                                                    key={item.label}
-                                                    href={item.href}
-                                                    onClick={(e) => handleNavClick(item.href, e)}
-                                                    className="block px-8 py-3 text-sm text-white/60 border-t border-white/5"
-                                                >
-                                                    {item.label}
-                                                </Link>
-                                            ))}
+                                        <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? 'max-h-120' : 'max-h-0'}`}>
+                                            {dropdownItems.map(item => {
+                                                const hasSubItems = Array.isArray(item.subItems) && item.subItems.length > 0;
+
+                                                return (
+                                                    <div key={item.label} className="border-t border-white/5">
+                                                        {hasSubItems ? (
+                                                            <>
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === item.label ? null : item.label)}
+                                                                    className="w-full flex items-center justify-between px-8 py-3 text-sm text-white/60"
+                                                                >
+                                                                    <span>{item.label}</span>
+                                                                    <span className={`transition-transform ${activeMobileSubmenu === item.label ? 'rotate-180' : ''}`}><ChevronDown /></span>
+                                                                </button>
+                                                                <div className={`transition-all duration-300 overflow-hidden ${activeMobileSubmenu === item.label ? 'max-h-130' : 'max-h-0'}`}>
+                                                                    {item.subItems.map(subItem => (
+                                                                        <Link
+                                                                            key={subItem}
+                                                                            href="#contact"
+                                                                            onClick={(e) => handleNavClick("#contact", e)}
+                                                                            className="block px-10 py-2.5 text-xs text-white/50 border-t border-white/5"
+                                                                        >
+                                                                            {subItem}
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            </>
+                                                        ) : (
+                                                            <Link
+                                                                href={item.href}
+                                                                onClick={(e) => handleNavClick(item.href, e)}
+                                                                className="block px-8 py-3 text-sm text-white/60"
+                                                            >
+                                                                {item.label}
+                                                            </Link>
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 ) : (

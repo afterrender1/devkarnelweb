@@ -239,12 +239,13 @@ export default function Navbar() {
                         </div> */}
 
                         <div ref={ctaRef}>
-                            <a href="https://calendly.com/afterrenderagency/30min" target="_blank" rel="noopener noreferrer">
-
-
-                                <button className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95">
-                                    Request a quote
-                                </button>
+                            <a
+                                href="https://calendly.com/afterrenderagency/30min"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95"
+                            >
+                                Request a quote
                             </a>
                         </div>
 
@@ -307,9 +308,13 @@ export default function Navbar() {
                     </nav>
 
                     <div className="mt-10 pt-10 border-t border-white/10 space-y-4">
-                        <button className="w-full py-4 bg-emerald-500 text-white font-bold rounded-xl shadow-lg">
+                        <a
+                            href="#contact"
+                            onClick={(e) => handleNavClick("#contact", e)}
+                            className="block w-full py-4 bg-emerald-500 text-white font-bold rounded-xl shadow-lg text-center"
+                        >
                             Request a quote
-                        </button>
+                        </a>
                         <div className="flex gap-3">
                             {iconActions.map(({ icon, label }) => (
                                 <button key={label} className="flex-1 flex justify-center py-4 bg-white/5 rounded-xl border border-white/10 text-white/60">

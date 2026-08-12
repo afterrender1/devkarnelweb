@@ -48,8 +48,13 @@ const navLinks = [
         label: "Solutions",
         hasDropdown: true,
         dropdownItems: [
-            { label: "Website Development", href: "/services/website-development" },
-            { label: "Logo Design", href: "/services/logo-design" }
+            { label: "UI/UX Design", href: "#contact" },
+            { label: "Web Design", href: "/services/website-development" },
+            { label: "E-commerce", href: "#contact" },
+            { label: "Branding", href: "#contact" },
+            { label: "Mobile App", href: "#contact" },
+            { label: "SEO", href: "#contact" },
+            { label: "Social Media Marketing", href: "#contact" }
         ]
     },
     { label: "Case studies", hasDropdown: false, href: "#casestudies" },
@@ -275,7 +280,7 @@ export default function Navbar() {
                                             {label}
                                             <span className={`transition-transform ${isMobileSolutionsOpen ? 'rotate-180' : ''}`}><ChevronDown /></span>
                                         </button>
-                                        <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? 'max-h-48' : 'max-h-0'}`}>
+                                        <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? 'max-h-96' : 'max-h-0'}`}>
                                             {dropdownItems.map(item => (
                                                 <Link
                                                     key={item.label}

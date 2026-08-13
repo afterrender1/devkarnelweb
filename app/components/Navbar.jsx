@@ -179,18 +179,18 @@ const RocketIcon = ({ className = "w-5 h-5" }) => (
 
 // --- Config ---
 const ecommerceSubmenu = [
-  { label: "Shopify Automation", icon: Store, color: "text-emerald-600 bg-emerald-50" },
-  { label: "Ebay Automation", icon: Tag, color: "text-blue-600 bg-blue-50" },
-  { label: "Walmart Automation", icon: ShoppingBasket, color: "text-amber-600 bg-amber-50" },
-  { label: "TikTok Shop Automation", icon: Video, color: "text-pink-600 bg-pink-50" },
-  { label: "Temu Automation", icon: Box, color: "text-orange-600 bg-orange-50" },
-  { label: "Shopee Marketplace Growth Service", icon: Globe, color: "text-teal-600 bg-teal-50" },
-  { label: "WooCommerce Store Development & Management", icon: Code, color: "text-purple-600 bg-purple-50" },
-  { label: "Penties Automation", icon: Cpu, color: "text-indigo-600 bg-indigo-50" },
-  { label: "Telehealth Automation", icon: Activity, color: "text-red-600 bg-red-50" },
-  { label: "Etsy Shop Automation", icon: Gift, color: "text-amber-700 bg-amber-50" },
-  { label: "Amazon Zore Setup & Growth Services", icon: Zap, color: "text-yellow-600 bg-yellow-50" },
-  { label: "Shopify Merchandies", icon: Shirt, color: "text-sky-600 bg-sky-50" },
+  { label: "Shopify Automation", href: "/services/e-commerce/shopify-automation", icon: Store, color: "text-emerald-600 bg-emerald-50" },
+  { label: "Ebay Automation", href: "/services/e-commerce/ebay-automation", icon: Tag, color: "text-blue-600 bg-blue-50" },
+  { label: "Walmart Automation", href: "/services/e-commerce/walmart-automation", icon: ShoppingBasket, color: "text-amber-600 bg-amber-50" },
+  { label: "TikTok Shop Automation", href: "/services/e-commerce/tiktok-shop-automation", icon: Video, color: "text-pink-600 bg-pink-50" },
+  { label: "Temu Automation", href: "/services/e-commerce/temu-automation", icon: Box, color: "text-orange-600 bg-orange-50" },
+  { label: "Shopee Marketplace Growth Service", href: "/services/e-commerce/shopee-growth", icon: Globe, color: "text-teal-600 bg-teal-50" },
+  { label: "WooCommerce Store Development & Management", href: "/services/e-commerce/woocommerce-development", icon: Code, color: "text-purple-600 bg-purple-50" },
+  { label: "Penties Automation", href: "/services/e-commerce/penties-automation", icon: Cpu, color: "text-indigo-600 bg-indigo-50" },
+  { label: "Telehealth Automation", href: "/services/e-commerce/telehealth-automation", icon: Activity, color: "text-red-600 bg-red-50" },
+  { label: "Etsy Shop Automation", href: "/services/e-commerce/etsy-automation", icon: Gift, color: "text-amber-700 bg-amber-50" },
+  { label: "Amazon Zore Setup & Growth Services", href: "/services/e-commerce/amazon-zore-setup", icon: Zap, color: "text-yellow-600 bg-yellow-50" },
+  { label: "Shopify Merchandies", href: "/services/e-commerce/shopify-merchandise", icon: Shirt, color: "text-sky-600 bg-sky-50" },
 ];
 
 const navLinks = [
@@ -502,13 +502,14 @@ export default function Navbar() {
                                       {/* Sub Category Items */}
                                       {item.subItems.map((subObj) => {
                                         const SubIcon = subObj.icon || Store;
+                                        const targetHref = subObj.href || "/services/e-commerce";
                                         return (
                                           <Link
                                             key={subObj.label}
-                                            href="/services/e-commerce"
+                                            href={targetHref}
                                             onClick={(e) =>
                                               handleNavClick(
-                                                "/services/e-commerce",
+                                                targetHref,
                                                 e,
                                               )
                                             }
@@ -546,14 +547,6 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
-            {/* <div ref={iconsRef} className="hidden sm:flex items-center gap-1">
-                            {iconActions.map(({ icon, label }) => (
-                                <button key={label} aria-label={label} className="p-2 text-white/60 hover:text-white hover:bg-white/8 rounded-lg transition-all">
-                                    {icon}
-                                </button>
-                            ))}
-                        </div> */}
-
             <div ref={ctaRef}>
               <a
                 href="https://calendly.com/afterrenderagency/30min"
@@ -679,13 +672,14 @@ export default function Navbar() {
                                 <div className="pl-3 space-y-1 py-1 max-h-56 overflow-y-auto pr-1">
                                   {item.subItems.map((sub) => {
                                     const subLabel = typeof sub === "object" ? sub.label : sub;
+                                    const targetHref = typeof sub === "object" ? (sub.href || "/services/e-commerce") : "/services/e-commerce";
                                     return (
                                       <Link
                                         key={subLabel}
-                                        href="/services/e-commerce"
+                                        href={targetHref}
                                         onClick={(e) =>
                                           handleNavClick(
-                                            "/services/e-commerce",
+                                            targetHref,
                                             e,
                                           )
                                         }

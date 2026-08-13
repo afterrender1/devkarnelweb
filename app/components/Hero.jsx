@@ -345,7 +345,7 @@ export default function Hero() {
               </button>
             </a>
             <a
-              href="https://calendly.com/afterrenderagency/30min"
+              href="https://calendly.com/devskarnel/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"

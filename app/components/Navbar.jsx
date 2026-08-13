@@ -650,7 +650,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <div ref={ctaRef}>
               <a
-                href="https://calendly.com/afterrenderagency/30min"
+                href="https://calendly.com/devskarnel/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95"
@@ -827,7 +827,7 @@ export default function Navbar() {
             {/* Bottom Actions Section */}
             <div className="space-y-2">
               <a
-                href="https://calendly.com/afterrenderagency/30min"
+                href="https://calendly.com/devskarnel/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between w-full px-4 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all active:scale-95"

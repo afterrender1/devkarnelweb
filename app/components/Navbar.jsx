@@ -25,7 +25,7 @@ import {
   Activity,
   Gift,
   Zap,
-  Shirt
+  Shirt,
 } from "lucide-react";
 
 // --- Icons ---
@@ -179,18 +179,78 @@ const RocketIcon = ({ className = "w-5 h-5" }) => (
 
 // --- Config ---
 const ecommerceSubmenu = [
-  { label: "Shopify Automation", href: "/services/e-commerce/shopify-automation", icon: Store, color: "text-emerald-600 bg-emerald-50" },
-  { label: "Ebay Automation", href: "/services/e-commerce/ebay-automation", icon: Tag, color: "text-blue-600 bg-blue-50" },
-  { label: "Walmart Automation", href: "/services/e-commerce/walmart-automation", icon: ShoppingBasket, color: "text-amber-600 bg-amber-50" },
-  { label: "TikTok Shop Automation", href: "/services/e-commerce/tiktok-shop-automation", icon: Video, color: "text-pink-600 bg-pink-50" },
-  { label: "Temu Automation", href: "/services/e-commerce/temu-automation", icon: Box, color: "text-orange-600 bg-orange-50" },
-  { label: "Shopee Marketplace Growth Service", href: "/services/e-commerce/shopee-growth", icon: Globe, color: "text-teal-600 bg-teal-50" },
-  { label: "WooCommerce Store Development & Management", href: "/services/e-commerce/woocommerce-development", icon: Code, color: "text-purple-600 bg-purple-50" },
-  { label: "Penties Automation", href: "/services/e-commerce/penties-automation", icon: Cpu, color: "text-indigo-600 bg-indigo-50" },
-  { label: "Telehealth Automation", href: "/services/e-commerce/telehealth-automation", icon: Activity, color: "text-red-600 bg-red-50" },
-  { label: "Etsy Shop Automation", href: "/services/e-commerce/etsy-automation", icon: Gift, color: "text-amber-700 bg-amber-50" },
-  { label: "Amazon Zore Setup & Growth Services", href: "/services/e-commerce/amazon-zore-setup", icon: Zap, color: "text-yellow-600 bg-yellow-50" },
-  { label: "Shopify Merchandies", href: "/services/e-commerce/shopify-merchandise", icon: Shirt, color: "text-sky-600 bg-sky-50" },
+  {
+    label: "Shopify Automation",
+    href: "/services/e-commerce/shopify-automation",
+    icon: Store,
+    color: "text-emerald-600 bg-emerald-50",
+  },
+  {
+    label: "Ebay Automation",
+    href: "/services/e-commerce/ebay-automation",
+    icon: Tag,
+    color: "text-blue-600 bg-blue-50",
+  },
+  {
+    label: "Walmart Automation",
+    href: "/services/e-commerce/walmart-automation",
+    icon: ShoppingBasket,
+    color: "text-amber-600 bg-amber-50",
+  },
+  {
+    label: "TikTok Shop Automation",
+    href: "/services/e-commerce/tiktok-shop-automation",
+    icon: Video,
+    color: "text-pink-600 bg-pink-50",
+  },
+  {
+    label: "Temu Automation",
+    href: "/services/e-commerce/temu-automation",
+    icon: Box,
+    color: "text-orange-600 bg-orange-50",
+  },
+  {
+    label: "Shopee Marketplace Growth Service",
+    href: "/services/e-commerce/shopee-growth",
+    icon: Globe,
+    color: "text-teal-600 bg-teal-50",
+  },
+  {
+    label: "WooCommerce Store Development & Management",
+    href: "/services/e-commerce/woocommerce-development",
+    icon: Code,
+    color: "text-purple-600 bg-purple-50",
+  },
+  {
+    label: "Penties Automation",
+    href: "/services/e-commerce/penties-automation",
+    icon: Cpu,
+    color: "text-indigo-600 bg-indigo-50",
+  },
+  {
+    label: "Telehealth Automation",
+    href: "/services/e-commerce/telehealth-automation",
+    icon: Activity,
+    color: "text-red-600 bg-red-50",
+  },
+  {
+    label: "Etsy Shop Automation",
+    href: "/services/e-commerce/etsy-automation",
+    icon: Gift,
+    color: "text-amber-700 bg-amber-50",
+  },
+  {
+    label: "Amazon Zore Setup & Growth Services",
+    href: "/services/e-commerce/amazon-zore-setup",
+    icon: Zap,
+    color: "text-yellow-600 bg-yellow-50",
+  },
+  {
+    label: "Shopify Merchandies",
+    href: "/services/e-commerce/shopify-merchandise",
+    icon: Shirt,
+    color: "text-sky-600 bg-sky-50",
+  },
 ];
 
 const navLinks = [
@@ -198,8 +258,18 @@ const navLinks = [
     label: "Solutions",
     hasDropdown: true,
     dropdownItems: [
-      { label: "UI/UX Design", href: "/services/ui-ux-design", icon: Palette, color: "text-purple-600 bg-purple-50" },
-      { label: "Web Design", href: "/services/website-development", icon: Layout, color: "text-blue-600 bg-blue-50" },
+      {
+        label: "UI/UX Design",
+        href: "/services/ui-ux-design",
+        icon: Palette,
+        color: "text-purple-600 bg-purple-50",
+      },
+      {
+        label: "Web Design",
+        href: "/services/website-development",
+        icon: Layout,
+        color: "text-blue-600 bg-blue-50",
+      },
       {
         label: "E-commerce",
         href: "/services/e-commerce",
@@ -207,9 +277,24 @@ const navLinks = [
         color: "text-emerald-600 bg-emerald-50",
         subItems: ecommerceSubmenu,
       },
-      { label: "Branding", href: "/services/branding", icon: Sparkles, color: "text-amber-600 bg-amber-50" },
-      { label: "Mobile App", href: "/services/mobile-app-development", icon: Smartphone, color: "text-indigo-600 bg-indigo-50" },
-      { label: "SEO", href: "/services/seo-optimization", icon: TrendingUp, color: "text-teal-600 bg-teal-50" },
+      {
+        label: "Branding",
+        href: "/services/branding",
+        icon: Sparkles,
+        color: "text-amber-600 bg-amber-50",
+      },
+      {
+        label: "Mobile App",
+        href: "/services/mobile-app-development",
+        icon: Smartphone,
+        color: "text-indigo-600 bg-indigo-50",
+      },
+      {
+        label: "SEO",
+        href: "/services/seo-optimization",
+        icon: TrendingUp,
+        color: "text-teal-600 bg-teal-50",
+      },
       {
         label: "Social Media Marketing",
         href: "/services/social-media-marketing",
@@ -426,7 +511,9 @@ export default function Navbar() {
                             return (
                               <div
                                 key={item.label}
-                                className={hasSubItems ? "relative group/sub" : ""}
+                                className={
+                                  hasSubItems ? "relative group/sub" : ""
+                                }
                                 onMouseEnter={() => {
                                   if (hasSubItems) {
                                     handleSubmenuEnter(item.label);
@@ -451,23 +538,31 @@ export default function Navbar() {
                                     }`}
                                   >
                                     <span className="flex items-center gap-3">
-                                      <div className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}>
+                                      <div
+                                        className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}
+                                      >
                                         <ItemIcon className="w-4 h-4" />
                                       </div>
                                       <span>{item.label}</span>
                                     </span>
-                                    <span className={`text-base font-bold transition-transform duration-200 ${isSubActive ? "text-emerald-600 translate-x-0.5" : "text-slate-400"}`}>
+                                    <span
+                                      className={`text-base font-bold transition-transform duration-200 ${isSubActive ? "text-emerald-600 translate-x-0.5" : "text-slate-400"}`}
+                                    >
                                       ›
                                     </span>
                                   </button>
                                 ) : (
                                   <Link
                                     href={item.href}
-                                    onClick={(e) => handleNavClick(item.href, e)}
+                                    onClick={(e) =>
+                                      handleNavClick(item.href, e)
+                                    }
                                     className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 transition-all duration-150 text-sm font-semibold"
                                   >
                                     <span className="flex items-center gap-3">
-                                      <div className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}>
+                                      <div
+                                        className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}
+                                      >
                                         <ItemIcon className="w-4 h-4" />
                                       </div>
                                       <span>{item.label}</span>
@@ -477,7 +572,9 @@ export default function Navbar() {
 
                                 {hasSubItems && (
                                   <div
-                                    onMouseEnter={() => handleSubmenuEnter(item.label)}
+                                    onMouseEnter={() =>
+                                      handleSubmenuEnter(item.label)
+                                    }
                                     onMouseLeave={handleMouseLeave}
                                     className={`pointer-events-auto absolute left-full top-0 pl-2 ${isSubActive ? "flex" : "hidden"} w-90 sm:w-95 flex-col z-50 before:content-[''] before:absolute before:-left-12 before:top-0 before:bottom-0 before:w-16`}
                                   >
@@ -488,7 +585,9 @@ export default function Navbar() {
                                       {/* All Category CTA */}
                                       <Link
                                         href={item.href}
-                                        onClick={(e) => handleNavClick(item.href, e)}
+                                        onClick={(e) =>
+                                          handleNavClick(item.href, e)
+                                        }
                                         className="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/80 transition-all duration-200 mb-1.5"
                                       >
                                         <span className="text-xs font-extrabold text-emerald-800 tracking-wide">
@@ -502,23 +601,25 @@ export default function Navbar() {
                                       {/* Sub Category Items */}
                                       {item.subItems.map((subObj) => {
                                         const SubIcon = subObj.icon || Store;
-                                        const targetHref = subObj.href || "/services/e-commerce";
+                                        const targetHref =
+                                          subObj.href || "/services/e-commerce";
                                         return (
                                           <Link
                                             key={subObj.label}
                                             href={targetHref}
                                             onClick={(e) =>
-                                              handleNavClick(
-                                                targetHref,
-                                                e,
-                                              )
+                                              handleNavClick(targetHref, e)
                                             }
                                             className="group flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-950 hover:bg-slate-100 border border-transparent hover:border-slate-200/60 transition-all duration-150"
                                           >
-                                            <div className={`p-1 rounded-lg shrink-0 transition-transform duration-200 group-hover:scale-110 ${subObj.color || "bg-slate-100 text-slate-600"}`}>
+                                            <div
+                                              className={`p-1 rounded-lg shrink-0 transition-transform duration-200 group-hover:scale-110 ${subObj.color || "bg-slate-100 text-slate-600"}`}
+                                            >
                                               <SubIcon className="w-3.5 h-3.5" />
                                             </div>
-                                            <span className="leading-tight tracking-wide">{subObj.label}</span>
+                                            <span className="leading-tight tracking-wide">
+                                              {subObj.label}
+                                            </span>
                                           </Link>
                                         );
                                       })}
@@ -671,17 +772,18 @@ export default function Navbar() {
                               {activeMobileSubmenu === item.label && (
                                 <div className="pl-3 space-y-1 py-1 max-h-56 overflow-y-auto pr-1">
                                   {item.subItems.map((sub) => {
-                                    const subLabel = typeof sub === "object" ? sub.label : sub;
-                                    const targetHref = typeof sub === "object" ? (sub.href || "/services/e-commerce") : "/services/e-commerce";
+                                    const subLabel =
+                                      typeof sub === "object" ? sub.label : sub;
+                                    const targetHref =
+                                      typeof sub === "object"
+                                        ? sub.href || "/services/e-commerce"
+                                        : "/services/e-commerce";
                                     return (
                                       <Link
                                         key={subLabel}
                                         href={targetHref}
                                         onClick={(e) =>
-                                          handleNavClick(
-                                            targetHref,
-                                            e,
-                                          )
+                                          handleNavClick(targetHref, e)
                                         }
                                         className="block px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0"
                                       >

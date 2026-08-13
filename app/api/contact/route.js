@@ -10,7 +10,7 @@ export async function POST(req) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { message: "Name, email, and message are required." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -41,9 +41,15 @@ export async function POST(req) {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ message: "Email sent successfully!" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Email sent successfully!" },
+      { status: 200 },
+    );
   } catch (err) {
     console.error("Email error:", err);
-    return NextResponse.json({ message: "Error sending email" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Error sending email" },
+      { status: 500 },
+    );
   }
 }

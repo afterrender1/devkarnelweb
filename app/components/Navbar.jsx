@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
-import { truculenta, urbanist } from "../fonts";
+import { urbanist } from "../fonts";
 
 // --- Icons ---
 const SearchIcon = () => (
@@ -193,9 +194,16 @@ export default function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4 sm:gap-6">
 
                     {/* Logo */}
-                    <div ref={logoRef} className={`shrink-0 ${truculenta.className}`}>
-                        <Link href="/" className="text-white font-bold text-xl sm:text-4xl tracking-tight select-none">
-                            DEVS<span className="text-emerald-400">KARNEL</span>
+                    <div ref={logoRef} className="shrink-0">
+                        <Link href="/" className="flex items-center select-none group">
+                            <Image
+                                src="/images/dklogo.webp"
+                                alt="Devskarnel Logo"
+                                width={180}
+                                height={50}
+                                className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                priority
+                            />
                         </Link>
                     </div>
 
@@ -312,8 +320,14 @@ export default function Navbar() {
             <div ref={sidebarRef} className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0d1117] border-l border-white/10 z-70 translate-x-full overflow-y-auto ${urbanist.className}`}>
                 <div className="p-6">
                     <div className="flex justify-between items-center mb-10">
-                        <Link href="/" className="text-white font-bold text-xl" onClick={() => setIsMobileMenuOpen(false)}>
-                            DEVS<span className="text-emerald-400">KARNEL</span>
+                        <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                            <Image
+                                src="/images/dklogo.webp"
+                                alt="Devskarnel Logo"
+                                width={140}
+                                height={40}
+                                className="h-9 w-auto object-contain"
+                            />
                         </Link>
                         <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white/60"><CloseIcon /></button>
                     </div>

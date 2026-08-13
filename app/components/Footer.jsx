@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { urbanist } from '../fonts';
+import Image from 'next/image';
+import Link from 'next/link';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -108,7 +110,15 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8 mb-10 sm:mb-12">
                     {/* Left Section - Brand */}
                     <div className="footer-animate text-center md:text-left">
-                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3">Devskarnel</h3>
+                        <Link href="/" className="inline-flex items-center mb-3 group">
+                            <Image
+                                src="/images/dklogo.webp"
+                                alt="Devskarnel Logo"
+                                width={180}
+                                height={50}
+                                className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </Link>
                         <p className="text-white/60 text-sm sm:text-base mb-4 sm:mb-6 max-w-xs mx-auto md:mx-0">
                             Crafting digital experiences that inspire and engage.
                         </p>

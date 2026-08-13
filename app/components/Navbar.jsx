@@ -37,9 +37,37 @@ const MenuIcon = () => (
 );
 
 const CloseIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+);
+
+const SolutionsIcon = ({ className = "w-5 h-5 text-emerald-400" }) => (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+        <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+    </svg>
+);
+
+const CaseStudiesIcon = ({ className = "w-5 h-5 text-white/70" }) => (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2z" />
+    </svg>
+);
+
+const ContactIcon = ({ className = "w-5 h-5 text-white/70" }) => (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+);
+
+const RocketIcon = ({ className = "w-5 h-5" }) => (
+    <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71.79-1.81.2-2.55L4.5 16.5z" />
+        <path d="M12 15l-3-3m0 0l-3 3m3-3v12" />
     </svg>
 );
 
@@ -201,7 +229,7 @@ export default function Navbar() {
                                 alt="Devskarnel Logo"
                                 width={180}
                                 height={50}
-                                className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                className="h-10 sm:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                                 priority
                             />
                         </Link>
@@ -314,106 +342,147 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Sidebar Overlay */}
-            <div ref={overlayRef} className="fixed inset-0 bg-black/60 backdrop-blur-sm z-60 hidden" onClick={() => setIsMobileMenuOpen(false)} />
+            <div ref={overlayRef} className="fixed inset-0 bg-black/75 backdrop-blur-sm z-60 hidden" onClick={() => setIsMobileMenuOpen(false)} />
 
             {/* Mobile Sidebar */}
-            <div ref={sidebarRef} className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#0d1117] border-l border-white/10 z-70 translate-x-full overflow-y-auto ${urbanist.className}`}>
-                <div className="p-6">
-                    <div className="flex justify-between items-center mb-10">
-                        <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
-                            <Image
-                                src="/images/dklogo.webp"
-                                alt="Devskarnel Logo"
-                                width={140}
-                                height={40}
-                                className="h-9 w-auto object-contain"
-                            />
-                        </Link>
-                        <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white/60"><CloseIcon /></button>
-                    </div>
+            <div ref={sidebarRef} className={`fixed top-0 right-0 h-full w-[85%] max-w-xs sm:max-w-sm bg-[#0d1117] border-l border-white/10 z-70 translate-x-full overflow-y-auto ${urbanist.className}`}>
+                <div className="p-5 flex flex-col justify-between min-h-full">
+                    <div>
+                        {/* Top Header: Brand Avatar & Close Button */}
+                        <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/10">
+                            <div className="flex items-center gap-3">
+                                {/* Circular Logo Avatar */}
+                                <div className="w-11 h-11 rounded-full border-2 border-emerald-400 p-0.5 bg-black/60 shrink-0 flex items-center justify-center shadow-md">
+                                    <Image
+                                        src="/images/dklogo.webp"
+                                        alt="Devskarnel"
+                                        width={36}
+                                        height={36}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <div className="leading-tight">
+                                    <h3 className="text-white font-extrabold text-base tracking-tight">Devskarnel</h3>
+                                    <p className="text-white/50 text-[11px] font-medium">devskarnel@gmail.com</p>
+                                </div>
+                            </div>
 
-                    <nav className="space-y-2">
-                        {navLinks.map(({ label, hasDropdown, dropdownItems, href }) => (
-                            <div key={label} className="w-full">
-                                {hasDropdown ? (
-                                    <div className="bg-white/5 rounded-xl overflow-hidden border border-white/5">
-                                        <button
-                                            onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
-                                            className="w-full flex justify-between items-center px-5 py-4 text-white/80 font-medium"
-                                        >
-                                            {label}
-                                            <span className={`transition-transform ${isMobileSolutionsOpen ? 'rotate-180' : ''}`}><ChevronDown /></span>
-                                        </button>
-                                        <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? 'max-h-120' : 'max-h-0'}`}>
-                                            {dropdownItems.map(item => {
-                                                const hasSubItems = Array.isArray(item.subItems) && item.subItems.length > 0;
+                            <button
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all"
+                                aria-label="Close menu"
+                            >
+                                <CloseIcon />
+                            </button>
+                        </div>
 
-                                                return (
-                                                    <div key={item.label} className="border-t border-white/5">
-                                                        {hasSubItems ? (
-                                                            <>
-                                                                <button
-                                                                    type="button"
-                                                                    onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === item.label ? null : item.label)}
-                                                                    className="w-full flex items-center justify-between px-8 py-3 text-sm text-white/60"
-                                                                >
-                                                                    <span>{item.label}</span>
-                                                                    <span className={`transition-transform ${activeMobileSubmenu === item.label ? 'rotate-180' : ''}`}><ChevronDown /></span>
-                                                                </button>
-                                                                <div className={`transition-all duration-300 overflow-hidden ${activeMobileSubmenu === item.label ? 'max-h-130' : 'max-h-0'}`}>
-                                                                    {item.subItems.map(subItem => (
+                        {/* Main Navigation List - Scrollable Pill Style */}
+                        <div className="space-y-2">
+                            {/* Solutions Item */}
+                            <div className="w-full">
+                                <button
+                                    onClick={() => setIsMobileSolutionsOpen(!isMobileSolutionsOpen)}
+                                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all text-sm font-semibold ${
+                                        isMobileSolutionsOpen
+                                            ? "bg-white text-black shadow-lg"
+                                            : "text-white/90 hover:bg-white/5 hover:text-white"
+                                    }`}
+                                >
+                                    <span className="flex items-center gap-3">
+                                        <SolutionsIcon className={isMobileSolutionsOpen ? "w-5 h-5 text-black" : "w-5 h-5 text-emerald-400"} />
+                                        <span>Solutions</span>
+                                    </span>
+                                    <span className={`transition-transform duration-200 ${isMobileSolutionsOpen ? "rotate-180 text-black" : "text-white/40"}`}>
+                                        <ChevronDown />
+                                    </span>
+                                </button>
+
+                                {/* Dropdown Sub-Items (Scrollable Container) */}
+                                <div className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? "max-h-[1200px] opacity-100 mt-1" : "max-h-0 opacity-0"}`}>
+                                    <div className="space-y-1 border-l-2 border-emerald-500/30 ml-3 pl-3 py-1">
+                                        {navLinks[0].dropdownItems.map((item) => {
+                                            const hasSubItems = Array.isArray(item.subItems) && item.subItems.length > 0;
+                                            return (
+                                                <div key={item.label}>
+                                                    {hasSubItems ? (
+                                                        <>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === item.label ? null : item.label)}
+                                                                className="w-full flex items-center justify-between px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5"
+                                                            >
+                                                                <span>{item.label}</span>
+                                                                <span className={`transition-transform duration-200 text-xs text-emerald-400 ${activeMobileSubmenu === item.label ? "rotate-180" : ""}`}>
+                                                                    <ChevronDown />
+                                                                </span>
+                                                            </button>
+                                                            {activeMobileSubmenu === item.label && (
+                                                                <div className="pl-3 space-y-1 py-1 max-h-56 overflow-y-auto pr-1">
+                                                                    {item.subItems.map((sub) => (
                                                                         <Link
-                                                                            key={subItem}
+                                                                            key={sub}
                                                                             href="/services/e-commerce"
                                                                             onClick={(e) => handleNavClick("/services/e-commerce", e)}
-                                                                            className="block px-10 py-2.5 text-xs text-white/50 border-t border-white/5"
+                                                                            className="block px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0"
                                                                         >
-                                                                            {subItem}
+                                                                            • {sub}
                                                                         </Link>
                                                                     ))}
                                                                 </div>
-                                                            </>
-                                                        ) : (
-                                                            <Link
-                                                                href={item.href}
-                                                                onClick={(e) => handleNavClick(item.href, e)}
-                                                                className="block px-8 py-3 text-sm text-white/60"
-                                                            >
-                                                                {item.label}
-                                                            </Link>
-                                                        )}
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
+                                                            )}
+                                                        </>
+                                                    ) : (
+                                                        <Link
+                                                            href={item.href}
+                                                            onClick={(e) => handleNavClick(item.href, e)}
+                                                            className="block px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5"
+                                                        >
+                                                            {item.label}
+                                                        </Link>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
-                                ) : (
-                                    <Link
-                                        href={href}
-                                        onClick={(e) => handleNavClick(href, e)}
-                                        className="block w-full text-left px-5 py-4 text-white/80 font-medium bg-white/5 border border-white/5 rounded-xl"
-                                    >
-                                        {label}
-                                    </Link>
-                                )}
+                                </div>
                             </div>
-                        ))}
-                    </nav>
 
-                    <div className="mt-10 pt-10 border-t border-white/10 space-y-4">
-                        <a
-                            href="#contact"
-                            onClick={(e) => handleNavClick("#contact", e)}
-                            className="block w-full py-4 bg-emerald-500 text-white font-bold rounded-xl shadow-lg text-center"
-                        >
-                            Request a quote
-                        </a>
-                        <div className="flex gap-3">
-                            {iconActions.map(({ icon, label }) => (
-                                <button key={label} className="flex-1 flex justify-center py-4 bg-white/5 rounded-xl border border-white/10 text-white/60">
-                                    {icon}
-                                </button>
-                            ))}
+                            {/* Contact Item */}
+                            <Link
+                                href="#contact"
+                                onClick={(e) => handleNavClick("#contact", e)}
+                                className="flex items-center gap-3 px-4 py-3.5 rounded-2xl text-white/90 hover:bg-white/5 hover:text-white transition-all text-sm font-semibold"
+                            >
+                                <ContactIcon className="w-5 h-5 text-white/70" />
+                                <span>Contact Us</span>
+                            </Link>
+                        </div>
+
+                        {/* Divider Line */}
+                        <div className="my-5 border-t border-white/10" />
+
+                        {/* Bottom Actions Section */}
+                        <div className="space-y-2">
+                            <a
+                                href="https://calendly.com/afterrenderagency/30min"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-between w-full px-4 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all active:scale-95"
+                            >
+                                <span className="flex items-center gap-3">
+                                    <RocketIcon className="w-5 h-5 text-white" />
+                                    <span>Request a Quote</span>
+                                </span>
+                                <span>→</span>
+                            </a>
+
+                            <a
+                                href="mailto:devskarnel@gmail.com"
+                                className="flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs font-medium"
+                            >
+                                <MailIcon />
+                                <span>devskarnel@gmail.com</span>
+                            </a>
                         </div>
                     </div>
                 </div>

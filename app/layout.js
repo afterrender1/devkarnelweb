@@ -90,8 +90,8 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
-      <body className="">
+    <html lang="en" suppressHydrationWarning>
+      <body className="" suppressHydrationWarning>
         <LenisProvider>
           <h1 className="hidden">
             Devskarnel Web Development Agency - Next.js & MERN Experts

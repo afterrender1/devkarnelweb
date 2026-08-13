@@ -1,20 +1,17 @@
-import CaseStudies from "./components/CaseStudies";
+import dynamic from "next/dynamic";
 import Hero from "./components/Hero";
-import Contact from "./components/Contact";
-
 import Services from "./components/Services";
-import Testimonials from "./components/Testimonials";
+
+const Testimonials = dynamic(() => import("./components/Testimonials"));
+const Contact = dynamic(() => import("./components/Contact"));
 
 export default function Home() {
   return (
     <>
       <Hero />
-      {/* <CaseStudies/> */}
-      <Services/>
-      <Testimonials/>
-      <Contact/>
-
-
+      <Services />
+      <Testimonials />
+      <Contact />
     </>
   );
 }

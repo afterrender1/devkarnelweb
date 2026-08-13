@@ -1,25 +1,29 @@
-import { Inter , Urbanist , Poppins , Truculenta } from "next/font/google";
+import { Inter, Urbanist, Poppins, Truculenta } from "next/font/google";
 
 export const inter = Inter({
-    subsets: ["latin"],
-    weight: ["300", "400", "500", "600", "700", "800"],
-    variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const urbanist = Urbanist({
-    subsets: ["latin"],
-    weight: ["300", "400", "500", "600", "700", "800"],
-    variable: "--font-urbanist",
-})
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-urbanist",
+  display: "swap",
+});
 
 export const poppins = Poppins({
-    subsets: ["latin"],
-    weight: ["300", "400", "500", "600", "700", "800"],
-    variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
+  display: "swap",
 });
 
 export const truculenta = Truculenta({
-    subsets: ["latin"],
-    weight: ["300", "400", "500", "600", "700", "800"],
-    variable: "--font-truculenta",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-truculenta",
+  display: "swap",
 });

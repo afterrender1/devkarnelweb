@@ -67,10 +67,10 @@ export default function ServiceFeatures({
           {features.map((item, idx) => (
             <div
               key={idx}
-              className="group relative p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(16,185,129,0.15)] flex flex-col justify-between overflow-hidden"
+              className="group relative p-8 rounded-2xl bg-white/3 border border-white/10 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(16,185,129,0.15)] flex flex-col justify-between overflow-hidden"
             >
               {/* Top Card Glow */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
               <div>
                 {/* Icon Container */}

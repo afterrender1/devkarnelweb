@@ -116,7 +116,7 @@ export default function Footer() {
                                 alt="Devskarnel Logo"
                                 width={180}
                                 height={50}
-                                className="h-10 sm:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                             />
                         </Link>
                         <p className="text-white/60 text-sm sm:text-base mb-4 sm:mb-6 max-w-xs mx-auto md:mx-0">

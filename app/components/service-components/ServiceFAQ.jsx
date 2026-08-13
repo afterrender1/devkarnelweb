@@ -39,7 +39,7 @@ export default function ServiceFAQ({
             return (
               <div
                 key={idx}
-                className="rounded-2xl bg-white/[0.03] border border-white/10 overflow-hidden transition-colors hover:border-emerald-500/30"
+                className="rounded-2xl bg-white/3 border border-white/10 overflow-hidden transition-colors hover:border-emerald-500/30"
               >
                 <button
                   type="button"

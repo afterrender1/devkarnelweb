@@ -84,10 +84,10 @@ export default function ServiceProcess({
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="relative p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group"
+              className="relative p-8 rounded-2xl bg-white/2 border border-white/10 hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <span className={`text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 ${truculenta.className}`}>
+                <span className={`text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-teal-300 ${truculenta.className}`}>
                   {st.number}
                 </span>
                 <h3 className={`mt-4 text-xl font-bold text-white group-hover:text-emerald-400 transition-colors ${truculenta.className}`}>
@@ -100,7 +100,7 @@ export default function ServiceProcess({
 
               <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-emerald-400 font-semibold uppercase tracking-wider">
                 <span>Phase {idx + 1}</span>
-                <span className="w-8 h-[1px] bg-emerald-500/40 group-hover:w-12 transition-all" />
+                <span className="w-8 h-px bg-emerald-500/40 group-hover:w-12 transition-all" />
               </div>
             </div>
           ))}

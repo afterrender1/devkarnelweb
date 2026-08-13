@@ -6,6 +6,27 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { urbanist } from "../fonts";
+import {
+  Palette,
+  Layout,
+  ShoppingBag,
+  Sparkles,
+  Smartphone,
+  TrendingUp,
+  Share2,
+  Store,
+  Tag,
+  ShoppingBasket,
+  Video,
+  Box,
+  Globe,
+  Code,
+  Cpu,
+  Activity,
+  Gift,
+  Zap,
+  Shirt
+} from "lucide-react";
 
 // --- Icons ---
 const SearchIcon = () => (
@@ -158,18 +179,18 @@ const RocketIcon = ({ className = "w-5 h-5" }) => (
 
 // --- Config ---
 const ecommerceSubmenu = [
-  "Shopify Automation",
-  "Ebay Automation",
-  "Walmart Automation",
-  "TikTok Shop Automation",
-  "Temu Automation",
-  "Shopee Marketplace Growth Service",
-  "WooCommerce Store Development & Management",
-  "Penties Automation",
-  "Telehealth Automation",
-  "Etsy Shop Automation",
-  "Amazon Zore Setup & Growth Services",
-  "Shopify Merchandies",
+  { label: "Shopify Automation", icon: Store, color: "text-emerald-600 bg-emerald-50" },
+  { label: "Ebay Automation", icon: Tag, color: "text-blue-600 bg-blue-50" },
+  { label: "Walmart Automation", icon: ShoppingBasket, color: "text-amber-600 bg-amber-50" },
+  { label: "TikTok Shop Automation", icon: Video, color: "text-pink-600 bg-pink-50" },
+  { label: "Temu Automation", icon: Box, color: "text-orange-600 bg-orange-50" },
+  { label: "Shopee Marketplace Growth Service", icon: Globe, color: "text-teal-600 bg-teal-50" },
+  { label: "WooCommerce Store Development & Management", icon: Code, color: "text-purple-600 bg-purple-50" },
+  { label: "Penties Automation", icon: Cpu, color: "text-indigo-600 bg-indigo-50" },
+  { label: "Telehealth Automation", icon: Activity, color: "text-red-600 bg-red-50" },
+  { label: "Etsy Shop Automation", icon: Gift, color: "text-amber-700 bg-amber-50" },
+  { label: "Amazon Zore Setup & Growth Services", icon: Zap, color: "text-yellow-600 bg-yellow-50" },
+  { label: "Shopify Merchandies", icon: Shirt, color: "text-sky-600 bg-sky-50" },
 ];
 
 const navLinks = [
@@ -177,19 +198,23 @@ const navLinks = [
     label: "Solutions",
     hasDropdown: true,
     dropdownItems: [
-      { label: "UI/UX Design", href: "/services/ui-ux-design" },
-      { label: "Web Design", href: "/services/website-development" },
+      { label: "UI/UX Design", href: "/services/ui-ux-design", icon: Palette, color: "text-purple-600 bg-purple-50" },
+      { label: "Web Design", href: "/services/website-development", icon: Layout, color: "text-blue-600 bg-blue-50" },
       {
         label: "E-commerce",
         href: "/services/e-commerce",
+        icon: ShoppingBag,
+        color: "text-emerald-600 bg-emerald-50",
         subItems: ecommerceSubmenu,
       },
-      { label: "Branding", href: "/services/branding" },
-      { label: "Mobile App", href: "/services/mobile-app-development" },
-      { label: "SEO", href: "/services/seo-optimization" },
+      { label: "Branding", href: "/services/branding", icon: Sparkles, color: "text-amber-600 bg-amber-50" },
+      { label: "Mobile App", href: "/services/mobile-app-development", icon: Smartphone, color: "text-indigo-600 bg-indigo-50" },
+      { label: "SEO", href: "/services/seo-optimization", icon: TrendingUp, color: "text-teal-600 bg-teal-50" },
       {
         label: "Social Media Marketing",
         href: "/services/social-media-marketing",
+        icon: Share2,
+        color: "text-rose-600 bg-rose-50",
       },
     ],
   },
@@ -213,6 +238,7 @@ export default function Navbar() {
   const sidebarRef = useRef(null);
   const overlayRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
+  const submenuTimeoutRef = useRef(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -244,9 +270,25 @@ export default function Navbar() {
   };
 
   const handleMouseLeave = () => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     dropdownTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
-    }, 150);
+      setHoveredSubmenu(null);
+    }, 350);
+  };
+
+  const handleSubmenuEnter = (label) => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    if (submenuTimeoutRef.current) clearTimeout(submenuTimeoutRef.current);
+    setIsDropdownOpen(true);
+    setHoveredSubmenu(label);
+  };
+
+  const handleSubmenuLeaveWithDelay = () => {
+    if (submenuTimeoutRef.current) clearTimeout(submenuTimeoutRef.current);
+    submenuTimeoutRef.current = setTimeout(() => {
+      setHoveredSubmenu(null);
+    }, 450);
   };
 
   // --- Animations ---
@@ -324,6 +366,7 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
+        suppressHydrationWarning
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${urbanist.className}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4 sm:gap-6">
@@ -367,65 +410,118 @@ export default function Navbar() {
                     {isDropdownOpen && (
                       <div
                         ref={dropdownRef}
-                        className="absolute top-[120%] left-0 w-64 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-sm overflow-hidden shadow-2xl z-100"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        className="absolute top-full pt-2 left-0 w-72 overflow-visible z-100 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4"
                       >
-                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/10 blur-3xl pointer-events-none" />
-                        <div className="relative">
+                        <div className="w-full bg-white border border-slate-200/90 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.18)] space-y-0.5">
                           {dropdownItems.map((item) => {
                             const hasSubItems =
                               Array.isArray(item.subItems) &&
                               item.subItems.length > 0;
 
+                            const isSubActive = hoveredSubmenu === item.label;
+                            const ItemIcon = item.icon || Palette;
+
                             return (
                               <div
                                 key={item.label}
-                                className={hasSubItems ? "relative" : ""}
-                                onMouseEnter={
-                                  hasSubItems
-                                    ? () => setHoveredSubmenu(item.label)
-                                    : undefined
-                                }
-                                onMouseLeave={
-                                  hasSubItems
-                                    ? () => setHoveredSubmenu(null)
-                                    : undefined
-                                }
+                                className={hasSubItems ? "relative group/sub" : ""}
+                                onMouseEnter={() => {
+                                  if (hasSubItems) {
+                                    handleSubmenuEnter(item.label);
+                                  } else {
+                                    handleMouseEnter();
+                                    handleSubmenuLeaveWithDelay();
+                                  }
+                                }}
+                                onMouseLeave={handleMouseLeave}
                               >
-                                <Link
-                                  href={item.href}
-                                  onClick={(e) => handleNavClick(item.href, e)}
-                                  className="flex items-center justify-between gap-3 px-5 py-4 text-white/70 hover:text-emerald-400 hover:bg-white/5 transition-all duration-200 text-sm font-medium border-b border-white/5 last:border-b-0"
-                                >
-                                  <span className="flex items-center gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                                    {item.label}
-                                  </span>
-                                  {hasSubItems && (
-                                    <span className="text-base text-white/50">
+                                {hasSubItems ? (
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      handleSubmenuEnter(item.label);
+                                    }}
+                                    className={`w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 text-left cursor-pointer ${
+                                      isSubActive
+                                        ? "bg-slate-100 text-slate-900 shadow-sm"
+                                        : "text-slate-700 hover:bg-slate-100/80 hover:text-slate-900"
+                                    }`}
+                                  >
+                                    <span className="flex items-center gap-3">
+                                      <div className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}>
+                                        <ItemIcon className="w-4 h-4" />
+                                      </div>
+                                      <span>{item.label}</span>
+                                    </span>
+                                    <span className={`text-base font-bold transition-transform duration-200 ${isSubActive ? "text-emerald-600 translate-x-0.5" : "text-slate-400"}`}>
                                       ›
                                     </span>
-                                  )}
-                                </Link>
+                                  </button>
+                                ) : (
+                                  <Link
+                                    href={item.href}
+                                    onClick={(e) => handleNavClick(item.href, e)}
+                                    className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 transition-all duration-150 text-sm font-semibold"
+                                  >
+                                    <span className="flex items-center gap-3">
+                                      <div className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}>
+                                        <ItemIcon className="w-4 h-4" />
+                                      </div>
+                                      <span>{item.label}</span>
+                                    </span>
+                                  </Link>
+                                )}
 
                                 {hasSubItems && (
                                   <div
-                                    className={`pointer-events-auto absolute left-full top-0 ml-2 ${hoveredSubmenu === item.label ? "flex" : "hidden"} w-72 flex-col bg-[#111827] border border-white/10 shadow-2xl rounded-md overflow-hidden z-50`}
+                                    onMouseEnter={() => handleSubmenuEnter(item.label)}
+                                    onMouseLeave={handleMouseLeave}
+                                    className={`pointer-events-auto absolute left-full top-0 pl-2 ${isSubActive ? "flex" : "hidden"} w-90 sm:w-95 flex-col z-50 before:content-[''] before:absolute before:-left-12 before:top-0 before:bottom-0 before:w-16`}
                                   >
-                                    {item.subItems.map((subItem) => (
+                                    <div
+                                      data-lenis-prevent
+                                      className="w-full bg-white border border-slate-200/90 shadow-[0_25px_60px_rgba(0,0,0,0.18)] rounded-2xl p-2 max-h-110 overflow-y-auto overscroll-contain touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent space-y-1"
+                                    >
+                                      {/* All Category CTA */}
                                       <Link
-                                        key={subItem}
-                                        href="/services/e-commerce"
-                                        onClick={(e) =>
-                                          handleNavClick(
-                                            "/services/e-commerce",
-                                            e,
-                                          )
-                                        }
-                                        className="px-4 py-3 text-sm text-white/70 hover:text-emerald-400 hover:bg-white/5 border-b border-white/5 last:border-b-0"
+                                        href={item.href}
+                                        onClick={(e) => handleNavClick(item.href, e)}
+                                        className="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/80 transition-all duration-200 mb-1.5"
                                       >
-                                        {subItem}
+                                        <span className="text-xs font-extrabold text-emerald-800 tracking-wide">
+                                          All {item.label} Services
+                                        </span>
+                                        <span className="text-emerald-700 font-bold transition-transform duration-200 group-hover:translate-x-1">
+                                          →
+                                        </span>
                                       </Link>
-                                    ))}
+
+                                      {/* Sub Category Items */}
+                                      {item.subItems.map((subObj) => {
+                                        const SubIcon = subObj.icon || Store;
+                                        return (
+                                          <Link
+                                            key={subObj.label}
+                                            href="/services/e-commerce"
+                                            onClick={(e) =>
+                                              handleNavClick(
+                                                "/services/e-commerce",
+                                                e,
+                                              )
+                                            }
+                                            className="group flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-950 hover:bg-slate-100 border border-transparent hover:border-slate-200/60 transition-all duration-150"
+                                          >
+                                            <div className={`p-1 rounded-lg shrink-0 transition-transform duration-200 group-hover:scale-110 ${subObj.color || "bg-slate-100 text-slate-600"}`}>
+                                              <SubIcon className="w-3.5 h-3.5" />
+                                            </div>
+                                            <span className="leading-tight tracking-wide">{subObj.label}</span>
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
                                   </div>
                                 )}
                               </div>
@@ -550,7 +646,7 @@ export default function Navbar() {
 
                 {/* Dropdown Sub-Items (Scrollable Container) */}
                 <div
-                  className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? "max-h-[1200px] opacity-100 mt-1" : "max-h-0 opacity-0"}`}
+                  className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? "max-h-300 opacity-100 mt-1" : "max-h-0 opacity-0"}`}
                 >
                   <div className="space-y-1 border-l-2 border-emerald-500/30 ml-3 pl-3 py-1">
                     {navLinks[0].dropdownItems.map((item) => {
@@ -581,21 +677,24 @@ export default function Navbar() {
                               </button>
                               {activeMobileSubmenu === item.label && (
                                 <div className="pl-3 space-y-1 py-1 max-h-56 overflow-y-auto pr-1">
-                                  {item.subItems.map((sub) => (
-                                    <Link
-                                      key={sub}
-                                      href="/services/e-commerce"
-                                      onClick={(e) =>
-                                        handleNavClick(
-                                          "/services/e-commerce",
-                                          e,
-                                        )
-                                      }
-                                      className="block px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0"
-                                    >
-                                      • {sub}
-                                    </Link>
-                                  ))}
+                                  {item.subItems.map((sub) => {
+                                    const subLabel = typeof sub === "object" ? sub.label : sub;
+                                    return (
+                                      <Link
+                                        key={subLabel}
+                                        href="/services/e-commerce"
+                                        onClick={(e) =>
+                                          handleNavClick(
+                                            "/services/e-commerce",
+                                            e,
+                                          )
+                                        }
+                                        className="block px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0"
+                                      >
+                                        • {subLabel}
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
                               )}
                             </>

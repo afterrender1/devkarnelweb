@@ -63,17 +63,17 @@ const navLinks = [
         label: "Solutions",
         hasDropdown: true,
         dropdownItems: [
-            { label: "UI/UX Design", href: "#contact" },
+            { label: "UI/UX Design", href: "/services/ui-ux-design" },
             { label: "Web Design", href: "/services/website-development" },
             {
                 label: "E-commerce",
-                href: "#contact",
+                href: "/services/e-commerce",
                 subItems: ecommerceSubmenu
             },
-            { label: "Branding", href: "#contact" },
-            { label: "Mobile App", href: "#contact" },
-            { label: "SEO", href: "#contact" },
-            { label: "Social Media Marketing", href: "#contact" }
+            { label: "Branding", href: "/services/branding" },
+            { label: "Mobile App", href: "/services/mobile-app-development" },
+            { label: "SEO", href: "/services/seo-optimization" },
+            { label: "Social Media Marketing", href: "/services/social-media-marketing" }
         ]
     },
     { label: "Case studies", hasDropdown: false, href: "#casestudies" },
@@ -248,8 +248,8 @@ export default function Navbar() {
                                                                         {item.subItems.map((subItem) => (
                                                                             <Link
                                                                                 key={subItem}
-                                                                                href="#contact"
-                                                                                onClick={(e) => handleNavClick("#contact", e)}
+                                                                                href="/services/e-commerce"
+                                                                                onClick={(e) => handleNavClick("/services/e-commerce", e)}
                                                                                 className="px-4 py-3 text-sm text-white/70 hover:text-emerald-400 hover:bg-white/5 border-b border-white/5 last:border-b-0"
                                                                             >
                                                                                 {subItem}
@@ -350,8 +350,8 @@ export default function Navbar() {
                                                                     {item.subItems.map(subItem => (
                                                                         <Link
                                                                             key={subItem}
-                                                                            href="#contact"
-                                                                            onClick={(e) => handleNavClick("#contact", e)}
+                                                                            href="/services/e-commerce"
+                                                                            onClick={(e) => handleNavClick("/services/e-commerce", e)}
                                                                             className="block px-10 py-2.5 text-xs text-white/50 border-t border-white/5"
                                                                         >
                                                                             {subItem}

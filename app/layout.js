@@ -97,7 +97,7 @@ export default function RootLayout({ children }) {
         <link
           rel="preload"
           as="image"
-          href="https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1770205987/supps_vm41cl.png"
+          href="https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1770205987/supps_vm41cl.png"
           fetchPriority="high"
         />
       </head>

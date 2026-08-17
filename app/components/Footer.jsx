@@ -59,7 +59,7 @@ export default function Footer() {
             { name: 'Website Development', url: '#' },
         ],
         pages: [
-            // { name: 'Case Studies', url: '#casestudies' },
+            { name: 'Portfolio', url: '/portfolio' },
             { name: 'Services', url: '#services' },
             { name: 'Testimonials', url: '#reviews' },
             { name: 'Contact', url: '#contact' },

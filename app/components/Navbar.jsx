@@ -303,7 +303,7 @@ const navLinks = [
       },
     ],
   },
-  { label: "Case studies", hasDropdown: false, href: "#casestudies" },
+  { label: "Portfolio", hasDropdown: false, href: "/portfolio" },
   { label: "Contact", hasDropdown: false, href: "#contact" },
 ];
 

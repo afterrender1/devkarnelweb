@@ -4,12 +4,12 @@ import { gsap } from "gsap";
 import { urbanist } from "../fonts";
 
 const images = [
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1778329047/tmg_sp66wu.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1778329047/mag_cahxej.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1778329076/free30_tkjqe8.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1778329174/next_poinns.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1778329174/javewe_k6n8sg.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1770205987/supps_vm41cl.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329047/tmg_sp66wu.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329047/mag_cahxej.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329076/free30_tkjqe8.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329174/next_poinns.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329174/javewe_k6n8sg.png",
 ];
 
 const LOOP = [...images, ...images, ...images];
@@ -250,6 +250,7 @@ export default function Hero() {
                         className="w-full h-full object-cover"
                         draggable={false}
                         loading={i >= START && i < START + images.length ? "eager" : "lazy"}
+                        fetchPriority={i === START ? "high" : undefined}
                       />
                     </div>
                   </div>

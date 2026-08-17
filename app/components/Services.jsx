@@ -8,7 +8,7 @@ const Services = () => {
             title: "App Development",
             desc: "Building high-performance native and cross-platform mobile solutions.",
             colSpan: "lg:col-span-1",
-            image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325978/Adobe_Express_-_file_lctvwl.png"
+            image: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778325978/Adobe_Express_-_file_lctvwl.png"
             
         },
         {
@@ -21,13 +21,13 @@ const Services = () => {
             title: "UI / UX Design",
             desc: "Crafting intuitive interfaces and seamless user journeys that convert.",
             colSpan: "lg:col-span-1",
-            image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325979/Gemini_Generated_Image_y8divby8divby8di_1_iwcwda.png"
+            image: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778325979/Gemini_Generated_Image_y8divby8divby8di_1_iwcwda.png"
         },
         {
             title: "SEO Optimization",
             desc: "Boosting visibility and organic growth through data-driven strategies.",
             colSpan: "lg:col-span-1",
-            image: "https://res.cloudinary.com/dlurrugno/image/upload/v1778325979/Gemini_Generated_Image_8fs9m78fs9m78fs9_1_hea4am.png"
+            image: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778325979/Gemini_Generated_Image_8fs9m78fs9m78fs9_1_hea4am.png"
         },
         {
             title: "Logo Design",

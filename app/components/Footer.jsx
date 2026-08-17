@@ -152,9 +152,9 @@ export default function Footer() {
                     <div className="footer-animate lg:col-span-1 grid grid-cols-2 gap-8 md:gap-12 text-center md:text-left">
                         {/* Solutions */}
                         <div>
-                            <h4 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                            <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
                                 Solutions
-                            </h4>
+                            </h3>
                             <ul className="space-y-3">
                                 {links.solutions.map((link) => (
                                     <li key={link.name}>
@@ -171,9 +171,9 @@ export default function Footer() {
 
                         {/* Pages */}
                         <div>
-                            <h4 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                            <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
                                 Company
-                            </h4>
+                            </h3>
                             <ul className="space-y-3">
                                 {links.pages.map((link) => (
                                     <li key={link.name}>

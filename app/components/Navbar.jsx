@@ -461,8 +461,8 @@ export default function Navbar() {
               <Image
                 src="/images/dklogo.webp"
                 alt="Devskarnel Logo"
-                width={180}
-                height={50}
+                width={280}
+                height={80}
                 className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 priority
               />
@@ -653,15 +653,16 @@ export default function Navbar() {
                 href="https://calendly.com/devskarnel/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95"
+                className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold transition-all shadow-[0_0_20px_rgba(16,185,129,0.25)] active:scale-95 cursor-pointer"
               >
                 Request a quote
               </a>
             </div>
 
             <button
+              aria-label="Open Navigation Menu"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+              className="lg:hidden p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer"
             >
               <MenuIcon />
             </button>

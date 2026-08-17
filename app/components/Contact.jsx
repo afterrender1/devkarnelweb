@@ -30,6 +30,7 @@ const Checkbox = ({ label, checked, onToggle }) => (
     <span
       onClick={onToggle}
       role="checkbox"
+      aria-label={label}
       aria-checked={checked}
       className="w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all duration-150"
       style={{
@@ -149,6 +150,7 @@ const ContactForm = () => {
         <div className="flex gap-2">
           <select
             name="countryCode"
+            aria-label="Country Code"
             value={values.countryCode}
             onChange={handle}
             className="border border-white/10 rounded-lg px-2 text-sm text-white bg-white/5 outline-none cursor-pointer focus:border-[#2de8b0] transition-all"

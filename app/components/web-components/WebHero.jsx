@@ -6,11 +6,11 @@ import { urbanist } from "@/app/fonts"; // Adjust path as needed
 
 // Carousel Images - trailing spaces removed
 const carouselImages = [
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905816/mag-cropped_ynegzt.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905815/tmgcropped_clpgiu.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905816/javecropped_jvo8uy.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905812/darkdrop-coffee.vercel.app__hd1aro.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/v1775905817/icecropped_cnutjn.png"
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1775905816/mag-cropped_ynegzt.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1775905815/tmgcropped_clpgiu.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1775905816/javecropped_jvo8uy.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1775905812/darkdrop-coffee.vercel.app__hd1aro.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1775905817/icecropped_cnutjn.png"
 ];
 
 const featureTags = [

@@ -1,11 +1,4 @@
-export default function robots() {
-  return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-      },
-    ],
-    sitemap: "https://devskarnel.com/sitemap.xml",
-  };
-}
+User-agent: *
+Allow: /
+
+Sitemap: https://devskarnel.vercel.app/sitemap.xml

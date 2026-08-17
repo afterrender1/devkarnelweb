@@ -4,12 +4,12 @@ import { gsap } from "gsap";
 import { urbanist } from "../fonts";
 
 const images = [
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1770205987/supps_vm41cl.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329047/tmg_sp66wu.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329047/mag_cahxej.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329076/free30_tkjqe8.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329174/next_poinns.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1778329174/javewe_k6n8sg.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1770205987/supps_vm41cl.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778329047/tmg_sp66wu.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778329047/mag_cahxej.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778329076/free30_tkjqe8.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778329174/next_poinns.png",
+  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_600/v1778329174/javewe_k6n8sg.png",
 ];
 
 const LOOP = [...images, ...images, ...images];
@@ -338,10 +338,10 @@ export default function Hero() {
 
           <div
             ref={btnsRef}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto min-h-[52px]"
           >
             <a href="#contact" className="w-full sm:w-auto">
-              <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold text-black/80 transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25">
+              <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer">
                 Contact us
               </button>
             </a>

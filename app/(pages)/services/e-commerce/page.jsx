@@ -128,16 +128,13 @@ export default function EcommercePage() {
     <>
       <ServiceHero
         badge="E-Commerce & Automation Studio"
-        titlePrefix="Scalable E-Commerce &"
-        titleHighlight="Marketplace Automation"
-        titleSuffix="Services"
+        titleLine1="Scalable e-commerce &"
+        titleLine2="Marketplace automation engines."
         description="Launch, scale, and automate high-converting online stores across Shopify, Amazon, Walmart, TikTok Shop, eBay, and global marketplaces."
-        tags={["Shopify Plus", "Amazon FBA", "TikTok Shop", "Multi-Channel Sync"]}
-        stats={[
-          { label: "Stores Launched", value: "200+" },
-          { label: "Automated Orders Processed", value: "2M+" },
-          { label: "Avg Sales Growth", value: "4.2x" },
-        ]}
+        ctaText="Automate Your Store"
+        ctaHref="#contact"
+        secondaryCtaText="Book a Demo"
+        secondaryCtaHref="https://calendly.com/devskarnel/30min"
       />
 
       {/* Interactive Automations Hub */}

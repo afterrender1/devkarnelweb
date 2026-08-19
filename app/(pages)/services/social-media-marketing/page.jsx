@@ -54,16 +54,13 @@ export default function SocialMediaPage() {
     <>
       <ServiceHero
         badge="Performance Growth Studio"
-        titlePrefix="High Converting"
-        titleHighlight="Social Media Marketing"
-        titleSuffix="& Ads"
-        description="Scale your brand revenue with paid ad campaigns, viral UGC video content, and targeted social media growth strategies."
-        tags={["Meta Ads", "TikTok Ads", "UGC Videos", "High ROAS"]}
-        stats={[
-          { label: "Ad Spend Managed", value: "$3.5M+" },
-          { label: "Avg Campaign ROAS", value: "4.8x" },
-          { label: "Video Views Generated", value: "25M+" },
-        ]}
+        titleLine1="High-converting"
+        titleLine2="Social media marketing & ads."
+        description="Scale your brand revenue with targeted paid ad campaigns, viral UGC videos, and data-backed creative testing that maximizes ROAS."
+        ctaText="Grow Your Brand"
+        ctaHref="#contact"
+        secondaryCtaText="Request Ad Strategy"
+        secondaryCtaHref="https://calendly.com/devskarnel/30min"
       />
       <ServiceFeatures
         badge="Performance Growth"

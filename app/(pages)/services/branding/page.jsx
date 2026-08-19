@@ -56,16 +56,13 @@ export default function BrandingPage() {
     <>
       <ServiceHero
         badge="Brand Identity Studio"
-        titlePrefix="Memorable & Timeless"
-        titleHighlight="Branding & Logo"
-        titleSuffix="Design"
-        description="We craft iconic brand identities, custom logo designs, and complete visual systems that establish immediate authority and recognition."
-        tags={["Vector Logos", "Brand Style Guides", "Color Palettes", "3D Mockups"]}
-        stats={[
-          { label: "Brands Created", value: "300+" },
-          { label: "Client Approval Rate", value: "99.4%" },
-          { label: "Avg Turnaround", value: "3-5 Days" },
-        ]}
+        titleLine1="Memorable & timeless"
+        titleLine2="Branding & visual design."
+        description="We craft iconic brand identities, custom logo systems, and complete visual guidelines that establish immediate market authority."
+        ctaText="Start Your Brand"
+        ctaHref="#contact"
+        secondaryCtaText="Book a Discovery Call"
+        secondaryCtaHref="https://calendly.com/devskarnel/30min"
       />
       <ServiceFeatures
         badge="Visual Identity"

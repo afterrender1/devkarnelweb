@@ -54,16 +54,13 @@ export default function UIUXDesignPage() {
     <>
       <ServiceHero
         badge="UI/UX Design Studio"
-        titlePrefix="Intuitive & High-Converting"
-        titleHighlight="UI/UX Design"
-        titleSuffix="Solutions"
-        description="We craft intuitive digital interfaces, sleek design systems, and engaging user experiences that turn visitors into loyal customers."
-        tags={["Figma Experts", "Design Systems", "User Research", "Conversion UX"]}
-        stats={[
-          { label: "Usability Score", value: "98%" },
-          { label: "Design Systems Built", value: "60+" },
-          { label: "Avg Conversion Increase", value: "+45%" },
-        ]}
+        titleLine1="Intuitive & high-converting"
+        titleLine2="UI/UX design experiences."
+        description="We craft intuitive digital interfaces, sleek design systems, and engaging user journeys that turn visitors into loyal customers."
+        ctaText="Start Your Project"
+        ctaHref="#contact"
+        secondaryCtaText="Book a Consultation"
+        secondaryCtaHref="https://calendly.com/devskarnel/30min"
       />
       <ServiceFeatures
         badge="Capabilities"

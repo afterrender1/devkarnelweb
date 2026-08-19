@@ -54,16 +54,13 @@ export default function MobileAppPage() {
     <>
       <ServiceHero
         badge="Mobile Engineering Studio"
-        titlePrefix="High Performance"
-        titleHighlight="Mobile App"
-        titleSuffix="Development"
-        description="We build fast, beautiful, and feature-rich mobile applications for iOS and Android that users love."
-        tags={["React Native", "Flutter", "iOS Swift", "Android Kotlin"]}
-        stats={[
-          { label: "Apps Published", value: "85+" },
-          { label: "App Store Approval Rate", value: "100%" },
-          { label: "Active Mobile Users", value: "1.5M+" },
-        ]}
+        titleLine1="Engineering scalable"
+        titleLine2="iOS & Android mobile apps."
+        description="We build fast, responsive, and feature-rich mobile applications that deliver smooth native performance and drive active user engagement."
+        ctaText="Start Your Mobile App"
+        ctaHref="#contact"
+        secondaryCtaText="Book a Tech Call"
+        secondaryCtaHref="https://calendly.com/devskarnel/30min"
       />
       <ServiceFeatures
         badge="Mobile Capabilities"

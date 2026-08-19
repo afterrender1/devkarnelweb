@@ -54,16 +54,13 @@ export default function SEOPage() {
     <>
       <ServiceHero
         badge="Organic Growth Agency"
-        titlePrefix="Data-Driven & Technical"
-        titleHighlight="SEO Optimization"
-        titleSuffix="Services"
-        description="Dominate search results, boost organic traffic, and achieve 90+ Core Web Vitals scores with our technical SEO engineering."
-        tags={["Technical SEO", "Core Web Vitals", "Keyword Strategy", "Schema Markup"]}
-        stats={[
-          { label: "Keywords Ranked #1-3", value: "1,200+" },
-          { label: "Avg Traffic Growth", value: "+320%" },
-          { label: "PageSpeed Score", value: "95+/100" },
-        ]}
+        titleLine1="Data-driven & technical"
+        titleLine2="SEO optimization services."
+        description="Dominate search rankings, scale organic buyer traffic, and achieve 90+ Core Web Vitals with our technical SEO engineering."
+        ctaText="Audit Your SEO"
+        ctaHref="#contact"
+        secondaryCtaText="Book a Strategy Call"
+        secondaryCtaHref="https://calendly.com/devskarnel/30min"
       />
       <ServiceFeatures
         badge="Organic Strategy"

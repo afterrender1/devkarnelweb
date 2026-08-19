@@ -92,17 +92,24 @@ export default function CTASection() {
         {/* CTA Button and Contact */}
         <div
           ref={buttonRef}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8 w-full max-w-sm sm:max-w-none mx-auto"
         >
-          <button className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl bg-emerald-500 text-white font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:bg-emerald-400 hover:scale-[1.03] hover:shadow-lg hover:shadow-emerald-500/40 active:scale-[0.97]">
-            Request a Quote
-          </button>
-          <span className="text-white/50 text-base sm:text-lg font-medium">
+          <a
+            href="https://calendly.com/devskarnel/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto"
+          >
+            <button className="w-full sm:w-auto px-6 sm:px-10 py-3.5 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg hover:shadow-emerald-500/40 active:scale-[0.97] cursor-pointer whitespace-nowrap">
+              Request a Quote
+            </button>
+          </a>
+          <span className="text-white/50 text-sm sm:text-base lg:text-lg font-medium">
             or
           </span>
           <a
             href="mailto:devskarnel@gmail.com"
-            className="text-white text-sm sm:text-base lg:text-lg font-semibold border-b-2 border-emerald-500/30 hover:border-emerald-500 transition-colors pb-1"
+            className="text-white text-sm sm:text-base lg:text-lg font-semibold border-b-2 border-emerald-500/30 hover:border-emerald-500 transition-colors pb-1 break-all sm:break-normal"
           >
             devskarnel@gmail.com
           </a>

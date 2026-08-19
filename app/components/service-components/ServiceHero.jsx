@@ -88,24 +88,24 @@ export default function ServiceHero({
         </div>
 
         {/* Heading */}
-        <h1 ref={headingRef} className={`text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.1] ${truculenta.className}`}>
+        <h1 ref={headingRef} className={`text-3xl min-[360px]:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.15] break-words ${truculenta.className}`}>
           {titlePrefix}{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 via-teal-300 to-emerald-500">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 via-teal-300 to-emerald-500 break-words">
             {titleHighlight}
           </span>{" "}
           {titleSuffix}
         </h1>
 
         {/* Description */}
-        <p ref={descRef} className="mt-6 text-lg sm:text-xl text-white/70 max-w-3xl mx-auto font-normal leading-relaxed">
+        <p ref={descRef} className="mt-4 sm:mt-6 text-sm sm:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto font-normal leading-relaxed">
           {description}
         </p>
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div ref={tagsRef} className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-2xl mx-auto">
+          <div ref={tagsRef} className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-2xl mx-auto">
             {tags.map((tag, idx) => (
-              <span key={idx} className="px-3.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm text-white/80 font-medium hover:border-emerald-500/50 transition-colors">
+              <span key={idx} className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm text-white/80 font-medium hover:border-emerald-500/50 transition-colors">
                 ⚡ {tag}
               </span>
             ))}
@@ -113,17 +113,19 @@ export default function ServiceHero({
         )}
 
         {/* CTA Buttons */}
-        <div ref={btnsRef} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div ref={btnsRef} className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto">
           <a
             href={ctaHref}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-base shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
+            target={ctaHref.startsWith("http") ? "_blank" : undefined}
+            rel={ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-sm sm:text-base text-center shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 whitespace-nowrap cursor-pointer"
           >
             {ctaText}
           </a>
           {secondaryCtaText && (
             <a
               href={secondaryCtaHref}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-base transition-all duration-300 backdrop-blur-sm"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-sm sm:text-base text-center transition-all duration-300 backdrop-blur-sm whitespace-nowrap cursor-pointer"
             >
               {secondaryCtaText}
             </a>

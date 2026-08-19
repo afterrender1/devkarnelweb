@@ -257,9 +257,9 @@ const Contact = () => {
           style={{ opacity: 0 }}
         >
           {/* Left Visual Side */}
-          <div className="relative w-full h-48 sm:h-56 md:h-auto md:w-[42%] shrink-0 overflow-hidden">
+          <div className="relative w-full h-48 sm:h-56 md:h-auto md:w-[49%] shrink-0 overflow-hidden">
             <Image
-              src="/images/contact.png"
+              src="/images/contact1.webp"
               alt="Contact"
               fill
               className="object-cover object-center"

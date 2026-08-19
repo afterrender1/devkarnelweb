@@ -151,9 +151,9 @@ export default function HorizontalAutomationWorkflow() {
                   </p>
                   
                   <div className="flex items-center gap-3">
-                    <span className="text-[#b4f481] text-[10px] font-bold uppercase tracking-tighter">Scalable</span>
+                    <span className="text-[#2de8b0] text-[10px] font-bold uppercase tracking-tighter">Scalable</span>
                     <div className="w-1 h-1 rounded-full bg-white/20" />
-                    <span className="text-[#b4f481] text-[10px] font-bold uppercase tracking-tighter">Global Support</span>
+                    <span className="text-[#2de8b0] text-[10px] font-bold uppercase tracking-tighter">Global Support</span>
                   </div>
                 </div>
              </div>

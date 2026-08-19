@@ -105,14 +105,14 @@ export default function LogoPricing() {
                 className="relative w-full max-w-md p-8 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden group"
             >
                 {/* Animated Background Glow */}
-                <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#b4f481]/10 blur-[80px] pointer-events-none group-hover:bg-[#b4f481]/20 transition-all duration-700" />
+                <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#2de8b0]/10 blur-[80px] pointer-events-none group-hover:bg-[#2de8b0]/20 transition-all duration-700" />
 
                 {/* Card Header */}
                 <div className="flex justify-between items-start mb-8">
-                    <h3 ref={titleRef} className="text-[#b0f578]  text-3xl font-bold tracking-tight">
+                    <h3 ref={titleRef} className="text-[#2de8b0] text-3xl font-bold tracking-tight">
                         Pro
                     </h3>
-                    <span className="px-4 py-1.5 rounded-full bg-emerald-500 text-[#ffffff] text-[10px] font-bold uppercase tracking-widest border border-[#b4f481]/20">
+                    <span className="px-4 py-1.5 rounded-full bg-[#2de8b0] text-black text-[10px] font-bold uppercase tracking-widest border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.2)]">
                         Most Popular
                     </span>
                 </div>
@@ -137,7 +137,7 @@ export default function LogoPricing() {
                 >
                     <button
                         ref={buttonRef}
-                        className="w-full bg-emerald-500 hover:bg-emerald-400 py-3.5 sm:py-4 mt-8 sm:mt-10 rounded-2xl text-white font-bold text-base sm:text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_rgba(180,244,129,0.3)] cursor-pointer whitespace-nowrap"
+                        className="w-full bg-[#2de8b0] hover:bg-[#1bc497] py-3.5 sm:py-4 mt-8 sm:mt-10 rounded-2xl text-black font-bold text-base sm:text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_rgba(45,232,176,0.3)] cursor-pointer whitespace-nowrap"
                     >
                         Get Started
                     </button>

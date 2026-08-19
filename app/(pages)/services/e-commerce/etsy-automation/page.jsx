@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
 export const metadata = {
@@ -77,7 +76,6 @@ export default function EtsyAutomationPage() {
         heading="Our Etsy Automation Blueprint"
         subheading="From POD provider connection and SEO tag setup to live automated dispatch."
       />
-      <Review />
       <CTASection />
     </>
   );

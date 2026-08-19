@@ -73,16 +73,25 @@ export default function ServiceHero({
   }, []);
 
   return (
-    <section className={`relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#090d16] text-white overflow-hidden ${urbanist.className}`}>
-      {/* Glow Backdrops */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-150 h-87.5 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-40 right-10 w-75 h-75 bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section
+      className={`relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#010504] text-white overflow-hidden ${urbanist.className}`}
+      style={{
+        background: `
+          radial-gradient(circle at 10% 70%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
+          radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
+          radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0.3) 30%, transparent 55%),
+          radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%),
+          linear-gradient(180deg, #24E8B2 0%, #1BC497 5%, #0F7C6E 40%, #0A4A42 60%, #062B24 80%, #010504 100%)
+        `,
+      }}
+    >
+      <div className="absolute bg-black inset-0 w-full h-full opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         {/* Badge */}
-        <div ref={badgeRef} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-md mb-8">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-          <span className="text-emerald-400 text-xs sm:text-sm font-semibold tracking-wider uppercase">
+        <div ref={badgeRef} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(45,232,176,0.15)]">
+          <span className="w-2 h-2 rounded-full bg-[#2de8b0] animate-ping" />
+          <span className="text-[#2de8b0] text-xs sm:text-sm font-bold tracking-wider uppercase">
             {badge}
           </span>
         </div>
@@ -90,14 +99,14 @@ export default function ServiceHero({
         {/* Heading */}
         <h1 ref={headingRef} className={`text-3xl min-[360px]:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.15] break-words ${truculenta.className}`}>
           {titlePrefix}{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 via-teal-300 to-emerald-500 break-words">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] via-[#5eead4] to-[#2de8b0] break-words">
             {titleHighlight}
           </span>{" "}
           {titleSuffix}
         </h1>
 
         {/* Description */}
-        <p ref={descRef} className="mt-4 sm:mt-6 text-sm sm:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto font-normal leading-relaxed">
+        <p ref={descRef} className="mt-4 sm:mt-6 text-sm sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto font-normal leading-relaxed">
           {description}
         </p>
 
@@ -105,7 +114,7 @@ export default function ServiceHero({
         {tags && tags.length > 0 && (
           <div ref={tagsRef} className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 max-w-2xl mx-auto">
             {tags.map((tag, idx) => (
-              <span key={idx} className="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm text-white/80 font-medium hover:border-emerald-500/50 transition-colors">
+              <span key={idx} className="px-3.5 py-1.5 rounded-xl bg-white/10 border border-white/15 text-xs sm:text-sm text-white/90 font-medium hover:border-[#2de8b0]/50 hover:bg-white/15 transition-all shadow-sm">
                 ⚡ {tag}
               </span>
             ))}
@@ -118,14 +127,14 @@ export default function ServiceHero({
             href={ctaHref}
             target={ctaHref.startsWith("http") ? "_blank" : undefined}
             rel={ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold text-sm sm:text-base text-center shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 whitespace-nowrap cursor-pointer"
+            className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl bg-[#2de8b0] hover:bg-[#1bc497] text-black font-bold text-sm sm:text-base text-center shadow-[0_0_30px_rgba(45,232,176,0.35)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 whitespace-nowrap cursor-pointer"
           >
             {ctaText}
           </a>
           {secondaryCtaText && (
             <a
               href={secondaryCtaHref}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-sm sm:text-base text-center transition-all duration-300 backdrop-blur-sm whitespace-nowrap cursor-pointer"
+              className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold text-sm sm:text-base text-center transition-all duration-300 backdrop-blur-sm whitespace-nowrap cursor-pointer hover:border-[#2de8b0]/30"
             >
               {secondaryCtaText}
             </a>
@@ -134,13 +143,13 @@ export default function ServiceHero({
 
         {/* Stats Grid */}
         {stats && stats.length > 0 && (
-          <div ref={statsRef} className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto border-t border-white/10 pt-10">
+          <div ref={statsRef} className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto border-t border-white/15 pt-10">
             {stats.map((st, i) => (
-              <div key={i} className="p-4 rounded-2xl bg-white/2 border border-white/5 backdrop-blur-sm">
-                <p className={`text-3xl sm:text-4xl font-bold text-emerald-400 ${truculenta.className}`}>
+              <div key={i} className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-[#2de8b0]/40 transition-colors">
+                <p className={`text-3xl sm:text-4xl font-bold text-[#2de8b0] ${truculenta.className}`}>
                   {st.value}
                 </p>
-                <p className="mt-1 text-xs sm:text-sm text-white/60 font-medium">
+                <p className="mt-1 text-xs sm:text-sm text-white/70 font-medium">
                   {st.label}
                 </p>
               </div>

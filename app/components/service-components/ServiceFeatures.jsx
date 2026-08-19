@@ -43,18 +43,29 @@ export default function ServiceFeatures({
   }, []);
 
   return (
-    <section ref={containerRef} className={`py-20 md:py-28 bg-[#0b0f19] text-white relative overflow-hidden ${urbanist.className}`}>
+    <section
+      ref={containerRef}
+      className={`py-20 md:py-28 bg-[#010504] text-white relative overflow-hidden ${urbanist.className}`}
+      style={{
+        background: `
+          radial-gradient(circle at 50% 0%, rgba(45, 232, 176, 0.08) 0%, transparent 60%),
+          radial-gradient(circle at 10% 40%, rgba(15, 124, 110, 0.12) 0%, transparent 50%),
+          radial-gradient(circle at 90% 70%, rgba(45, 232, 176, 0.08) 0%, transparent 50%),
+          linear-gradient(180deg, #010504 0%, #031411 50%, #010504 100%)
+        `,
+      }}
+    >
       {/* Subtle Glows */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-72 h-72 bg-[#2de8b0]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0f7c6e]/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-emerald-400 text-xs sm:text-sm font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+          <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
             {badge}
           </span>
-          <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight ${truculenta.className}`}>
+          <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white ${truculenta.className}`}>
             {heading}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-white/70">
@@ -67,19 +78,19 @@ export default function ServiceFeatures({
           {features.map((item, idx) => (
             <div
               key={idx}
-              className="group relative p-8 rounded-2xl bg-white/3 border border-white/10 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_10px_30px_rgba(16,185,129,0.15)] flex flex-col justify-between overflow-hidden"
+              className="group relative p-8 rounded-2xl bg-white/[0.025] border border-white/10 hover:border-[#2de8b0]/50 hover:bg-white/[0.05] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(45,232,176,0.1)] flex flex-col justify-between overflow-hidden"
             >
               {/* Top Card Glow */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-br from-[#2de8b0]/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl" />
 
               <div>
                 {/* Icon Container */}
-                <div className="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-md">
+                <div className="w-13 h-13 rounded-xl bg-[#2de8b0]/10 border border-[#2de8b0]/25 text-[#2de8b0] flex items-center justify-center text-2xl group-hover:scale-105 group-hover:bg-[#2de8b0] group-hover:text-black transition-all duration-300 shadow-md">
                   {item.icon || "✨"}
                 </div>
 
                 {/* Title */}
-                <h3 className={`mt-6 text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors ${truculenta.className}`}>
+                <h3 className={`mt-6 text-xl sm:text-2xl font-bold text-white group-hover:text-[#2de8b0] transition-colors ${truculenta.className}`}>
                   {item.title}
                 </h3>
 
@@ -93,8 +104,8 @@ export default function ServiceFeatures({
               {item.bullets && item.bullets.length > 0 && (
                 <ul className="mt-6 pt-4 border-t border-white/5 space-y-2">
                   {item.bullets.map((b, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-white/60">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <li key={i} className="flex items-center gap-2 text-xs text-white/70">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2de8b0]" />
                       {b}
                     </li>
                   ))}

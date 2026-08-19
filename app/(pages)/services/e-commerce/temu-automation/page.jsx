@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
 export const metadata = {
@@ -77,7 +76,6 @@ export default function TemuAutomationPage() {
         heading="Our Temu Store Automation Process"
         subheading="From catalog pre-processing to live automated bidding and warehouse dispatch."
       />
-      <Review />
       <CTASection />
     </>
   );

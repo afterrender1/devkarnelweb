@@ -3,7 +3,6 @@ import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
 import LogoPricing from "@/app/components/logo-components/LogoPricing";
-import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
 export const metadata = {
@@ -80,7 +79,6 @@ export default function BrandingPage() {
         heading="Our Brand Design Process"
         subheading="From brand discovery to complete style guide handoff."
       />
-      <Review />
       <CTASection />
     </>
   );

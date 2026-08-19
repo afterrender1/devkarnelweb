@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 import { urbanist, truculenta } from "@/app/fonts";
 
@@ -142,13 +141,22 @@ export default function EcommercePage() {
       />
 
       {/* Interactive Automations Hub */}
-      <section className={`py-20 bg-[#090d16] text-white ${urbanist.className}`}>
+      <section
+        className={`py-20 bg-[#010504] text-white ${urbanist.className}`}
+        style={{
+          background: `
+            radial-gradient(circle at 50% 0%, rgba(45, 232, 176, 0.08) 0%, transparent 60%),
+            radial-gradient(circle at 10% 50%, rgba(15, 124, 110, 0.12) 0%, transparent 50%),
+            linear-gradient(180deg, #010504 0%, #02120e 50%, #010504 100%)
+          `,
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-emerald-400 text-xs sm:text-sm font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+            <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
               Complete Ecosystem
             </span>
-            <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight ${truculenta.className}`}>
+            <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white ${truculenta.className}`}>
               Marketplace & Automation Services
             </h2>
             <p className="mt-4 text-base sm:text-lg text-white/70">
@@ -165,9 +173,9 @@ export default function EcommercePage() {
                   <button
                     key={item.id}
                     onClick={() => setSelectedService(item)}
-                    className={`w-full text-left p-4 rounded-xl transition-all duration-200 border flex items-center justify-between gap-3 ${
+                    className={`w-full text-left p-4 rounded-xl transition-all duration-200 border flex items-center justify-between gap-3 cursor-pointer ${
                       isSelected
-                        ? "bg-emerald-500/15 border-emerald-500/50 text-white shadow-lg"
+                        ? "bg-[#2de8b0]/15 border-[#2de8b0]/50 text-white shadow-lg"
                         : "bg-white/[0.02] border-white/5 text-white/70 hover:bg-white/5 hover:text-white"
                     }`}
                   >
@@ -175,7 +183,7 @@ export default function EcommercePage() {
                       <h4 className={`text-base font-bold ${truculenta.className}`}>{item.name}</h4>
                       <p className="text-xs text-white/50 line-clamp-1 mt-0.5">{item.desc}</p>
                     </div>
-                    <span className="text-xs px-2.5 py-1 rounded-md bg-white/10 text-emerald-400 font-semibold shrink-0">
+                    <span className="text-xs px-2.5 py-1 rounded-md bg-white/10 text-[#2de8b0] font-semibold shrink-0">
                       {item.badge}
                     </span>
                   </button>
@@ -184,10 +192,10 @@ export default function EcommercePage() {
             </div>
 
             {/* Selected Service Card */}
-            <div className="lg:col-span-7 p-8 rounded-2xl bg-white/[0.03] border border-emerald-500/30 backdrop-blur-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="lg:col-span-7 p-8 rounded-2xl bg-white/[0.03] border border-[#2de8b0]/30 backdrop-blur-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#2de8b0]/10 rounded-full blur-3xl pointer-events-none" />
 
-              <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              <span className="px-3.5 py-1 rounded-full bg-[#2de8b0]/20 text-[#2de8b0] text-xs font-bold uppercase tracking-wider">
                 {selectedService.badge}
               </span>
 
@@ -200,13 +208,13 @@ export default function EcommercePage() {
               </p>
 
               <div className="mt-8 border-t border-white/10 pt-6">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-[#2de8b0] mb-4">
                   Key Deliverables & Automations
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {selectedService.highlights.map((hl, idx) => (
                     <div key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                      <span className="w-2 h-2 rounded-full bg-[#2de8b0]" />
                       <span className="text-sm text-white/90 font-medium">{hl}</span>
                     </div>
                   ))}
@@ -216,7 +224,7 @@ export default function EcommercePage() {
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <a
                   href="#contact"
-                  className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm text-center transition-all shadow-[0_0_20px_rgba(16,185,129,0.25)]"
+                  className="px-6 py-3.5 rounded-xl bg-[#2de8b0] hover:bg-[#1bc497] text-black font-bold text-sm text-center transition-all shadow-[0_0_20px_rgba(45,232,176,0.3)]"
                 >
                   Request {selectedService.name} Proposal
                 </a>
@@ -237,7 +245,6 @@ export default function EcommercePage() {
         heading="Our E-Commerce Launch Blueprint"
         subheading="From platform setup to full automated fulfillment."
       />
-      <Review />
       <CTASection />
     </>
   );

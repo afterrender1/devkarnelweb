@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
 export const metadata = {
@@ -19,49 +18,49 @@ const features = [
     bullets: ["Brand Registry Approval", "Custom Brand Storefront", "A+ Premium Content"],
   },
   {
-    title: "Amazon FBA Shipment & Inbound Automation",
-    desc: "Automated FBA shipment creation, 2D barcode label generation, and automated inventory replenishment thresholds.",
-    icon: "📦",
-    bullets: ["Automated FBA Inbound", "2D Barcode Labeling", "FBA Stock Restock Alerts"],
+    title: "Product Listing Optimization & SEO Copy",
+    desc: "Keyword-rich Amazon SEO copywriting, title structure, backend search terms, and bullet points to maximize organic ranking.",
+    icon: "📝",
+    bullets: ["Helium 10 Keyword Mining", "Backend Search Terms", "High-Converting Bullet Points"],
   },
   {
-    title: "Algorithmic Amazon PPC & Sponsored Ads",
-    desc: "AI-driven bidding tools for Amazon Sponsored Products, Brands, and Display ads to maximize ROAS and organic keyword ranking.",
-    icon: "🚀",
-    bullets: ["Auto Negative Keywords", "Target ACOS Bidding", "Sponsored Video Ads"],
+    title: "A+ Brand Content & 3D Infographics",
+    desc: "High-resolution graphic design for Amazon A+ Content, comparison charts, and lifestyle infographic product photography.",
+    icon: "🎨",
+    bullets: ["Lifestyle Visuals", "Comparison Modules", "Brand Story Carousel"],
   },
   {
-    title: "Buy Box & Competitor Repricing Engine",
-    desc: "24/7 dynamic repricing to capture and retain the Amazon Buy Box while setting hard price floors to protect margins.",
-    icon: "🎯",
-    bullets: ["Buy Box Repricing Rules", "Margin Safeguards", "Suppressed Buy Box Alerts"],
-  },
-  {
-    title: "Automated Buyer Review Generation (Vine & Feedback)",
-    desc: "Compliant automated review request sequences and Amazon Vine program management to generate early 5-star customer ratings.",
-    icon: "⭐",
-    bullets: ["Amazon Compliant Review Requests", "Amazon Vine Enrollment", "Hijacker & Seller Alerts"],
-  },
-  {
-    title: "Listing Optimization & Indexing Audit",
-    desc: "SEO listing copywriting, backend search terms optimization, and indexation checks ensuring your products rank on page 1.",
+    title: "Amazon PPC & Sponsored Ads Automation",
+    desc: "Automated keyword bidding, Sponsored Products, Sponsored Brands, and Sponsored Display ad campaigns to lower your ACOS.",
     icon: "📈",
-    bullets: ["Helium 10 & Jungle Scout SEO", "Backend Search Terms", "Page 1 Keyword Ranking"],
+    bullets: ["Automated Bid Adjustments", "Negative Keyword Scrubbing", "Target ACOS Under 20%"],
+  },
+  {
+    title: "FBA Logistics & Inventory Forecasting",
+    desc: "Shipment plan creation, automated barcode labeling (FNSKU), pallet shipping coordination, and inventory restock alerts.",
+    icon: "📦",
+    bullets: ["FNSKU Barcode Compliance", "Restock Alert Algorithms", "Customs & Freight Guidance"],
+  },
+  {
+    title: "Review Request Funnels & Account Health",
+    desc: "Automated Amazon TOS-compliant review request emails, seller feedback monitoring, and 100% account health guarantee.",
+    icon: "⭐",
+    bullets: ["TOS-Compliant Review Automation", "Buy Box Monitoring", "Hijacker & Infringement Shield"],
   },
 ];
 
-export default function AmazonZoreSetupPage() {
+export default function AmazonZorePage() {
   return (
     <>
       <ServiceHero
-        badge="Amazon FBA & Brand Growth"
-        titlePrefix="Build & Scale With"
-        titleHighlight="Amazon Store Setup"
-        titleSuffix="& Automation"
-        description="Launch and scale a high-profit Amazon FBA business with Brand Registry, custom A+ storefront design, Buy Box repricing, and automated PPC ad optimization."
+        badge="Amazon Growth Studio"
+        titlePrefix="End-to-End Amazon"
+        titleHighlight="Store Setup & Automation"
+        titleSuffix="(Amazon Zore)"
+        description="Launch and scale a high-margin Amazon FBA brand with expert listing optimization, custom A+ storefront design, and automated PPC campaigns."
         tags={["Amazon FBA", "Brand Registry", "A+ Content", "PPC Automation"]}
         stats={[
-          { label: "Page 1 Keyword Index", value: "95%+" },
+          { label: "Stores Launched", value: "120+" },
           { label: "Average ACOS Reduction", value: "-35%" },
           { label: "Buy Box Win Rate", value: "+68%" },
         ]}
@@ -77,7 +76,6 @@ export default function AmazonZoreSetupPage() {
         heading="Our Amazon Zore Setup Process"
         subheading="From Seller Central verification and Brand Registry to live FBA launch and PPC automation."
       />
-      <Review />
       <CTASection />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Which social media platforms do you manage?",
-    a: "We manage and run ad campaigns across Meta (Facebook & Instagram), TikTok, LinkedIn, YouTube Shorts, and X (Twitter).",
-  },
-  {
-    q: "What ad budget do you recommend for Meta or TikTok ads?",
-    a: "We recommend starting with a testing budget of at least $1,000 - $3,000/month to efficiently test creative variations and find profitable audiences.",
-  },
-  {
-    q: "Do you produce video creatives for ads?",
-    a: "Yes! We script, edit, format, and optimize short-form video ads (Reels/TikToks) with hook variations, subtitles, and call-to-actions.",
-  },
-  {
-    q: "How do you track conversions accurately?",
-    a: "We implement Meta Conversions API (CAPI), Google Tag Manager, and UTM tracking parameters to guarantee 100% accurate conversion data.",
-  },
-];
-
 export default function SocialMediaPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function SocialMediaPage() {
         subheading="Test, optimize, scale winning creatives."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

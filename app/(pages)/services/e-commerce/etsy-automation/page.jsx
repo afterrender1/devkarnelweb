@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Can I automate Print-on-Demand (POD) orders on Etsy?",
-    a: "Yes! We integrate your Etsy shop directly with Printify, Printful, Gelato, or custom print suppliers so when an order is placed, it is printed, packed, and shipped automatically.",
-  },
-  {
-    q: "Does this work for digital download Etsy shops?",
-    a: "Absolutely. We set up automated instant file delivery systems that deliver digital assets to buyers immediately upon checkout.",
-  },
-  {
-    q: "How does the Etsy SEO keyword tag generator work?",
-    a: "Our AI tool analyzes Etsy search demand and populates your 13 tags and titles with high-intent, low-competition keywords to rank your listings on page 1.",
-  },
-  {
-    q: "Will automation risk my Etsy Star Seller status?",
-    a: "On the contrary! Automated tracking number updates and sub-minute digital delivery guarantee 100% compliance with Etsy Star Seller criteria.",
-  },
-];
-
 export default function EtsyAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function EtsyAutomationPage() {
         subheading="From POD provider connection and SEO tag setup to live automated dispatch."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

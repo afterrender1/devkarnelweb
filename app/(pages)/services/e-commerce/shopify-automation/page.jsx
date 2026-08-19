@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "How does Shopify Automation work?",
-    a: "We integrate custom API connectors, Shopify Flow apps, and automated workflows into your Shopify backend so orders, stock levels, tracking, and email flows run 24/7 without manual effort.",
-  },
-  {
-    q: "Will this slow down my Shopify store speed?",
-    a: "Not at all. All automation scripts run server-side via webhooks and background workers, maintaining peak store load times and Google Core Web Vitals.",
-  },
-  {
-    q: "Can I connect custom suppliers or dropshipping agents?",
-    a: "Yes! We build custom REST/GraphQL API integrations to sync CSV/XML feeds, FTP servers, or direct portal connections from any supplier worldwide.",
-  },
-  {
-    q: "What is the expected ROI for automated store management?",
-    a: "Our clients typically save 30+ hours per week of manual labor and experience a 25-40% increase in recovered sales through automated abandoned checkout flows.",
-  },
-];
-
 export default function ShopifyAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function ShopifyAutomationPage() {
         subheading="From backend audit to fully tested, self-operating Shopify store."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "How does Print-on-Demand merchandise automation work for creators?",
-    a: "We design your merchandise catalog and connect your Shopify store to premium POD printers. When fans order, items are printed, packaged with your custom branding, and shipped automatically without holding physical stock.",
-  },
-  {
-    q: "Can we connect the Shopify merchandise store to YouTube Shopping?",
-    a: "Yes! We set up Google & YouTube Shopping integrations so your official merchandise appears directly below your YouTube videos.",
-  },
-  {
-    q: "How do limited merch drops work?",
-    a: "We automate VIP password protection, launch countdown timers, and automated inventory caps so your drop opens and closes seamlessly.",
-  },
-  {
-    q: "What is the turnaround time for custom merchandise store setup?",
-    a: "Full merchandise store development and POD integration usually take 3 to 5 business days.",
-  },
-];
-
 export default function ShopifyMerchandisePage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function ShopifyMerchandisePage() {
         subheading="From merch mockups and POD connection to limited drop setup and social store sync."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

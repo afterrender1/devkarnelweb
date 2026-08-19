@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "How does subscription box automation work for intimacy & apparel brands?",
-    a: "We integrate subscription platforms like Recharge or Skio with custom inventory curation rules, allowing subscribers to choose preferences while orders generate and dispatch automatically every month.",
-  },
-  {
-    q: "Can you automate discreet packaging rules with our 3PL warehouse?",
-    a: "Yes! We set up automated packing instructions in your warehouse management system (WMS) so orders receive unbranded boxes and discreet shipping labels.",
-  },
-  {
-    q: "How does the AI fit quiz lower customer return rates?",
-    a: "Our fit calculator asks key sizing questions and calculates accurate size matches, resulting in up to 35% lower return rates for intimacy products.",
-  },
-  {
-    q: "How long does automation setup take for an apparel brand?",
-    a: "Deployment usually takes 3 to 5 business days.",
-  },
-];
-
 export default function PentiesAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function PentiesAutomationPage() {
         subheading="From subscription setup and fit quiz creation to warehouse 3PL automation."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

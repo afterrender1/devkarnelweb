@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Will automated repricing risk account health or seller defects?",
-    a: "No. Our tools comply strictly with eBay API guidelines and enforce hard minimum price guardrails to safeguard profitability and account metrics.",
-  },
-  {
-    q: "Can I manage multiple eBay seller accounts from one dashboard?",
-    a: "Yes! We build multi-account aggregation portals where you can monitor sales, inventory, orders, and customer messages across all your eBay stores.",
-  },
-  {
-    q: "Does this work with dropshipping or wholesale suppliers?",
-    a: "Yes! We support dropshipping, wholesale distributors, and 3PL fulfillment operations with automated stock checking feeds.",
-  },
-  {
-    q: "How quickly can automation be deployed on an active eBay store?",
-    a: "Most active eBay accounts are fully integrated and automated within 3 to 5 business days.",
-  },
-];
-
 export default function EbayAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function EbayAutomationPage() {
         subheading="Step-by-step onboarding, rule configuration, and full store automation."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

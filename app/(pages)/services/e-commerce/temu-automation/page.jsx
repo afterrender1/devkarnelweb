@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Do you support Temu Semi-Managed and Local Warehouse models?",
-    a: "Yes! We specialize in automating Temu Semi-Managed seller accounts with US/EU local warehouse fulfillment.",
-  },
-  {
-    q: "How does the Temu automated pricing bid engine work?",
-    a: "When Temu requests price adjustments, our algorithm evaluates your cost of goods, shipping, and target profit margin before automatically accepting or counter-proposing.",
-  },
-  {
-    q: "Can Temu orders be fulfilled through our existing Shopify 3PL warehouse?",
-    a: "Yes! We build API bridges connecting your existing 3PL warehouse to Temu Merchant Center for automated order fetching and tracking updates.",
-  },
-  {
-    q: "How quickly can we start selling on Temu using your automation?",
-    a: "Once your merchant account is approved, our automation stack can be deployed within 4 to 6 business days.",
-  },
-];
-
 export default function TemuAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function TemuAutomationPage() {
         subheading="From catalog pre-processing to live automated bidding and warehouse dispatch."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

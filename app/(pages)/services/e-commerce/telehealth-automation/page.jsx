@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Is your telehealth e-commerce automation HIPAA compliant?",
-    a: "Yes! All intake forms, database integrations, prescription routing, and patient communication channels comply fully with HIPAA and SOC 2 guidelines.",
-  },
-  {
-    q: "Can you connect our store with partner compounding pharmacies?",
-    a: "Absolutely. We build custom API connectors between your online store, doctor approval portal, and licensed partner pharmacies for automated dispensing.",
-  },
-  {
-    q: "How does recurring prescription refill automation work?",
-    a: "Patients subscribe to monthly or quarterly treatments. Before each billing cycle, our system verifies prescription validity, requests physician re-approval if needed, and dispatches the order to the pharmacy upon payment.",
-  },
-  {
-    q: "What telehealth platforms or storefronts do you support?",
-    a: "We work with custom Next.js web applications, WooCommerce, Shopify (with specialized HIPAA compliance wrappers), and custom EHR/EMR platforms.",
-  },
-];
-
 export default function TelehealthAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function TelehealthAutomationPage() {
         subheading="From HIPAA architecture design to live doctor & pharmacy portal automation."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import LogoPricing from "@/app/components/logo-components/LogoPricing";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
@@ -52,24 +51,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What files will I receive with my logo and branding?",
-    a: "You get full source vector files (AI, EPS, SVG) along with high-res PNG, JPG, transparent files, and complete PDF brand guidelines.",
-  },
-  {
-    q: "Do I own full commercial copyrights to the logo?",
-    a: "Yes! Once final designs are delivered, 100% full intellectual property and commercial copyright belongs entirely to you.",
-  },
-  {
-    q: "How many logo concepts will you present?",
-    a: "Depending on your selected package, we present 3 to 6 unique initial logo concepts with unlimited revisions until you are thrilled.",
-  },
-  {
-    q: "Can you refresh an existing company logo?",
-    a: "Yes! We specialize in modernizing legacy logos into clean, timeless vector brand assets while retaining brand recognition.",
-  },
-];
 
 export default function BrandingPage() {
   return (
@@ -100,7 +81,6 @@ export default function BrandingPage() {
         subheading="From brand discovery to complete style guide handoff."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Why is Buy Box automation critical on Walmart Marketplace?",
-    a: "Unlike other platforms, Walmart heavily prioritizes Buy Box price competitiveness. Automated repricing ensures your listings maintain Buy Box dominance without constant manual oversight.",
-  },
-  {
-    q: "Can you help set up Walmart Fulfillment Services (WFS)?",
-    a: "Yes! We handle WFS onboarding, shipment creation, barcode prep automation, and inventory threshold alerts.",
-  },
-  {
-    q: "Do you support multi-channel inventory sync with Shopify or Amazon?",
-    a: "Absolutely. We connect your Walmart store directly to Shopify, Amazon, or custom ERP systems so stock levels remain synchronized everywhere.",
-  },
-  {
-    q: "How long does full Walmart store automation integration take?",
-    a: "Our setup process takes between 3 to 7 business days depending on store SKU catalog size.",
-  },
-];
-
 export default function WalmartAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function WalmartAutomationPage() {
         subheading="From API keys configuration to live automated repricing & fulfillment."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

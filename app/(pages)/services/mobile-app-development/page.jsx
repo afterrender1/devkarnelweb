@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Should I build cross-platform (React Native/Flutter) or native?",
-    a: "Cross-platform development saves up to 40% in cost and time while maintaining near-native speed. Native (Swift/Kotlin) is recommended for hardware-intensive apps like AR, heavy gaming, or complex Bluetooth sync.",
-  },
-  {
-    q: "Do you handle App Store submission and approval?",
-    a: "Yes! We handle full deployment, App Store guidelines compliance, TestFlight beta distribution, and Google Play Store console setups.",
-  },
-  {
-    q: "Will my app work offline?",
-    a: "We implement offline local caching and instant synchronization once internet connection is restored.",
-  },
-  {
-    q: "How long does mobile app development take?",
-    a: "An MVP app typically takes 4-6 weeks, while complex full-scale mobile applications take 8-12 weeks.",
-  },
-];
-
 export default function MobileAppPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function MobileAppPage() {
         subheading="From wireframe to App Store approval."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

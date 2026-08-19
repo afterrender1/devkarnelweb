@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Why is Shopee Chat Response Rate (CRR) crucial for seller ranking?",
-    a: "Shopee heavily penalizes stores with slow chat response times. Our AI auto-responder maintains a 99%+ Chat Response Rate, qualifying your store for Preferred Seller status.",
-  },
-  {
-    q: "Which Shopee Southeast Asia regions do you support?",
-    a: "We support Shopee SG, MY, PH, TH, VN, ID, and BR cross-border seller accounts.",
-  },
-  {
-    q: "Can Shopee inventory be managed alongside Shopify or Lazada?",
-    a: "Yes! We set up central inventory management that syncs stock in real time between Shopee, Lazada, TikTok Shop, and Shopify.",
-  },
-  {
-    q: "How long does full Shopee automation setup take?",
-    a: "Integration usually takes 3 to 5 business days.",
-  },
-];
-
 export default function ShopeeGrowthPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function ShopeeGrowthPage() {
         subheading="From API configuration and Chat Bot training to live multi-region automation."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

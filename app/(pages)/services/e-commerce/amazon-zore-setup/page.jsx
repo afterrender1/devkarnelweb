@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What is Amazon Zore Setup?",
-    a: "Amazon Zore is our specialized zero-to-hero store creation framework covering initial Seller Central registration, Brand Registry, product research, FBA inbound setup, and automated PPC campaigns.",
-  },
-  {
-    q: "Do you support both FBA (Fulfillment by Amazon) and FBM?",
-    a: "Yes! We set up automated workflows for FBA inventory replenishment as well as 3PL automated routing for FBM (Fulfillment by Merchant).",
-  },
-  {
-    q: "How do you manage Amazon PPC campaigns for low ACOS?",
-    a: "We use automated bid management software that harvested high-performing search terms, auto-adds negative keywords, and adjusts bids hourly to hit your target ACOS.",
-  },
-  {
-    q: "How long does full Amazon store setup take?",
-    a: "Store setup and Brand Registry configuration take between 5 to 10 business days depending on brand catalog size.",
-  },
-];
-
 export default function AmazonZoreSetupPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function AmazonZoreSetupPage() {
         subheading="From Seller Central verification and Brand Registry to live FBA launch and PPC automation."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

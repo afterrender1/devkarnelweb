@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "How long does it take to see results from SEO?",
-    a: "Technical fixes and speed improvements show impact within 2-4 weeks. Significant organic keyword ranking and traffic growth typically compound over 3-6 months.",
-  },
-  {
-    q: "Do you guarantee #1 rankings on Google?",
-    a: "No honest agency can guarantee #1 spot because search algorithms change constantly. However, our proven data-driven methodology consistently places clients in top 3 rankings for high-intent keywords.",
-  },
-  {
-    q: "What tools do you use for SEO research?",
-    a: "We leverage Ahrefs, SEMrush, Google Search Console, Screaming Frog, PageSpeed Insights, and Google Analytics 4.",
-  },
-  {
-    q: "Is Next.js good for SEO?",
-    a: "Yes! Next.js is outstanding for SEO because server-side rendering (SSR) and static generation (SSG) deliver pre-rendered HTML to search engine crawlers with sub-second response times.",
-  },
-];
-
 export default function SEOPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function SEOPage() {
         subheading="Audit, optimize, build authority, and scale."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

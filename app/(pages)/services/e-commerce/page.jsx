@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 import { urbanist, truculenta } from "@/app/fonts";
@@ -120,25 +119,6 @@ const generalFeatures = [
     desc: "Deploy intelligent chatbots to resolve 80% of customer order inquiries, order tracking, and returns 24/7.",
     icon: "🤖",
     bullets: ["Order Status Lookup", "Returns Portal", "24/7 Automated Help"],
-  },
-];
-
-const faqs = [
-  {
-    q: "Can you automate an existing e-commerce store?",
-    a: "Yes! We integrate automation tools and custom APIs into your existing store (Shopify, WooCommerce, Amazon, eBay, etc.) without disrupting current sales.",
-  },
-  {
-    q: "Which e-commerce platforms do you support?",
-    a: "We build and automate stores across Shopify, WooCommerce, Amazon FBA, eBay, Walmart Marketplace, TikTok Shop, Etsy, Temu, and Shopee.",
-  },
-  {
-    q: "How does order fulfillment automation work?",
-    a: "When a customer places an order on any platform, our system automatically routes order data to your fulfillment partner or POD supplier and pushes tracking numbers back to the buyer.",
-  },
-  {
-    q: "Is Telehealth store development HIPAA compliant?",
-    a: "Yes! For telehealth and medical e-commerce clients, we implement HIPAA-compliant encrypted forms, secure database connections, and approved payment gateways.",
   },
 ];
 
@@ -258,7 +238,6 @@ export default function EcommercePage() {
         subheading="From platform setup to full automated fulfillment."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What design tools do you use?",
-    a: "We primarily use Figma, Framer, Adobe XD, and Illustrator for UI/UX design, interactive prototyping, and visual asset creation.",
-  },
-  {
-    q: "Do you deliver developer-ready handoff files?",
-    a: "Yes! We provide fully structured Figma files with organized layers, responsive auto-layouts, exported asset packages, and clear developer spec documentation.",
-  },
-  {
-    q: "How long does a UI/UX project typically take?",
-    a: "Smaller products or landing pages take 1-2 weeks, while full SaaS applications or complex platforms usually take 3-5 weeks.",
-  },
-  {
-    q: "Can you redesign an existing product?",
-    a: "Absolutely! We specialize in UX audits and modern redesigns that fix existing usability issues and elevate brand aesthetics.",
-  },
-];
-
 export default function UIUXDesignPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function UIUXDesignPage() {
         subheading="From initial user research to developer handoff."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

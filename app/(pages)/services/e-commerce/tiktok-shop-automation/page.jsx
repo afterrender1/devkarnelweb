@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Why is creator affiliate automation important for TikTok Shop?",
-    a: "TikTok Shop growth is heavily driven by creator affiliates. Automating affiliate outreach allows you to connect with hundreds of creators daily without manual messaging.",
-  },
-  {
-    q: "Can TikTok Shop be integrated with my existing Shopify store?",
-    a: "Yes! We set up a two-way synchronization between TikTok Shop Seller Center and Shopify so inventory, orders, and fulfillment flow seamlessly.",
-  },
-  {
-    q: "How do you ensure compliance with TikTok's strict shipping SLAs?",
-    a: "Our automation triggers instant order dispatch to 3PL partners as soon as an order is placed, ensuring 100% compliance with TikTok's 48-hour handling policy.",
-  },
-  {
-    q: "Do you help with TikTok Shop Seller Center verification & onboarding?",
-    a: "Yes! We assist with store registration, tax settings, warehouse configuration, and catalog setup.",
-  },
-];
-
 export default function TikTokShopAutomationPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function TikTokShopAutomationPage() {
         subheading="From Seller Center audit to automated affiliate messaging and order dispatch."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

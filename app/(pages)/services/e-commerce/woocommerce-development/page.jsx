@@ -2,7 +2,6 @@ import React from "react";
 import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
-import ServiceFAQ from "@/app/components/service-components/ServiceFAQ";
 import Review from "@/app/components/web-components/Review";
 import CTASection from "@/app/components/web-components/CTASection";
 
@@ -51,25 +50,6 @@ const features = [
   },
 ];
 
-const faqs = [
-  {
-    q: "Why choose WooCommerce over Shopify?",
-    a: "WooCommerce provides 100% code ownership, zero monthly transaction fees, complete customizability, and unlimited control over checkout workflows.",
-  },
-  {
-    q: "Can you fix a slow WooCommerce store?",
-    a: "Yes! We specialize in WooCommerce speed optimization, implementing Redis caching, database indexing, and script optimizations to achieve sub-second load times.",
-  },
-  {
-    q: "What is Headless WooCommerce?",
-    a: "Headless WooCommerce pairs WordPress as a backend database with a lightning-fast modern frontend like Next.js, giving you maximum website speed and SEO rankings.",
-  },
-  {
-    q: "Do you provide ongoing WooCommerce maintenance & support?",
-    a: "Yes! We offer monthly maintenance packages covering core updates, plugin audits, speed monitoring, and dedicated developer support.",
-  },
-];
-
 export default function WooCommerceDevelopmentPage() {
   return (
     <>
@@ -98,7 +78,6 @@ export default function WooCommerceDevelopmentPage() {
         subheading="From custom UI wireframes to staging QA and seamless production launch."
       />
       <Review />
-      <ServiceFAQ faqs={faqs} />
       <CTASection />
     </>
   );

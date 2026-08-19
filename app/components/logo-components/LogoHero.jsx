@@ -172,8 +172,8 @@ export default function LogoHero() {
                 {/* Left Side: Content */}
                 <div className="w-full lg:w-3/5">
                     <h1 className="text-3xl min-[360px]:text-4xl sm:text-5xl lg:text-[4.8rem] font-bold leading-[1.1] tracking-tight text-white mb-6 sm:mb-8">
-                        <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent break-words">Logo</span>
-                        <span ref={headingLine3Ref} className="ml-4 sm:ml-8 block text-[#2de8b0] break-words">Design</span>
+                        <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent wrap-break-word">Logo</span>
+                        <span ref={headingLine3Ref} className="ml-4 sm:ml-8 block text-[#2de8b0] wrap-break-word">Design</span>
                     </h1>
                     <p ref={subRef} className="text-white/60 text-xs min-[360px]:text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 max-w-md">
                         We craft timeless logos that capture the essence of your business. Our design philosophy blends geometric precision with creative flair to build brands that stand out.

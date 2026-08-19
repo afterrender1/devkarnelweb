@@ -27,7 +27,6 @@ function getCardsPerView() {
 export default function Hero() {
   const headingLine1Ref = useRef(null);
   const headingLine2Ref = useRef(null);
-  const headingLine3Ref = useRef(null);
   const subRef = useRef(null);
   const btnsRef = useRef(null);
   const bgGradientRef = useRef(null);
@@ -78,9 +77,9 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       gsap.set(
         [
-          headingLine1Ref.current, headingLine2Ref.current, headingLine3Ref.current,
+          headingLine1Ref.current, headingLine2Ref.current,
           subRef.current, btnsRef.current,
-        ],
+        ].filter(Boolean),
         { opacity: 0, y: 40, filter: "blur(10px)" }
       );
       gsap.set(bgGradientRef.current, { opacity: 0.6 });
@@ -89,9 +88,7 @@ export default function Hero() {
       const tl = gsap.timeline();
       tl.to(headingLine1Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0)
         .to(headingLine2Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0.15)
-        .to(headingLine3Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0.3)
-        .to(subRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.45)
-        .to(btnsRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.6)
+        .to(btnsRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.3)
         .to(bgGradientRef.current, { opacity: 0, duration: 1.2, ease: "power2.out" }, 1.2)
         .to(bgRevealRef.current, { opacity: 1, duration: 1.3, ease: "power2.out" }, 1.2);
     });
@@ -200,20 +197,14 @@ export default function Hero() {
         <div className="w-full flex flex-col items-center">
 
           <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6 px-2">
-            <span ref={headingLine1Ref} className="block break-words">
-              Crafting high-performance
+            <span ref={headingLine1Ref} className="block wrap-break-word">
+              Building high impact
             </span>
             <span
               ref={headingLine2Ref}
-              className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent break-words"
+              className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent wrap-break-word"
             >
-              Digital experiences and
-            </span>
-            <span
-              ref={headingLine3Ref}
-              className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent break-words"
-            >
-              Bespoke web solutions
+              digital experiences.
             </span>
           </h1>
 
@@ -338,7 +329,7 @@ export default function Hero() {
 
           <div
             ref={btnsRef}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-[52px]"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-13"
           >
             <a href="#contact" className="w-full sm:w-auto">
               <button className="w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-3.5 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap">

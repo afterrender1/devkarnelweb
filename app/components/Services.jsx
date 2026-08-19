@@ -34,7 +34,9 @@ const Services = () => {
             title: "Logo Design",
             colSpan: "col-span-2 lg:col-span-1",
             href: "/services/logo-design",
-            image: "/images/service_images/Card5.png"
+            image: "/images/service_images/logocard.webp",
+            mobileImage: "/images/service_images/card5.png"
+
         }
     ];
 

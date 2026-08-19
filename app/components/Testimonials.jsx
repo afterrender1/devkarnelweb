@@ -108,8 +108,8 @@ const Testimonials = () => {
                 <div 
                     ref={containerRef} 
                     onScroll={handleScroll}
-                    className="flex gap-3 sm:gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-1 select-none"
-                    style={{ WebkitOverflowScrolling: 'touch' }}
+                    className="flex gap-3 sm:gap-5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0 no-scrollbar scroll-smooth snap-x snap-mandatory py-1 select-none"
+                    style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
                     {testimonials.map((item, index) => (
                         <div

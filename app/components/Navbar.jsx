@@ -786,7 +786,7 @@ export default function Navbar() {
                                         onClick={(e) =>
                                           handleNavClick(targetHref, e)
                                         }
-                                        className="block px-2.5 sm:px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0 break-words"
+                                        className="block px-2.5 sm:px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0 wrap-break-word"
                                       >
                                         • {subLabel}
                                       </Link>
@@ -799,7 +799,7 @@ export default function Navbar() {
                             <Link
                               href={item.href}
                               onClick={(e) => handleNavClick(item.href, e)}
-                              className="block px-2.5 sm:px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5 break-words"
+                              className="block px-2.5 sm:px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5 wrap-break-word"
                             >
                               {item.label}
                             </Link>

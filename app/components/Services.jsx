@@ -66,7 +66,7 @@ const Services = () => {
                                 relative group 
                                 overflow-hidden 
                                 rounded-2xl sm:rounded-3xl 
-                                min-h-[175px] min-[360px]:min-h-[195px] xs:min-h-[220px] sm:min-h-[280px] md:min-h-[340px] lg:min-h-112.5
+                                min-h-43.75 min-[360px]:min-h-48.75 xs:min-h-55 sm:min-h-70 md:min-h-85 lg:min-h-112.5
                                 transition-all duration-500 ease-out
                                 hover:scale-[1.02]
                                 border border-white/10

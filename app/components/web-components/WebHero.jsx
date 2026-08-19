@@ -259,9 +259,9 @@ export default function WebHero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-16 py-16 sm:py-20 lg:py-24">
         <div className="w-full lg:w-1/2">
           <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white mb-4 sm:mb-6">
-            <span ref={headingLine1Ref} className="block break-words">Architecting high-end</span>
-            <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent break-words">Scalable Websites &</span>
-            <span ref={headingLine3Ref} className="block text-[#2de8b0] break-words">Digital Ecosystems</span>
+            <span ref={headingLine1Ref} className="block wrap-break-word">Architecting high-end</span>
+            <span ref={headingLine2Ref} className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent wrap-break-word">Scalable Websites &</span>
+            <span ref={headingLine3Ref} className="block text-[#2de8b0] wrap-break-word">Digital Ecosystems</span>
           </h1>
           <p ref={subRef} className="text-white/60 text-xs min-[360px]:text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 max-w-md">
             We build lightning-fast web applications using Next.js and GSAP. From bespoke design systems to complex e-commerce engines, we prioritize performance, SEO, and conversion-driven user experiences.

@@ -95,10 +95,10 @@ export default function ServiceProcess({
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="relative p-8 rounded-2xl bg-white/[0.025] border border-white/10 hover:border-[#2de8b0]/40 hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between group"
+              className="relative p-8 rounded-2xl bg-white/2.5 border border-white/10 hover:border-[#2de8b0]/40 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <span className={`text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#2de8b0] to-[#5eead4] ${truculenta.className}`}>
+                <span className={`text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] to-[#5eead4] ${truculenta.className}`}>
                   {st.number}
                 </span>
                 <h3 className={`mt-4 text-xl font-bold text-white group-hover:text-[#2de8b0] transition-colors ${truculenta.className}`}>

@@ -106,7 +106,7 @@ export default function ServicesSection() {
                 {/* Services Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 xs:gap-3.5 sm:gap-5 lg:gap-6">
                     {services.map((service, index) => (
-                        <div key={index} ref={(el) => (itemsRef.current[index] = el)} className="group relative p-3 xs:p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/10 hover:border-[#2de8b0]/50 hover:bg-white/[0.06] transition-all duration-500 overflow-hidden flex flex-col justify-between">
+                        <div key={index} ref={(el) => (itemsRef.current[index] = el)} className="group relative p-3 xs:p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/3 border border-white/10 hover:border-[#2de8b0]/50 hover:bg-white/6 transition-all duration-500 overflow-hidden flex flex-col justify-between">
                             {/* Subtle Gradient Hover Effect */}
                             <div className="absolute inset-0 bg-linear-to-br from-[#2de8b0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div>

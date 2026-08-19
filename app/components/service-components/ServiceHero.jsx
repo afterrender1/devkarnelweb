@@ -97,9 +97,9 @@ export default function ServiceHero({
         </div>
 
         {/* Heading */}
-        <h1 ref={headingRef} className={`text-3xl min-[360px]:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.15] break-words ${truculenta.className}`}>
+        <h1 ref={headingRef} className={`text-3xl min-[360px]:text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-5xl mx-auto leading-[1.15] wrap-break-word ${truculenta.className}`}>
           {titlePrefix}{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] via-[#5eead4] to-[#2de8b0] break-words">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] via-[#5eead4] to-[#2de8b0] wrap-break-word">
             {titleHighlight}
           </span>{" "}
           {titleSuffix}

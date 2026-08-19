@@ -65,7 +65,7 @@ const ProjectCard = ({ project }) => {
   return (
     <article
       ref={cardRef}
-      className="relative flex flex-col p-3 rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 transition-all duration-300 hover:border-emerald-500/50 hover:bg-white/[0.05] group project-card"
+      className="relative flex flex-col p-3 rounded-2xl overflow-hidden bg-white/3 border border-white/10 transition-all duration-300 hover:border-emerald-500/50 hover:bg-white/5 group project-card"
       style={{
         opacity: isVisible ? 1 : 0.6,
         boxShadow: hovered ? "0 20px 50px rgba(16,185,129,0.15)" : "none",

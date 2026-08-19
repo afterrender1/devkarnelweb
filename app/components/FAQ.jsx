@@ -78,8 +78,8 @@ export default function FAQ() {
                 key={index}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? "bg-white/[0.05] border-[#2de8b0]/40 shadow-[0_0_20px_rgba(45,232,176,0.08)]"
-                    : "bg-white/[0.02] border-white/10 hover:border-white/20"
+                    ? "bg-white/5 border-[#2de8b0]/40 shadow-[0_0_20px_rgba(45,232,176,0.08)]"
+                    : "bg-white/2 border-white/10 hover:border-white/20"
                 }`}
               >
                 <button

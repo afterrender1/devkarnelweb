@@ -166,7 +166,7 @@ export default function EcommercePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Sidebar List */}
-            <div className="lg:col-span-5 space-y-2 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+            <div className="lg:col-span-5 space-y-2 max-h-150 overflow-y-auto pr-2 custom-scrollbar">
               {ecommerceAutomations.map((item) => {
                 const isSelected = selectedService.id === item.id;
                 return (
@@ -176,7 +176,7 @@ export default function EcommercePage() {
                     className={`w-full text-left p-4 rounded-xl transition-all duration-200 border flex items-center justify-between gap-3 cursor-pointer ${
                       isSelected
                         ? "bg-[#2de8b0]/15 border-[#2de8b0]/50 text-white shadow-lg"
-                        : "bg-white/[0.02] border-white/5 text-white/70 hover:bg-white/5 hover:text-white"
+                        : "bg-white/2 border-white/5 text-white/70 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     <div>
@@ -192,7 +192,7 @@ export default function EcommercePage() {
             </div>
 
             {/* Selected Service Card */}
-            <div className="lg:col-span-7 p-8 rounded-2xl bg-white/[0.03] border border-[#2de8b0]/30 backdrop-blur-xl relative overflow-hidden">
+            <div className="lg:col-span-7 p-8 rounded-2xl bg-white/3 border border-[#2de8b0]/30 backdrop-blur-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#2de8b0]/10 rounded-full blur-3xl pointer-events-none" />
 
               <span className="px-3.5 py-1 rounded-full bg-[#2de8b0]/20 text-[#2de8b0] text-xs font-bold uppercase tracking-wider">

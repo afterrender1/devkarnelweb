@@ -100,36 +100,38 @@ export default function HorizontalAutomationWorkflow() {
 
         {/* 3. Steps Container - Horizontal Flex */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-4 relative z-10">
-          {steps.map((step, idx) => (
-            <div key={idx} className="workflow-step flex flex-col lg:flex-row items-center w-full lg:w-auto">
-              
-              {/* Card Container */}
-              <div className="w-full max-w-87.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl group hover:border-[#2de8b0]/50 transition-all duration-500 hover:-translate-y-2 flex flex-col min-h-55">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-xl ${step.accent} flex items-center justify-center`}>
-                      {step.icon}
-                    </div>
-                    <span className="text-white font-bold text-base">{step.title}</span>
-                  </div>
-                  <div className="text-white/20 font-black text-3xl">{idx + 1}</div>
-                </div>
-                <p className="text-white/50 text-base leading-relaxed mb-4">{step.desc}</p>
-                <div className="flex items-center gap-2 text-[#2de8b0] text-[9px] font-bold uppercase tracking-widest mt-auto">
-                  <ArrowUpRight size={12} />
-                  <span>{step.label}</span>
-                </div>
-              </div>
+          {steps.map((step, idx) => {
+            return (
+              <div key={idx} className="workflow-step flex flex-col lg:flex-row items-center w-full lg:w-auto">
 
-              {/* Plus Connector (Horizontal gap) */}
-              <div className="flex items-center justify-center p-6 lg:px-4">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center  z-20 ">
-                  <ArrowBigRight size={26} className="hidden lg:block text-white/80" strokeWidth={3} />
-                  <ArrowBigDown size={26} className="block lg:hidden text-white/80" strokeWidth={3} />
+                {/* Card Container */}
+                <div className="w-full max-w-87.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl group hover:border-[#2de8b0]/50 transition-all duration-500 hover:-translate-y-2 flex flex-col min-h-55">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-9 h-9 rounded-xl ${step.accent} flex items-center justify-center`}>
+                        {step.icon}
+                      </div>
+                      <span className="text-white font-bold text-base">{step.title}</span>
+                    </div>
+                    <div className="text-white/20 font-black text-3xl">{idx + 1}</div>
+                  </div>
+                  <p className="text-white/50 text-base leading-relaxed mb-4">{step.desc}</p>
+                  <div className="flex items-center gap-2 text-[#2de8b0] text-[9px] font-bold uppercase tracking-widest mt-auto">
+                    <ArrowUpRight size={12} />
+                    <span>{step.label}</span>
+                  </div>
+                </div>
+
+                {/* Plus Connector (Horizontal gap) */}
+                <div className="flex items-center justify-center p-6 lg:px-4">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center  z-20 ">
+                    <ArrowBigRight size={26} className="hidden lg:block text-white/80" strokeWidth={3} />
+                    <ArrowBigDown size={26} className="block lg:hidden text-white/80" strokeWidth={3} />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {/* 4. Final Branching Card */}
           <div className="workflow-step w-full lg:w-auto">

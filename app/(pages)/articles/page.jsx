@@ -1,17 +1,15 @@
 import React from "react";
-import Articles from "@/app/components/layout/Articles";
 import CTASection from "@/app/components/web-components/CTASection";
 
 export const metadata = {
-  title: "Engineering Articles & Insights | Devskarnel",
+  title: "Articles & Consultations | Devskarnel",
   description:
-    "Explore architectural guides, e-commerce automation playbooks, UI/UX interaction teardowns, and technical SEO strategies published by Devskarnel.",
+    "Ready to get a website that actually grows your business? Schedule a call or request a quote with Devskarnel.",
 };
 
 export default function ArticlesPage() {
   return (
-    <main>
-      <Articles />
+    <main className="pt-16 sm:pt-20 min-h-[60vh] bg-black">
       <CTASection />
     </main>
   );

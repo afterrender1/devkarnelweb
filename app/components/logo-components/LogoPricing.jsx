@@ -129,12 +129,19 @@ export default function LogoPricing() {
                 </div>
 
                 {/* CTA Button */}
-                <button
-                    ref={buttonRef}
-                    className="w-full bg-emerald-500 hover:bg-emerald-400  py-4 mt-10 rounded-2xl  text-white/80 font-bold text-lg transition-all duration-300  hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_rgba(180,244,129,0.3)]"
+                <a
+                    href="https://calendly.com/devskarnel/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full"
                 >
-                    Get Started
-                </button>
+                    <button
+                        ref={buttonRef}
+                        className="w-full bg-emerald-500 hover:bg-emerald-400 py-3.5 sm:py-4 mt-8 sm:mt-10 rounded-2xl text-white font-bold text-base sm:text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_rgba(180,244,129,0.3)] cursor-pointer whitespace-nowrap"
+                    >
+                        Get Started
+                    </button>
+                </a>
 
                 <div className="my-10 h-px w-full bg-white/10" />
 

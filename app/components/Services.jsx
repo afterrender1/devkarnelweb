@@ -15,13 +15,13 @@ const Services = () => {
             title: "Web Development",
             colSpan: "col-span-1 lg:col-span-2",
             href: "/services/website-development",
-            image: "/images/service_images/webcard.webp"
+            image: "/images/service_images/Card5.png"
         },
         {
             title: "UI / UX Design",
             colSpan: "col-span-1 lg:col-span-1",
             href: "/services/ui-ux-design",
-            image: "/images/service_images/card4.webp"
+            image: "/images/service_images/ui.png"
         },
         {
             title: "SEO Optimization",
@@ -83,13 +83,15 @@ const Services = () => {
                                     src={service.image}
                                     alt={service.title}
                                     fill
-                                    className="object-cover brightness-[0.78] contrast-[1.05] transition-all duration-700 group-hover:scale-105 group-hover:brightness-95"
-                                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
+                                    quality={100}
+                                    unoptimized
+                                    className="object-cover transition-all duration-700 group-hover:scale-105"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 66vw, 800px"
                                 />
                             </div>
 
-                            {/* Subtle Dark Overlay */}
-                            <div className="absolute inset-0 z-1 bg-black/20 group-hover:bg-black/5 transition-colors duration-500" />
+                            {/* Subtle Overlay */}
+                            <div className="absolute inset-0 z-1 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
 
                             {/* Corner Accent Glow */}
                             <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-[#2de8b0]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

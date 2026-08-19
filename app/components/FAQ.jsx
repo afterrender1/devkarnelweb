@@ -36,6 +36,11 @@ const FAQ_ITEMS = [
       "Yes, 100%. Once final delivery is made, all intellectual property, source code (GitHub/GitLab), deployment configurations, and Figma design files belong completely to you.",
   },
   {
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept all major payment methods worldwide, including Bank & Wire Transfers, Credit/Debit Cards (Visa, MasterCard, American Express), Stripe, PayPal, Wise, Payoneer, Cryptocurrency (USDT, BTC), JazzCash, EasyPaisa, and more. We also support flexible milestone-based payment schedules.",
+  },
+  {
     question: "Do you provide ongoing support and website maintenance?",
     answer:
       "Yes! We provide post-launch support as well as continuous maintenance plans covering security updates, performance monitoring, regular backups, and new feature additions.",

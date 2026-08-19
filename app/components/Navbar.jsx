@@ -454,16 +454,16 @@ export default function Navbar() {
         suppressHydrationWarning
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${urbanist.className}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4 sm:gap-6">
+        <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-6">
           {/* Logo */}
-          <div ref={logoRef} className="shrink-0">
+          <div ref={logoRef} className="shrink-0 flex items-center">
             <Link href="/" className="flex items-center select-none group">
               <Image
                 src="/images/dklogo.webp"
                 alt="Devskarnel Logo"
                 width={280}
                 height={80}
-                className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-8 min-[360px]:h-9 min-[420px]:h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </Link>
@@ -647,13 +647,13 @@ export default function Navbar() {
           </div>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-3">
-            <div ref={ctaRef}>
+          <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
+            <div ref={ctaRef} className="shrink-0">
               <a
                 href="https://calendly.com/devskarnel/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-[#2de8b0] hover:bg-[#26cb9a] text-black text-sm font-bold transition-all shadow-[0_0_20px_rgba(45,232,176,0.3)] active:scale-95 cursor-pointer"
+                className="inline-flex items-center justify-center whitespace-nowrap text-center px-2.5 py-1.5 xs:px-3 xs:py-1.5 min-[390px]:px-4 min-[390px]:py-2 sm:px-5 sm:py-2.5 rounded-lg sm:rounded-xl bg-[#2de8b0] hover:bg-[#26cb9a] text-black text-[11px] min-[360px]:text-xs sm:text-sm font-bold tracking-tight sm:tracking-normal transition-all duration-200 shadow-[0_0_15px_rgba(45,232,176,0.3)] hover:shadow-[0_0_25px_rgba(45,232,176,0.5)] active:scale-95 cursor-pointer select-none"
               >
                 Request a quote
               </a>
@@ -662,7 +662,7 @@ export default function Navbar() {
             <button
               aria-label="Open Navigation Menu"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer"
+              className="lg:hidden p-1.5 sm:p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer flex items-center justify-center shrink-0"
             >
               <MenuIcon />
             </button>
@@ -680,28 +680,28 @@ export default function Navbar() {
       {/* Mobile Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 right-0 h-full w-[85%] max-w-xs sm:max-w-sm bg-[#0d1117] border-l border-white/10 z-70 translate-x-full overflow-y-auto ${urbanist.className}`}
+        className={`fixed top-0 right-0 h-full w-[88%] max-w-xs sm:max-w-sm bg-[#0d1117] border-l border-white/10 z-70 translate-x-full overflow-y-auto ${urbanist.className}`}
       >
-        <div className="p-5 flex flex-col justify-between min-h-full">
+        <div className="p-4 sm:p-5 flex flex-col justify-between min-h-full">
           <div>
             {/* Top Header: Logo Image & Email only */}
-            <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/10">
-              <div className="flex flex-col items-start gap-1">
+            <div className="flex items-center justify-between pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/10">
+              <div className="flex flex-col items-start gap-1 min-w-0 pr-2">
                 <Image
                   src="/images/dklogo.webp"
                   alt="Devskarnel Logo"
                   width={140}
                   height={40}
-                  className="h-14 sm:h-9 w-auto object-contain"
+                  className="h-7 min-[360px]:h-8 sm:h-9 w-auto object-contain"
                 />
-                <p className="text-white/50 text-[11px] font-medium">
+                <p className="text-white/50 text-[11px] font-medium truncate max-w-full">
                   devskarnel@gmail.com
                 </p>
               </div>
 
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white flex items-center justify-center transition-all shrink-0 cursor-pointer"
                 aria-label="Close menu"
               >
                 <CloseIcon />
@@ -716,18 +716,18 @@ export default function Navbar() {
                   onClick={() =>
                     setIsMobileSolutionsOpen(!isMobileSolutionsOpen)
                   }
-                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all text-sm font-semibold ${
+                  className={`w-full flex items-center justify-between px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-2xl transition-all text-xs sm:text-sm font-semibold cursor-pointer ${
                     isMobileSolutionsOpen
                       ? "bg-white text-black shadow-lg"
                       : "text-white/90 hover:bg-white/5 hover:text-white"
                   }`}
                 >
-                  <span className="flex items-center gap-3">
+                  <span className="flex items-center gap-2.5 sm:gap-3">
                     <SolutionsIcon
                       className={
                         isMobileSolutionsOpen
-                          ? "w-5 h-5 text-black"
-                          : "w-5 h-5 text-emerald-400"
+                          ? "w-4 h-4 sm:w-5 sm:h-5 text-black shrink-0"
+                          : "w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0"
                       }
                     />
                     <span>Solutions</span>
@@ -743,7 +743,7 @@ export default function Navbar() {
                 <div
                   className={`transition-all duration-300 overflow-hidden ${isMobileSolutionsOpen ? "max-h-300 opacity-100 mt-1" : "max-h-0 opacity-0"}`}
                 >
-                  <div className="space-y-1 border-l-2 border-emerald-500/30 ml-3 pl-3 py-1">
+                  <div className="space-y-1 border-l-2 border-emerald-500/30 ml-2.5 sm:ml-3 pl-2.5 sm:pl-3 py-1">
                     {navLinks[0].dropdownItems.map((item) => {
                       const hasSubItems =
                         Array.isArray(item.subItems) &&
@@ -761,17 +761,17 @@ export default function Navbar() {
                                       : item.label,
                                   )
                                 }
-                                className="w-full flex items-center justify-between px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5"
+                                className="w-full flex items-center justify-between px-2.5 sm:px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5 cursor-pointer text-left"
                               >
-                                <span>{item.label}</span>
+                                <span className="truncate pr-2">{item.label}</span>
                                 <span
-                                  className={`transition-transform duration-200 text-xs text-emerald-400 ${activeMobileSubmenu === item.label ? "rotate-180" : ""}`}
+                                  className={`transition-transform duration-200 text-xs text-emerald-400 shrink-0 ${activeMobileSubmenu === item.label ? "rotate-180" : ""}`}
                                 >
                                   <ChevronDown />
                                 </span>
                               </button>
                               {activeMobileSubmenu === item.label && (
-                                <div className="pl-3 space-y-1 py-1 max-h-56 overflow-y-auto pr-1">
+                                <div className="pl-2 sm:pl-3 space-y-1 py-1 max-h-56 overflow-y-auto pr-1">
                                   {item.subItems.map((sub) => {
                                     const subLabel =
                                       typeof sub === "object" ? sub.label : sub;
@@ -786,7 +786,7 @@ export default function Navbar() {
                                         onClick={(e) =>
                                           handleNavClick(targetHref, e)
                                         }
-                                        className="block px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0"
+                                        className="block px-2.5 sm:px-3 py-1.5 text-[11px] text-white/60 hover:text-emerald-400 hover:bg-white/5 rounded-lg border-b border-white/5 last:border-b-0 break-words"
                                       >
                                         • {subLabel}
                                       </Link>
@@ -799,7 +799,7 @@ export default function Navbar() {
                             <Link
                               href={item.href}
                               onClick={(e) => handleNavClick(item.href, e)}
-                              className="block px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5"
+                              className="block px-2.5 sm:px-3 py-2 text-xs text-white/80 hover:text-emerald-400 font-medium rounded-xl hover:bg-white/5 break-words"
                             >
                               {item.label}
                             </Link>
@@ -815,15 +815,15 @@ export default function Navbar() {
               <Link
                 href="#contact"
                 onClick={(e) => handleNavClick("#contact", e)}
-                className="flex items-center gap-3 px-4 py-3.5 rounded-2xl text-white/90 hover:bg-white/5 hover:text-white transition-all text-sm font-semibold"
+                className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-2xl text-white/90 hover:bg-white/5 hover:text-white transition-all text-xs sm:text-sm font-semibold"
               >
-                <ContactIcon className="w-5 h-5 text-white/70" />
+                <ContactIcon className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 shrink-0" />
                 <span>Contact Us</span>
               </Link>
             </div>
 
             {/* Divider Line */}
-            <div className="my-5 border-t border-white/10" />
+            <div className="my-4 sm:my-5 border-t border-white/10" />
 
             {/* Bottom Actions Section */}
             <div className="space-y-2">
@@ -831,21 +831,21 @@ export default function Navbar() {
                 href="https://calendly.com/devskarnel/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between w-full px-4 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all active:scale-95"
+                className="flex items-center justify-between w-full px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-xs sm:text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all active:scale-95 cursor-pointer whitespace-nowrap"
               >
-                <span className="flex items-center gap-3">
-                  <RocketIcon className="w-5 h-5 text-white" />
-                  <span>Request a Quote</span>
+                <span className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  <RocketIcon className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
+                  <span className="truncate">Request a Quote</span>
                 </span>
-                <span>→</span>
+                <span className="shrink-0 text-sm sm:text-base">→</span>
               </a>
 
               <a
                 href="mailto:devskarnel@gmail.com"
-                className="flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70 hover:text-white hover:bg-white/5 transition-all text-xs font-medium"
+                className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl text-white/70 hover:text-white hover:bg-white/5 transition-all text-[11px] sm:text-xs font-medium min-w-0"
               >
-                <MailIcon />
-                <span>devskarnel@gmail.com</span>
+                <MailIcon className="shrink-0 w-4 h-4" />
+                <span className="truncate">devskarnel@gmail.com</span>
               </a>
             </div>
           </div>

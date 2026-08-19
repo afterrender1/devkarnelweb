@@ -199,19 +199,19 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-500 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
         <div className="w-full flex flex-col items-center">
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-none tracking-tight text-white mb-4 sm:mb-6">
-            <span ref={headingLine1Ref} className="block">
+          <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6 px-2">
+            <span ref={headingLine1Ref} className="block break-words">
               Crafting high-performance
             </span>
             <span
               ref={headingLine2Ref}
-              className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent"
+              className="block bg-linear-to-r from-white to-white/60 bg-clip-text text-transparent break-words"
             >
               Digital experiences and
             </span>
             <span
               ref={headingLine3Ref}
-              className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent"
+              className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent break-words"
             >
               Bespoke web solutions
             </span>
@@ -338,10 +338,10 @@ export default function Hero() {
 
           <div
             ref={btnsRef}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto min-h-[52px]"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-[52px]"
           >
             <a href="#contact" className="w-full sm:w-auto">
-              <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer">
+              <button className="w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-3.5 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap">
                 Contact us
               </button>
             </a>
@@ -351,7 +351,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
             >
-              <button className="w-full px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10">
+              <button className="w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-3.5 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap">
                 Request a quote
               </button>
             </a>

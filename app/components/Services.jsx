@@ -15,7 +15,8 @@ const Services = () => {
             title: "Web Development",
             colSpan: "col-span-1 lg:col-span-2",
             href: "/services/website-development",
-            image: "/images/service_images/Card5.png"
+            image: "/images/service_images/Card5.png",
+            mobileImage: "/images/service_images/logocard.webp"
         },
         {
             title: "UI / UX Design",
@@ -33,12 +34,12 @@ const Services = () => {
             title: "Logo Design",
             colSpan: "col-span-2 lg:col-span-1",
             href: "/services/logo-design",
-            image: "/images/service_images/logocard.webp"
+            image: "/images/service_images/Card5.png"
         }
     ];
 
     return (
-        <section id='services' className={`relative w-full py-14 sm:py-18 lg:py-24 overflow-hidden bg-[#010504] ${urbanist.className}`}
+        <section id='services' className={`relative w-full pt-6 pb-12 sm:py-18 lg:py-24 overflow-hidden bg-[#010504] ${urbanist.className}`}
             style={{
                 background: `linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 20%, transparent 60%), radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.9) 0%, transparent 40%), radial-gradient(circle at 50% 45%, rgba(45, 232, 176, 0.35) 0%, rgba(45, 232, 176, 0.1) 30%, transparent 70%), linear-gradient(180deg, #0F7C6E 0%, #0A4A42 40%, #062B24 75%, #010504 100%)`
             }}>
@@ -56,7 +57,7 @@ const Services = () => {
                 </div>
 
                 {/* 2 in one row on mobile, exact Bento layout on PC */}
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 xs:gap-3.5 sm:gap-5">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 xs:gap-2 sm:gap-5">
                     {servicesData.map((service, index) => (
                         <Link
                             key={index}
@@ -79,15 +80,38 @@ const Services = () => {
                         >
                             {/* Background Image */}
                             <div className="absolute inset-0 z-0">
-                                <Image
-                                    src={service.image}
-                                    alt={service.title}
-                                    fill
-                                    quality={100}
-                                    unoptimized
-                                    className="object-cover transition-all duration-700 group-hover:scale-105"
-                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 66vw, 800px"
-                                />
+                                {service.mobileImage ? (
+                                    <>
+                                        <Image
+                                            src={service.mobileImage}
+                                            alt={service.title}
+                                            fill
+                                            quality={100}
+                                            unoptimized
+                                            className="object-cover transition-all duration-700 group-hover:scale-105 sm:hidden"
+                                            sizes="(max-width: 640px) 100vw"
+                                        />
+                                        <Image
+                                            src={service.image}
+                                            alt={service.title}
+                                            fill
+                                            quality={100}
+                                            unoptimized
+                                            className="object-cover transition-all duration-700 group-hover:scale-105 hidden sm:block"
+                                            sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 66vw, 800px"
+                                        />
+                                    </>
+                                ) : (
+                                    <Image
+                                        src={service.image}
+                                        alt={service.title}
+                                        fill
+                                        quality={100}
+                                        unoptimized
+                                        className="object-cover transition-all duration-700 group-hover:scale-105"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 66vw, 800px"
+                                    />
+                                )}
                             </div>
 
                             {/* Subtle Overlay */}

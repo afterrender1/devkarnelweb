@@ -161,7 +161,7 @@ export default function Hero() {
   // ── render ────────────────────────────────────────────────────────────────
   return (
     <section
-      className={`relative min-h-screen w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
+      className={`relative min-h-fit sm:min-h-screen w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
     >
 
       <div
@@ -193,7 +193,7 @@ export default function Hero() {
         style={{ background: "radial-gradient(circle at 30% 50%,rgba(45,232,176,0.05) 0%,transparent 60%)" }}
       />
 
-      <div className="relative z-10 w-full max-w-500 mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
+      <div className="relative z-10 w-full max-w-500 mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-6 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
         <div className="w-full flex flex-col items-center">
 
           <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6 px-2">
@@ -208,7 +208,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <div className="w-full mb-8 sm:mb-12">
+          <div className="w-full mb-6 sm:mb-12">
 
 
             <div
@@ -253,8 +253,13 @@ export default function Hero() {
               /* ── card dimensions — slightly larger than before ── */
               .carousel-card {
                 width:            calc(100vw - 32px);
-                height:           340px;
+                height:           260px;
                 transform-origin: center center;
+              }
+              @media (min-width: 480px) {
+                .carousel-card {
+                  height: 300px;
+                }
               }
               @media (min-width: 640px) {
                 .carousel-card {
@@ -262,6 +267,7 @@ export default function Hero() {
                   height: 400px;
                 }
               }
+
               @media (min-width: 1024px) {
                 .carousel-card {
                   width:  calc((100vw - 64px  - ${GAP * 2}px) / 3);

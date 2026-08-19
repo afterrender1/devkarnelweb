@@ -60,6 +60,7 @@ export default function Footer() {
         ],
         pages: [
             { name: 'Portfolio', url: '/portfolio' },
+            { name: 'Articles', url: '/articles' },
             { name: 'Services', url: '#services' },
             { name: 'Testimonials', url: '#reviews' },
             { name: 'Contact', url: '#contact' },

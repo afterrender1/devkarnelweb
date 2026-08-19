@@ -21,7 +21,7 @@ const Services = () => {
             title: "UI / UX Design",
             colSpan: "col-span-1 lg:col-span-1",
             href: "/services/ui-ux-design",
-            image: "/images/service_images/uiuxcard.webp"
+            image: "/images/service_images/card4.webp"
         },
         {
             title: "SEO Optimization",

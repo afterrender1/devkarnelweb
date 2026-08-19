@@ -26,6 +26,8 @@ import {
   Gift,
   Zap,
   Shirt,
+  BookOpen,
+  Briefcase,
 } from "lucide-react";
 
 // --- Icons ---
@@ -304,6 +306,7 @@ const navLinks = [
     ],
   },
   { label: "Portfolio", hasDropdown: false, href: "/portfolio" },
+  { label: "Articles", hasDropdown: false, href: "/articles" },
   { label: "Contact", hasDropdown: false, href: "#contact" },
 ];
 
@@ -810,6 +813,26 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
+
+              {/* Portfolio Item */}
+              <Link
+                href="/portfolio"
+                onClick={(e) => handleNavClick("/portfolio", e)}
+                className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-2xl text-white/90 hover:bg-white/5 hover:text-white transition-all text-xs sm:text-sm font-semibold"
+              >
+                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
+                <span>Portfolio</span>
+              </Link>
+
+              {/* Articles Item */}
+              <Link
+                href="/articles"
+                onClick={(e) => handleNavClick("/articles", e)}
+                className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-3 sm:py-3.5 rounded-2xl text-white/90 hover:bg-white/5 hover:text-white transition-all text-xs sm:text-sm font-semibold"
+              >
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#2de8b0] shrink-0" />
+                <span>Articles</span>
+              </Link>
 
               {/* Contact Item */}
               <Link

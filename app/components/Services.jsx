@@ -83,10 +83,13 @@ const Services = () => {
                                     src={service.image}
                                     alt={service.title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className="object-cover brightness-[0.78] contrast-[1.05] transition-all duration-700 group-hover:scale-105 group-hover:brightness-95"
                                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                             </div>
+
+                            {/* Subtle Dark Overlay */}
+                            <div className="absolute inset-0 z-1 bg-black/20 group-hover:bg-black/5 transition-colors duration-500" />
 
                             {/* Corner Accent Glow */}
                             <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-[#2de8b0]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

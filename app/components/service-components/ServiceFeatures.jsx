@@ -34,7 +34,7 @@ export default function ServiceFeatures({
               trigger: gridRef.current,
               start: "top 80%",
             },
-          }
+          },
         );
       }
     }, containerRef);
@@ -74,7 +74,10 @@ export default function ServiceFeatures({
         </div>
 
         {/* Features Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        >
           {features.map((item, idx) => (
             <div
               key={idx}
@@ -104,7 +107,10 @@ export default function ServiceFeatures({
               {item.bullets && item.bullets.length > 0 && (
                 <ul className="mt-6 pt-4 border-t border-white/5 space-y-2">
                   {item.bullets.map((b, i) => (
-                    <li key={i} className="flex items-center gap-2 text-xs text-white/70">
+                    <li
+                      key={i}
+                      className="flex items-center gap-2 text-xs text-white/70"
+                    >
                       <span className="w-1.5 h-1.5 rounded-full bg-[#2de8b0]" />
                       {b}
                     </li>

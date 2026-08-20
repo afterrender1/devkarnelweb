@@ -1,6 +1,7 @@
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import LenisProvider from "./providers/LenisProvider";
+import { urbanist } from "./fonts";
 import "./globals.css";
 
 export const metadata = {
@@ -101,7 +102,7 @@ export default function RootLayout({ children }) {
           fetchPriority="high"
         />
       </head>
-      <body className="" suppressHydrationWarning>
+      <body className={urbanist.className} suppressHydrationWarning>
         <LenisProvider>
           <h1 className="hidden">
             Devskarnel Web Development Agency - Next.js & MERN Experts

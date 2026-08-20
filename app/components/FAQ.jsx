@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { urbanist, truculenta } from "@/app/fonts";
+import { urbanist } from "@/app/fonts";
 import { Plus, Minus } from "lucide-react";
 
 const FAQ_ITEMS = [
@@ -65,7 +65,7 @@ export default function FAQ() {
           <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-3.5 py-1 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20">
             FAQ
           </span>
-          <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white ${truculenta.className}`}>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
             Frequently Asked <span className="text-[#2de8b0]">Questions</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-white/60">
@@ -95,7 +95,7 @@ export default function FAQ() {
                   <span
                     className={`text-base sm:text-lg font-bold transition-colors ${
                       isOpen ? "text-[#2de8b0]" : "text-white"
-                    } ${truculenta.className}`}
+                    }`}
                   >
                     {faq.question}
                   </span>

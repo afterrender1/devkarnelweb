@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { urbanist, truculenta } from "@/app/fonts";
+import { urbanist } from "@/app/fonts";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -65,7 +65,7 @@ export default function ServiceFeatures({
           <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
             {badge}
           </span>
-          <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white ${truculenta.className}`}>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
             {heading}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-white/70">
@@ -90,7 +90,7 @@ export default function ServiceFeatures({
                 </div>
 
                 {/* Title */}
-                <h3 className={`mt-6 text-xl sm:text-2xl font-bold text-white group-hover:text-[#2de8b0] transition-colors ${truculenta.className}`}>
+                <h3 className="mt-6 text-xl sm:text-2xl font-bold text-white group-hover:text-[#2de8b0] transition-colors">
                   {item.title}
                 </h3>
 

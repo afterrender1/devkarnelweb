@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { urbanist, truculenta } from "@/app/fonts";
+import { urbanist } from "@/app/fonts";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +82,7 @@ export default function ServiceProcess({
           <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
             {badge}
           </span>
-          <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white ${truculenta.className}`}>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
             {heading}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-white/70">
@@ -98,10 +98,10 @@ export default function ServiceProcess({
               className="relative p-8 rounded-2xl bg-white/2.5 border border-white/10 hover:border-[#2de8b0]/40 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <span className={`text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] to-[#5eead4] ${truculenta.className}`}>
+                <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] to-[#5eead4]">
                   {st.number}
                 </span>
-                <h3 className={`mt-4 text-xl font-bold text-white group-hover:text-[#2de8b0] transition-colors ${truculenta.className}`}>
+                <h3 className="mt-4 text-xl font-bold text-white group-hover:text-[#2de8b0] transition-colors">
                   {st.title}
                 </h3>
                 <p className="mt-3 text-sm text-white/70 leading-relaxed font-normal">

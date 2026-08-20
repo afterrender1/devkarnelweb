@@ -5,7 +5,7 @@ import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
 import CTASection from "@/app/components/web-components/CTASection";
-import { urbanist, truculenta } from "@/app/fonts";
+import { urbanist } from "@/app/fonts";
 
 const ecommerceAutomations = [
   {
@@ -153,7 +153,7 @@ export default function EcommercePage() {
             <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
               Complete Ecosystem
             </span>
-            <h2 className={`mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white ${truculenta.className}`}>
+            <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
               Marketplace & Automation Services
             </h2>
             <p className="mt-4 text-base sm:text-lg text-white/70">
@@ -177,7 +177,7 @@ export default function EcommercePage() {
                     }`}
                   >
                     <div>
-                      <h4 className={`text-base font-bold ${truculenta.className}`}>{item.name}</h4>
+                      <h4 className="text-base font-bold">{item.name}</h4>
                       <p className="text-xs text-white/50 line-clamp-1 mt-0.5">{item.desc}</p>
                     </div>
                     <span className="text-xs px-2.5 py-1 rounded-md bg-white/10 text-[#2de8b0] font-semibold shrink-0">
@@ -196,7 +196,7 @@ export default function EcommercePage() {
                 {selectedService.badge}
               </span>
 
-              <h3 className={`mt-4 text-3xl font-extrabold text-white ${truculenta.className}`}>
+              <h3 className="mt-4 text-3xl font-extrabold text-white">
                 {selectedService.name}
               </h3>
 

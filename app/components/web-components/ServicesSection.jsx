@@ -1,139 +1,93 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import React from "react";
 import { urbanist } from "@/app/fonts";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
+import { CardStack } from "@/app/components/ui/card-stack";
 
 const services = [
-    {
-        title: "Corporate & Business",
-        desc: "Make a powerful first impression. We build polished, credibility-building sites that communicate brand values.",
-        icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-        ),
-    },
-    {
-        title: "eCommerce Development",
-        desc: "Sell products and services online with a fast, secure store. We handle payment integrations and optimized checkout.",
-        icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-        ),
-    },
-    {
-        title: "WordPress Development",
-        desc: "Flexible, scalable, and easy to manage. Custom themes and plugins tailored to your exact business needs.",
-        icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 11-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-            </svg>
-        ),
-    },
-    {
-        title: "Website Redesigns",
-        desc: "We transform underperforming websites into modern, high-converting digital experiences without starting from scratch.",
-        icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
-        ),
-    },
-    {
-        title: "Maintenance & Security",
-        desc: "Keep your site fast and secure. We provide regular security audits, updates, and performance optimization.",
-        icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-        ),
-    },
-    {
-        title: "Mobile-First Design",
-        desc: "Built mobile-first to ensure a perfect experience on any device, screen, or browser—guaranteed.",
-        icon: (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-        ),
-    },
+  {
+    id: 1,
+    tag: "Solution 01",
+    title: "Corporate & Business",
+    desc: "Make a powerful first impression. We build polished, credibility-building sites that communicate brand values.",
+    icon: "🏢",
+    bullets: ["Brand Identity Alignment", "Credibility Infrastructure", "Executive Presence"],
+  },
+  {
+    id: 2,
+    tag: "Solution 02",
+    title: "eCommerce Development",
+    desc: "Sell products and services online with a fast, secure store. We handle payment integrations and optimized checkout.",
+    icon: "🛒",
+    bullets: ["Payment Gateways", "High-Converting Checkout", "Inventory Sync"],
+  },
+  {
+    id: 3,
+    tag: "Solution 03",
+    title: "WordPress Development",
+    desc: "Flexible, scalable, and easy to manage. Custom themes and plugins tailored to your exact business needs.",
+    icon: "⚡",
+    bullets: ["Custom Theme Engine", "Plugin Architecture", "SEO & Speed Optimization"],
+  },
+  {
+    id: 4,
+    tag: "Solution 04",
+    title: "Website Redesigns",
+    desc: "We transform underperforming websites into modern, high-converting digital experiences without starting from scratch.",
+    icon: "🔄",
+    bullets: ["UI Modernization", "Conversion Funnel Revamp", "Zero Downtime"],
+  },
+  {
+    id: 5,
+    tag: "Solution 05",
+    title: "Maintenance & Security",
+    desc: "Keep your site fast and secure. We provide regular security audits, updates, and performance optimization.",
+    icon: "🛡️",
+    bullets: ["Malware Protection", "Core Updates & Backups", "99.9% Uptime SLA"],
+  },
+  {
+    id: 6,
+    tag: "Solution 06",
+    title: "Mobile-First Design",
+    desc: "Built mobile-first to ensure a perfect experience on any device, screen, or browser—guaranteed.",
+    icon: "📱",
+    bullets: ["Responsive Layouts", "Touch Micro-Interactions", "Retina Assets"],
+  },
 ];
 
 export default function ServicesSection() {
-    const containerRef = useRef(null);
-    const itemsRef = useRef([]);
+  return (
+    <section
+      style={{
+        background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.4) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)`,
+      }}
+      className={`bg-black py-16 sm:py-24 px-4 sm:px-6 lg:px-8 ${urbanist.className}`}
+    >
+      <div className="max-w-7xl mx-auto">
+        {/* Header Text */}
+        <div className="mb-10 text-center max-w-3xl mx-auto">
+          <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
+            Our Expertise
+          </span>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-bold text-white leading-tight">
+            Tailored digital solutions for modern brands.
+          </h2>
+        </div>
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                itemsRef.current,
-                { opacity: 0, y: 30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    stagger: 0.15,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: "top 80%",
-                    },
-                }
-            );
-        });
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <section style={{
-            background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(45, 232, 176, 0.4) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #0F7C6E 50%, #000000 65%, #000000 100%)`
-        }} className={`bg-black py-12 sm:py-16 md:py-20 lg:py-24 px-3 xs:px-4 sm:px-6 lg:px-8 ${urbanist.className}`}>
-            <div className="max-w-7xl mx-auto" ref={containerRef}>
-                {/* Header Text */}
-                <div className="mb-8 sm:mb-12 md:mb-16">
-                    <h2 className="text-[#2de8b0] text-[11px] sm:text-sm font-bold uppercase tracking-wider mb-2.5 sm:mb-4">Our Expertise</h2>
-                    <p className="text-white text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-bold max-w-3xl leading-tight">
-                        Tailored digital solutions for modern brands.
-                    </p>
-                </div>
-                {/* Services Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 xs:gap-3.5 sm:gap-5 lg:gap-6">
-                    {services.map((service, index) => (
-                        <div key={index} ref={(el) => (itemsRef.current[index] = el)} className="group relative p-3 xs:p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white/3 border border-white/10 hover:border-[#2de8b0]/50 hover:bg-white/6 transition-all duration-500 overflow-hidden flex flex-col justify-between">
-                            {/* Subtle Gradient Hover Effect */}
-                            <div className="absolute inset-0 bg-linear-to-br from-[#2de8b0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div>
-                                {/* Icon Container */}
-                                <div className="relative z-10 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#2de8b0]/10 border border-[#2de8b0]/20 flex items-center justify-center text-[#2de8b0] mb-2.5 xs:mb-3 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
-                                    {service.icon}
-                                </div>
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    <h3 className="text-white text-xs min-[360px]:text-sm sm:text-lg lg:text-xl font-bold mb-1 xs:mb-1.5 sm:mb-3 group-hover:text-[#2de8b0] transition-colors duration-300">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-white/60 leading-snug sm:leading-relaxed text-[10px] min-[360px]:text-[11px] sm:text-sm group-hover:text-white/80 transition-colors duration-300 line-clamp-3 sm:line-clamp-none">
-                                        {service.desc}
-                                    </p>
-                                </div>
-                            </div>
-                            {/* Corner Accent */}
-                            <div className="relative z-10 mt-2 sm:mt-4 opacity-70 sm:opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
-                                <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#2de8b0] group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        {/* 3D Card Stack */}
+        <div className="max-w-5xl mx-auto px-2 sm:px-4">
+          <CardStack
+            items={services}
+            initialIndex={0}
+            autoAdvance
+            intervalMs={3200}
+            pauseOnHover
+            showDots
+            cardWidth={540}
+            cardHeight={320}
+          />
+        </div>
+      </div>
+    </section>
+  );
 }

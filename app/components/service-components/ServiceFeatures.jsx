@@ -1,13 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import React from "react";
 import { urbanist } from "@/app/fonts";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { CardStack } from "@/app/components/ui/card-stack";
 
 export default function ServiceFeatures({
   badge = "Capabilities",
@@ -15,36 +10,17 @@ export default function ServiceFeatures({
   subheading = "Comprehensive solutions engineered to scale your business with maximum impact.",
   features = [],
 }) {
-  const containerRef = useRef(null);
-  const gridRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (gridRef.current?.children) {
-        gsap.fromTo(
-          Array.from(gridRef.current.children),
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: gridRef.current,
-              start: "top 80%",
-            },
-          },
-        );
-      }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const stackItems = features.map((f, idx) => ({
+    id: f.id || idx + 1,
+    tag: f.tag || `Capability 0${idx + 1}`,
+    title: f.title,
+    desc: f.desc || f.description,
+    icon: f.icon || "✨",
+    bullets: f.bullets || [],
+  }));
 
   return (
     <section
-      ref={containerRef}
       className={`py-20 md:py-28 bg-[#010504] text-white relative overflow-hidden ${urbanist.className}`}
       style={{
         background: `
@@ -61,7 +37,7 @@ export default function ServiceFeatures({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
             {badge}
           </span>
@@ -73,53 +49,21 @@ export default function ServiceFeatures({
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-        >
-          {features.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative p-8 rounded-2xl bg-white/2.5 border border-white/10 hover:border-[#2de8b0]/50 hover:bg-white/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(45,232,176,0.1)] flex flex-col justify-between overflow-hidden"
-            >
-              {/* Top Card Glow */}
-              <div className="absolute top-0 right-0 w-28 h-28 bg-linear-to-br from-[#2de8b0]/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none blur-xl" />
-
-              <div>
-                {/* Icon Container */}
-                <div className="w-13 h-13 rounded-xl bg-[#2de8b0]/10 border border-[#2de8b0]/25 text-[#2de8b0] flex items-center justify-center text-2xl group-hover:scale-105 group-hover:bg-[#2de8b0] group-hover:text-black transition-all duration-300 shadow-md">
-                  {item.icon || "✨"}
-                </div>
-
-                {/* Title */}
-                <h3 className="mt-6 text-xl sm:text-2xl font-bold text-white group-hover:text-[#2de8b0] transition-colors">
-                  {item.title}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 text-sm text-white/70 leading-relaxed font-normal">
-                  {item.desc}
-                </p>
-              </div>
-
-              {/* Tag / List if available */}
-              {item.bullets && item.bullets.length > 0 && (
-                <ul className="mt-6 pt-4 border-t border-white/5 space-y-2">
-                  {item.bullets.map((b, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-2 text-xs text-white/70"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2de8b0]" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
+        {/* 3D Card Stack replacing static grid across all service pages */}
+        {stackItems.length > 0 && (
+          <div className="max-w-5xl mx-auto px-2 sm:px-4">
+            <CardStack
+              items={stackItems}
+              initialIndex={0}
+              autoAdvance
+              intervalMs={3200}
+              pauseOnHover
+              showDots
+              cardWidth={540}
+              cardHeight={320}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import ServiceHero from "@/app/components/service-components/ServiceHero";
 import ServiceFeatures from "@/app/components/service-components/ServiceFeatures";
 import ServiceProcess from "@/app/components/service-components/ServiceProcess";
 import CTASection from "@/app/components/web-components/CTASection";
+import { Brain, PenTool, Layers, Smartphone, TrendingUp, ShieldCheck } from "lucide-react";
 
 export const metadata = {
   title: "UI/UX Design Services | Devskarnel",
@@ -16,7 +17,7 @@ const featuresData = [
     tag: "Capability 01",
     title: "User Research & Persona Mapping",
     desc: "In-depth user behavior analysis and persona creation to ensure product design aligns with your target audience's core motivations.",
-    icon: "🧠",
+    icon: <Brain className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["User Journeys", "Competitor Benchmarking", "Behavioral Heatmaps"],
   },
   {
@@ -24,7 +25,7 @@ const featuresData = [
     tag: "Capability 02",
     title: "Wireframing & Interactive Prototypes",
     desc: "Rapid wireframing and clickable Figma prototypes to test usability, flow, and user engagement before writing code.",
-    icon: "📐",
+    icon: <PenTool className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Figma & Framer Prototypes", "Low & High Fidelity", "User Flow Diagrams"],
   },
   {
@@ -32,7 +33,7 @@ const featuresData = [
     tag: "Capability 03",
     title: "Design Systems & Component Libraries",
     desc: "Scalable, reusable design tokens and UI components that speed up development and keep brand consistency across all platforms.",
-    icon: "🎨",
+    icon: <Layers className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Design Tokens", "Typography Systems", "Accessible UI Kits"],
   },
   {
@@ -40,7 +41,7 @@ const featuresData = [
     tag: "Capability 04",
     title: "Mobile App & Web App Interfaces",
     desc: "Pixel-perfect visual designs tailored for iOS, Android, and modern web applications with glassmorphism and modern aesthetics.",
-    icon: "📱",
+    icon: <Smartphone className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Responsive Web UI", "iOS & Android Apps", "Micro-Interactions"],
   },
   {
@@ -48,7 +49,7 @@ const featuresData = [
     tag: "Capability 05",
     title: "Usability Testing & Conversion Optimization",
     desc: "Data-driven UX audits and heatmapping to identify friction points and double conversion rates.",
-    icon: "📈",
+    icon: <TrendingUp className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["A/B Test Designs", "Friction Audit", "Conversion Rate UX"],
   },
   {
@@ -56,7 +57,7 @@ const featuresData = [
     tag: "Capability 06",
     title: "Accessibility & WCAG Compliance",
     desc: "Ensuring your digital product meets WCAG standards for inclusivity, contrast ratio, and seamless navigation.",
-    icon: "♿",
+    icon: <ShieldCheck className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Contrast Ratios", "Screen-reader Ready", "WCAG 2.1 AA"],
   },
 ];

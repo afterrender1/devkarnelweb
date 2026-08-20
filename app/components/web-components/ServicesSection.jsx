@@ -3,6 +3,14 @@
 import React from "react";
 import { urbanist } from "@/app/fonts";
 import { CardStack } from "@/app/components/ui/card-stack";
+import {
+  Building2,
+  ShoppingCart,
+  Code2,
+  RefreshCw,
+  ShieldCheck,
+  Smartphone,
+} from "lucide-react";
 
 const services = [
   {
@@ -10,7 +18,7 @@ const services = [
     tag: "Solution 01",
     title: "Corporate & Business",
     desc: "Make a powerful first impression. We build polished, credibility-building sites that communicate brand values.",
-    icon: "🏢",
+    icon: <Building2 className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Brand Identity Alignment", "Credibility Infrastructure", "Executive Presence"],
   },
   {
@@ -18,7 +26,7 @@ const services = [
     tag: "Solution 02",
     title: "eCommerce Development",
     desc: "Sell products and services online with a fast, secure store. We handle payment integrations and optimized checkout.",
-    icon: "🛒",
+    icon: <ShoppingCart className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Payment Gateways", "High-Converting Checkout", "Inventory Sync"],
   },
   {
@@ -26,7 +34,7 @@ const services = [
     tag: "Solution 03",
     title: "WordPress Development",
     desc: "Flexible, scalable, and easy to manage. Custom themes and plugins tailored to your exact business needs.",
-    icon: "⚡",
+    icon: <Code2 className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Custom Theme Engine", "Plugin Architecture", "SEO & Speed Optimization"],
   },
   {
@@ -34,7 +42,7 @@ const services = [
     tag: "Solution 04",
     title: "Website Redesigns",
     desc: "We transform underperforming websites into modern, high-converting digital experiences without starting from scratch.",
-    icon: "🔄",
+    icon: <RefreshCw className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["UI Modernization", "Conversion Funnel Revamp", "Zero Downtime"],
   },
   {
@@ -42,7 +50,7 @@ const services = [
     tag: "Solution 05",
     title: "Maintenance & Security",
     desc: "Keep your site fast and secure. We provide regular security audits, updates, and performance optimization.",
-    icon: "🛡️",
+    icon: <ShieldCheck className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Malware Protection", "Core Updates & Backups", "99.9% Uptime SLA"],
   },
   {
@@ -50,7 +58,7 @@ const services = [
     tag: "Solution 06",
     title: "Mobile-First Design",
     desc: "Built mobile-first to ensure a perfect experience on any device, screen, or browser—guaranteed.",
-    icon: "📱",
+    icon: <Smartphone className="w-6 h-6 text-[#2de8b0]" />,
     bullets: ["Responsive Layouts", "Touch Micro-Interactions", "Retina Assets"],
   },
 ];

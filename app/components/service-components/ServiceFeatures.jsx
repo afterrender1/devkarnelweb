@@ -3,6 +3,92 @@
 import React from "react";
 import { urbanist } from "@/app/fonts";
 import { CardStack } from "@/app/components/ui/card-stack";
+import {
+  Brain,
+  PenTool,
+  Palette,
+  Smartphone,
+  TrendingUp,
+  ShieldCheck,
+  Building2,
+  ShoppingCart,
+  Code2,
+  RefreshCw,
+  Zap,
+  Globe,
+  Search,
+  Store,
+  Box,
+  Truck,
+  Rocket,
+  CheckCircle2,
+  Share2,
+  Megaphone,
+  BarChart2,
+  Sparkles,
+  Layers,
+  Crown,
+  Type,
+  Tag,
+  Target,
+  FileCode,
+  FileText,
+  DollarSign,
+  Bot,
+  Sliders,
+  Cpu,
+} from "lucide-react";
+
+function getFeatureIcon(iconProp, title = "", idx = 0) {
+  if (React.isValidElement(iconProp)) {
+    return iconProp;
+  }
+
+  const t = title.toLowerCase();
+  const ic = typeof iconProp === "string" ? iconProp.toLowerCase() : "";
+
+  if (t.includes("research") || t.includes("persona") || ic.includes("🧠")) {
+    return <Brain className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("wireframing") || t.includes("prototype") || t.includes("figma") || ic.includes("📐")) {
+    return <PenTool className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("system") || t.includes("library") || t.includes("token") || ic.includes("🎨")) {
+    return <Layers className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("mobile") || t.includes("app") || t.includes("responsive") || ic.includes("📱")) {
+    return <Smartphone className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("usability") || t.includes("conversion") || t.includes("audit") || t.includes("testing") || ic.includes("📈")) {
+    return <TrendingUp className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("accessibility") || t.includes("wcag") || t.includes("security") || ic.includes("♿") || ic.includes("🛡️")) {
+    return <ShieldCheck className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("ecommerce") || t.includes("store") || t.includes("amazon") || t.includes("shopify") || ic.includes("🛒")) {
+    return <ShoppingCart className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("seo") || t.includes("keyword") || t.includes("search")) {
+    return <Search className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("brand") || t.includes("logo") || t.includes("identity")) {
+    return <Crown className="w-6 h-6 text-[#2de8b0]" />;
+  }
+  if (t.includes("automation") || t.includes("speed") || t.includes("growth")) {
+    return <Zap className="w-6 h-6 text-[#2de8b0]" />;
+  }
+
+  const fallbackIcons = [
+    <Brain key="1" className="w-6 h-6 text-[#2de8b0]" />,
+    <PenTool key="2" className="w-6 h-6 text-[#2de8b0]" />,
+    <Layers key="3" className="w-6 h-6 text-[#2de8b0]" />,
+    <Smartphone key="4" className="w-6 h-6 text-[#2de8b0]" />,
+    <TrendingUp key="5" className="w-6 h-6 text-[#2de8b0]" />,
+    <ShieldCheck key="6" className="w-6 h-6 text-[#2de8b0]" />,
+  ];
+
+  return fallbackIcons[idx % fallbackIcons.length];
+}
 
 export default function ServiceFeatures({
   badge = "Capabilities",
@@ -15,7 +101,7 @@ export default function ServiceFeatures({
     tag: f.tag || `Capability 0${idx + 1}`,
     title: f.title,
     desc: f.desc || f.description,
-    icon: f.icon || "✨",
+    icon: getFeatureIcon(f.icon, f.title, idx),
     bullets: f.bullets || [],
   }));
 
@@ -49,7 +135,7 @@ export default function ServiceFeatures({
           </p>
         </div>
 
-        {/* 3D Card Stack replacing static grid across all service pages */}
+        {/* 3D Card Stack with Lucide Icons */}
         {stackItems.length > 0 && (
           <div className="max-w-5xl mx-auto px-2 sm:px-4">
             <CardStack

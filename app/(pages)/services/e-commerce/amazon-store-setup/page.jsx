@@ -5,9 +5,9 @@ import ServiceProcess from "@/app/components/service-components/ServiceProcess";
 import CTASection from "@/app/components/web-components/CTASection";
 
 export const metadata = {
-  title: "Amazon Store Setup & Growth Services (Amazon Zore) | Devskarnel",
+  title: "Amazon Store Setup & Growth Services | Devskarnel",
   description:
-    "End-to-end Amazon FBA/FBM store setup, Brand Registry, A+ Content design, PPC ad automation, and inventory forecasting for Amazon Zore growth.",
+    "End-to-end Amazon FBA/FBM store setup, Brand Registry, A+ Content design, PPC ad automation, and inventory forecasting for Amazon Store growth.",
 };
 
 const features = [
@@ -49,14 +49,14 @@ const features = [
   },
 ];
 
-export default function AmazonZorePage() {
+export default function AmazonStorePage() {
   return (
     <>
       <ServiceHero
         badge="Amazon Growth Studio"
         titlePrefix="End-to-End Amazon"
         titleHighlight="Store Setup & Automation"
-        titleSuffix="(Amazon Zore)"
+        titleSuffix="Services"
         description="Launch and scale a high-margin Amazon FBA brand with expert listing optimization, custom A+ storefront design, and automated PPC campaigns."
         tags={["Amazon FBA", "Brand Registry", "A+ Content", "PPC Automation"]}
         stats={[
@@ -73,7 +73,7 @@ export default function AmazonZorePage() {
       />
       <ServiceProcess
         badge="Execution Blueprint"
-        heading="Our Amazon Zore Setup Process"
+        heading="Our Amazon Store Setup Process"
         subheading="From Seller Central verification and Brand Registry to live FBA launch and PPC automation."
       />
       <CTASection />

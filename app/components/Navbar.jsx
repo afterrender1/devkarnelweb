@@ -242,13 +242,13 @@ const ecommerceSubmenu = [
     color: "text-amber-700 bg-amber-50",
   },
   {
-    label: "Amazon Zore Setup & Growth Services",
-    href: "/services/e-commerce/amazon-zore-setup",
+    label: "Amazon Store Setup & Growth Services",
+    href: "/services/e-commerce/amazon-store-setup",
     icon: Zap,
     color: "text-yellow-600 bg-yellow-50",
   },
   {
-    label: "Shopify Merchandies",
+    label: "Shopify Merchandise",
     href: "/services/e-commerce/shopify-merchandise",
     icon: Shirt,
     color: "text-sky-600 bg-sky-50",

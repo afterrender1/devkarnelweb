@@ -52,11 +52,11 @@ export const metadata = {
     siteName: "Devskarnel",
     images: [
       {
-        url: 'favicon.ico',
+        url: "/images/website_growth_blog.jpg",
         width: 1200,
         height: 630,
-        alt: 'Devskarnel - Web Development Agency',
-      }
+        alt: "Devskarnel - Web Development Agency",
+      },
     ],
     locale: "en_US",
     type: "website",
@@ -66,6 +66,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Devskarnel",
     description: "Next.js & MERN Web Development Agency",
+    images: ["/images/website_growth_blog.jpg"],
   },
 
   icons: {
@@ -95,12 +96,6 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
-        <link
-          rel="preload"
-          as="image"
-          href="https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1770205987/supps_vm41cl.png"
-          fetchPriority="high"
-        />
       </head>
       <body className={urbanist.className} suppressHydrationWarning>
         <LenisProvider>

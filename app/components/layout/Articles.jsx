@@ -380,7 +380,7 @@ export default function Articles() {
 
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2de8b0] to-[#0F7C6E] flex items-center justify-center text-black font-bold text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#2de8b0] to-[#0F7C6E] flex items-center justify-center text-black font-bold text-sm">
                       {featuredArticle.author.initial}
                     </div>
                     <div>
@@ -408,7 +408,7 @@ export default function Articles() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
                   {featuredArticle.tags.map((tag) => (
                     <span
@@ -473,7 +473,7 @@ export default function Articles() {
                             "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_800/v1770205987/supps_vm41cl.png";
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
                       <div className="absolute top-3 left-3">
                         <span className="px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-[#2de8b0]">
                           {article.category}
@@ -504,7 +504,7 @@ export default function Articles() {
                   <div className="flex items-center justify-between pt-4 border-t border-white/5">
                     <div className="flex items-center gap-2.5">
                       <div
-                        className={`w-7 h-7 rounded-lg bg-gradient-to-br ${article.gradient} flex items-center justify-center text-black font-bold text-xs`}
+                        className={`w-7 h-7 rounded-lg bg-linear-to-br ${article.gradient} flex items-center justify-center text-black font-bold text-xs`}
                       >
                         {article.author.initial}
                       </div>
@@ -524,7 +524,7 @@ export default function Articles() {
         </div>
 
         {/* Newsletter / Insights Subscription Box */}
-        <div className="rounded-3xl p-8 sm:p-12 lg:p-16 bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-2xl text-center max-w-4xl mx-auto relative overflow-hidden">
+        <div className="rounded-3xl p-8 sm:p-12 lg:p-16 bg-linear-to-b from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-2xl text-center max-w-4xl mx-auto relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#2de8b0]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-2xl mx-auto">
@@ -625,7 +625,7 @@ export default function Articles() {
 
               <div className="flex items-center gap-4 mt-6">
                 <div
-                  className={`w-11 h-11 rounded-xl bg-gradient-to-br ${activeArticle.gradient} flex items-center justify-center text-black font-extrabold text-base`}
+                  className={`w-11 h-11 rounded-xl bg-linear-to-br ${activeArticle.gradient} flex items-center justify-center text-black font-extrabold text-base`}
                 >
                   {activeArticle.author.initial}
                 </div>

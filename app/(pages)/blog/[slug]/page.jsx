@@ -134,7 +134,7 @@ export default function BlogDetailPage({ params }) {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent" />
         </div>
 
         {/* Article Body Content */}
@@ -167,7 +167,7 @@ export default function BlogDetailPage({ params }) {
         </div>
 
         {/* High-Converting CTA Box */}
-        <div className="rounded-3xl border border-[#2de8b0]/40 bg-gradient-to-r from-emerald-950/70 via-black to-zinc-950 p-6 sm:p-10 text-center relative overflow-hidden shadow-2xl">
+        <div className="rounded-3xl border border-[#2de8b0]/40 bg-linear-to-r from-emerald-950/70 via-black to-zinc-950 p-6 sm:p-10 text-center relative overflow-hidden shadow-2xl">
           <div className="absolute -right-16 -top-16 w-48 h-48 bg-[#2de8b0]/20 rounded-full blur-3xl pointer-events-none" />
           
           <h3 className="text-xl sm:text-3xl font-bold text-white mb-3">

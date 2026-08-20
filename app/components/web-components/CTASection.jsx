@@ -77,7 +77,7 @@ export default function CTASection() {
         <div className="mb-10 sm:mb-14 max-w-4xl mx-auto text-left">
           <Link
             href="/blog/how-a-high-converting-website-drives-10x-business-growth"
-            className="group relative block overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/50 via-zinc-950/80 to-black/90 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:border-emerald-400 hover:shadow-[0_0_50px_rgba(45,232,176,0.25)]"
+            className="group relative block overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-linear-to-r from-emerald-950/50 via-zinc-950/80 to-black/90 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:border-emerald-400 hover:shadow-[0_0_50px_rgba(45,232,176,0.25)]"
           >
             <div className="flex flex-col md:flex-row items-center gap-5 sm:gap-6">
               {/* Image Thumbnail */}

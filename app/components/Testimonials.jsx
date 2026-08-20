@@ -111,44 +111,52 @@ const Testimonials = () => {
                     </div>
                 </div>
 
-                {/* Carousel Container - 2 cards per row on mobile, 3 cards on desktop */}
+                {/* Carousel Container */}
                 <div 
                     ref={containerRef} 
                     onScroll={handleScroll}
-                    className="flex gap-3 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0 no-scrollbar scroll-smooth snap-x snap-mandatory px-1.5 sm:px-3 py-4 select-none"
+                    className="flex gap-4 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0 no-scrollbar scroll-smooth snap-x snap-mandatory px-2 sm:px-4 py-6 sm:py-8 select-none"
                     style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
                     {testimonials.map((item, index) => (
                         <div
                             key={index}
-                            className="w-[calc(50%-6px)] min-w-[calc(50%-6px)] md:w-[calc(33.333%-16px)] md:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start group"
+                            className="w-[280px] min-w-[280px] xs:w-[320px] xs:min-w-[320px] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start group"
                         >
-                            <div className="relative rounded-2xl sm:rounded-3xl p-4 xs:p-5 sm:p-8 border border-[#2de8b0]/35 bg-gradient-to-b from-[#05241b]/80 via-[#02120c]/90 to-black/95 backdrop-blur-xl flex flex-col items-center text-center shadow-[0_0_30px_rgba(45,232,176,0.08)] hover:border-[#2de8b0] hover:shadow-[0_0_40px_rgba(45,232,176,0.22)] transition-all duration-500 h-full justify-between min-h-[300px] xs:min-h-[330px] sm:min-h-[380px]">
-                                <div>
+                            <div 
+                                className="relative rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 border border-[#2de8b0]/35 backdrop-blur-xl flex flex-col items-center text-center shadow-[0_0_30px_rgba(45,232,176,0.08)] hover:border-[#2de8b0] hover:shadow-[0_0_40px_rgba(45,232,176,0.22)] transition-all duration-500 h-full justify-between min-h-[330px] sm:min-h-[360px] overflow-hidden"
+                                style={{
+                                    background: "linear-gradient(180deg, rgba(5, 36, 27, 0.85) 0%, rgba(2, 18, 12, 0.92) 50%, rgba(1, 5, 4, 0.98) 100%)"
+                                }}
+                            >
+                                {/* Inner Ambient Glow */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#2de8b0]/10 rounded-full blur-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <div className="w-full relative z-10">
                                     {/* Circular Avatar */}
-                                    <div className="relative w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28 mx-auto mb-3 sm:mb-5">
+                                    <div className="relative w-20 h-20 xs:w-22 xs:h-22 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-5">
                                         <img
                                             src={item.image}
                                             alt={item.name}
-                                            className="w-full h-full rounded-full object-cover border-2 border-white/10 shadow-lg group-hover:border-[#2de8b0]/50 transition-all duration-500"
+                                            className="w-full h-full rounded-full object-cover border-2 border-white/10 shadow-lg group-hover:border-[#2de8b0]/60 transition-all duration-500"
                                             loading="lazy"
                                         />
                                     </div>
 
-                                    {/* 5 Gold Stars - Prominent Size matching screenshot */}
-                                    <div className="flex justify-center text-amber-400 text-lg xs:text-xl sm:text-2xl gap-1 sm:gap-1.5 mb-3 sm:mb-4">
+                                    {/* 5 Gold Stars */}
+                                    <div className="flex justify-center text-amber-400 text-base xs:text-lg sm:text-xl gap-1 mb-3 sm:mb-4">
                                         {"★★★★★".split("").map((star, i) => (
                                             <span key={i}>{star}</span>
                                         ))}
                                     </div>
 
                                     {/* Client Name */}
-                                    <h3 className="text-white font-bold text-sm xs:text-base sm:text-xl mb-2 tracking-tight">
+                                    <h3 className="text-white font-bold text-base sm:text-xl mb-2 tracking-tight">
                                         {item.name}
                                     </h3>
 
                                     {/* Testimonial Quote */}
-                                    <p className="text-white/80 text-[11px] xs:text-xs sm:text-sm leading-tight xs:leading-snug sm:leading-relaxed font-normal italic px-1">
+                                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic px-1">
                                         "{item.text}"
                                     </p>
                                 </div>

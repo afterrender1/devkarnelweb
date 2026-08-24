@@ -72,7 +72,7 @@ const Testimonials = () => {
             }}
         >
             {/* Ambient Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#2de8b0]/10 blur-[130px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-87.5 bg-[#2de8b0]/10 blur-[130px] rounded-full pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Centered Header matching upper components */}
@@ -121,10 +121,10 @@ const Testimonials = () => {
                     {testimonials.map((item, index) => (
                         <div
                             key={index}
-                            className="w-[280px] min-w-[280px] xs:w-[320px] xs:min-w-[320px] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start group"
+                            className="w-70 min-w-70 xs:w-[320px] xs:min-w-[320px] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] shrink-0 snap-start group"
                         >
                             <div 
-                                className="relative rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 border border-[#2de8b0]/35 backdrop-blur-xl flex flex-col items-center text-center shadow-[0_0_30px_rgba(45,232,176,0.08)] hover:border-[#2de8b0] hover:shadow-[0_0_40px_rgba(45,232,176,0.22)] transition-all duration-500 h-full justify-between min-h-[330px] sm:min-h-[360px] overflow-hidden"
+                                className="relative rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 border border-[#2de8b0]/35 backdrop-blur-xl flex flex-col items-center text-center shadow-[0_0_30px_rgba(45,232,176,0.08)] hover:border-[#2de8b0] hover:shadow-[0_0_40px_rgba(45,232,176,0.22)] transition-all duration-500 h-full justify-between min-h-82.5 sm:min-h-90 overflow-hidden"
                                 style={{
                                     background: "linear-gradient(180deg, rgba(5, 36, 27, 0.85) 0%, rgba(2, 18, 12, 0.92) 50%, rgba(1, 5, 4, 0.98) 100%)"
                                 }}
@@ -183,4 +183,4 @@ const Testimonials = () => {
     );
 };
 
-export default Testimonials;
+export default Testimonials;

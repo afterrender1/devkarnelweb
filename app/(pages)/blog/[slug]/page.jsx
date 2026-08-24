@@ -126,7 +126,7 @@ export default function BlogDetailPage({ params }) {
         </p>
 
         {/* Featured Image */}
-        <div className="relative w-full h-[240px] xs:h-[300px] sm:h-[420px] md:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
+        <div className="relative w-full h-60 xs:h-75 sm:h-105 md:h-120 rounded-2xl sm:rounded-3xl overflow-hidden mb-12 border border-white/10 shadow-2xl">
           <Image
             src={article.image}
             alt={article.title}
@@ -142,7 +142,7 @@ export default function BlogDetailPage({ params }) {
           {article.content.map((block, idx) => {
             if (block.type === 'h2') {
               return (
-                <h2 key={idx} className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-10 mb-4 bg-linear-to-r from-white via-white to-[#2de8b0] bg-clip-text text-transparent">
+                <h2 key={idx} className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-10 mb-4 bg-linear-to-r from-white via-white to-[#2de8b0] bg-clip-text">
                   {block.text}
                 </h2>
               );

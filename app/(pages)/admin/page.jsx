@@ -6,6 +6,7 @@ import { addArticleToFirebase, getArticlesFromFirebase, deleteArticleFromFirebas
 const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@devskarnel.com";
 
 export default function AdminStudioPage() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
@@ -26,6 +27,7 @@ export default function AdminStudioPage() {
   const [statusMessage, setStatusMessage] = useState({ type: "", text: "" });
 
   useEffect(() => {
+    setIsMounted(true);
     const auth = localStorage.getItem("is_admin");
     if (auth === "true") {
       setIsAdmin(true);
@@ -39,7 +41,7 @@ export default function AdminStudioPage() {
     setFetching(true);
     try {
       const data = await getArticlesFromFirebase();
-      setArticlesList(data);
+      setArticlesList(data || []);
     } catch (err) {
       console.error("Fetch articles error:", err);
     } finally {
@@ -57,44 +59,13 @@ export default function AdminStudioPage() {
       localStorage.setItem("is_admin", "true");
       fetchArticles();
     } else {
-      alert("❌ Access Denied: Invalid Email or Password (min 6 chars)");
+      alert("❌ Access Denied: Invalid Email or Password (minimum 6 characters)");
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem("is_admin");
     setIsAdmin(false);
-  };
-
-  // Image compressor & FileReader helper
-  const handleImageChange = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (event) => {
-      const img = new Image();
-      img.src = event.target.result;
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const MAX_WIDTH = 800;
-        const scaleSize = MAX_WIDTH / img.width;
-
-        if (scaleSize < 1) {
-          canvas.width = MAX_WIDTH;
-          canvas.height = img.height * scaleSize;
-        } else {
-          canvas.width = img.width;
-          canvas.height = img.height;
-        }
-
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        const resizedDataUrl = canvas.toDataURL("image/jpeg", 0.7);
-        setImage(resizedDataUrl);
-      };
-    };
   };
 
   const addTag = (e) => {
@@ -128,7 +99,7 @@ export default function AdminStudioPage() {
         content: content.trim(),
         category,
         tags: [...tags],
-        image: image || "",
+        image: image.trim() || "",
         author: author.trim() || "Devskarnel Team",
       };
 
@@ -161,11 +132,19 @@ export default function AdminStudioPage() {
     try {
       await deleteArticleFromFirebase(id);
       setArticlesList((prev) => prev.filter((a) => a.id !== id));
-      alert("Deleted successfully!");
+      setStatusMessage({ type: "success", text: `Deleted "${articleTitle}" successfully!` });
     } catch (err) {
       alert("Error deleting article: " + err.message);
     }
   };
+
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-[#010504] text-white flex items-center justify-center">
+        <div className="animate-pulse text-[#2de8b0] text-sm font-semibold">Loading Admin Studio...</div>
+      </div>
+    );
+  }
 
   // Locked Login Screen
   if (!isAdmin) {
@@ -175,14 +154,14 @@ export default function AdminStudioPage() {
 
         <form
           onSubmit={handleLogin}
-          className="relative z-10 w-full max-w-md bg-white/5 backdrop-blur-2xl border border-white/10 p-8 sm:p-10 rounded-3xl shadow-2xl space-y-6"
+          className="relative z-10 w-full max-w-md bg-white/5 backdrop-blur-2xl border border-white/10 p-6 sm:p-10 rounded-3xl shadow-2xl space-y-6"
         >
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#2de8b0]">
               Devskarnel Admin
             </span>
-            <h2 className="text-3xl font-bold text-white tracking-tight">Article Studio</h2>
-            <p className="text-xs text-white/50">Enter admin credentials to manage perspectives</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Article Studio</h2>
+            <p className="text-xs text-white/50">Enter admin credentials to manage articles</p>
           </div>
 
           <div className="space-y-4">
@@ -192,7 +171,7 @@ export default function AdminStudioPage() {
                 suppressHydrationWarning
                 type="email"
                 placeholder="admin@devskarnel.com"
-                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-[#2de8b0] transition-colors"
+                className="w-full p-3.5 sm:p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-[#2de8b0] transition-colors text-sm"
                 onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
                 required
               />
@@ -204,7 +183,7 @@ export default function AdminStudioPage() {
                 suppressHydrationWarning
                 type="password"
                 placeholder="••••••••"
-                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-[#2de8b0] transition-colors"
+                className="w-full p-3.5 sm:p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-[#2de8b0] transition-colors text-sm"
                 onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 required
               />
@@ -214,7 +193,7 @@ export default function AdminStudioPage() {
           <button
             suppressHydrationWarning
             type="submit"
-            className="w-full py-4 rounded-xl bg-[#2de8b0] text-black font-bold hover:bg-[#28d29f] transition-all cursor-pointer hover:scale-[1.02] active:scale-95 shadow-lg shadow-[#2de8b0]/20"
+            className="w-full py-3.5 sm:py-4 rounded-xl bg-[#2de8b0] text-black font-bold hover:bg-[#28d29f] transition-all cursor-pointer hover:scale-[1.02] active:scale-95 shadow-lg shadow-[#2de8b0]/20 text-sm"
           >
             Unlock Article Studio
           </button>
@@ -224,18 +203,18 @@ export default function AdminStudioPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#010504] text-white pt-28 pb-32 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#010504] text-white pt-24 sm:pt-28 pb-32 px-3 sm:px-6 lg:px-8 selection:bg-[#2de8b0] selection:text-black">
       {/* Background Radial Glow */}
       <div className="fixed inset-0 bg-radial from-[#2de8b0]/10 via-black to-black pointer-events-none z-0 opacity-40" />
 
-      <div className="relative z-10 max-w-4xl mx-auto space-y-12">
+      <div className="relative z-10 max-w-4xl mx-auto space-y-8 sm:space-y-12">
         {/* Top Header & Navigation Bar */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-xl">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/5 border border-white/10 p-5 sm:p-6 rounded-3xl backdrop-blur-xl">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#2de8b0]">
               Devskarnel Creator Studio
             </span>
-            <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h1 className="text-xl sm:text-3xl font-bold text-white tracking-tight">
               Publish & Manage Articles
             </h1>
           </div>
@@ -243,7 +222,7 @@ export default function AdminStudioPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/articles"
-              className="px-4 py-2 rounded-full border border-white/20 text-xs font-semibold text-white/80 hover:text-white hover:border-[#2de8b0] transition-all"
+              className="px-3.5 py-2 rounded-full border border-white/20 text-xs font-semibold text-white/80 hover:text-white hover:border-[#2de8b0] transition-all"
             >
               View Articles Page ↗
             </Link>
@@ -251,7 +230,8 @@ export default function AdminStudioPage() {
             <button
               type="button"
               onClick={handleLogout}
-              className="px-4 py-2 rounded-full bg-red-500/20 border border-red-500/30 text-xs font-semibold text-red-300 hover:bg-red-500/30 transition-all cursor-pointer"
+              suppressHydrationWarning
+              className="px-3.5 py-2 rounded-full bg-red-500/20 border border-red-500/30 text-xs font-semibold text-red-300 hover:bg-red-500/30 transition-all cursor-pointer"
             >
               Lock Studio
             </button>
@@ -274,14 +254,18 @@ export default function AdminStudioPage() {
         {/* Create Article Form Container */}
         <form
           onSubmit={submitArticle}
-          className="bg-black/50 backdrop-blur-xl rounded-3xl border border-white/10 p-6 sm:p-10 shadow-2xl space-y-8"
+          className="bg-black/50 backdrop-blur-xl rounded-3xl border border-white/10 p-5 sm:p-10 shadow-2xl space-y-6 sm:space-y-8"
         >
-          <div className="flex justify-between items-center border-b border-white/10 pb-6">
-            <h2 className="text-xl font-bold text-white">Create New Article</h2>
+          <div className="flex justify-between items-center border-b border-white/10 pb-5">
+            <div>
+              <h2 className="text-lg sm:text-xl font-bold text-white">Create New Article</h2>
+              <p className="text-xs text-white/50 mt-0.5">Fill out article details to publish</p>
+            </div>
             <button
               type="submit"
               disabled={loading}
-              className={`px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 flex items-center gap-2 cursor-pointer shadow-lg ${
+              suppressHydrationWarning
+              className={`px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 cursor-pointer shadow-lg ${
                 loading
                   ? "bg-white/20 text-white/40 cursor-not-allowed"
                   : "bg-[#2de8b0] text-black hover:bg-[#28d29f] hover:scale-105 active:scale-95 shadow-[#2de8b0]/20"
@@ -308,16 +292,17 @@ export default function AdminStudioPage() {
           </div>
 
           {/* Form Fields */}
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
             {/* Title */}
             <div>
               <label className="text-xs font-semibold text-white/70 uppercase tracking-wider block mb-2">
                 Article Headline *
               </label>
               <input
+                suppressHydrationWarning
                 type="text"
                 placeholder="e.g. How a High-Converting Website Drives 10x Business Growth..."
-                className="w-full text-xl sm:text-2xl font-bold bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-[#2de8b0] transition-colors"
+                className="w-full text-lg sm:text-2xl font-bold bg-white/5 border border-white/10 rounded-2xl px-4 sm:px-5 py-3.5 sm:py-4 text-white outline-none focus:border-[#2de8b0] transition-colors"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
@@ -330,30 +315,34 @@ export default function AdminStudioPage() {
                 Subtitle / Executive Summary
               </label>
               <input
+                suppressHydrationWarning
                 type="text"
-                placeholder="Short teaser paragraph for preview cards..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
+                placeholder="Short teaser summary for preview cards..."
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs sm:text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
                 value={subtitle}
                 onChange={(e) => setSubtitle(e.target.value)}
               />
             </div>
 
             {/* Category & Author Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="text-xs font-semibold text-white/70 uppercase tracking-wider block mb-2">
                   Category *
                 </label>
                 <select
+                  suppressHydrationWarning
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#2de8b0] transition-colors cursor-pointer"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs sm:text-sm text-white outline-none focus:border-[#2de8b0] transition-colors cursor-pointer"
                 >
                   <option value="Web Development" className="bg-[#010504] text-white">Web Development</option>
                   <option value="Technology" className="bg-[#010504] text-white">Technology</option>
                   <option value="Innovation" className="bg-[#010504] text-white">Innovation</option>
                   <option value="Design" className="bg-[#010504] text-white">Design & UX</option>
                   <option value="Strategy" className="bg-[#010504] text-white">Business Strategy</option>
+                  <option value="E-Commerce" className="bg-[#010504] text-white">E-Commerce</option>
+                  <option value="SEO & Growth" className="bg-[#010504] text-white">SEO & Growth</option>
                 </select>
               </div>
 
@@ -362,27 +351,29 @@ export default function AdminStudioPage() {
                   Author Name
                 </label>
                 <input
+                  suppressHydrationWarning
                   type="text"
                   placeholder="Devskarnel Team"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs sm:text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
                 />
               </div>
             </div>
 
-            {/* Tags & Thumbnail Image URL / Upload */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Tags & Thumbnail Cover Image URL Field */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {/* Tags Input */}
               <div className="space-y-3">
                 <label className="text-xs font-semibold text-white/70 uppercase tracking-wider block">
-                  Tags (Press Enter to Add)
+                  Tags (Press Enter or Click Add)
                 </label>
                 <div className="flex gap-2">
                   <input
+                    suppressHydrationWarning
                     type="text"
-                    placeholder="e.g. Next.js, SEO..."
-                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#2de8b0]"
+                    placeholder="e.g. Nextjs, SEO..."
+                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs sm:text-sm text-white outline-none focus:border-[#2de8b0]"
                     value={tagInput}
                     onChange={(e) => setTagInput(e.target.value)}
                     onKeyDown={addTag}
@@ -390,9 +381,10 @@ export default function AdminStudioPage() {
                   <button
                     type="button"
                     onClick={() => addTag()}
-                    className="px-4 py-3 bg-white/10 hover:bg-[#2de8b0] hover:text-black text-xs font-bold rounded-xl transition-colors cursor-pointer"
+                    suppressHydrationWarning
+                    className="px-4 py-3 bg-white/10 hover:bg-[#2de8b0] hover:text-black text-xs font-bold rounded-xl transition-colors cursor-pointer shrink-0"
                   >
-                    Add
+                    Add Tag
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -405,6 +397,7 @@ export default function AdminStudioPage() {
                       <button
                         type="button"
                         onClick={() => removeTag(i)}
+                        suppressHydrationWarning
                         className="hover:text-red-400 font-bold cursor-pointer"
                       >
                         ×
@@ -414,45 +407,51 @@ export default function AdminStudioPage() {
                 </div>
               </div>
 
-              {/* Dedicated Thumbnail Cover Image URL Field */}
+              {/* Dedicated Paste Cover Image URL Field Only */}
               <div className="space-y-3">
                 <label className="text-xs font-semibold text-white/70 uppercase tracking-wider block">
-                  Thumbnail / Cover Image URL *
+                  Thumbnail / Cover Image URL
                 </label>
 
                 <div className="space-y-2">
                   <input
-                    type="text"
-                    placeholder="Paste Image URL (https://images.unsplash.com/...)"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
+                    suppressHydrationWarning
+                    type="url"
+                    placeholder="Paste Image URL (https://res.cloudinary.com/... or https://...)"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-xs sm:text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
                   />
 
-                  <div className="flex items-center gap-3">
-                    <label className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl text-xs text-white/80 font-semibold cursor-pointer transition-colors shrink-0">
-                      <span>📁 Or Upload Image File</span>
-                      <input type="file" className="hidden" onChange={handleImageChange} accept="image/*" />
-                    </label>
-
-                    {image && (
+                  {image && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] text-[#2de8b0] font-semibold">✓ Image URL Linked</span>
                       <button
                         type="button"
                         onClick={() => setImage("")}
+                        suppressHydrationWarning
                         className="text-xs text-red-400 hover:underline font-semibold"
                       >
-                        Clear Image
+                        Clear URL
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Live Image Thumbnail Preview */}
+                {/* Live Image Preview Card */}
                 {image && (
-                  <div className="relative h-32 w-full rounded-xl overflow-hidden border border-[#2de8b0]/40 group bg-zinc-900 mt-2">
-                    <img src={image} alt="Thumbnail Preview" className="w-full h-full object-cover" />
-                    <div className="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 rounded text-[10px] text-[#2de8b0] font-bold">
-                      ✓ Thumbnail Ready (Displays at Start of Page)
+                  <div className="relative h-28 w-full rounded-xl overflow-hidden border border-[#2de8b0]/40 group bg-zinc-950 mt-2 shadow-inner">
+                    <img
+                      src={image}
+                      alt="Thumbnail Preview"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/images/website_growth_blog.jpg";
+                      }}
+                    />
+                    <div className="absolute bottom-1.5 left-2 bg-black/80 backdrop-blur-md px-2 py-0.5 rounded text-[10px] text-[#2de8b0] font-bold">
+                      ✓ Preview Ready
                     </div>
                   </div>
                 )}
@@ -462,16 +461,17 @@ export default function AdminStudioPage() {
             {/* Markdown Content Textarea */}
             <div>
               <label className="text-xs font-semibold text-white/70 uppercase tracking-wider block mb-2">
-                Article Narrative Content (Markdown Supported: ## Headings, **bold**, lists) *
+                Article Content (Markdown Supported: ## Headings, **bold**, lists) *
               </label>
               <textarea
-                placeholder="Write your article narrative here... 
+                suppressHydrationWarning
+                placeholder="Write your article content here...
 
 ## Section Title
 
-Your insights and analysis go here..."
+Your insights, analysis, and conclusions go here..."
                 rows={12}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 text-white/90 text-base leading-relaxed outline-none focus:border-[#2de8b0] transition-colors resize-y font-mono"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-5 text-white/90 text-sm sm:text-base leading-relaxed outline-none focus:border-[#2de8b0] transition-colors resize-y font-mono"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
@@ -481,45 +481,48 @@ Your insights and analysis go here..."
         </form>
 
         {/* Existing Published Articles List */}
-        <div className="bg-black/50 backdrop-blur-xl rounded-3xl border border-white/10 p-6 sm:p-10 shadow-2xl space-y-6">
+        <div className="bg-black/50 backdrop-blur-xl rounded-3xl border border-white/10 p-5 sm:p-10 shadow-2xl space-y-6">
           <div className="flex justify-between items-center border-b border-white/10 pb-4">
-            <h3 className="text-lg font-bold text-white">Published Articles</h3>
-            <span className="text-xs text-[#2de8b0] font-semibold">{articlesList.length} Total Articles</span>
+            <h3 className="text-base sm:text-lg font-bold text-white">Published Articles</h3>
+            <span className="text-xs text-[#2de8b0] font-semibold">{articlesList.length} Articles</span>
           </div>
 
           {fetching ? (
-            <div className="py-8 text-center text-white/40 text-sm">Loading articles...</div>
+            <div className="py-8 text-center text-white/40 text-sm animate-pulse">Loading articles...</div>
           ) : articlesList.length === 0 ? (
             <div className="py-8 text-center text-white/40 text-sm">No articles published yet.</div>
           ) : (
             <div className="divide-y divide-white/10">
               {articlesList.map((art) => (
-                <div key={art.id} className="py-4 flex items-center justify-between gap-4">
+                <div key={art.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className="px-2 py-0.5 rounded-full bg-[#2de8b0]/15 text-[#2de8b0] text-[10px] font-bold uppercase">
-                        {art.category}
+                        {art.category || "General"}
                       </span>
-                      <span className="text-xs text-white/40">
-                        {new Date(art.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                      </span>
+                      {art.createdAt && (
+                        <span className="text-xs text-white/40">
+                          {new Date(art.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        </span>
+                      )}
                     </div>
                     <h4 className="text-white font-semibold text-sm sm:text-base truncate">{art.title}</h4>
-                    <p className="text-xs text-white/50 truncate">{art.subtitle}</p>
+                    {art.subtitle && <p className="text-xs text-white/50 truncate mt-0.5">{art.subtitle}</p>}
                   </div>
 
-                  <div className="flex items-center gap-2 shrink-0">
+                  <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                     <Link
                       href={`/articles/${art.slug}`}
                       target="_blank"
                       className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs text-white font-medium transition-colors"
                     >
-                      Preview
+                      Preview ↗
                     </Link>
 
                     <button
                       type="button"
                       onClick={() => handleDelete(art.id, art.title)}
+                      suppressHydrationWarning
                       className="px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-xs text-red-300 font-medium transition-colors cursor-pointer"
                     >
                       Delete

@@ -116,34 +116,34 @@ export default function Footer() {
                 <div className="footer-animate border-t border-white/10 mb-10 sm:mb-12" />
 
                 {/* Main Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8 mb-10 sm:mb-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-8 lg:gap-8 mb-10 sm:mb-12">
                     {/* Left Section - Brand */}
-                    <div className="footer-animate text-center md:text-left">
+                    <div className="footer-animate col-span-2 lg:col-span-1 text-center lg:text-left pb-4 lg:pb-0 border-b lg:border-b-0 border-white/10">
                         <Link href="/" className="inline-flex items-center mb-3 group">
                             <Image
                                 src="/images/dklogo.webp"
                                 alt="Devskarnel Logo"
                                 width={180}
                                 height={50}
-                                className="h-18 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                className="h-16 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                             />
                         </Link>
-                        <p className="text-white/60 text-sm sm:text-base mb-4 sm:mb-6 max-w-xs mx-auto md:mx-0">
+                        <p className="text-white/60 text-xs sm:text-base mb-4 sm:mb-6 max-w-sm mx-auto lg:mx-0">
                             Crafting digital experiences that inspire, transform, and grow your business.
                         </p>
                         {/* Social Icons */}
-                        <div className="flex gap-3 justify-center md:justify-start">
+                        <div className="flex gap-3 justify-center lg:justify-start">
                             {socialLinks.map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group relative w-10 h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-[#2de8b0]/50 hover:scale-110"
+                                    className="group relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-[#2de8b0]/50 hover:scale-110"
                                     aria-label={social.name}
                                 >
                                     <svg
-                                        className="w-5 h-5 text-white/70 transition-colors duration-300 group-hover:text-[#2de8b0]"
+                                        className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 transition-colors duration-300 group-hover:text-[#2de8b0]"
                                         fill="currentColor"
                                         viewBox="0 0 24 24"
                                     >
@@ -157,16 +157,16 @@ export default function Footer() {
                     </div>
 
                     {/* Solutions Column */}
-                    <div className="footer-animate text-center md:text-left">
-                        <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                    <div className="footer-animate col-span-1 text-left">
+                        <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
                             Solutions
                         </h3>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2 sm:space-y-2.5">
                             {links.solutions.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.url}
-                                        className="text-white/60 text-sm sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
                                     >
                                         {link.name}
                                     </Link>
@@ -176,16 +176,16 @@ export default function Footer() {
                     </div>
 
                     {/* E-Commerce Automations Column */}
-                    <div className="footer-animate text-center md:text-left">
-                        <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                    <div className="footer-animate col-span-1 text-left">
+                        <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
                             E-Commerce
                         </h3>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2 sm:space-y-2.5">
                             {links.ecommerce.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.url}
-                                        className="text-white/60 text-sm sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
                                     >
                                         {link.name}
                                     </Link>
@@ -195,16 +195,16 @@ export default function Footer() {
                     </div>
 
                     {/* Company Column */}
-                    <div className="footer-animate text-center md:text-left">
-                        <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                    <div className="footer-animate col-span-2 sm:col-span-1 lg:col-span-1 text-left">
+                        <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
                             Company
                         </h3>
-                        <ul className="space-y-2.5">
+                        <ul className="space-y-2 sm:space-y-2.5">
                             {links.company.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.url}
-                                        className="text-white/60 text-sm sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
                                     >
                                         {link.name}
                                     </Link>

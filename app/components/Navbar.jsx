@@ -342,6 +342,10 @@ export default function Navbar() {
 
     if (href.startsWith("#")) {
       e.preventDefault();
+      if (typeof window !== "undefined" && window.location.pathname !== "/") {
+        router.push("/" + href);
+        return;
+      }
       const element = document.querySelector(href);
       if (element) {
         const offsetTop =
@@ -486,7 +490,7 @@ export default function Navbar() {
               >
                 {hasDropdown ? (
                   <>
-                    <button className="relative flex items-center gap-1 px-5 py-2.5 text-[0.95rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200 border-r border-white/10 after:content-[''] after:absolute after:top-full after:left-0 after:w-full after:h-4">
+                    <button suppressHydrationWarning className="relative flex items-center gap-1 px-5 py-2.5 text-[0.95rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200 border-r border-white/10 after:content-[''] after:absolute after:top-full after:left-0 after:w-full after:h-4">
                       {label}
                       <span
                         className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180 text-emerald-400" : ""}`}

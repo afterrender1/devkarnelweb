@@ -1,16 +1,11 @@
 "use client";
 import React, { useState, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
-import { Urbanist } from "next/font/google";
+import { urbanist } from "@/app/fonts";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const urbanist = Urbanist({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
 
 const SERVICES = [
   "Website Development",

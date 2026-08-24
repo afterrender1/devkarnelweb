@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { addArticleToFirebase, getArticlesFromFirebase, deleteArticleFromFirebase } from "@/lib/articles";
 
-const SECURE_EMAIL = process.env.NEXT_PUBLIC_SECURE_EMAIL || "admin@devskarnel.com";
-const SECURE_PASSWORD = process.env.NEXT_PUBLIC_SECURE_PASSWORD || "admin123";
+const DEFAULT_ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL || "admin@devskarnel.com";
 
 export default function AdminStudioPage() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -50,12 +49,15 @@ export default function AdminStudioPage() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (loginData.email === SECURE_EMAIL && loginData.password === SECURE_PASSWORD) {
+    const inputEmail = (loginData.email || "").trim().toLowerCase();
+    const inputPassword = (loginData.password || "").trim();
+
+    if (inputEmail === DEFAULT_ADMIN_EMAIL.toLowerCase() && inputPassword.length >= 6) {
       setIsAdmin(true);
       localStorage.setItem("is_admin", "true");
       fetchArticles();
     } else {
-      alert("❌ Access Denied: Invalid Credentials");
+      alert("❌ Access Denied: Invalid Email or Password (min 6 chars)");
     }
   };
 
@@ -187,6 +189,7 @@ export default function AdminStudioPage() {
             <div>
               <label className="text-xs text-white/60 mb-1 block">Admin Email</label>
               <input
+                suppressHydrationWarning
                 type="email"
                 placeholder="admin@devskarnel.com"
                 className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-[#2de8b0] transition-colors"
@@ -198,6 +201,7 @@ export default function AdminStudioPage() {
             <div>
               <label className="text-xs text-white/60 mb-1 block">Security Key</label>
               <input
+                suppressHydrationWarning
                 type="password"
                 placeholder="••••••••"
                 className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-[#2de8b0] transition-colors"
@@ -208,6 +212,7 @@ export default function AdminStudioPage() {
           </div>
 
           <button
+            suppressHydrationWarning
             type="submit"
             className="w-full py-4 rounded-xl bg-[#2de8b0] text-black font-bold hover:bg-[#28d29f] transition-all cursor-pointer hover:scale-[1.02] active:scale-95 shadow-lg shadow-[#2de8b0]/20"
           >
@@ -366,7 +371,7 @@ export default function AdminStudioPage() {
               </div>
             </div>
 
-            {/* Tags & Image Upload */}
+            {/* Tags & Thumbnail Image URL / Upload */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Tags Input */}
               <div className="space-y-3">
@@ -409,35 +414,46 @@ export default function AdminStudioPage() {
                 </div>
               </div>
 
-              {/* Cover Image Upload / Input */}
+              {/* Dedicated Thumbnail Cover Image URL Field */}
               <div className="space-y-3">
                 <label className="text-xs font-semibold text-white/70 uppercase tracking-wider block">
-                  Featured Cover Image
+                  Thumbnail / Cover Image URL *
                 </label>
 
-                {image ? (
-                  <div className="relative h-28 w-full rounded-xl overflow-hidden border border-white/20 group">
-                    <img src={image} alt="Preview" className="w-full h-full object-cover" />
-                    <button
-                      type="button"
-                      onClick={() => setImage("")}
-                      className="absolute top-2 right-2 bg-black/80 hover:bg-red-600 text-white w-7 h-7 rounded-full text-sm font-bold flex items-center justify-center transition-colors cursor-pointer"
-                    >
-                      ×
-                    </button>
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    <label className="flex flex-col items-center justify-center h-20 bg-white/5 hover:bg-white/10 border border-dashed border-white/20 rounded-xl cursor-pointer transition-colors">
-                      <span className="text-xs text-white/60 font-medium">+ Click to Upload Image File</span>
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    placeholder="Paste Image URL (https://images.unsplash.com/...)"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none focus:border-[#2de8b0] transition-colors"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                  />
+
+                  <div className="flex items-center gap-3">
+                    <label className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl text-xs text-white/80 font-semibold cursor-pointer transition-colors shrink-0">
+                      <span>📁 Or Upload Image File</span>
                       <input type="file" className="hidden" onChange={handleImageChange} accept="image/*" />
                     </label>
-                    <input
-                      type="text"
-                      placeholder="Or paste Image URL (https://...)"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-xs text-white outline-none focus:border-[#2de8b0]"
-                      onChange={(e) => setImage(e.target.value)}
-                    />
+
+                    {image && (
+                      <button
+                        type="button"
+                        onClick={() => setImage("")}
+                        className="text-xs text-red-400 hover:underline font-semibold"
+                      >
+                        Clear Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Live Image Thumbnail Preview */}
+                {image && (
+                  <div className="relative h-32 w-full rounded-xl overflow-hidden border border-[#2de8b0]/40 group bg-zinc-900 mt-2">
+                    <img src={image} alt="Thumbnail Preview" className="w-full h-full object-cover" />
+                    <div className="absolute bottom-2 left-2 bg-black/80 px-2 py-0.5 rounded text-[10px] text-[#2de8b0] font-bold">
+                      ✓ Thumbnail Ready (Displays at Start of Page)
+                    </div>
                   </div>
                 )}
               </div>

@@ -23,17 +23,23 @@ export async function POST(req) {
       },
     });
 
+    const formattedServices = Array.isArray(services) && services.length > 0
+      ? services.join(", ")
+      : "None specified";
+    const userPhone = phone ? `${countryCode || ""} ${phone}`.trim() : "Not provided";
+
     // Mail options
     const mailOptions = {
-      from: `"${name}" <${email}>`,
-      to: process.env.GMAIL_USER,
+      from: `"Devskarnel Website Contact" <${process.env.GMAIL_USER || "devskarnel@gmail.com"}>`,
+      replyTo: email,
+      to: process.env.GMAIL_USER || "devskarnel@gmail.com",
       subject: `Devskarnel - New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${countryCode} ${phone}</p>
-        <p><strong>Services:</strong> ${services.join(", ")}</p>
+        <p><strong>Phone:</strong> ${userPhone}</p>
+        <p><strong>Services:</strong> ${formattedServices}</p>
         <p><strong>Message:</strong><br/>${message}</p>
       `,
     };

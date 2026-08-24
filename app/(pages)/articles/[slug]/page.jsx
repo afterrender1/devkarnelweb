@@ -158,7 +158,7 @@ export default function ArticleDetailPage({ params }) {
       {/* Background Glow */}
       <div className="fixed inset-0 bg-radial from-[#2de8b0]/10 via-black to-black pointer-events-none z-0 opacity-40" />
 
-      <article className="relative z-10 max-w-4xl mx-auto space-y-12">
+      <article className="relative z-10 max-w-4xl mx-auto space-y-10">
         {/* Back Link */}
         <div>
           <Link
@@ -170,6 +170,20 @@ export default function ArticleDetailPage({ params }) {
             </svg>
             Back to All Articles
           </Link>
+        </div>
+
+        {/* --- THUMBNAIL COVER IMAGE AT START OF DYNAMIC PAGE --- */}
+        <div className="relative w-full h-64 sm:h-96 md:h-[460px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-950">
+          <img
+            src={coverImage}
+            alt={article.title || "Article Cover"}
+            className="w-full h-full object-cover opacity-95"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/images/website_growth_blog.jpg";
+            }}
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-[#010504] via-transparent to-transparent opacity-70" />
         </div>
 
         {/* Header Metadata */}
@@ -195,20 +209,6 @@ export default function ArticleDetailPage({ params }) {
               "{article.subtitle}"
             </p>
           )}
-        </div>
-
-        {/* Featured Cover Image */}
-        <div className="relative w-full h-64 sm:h-96 md:h-[480px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
-          <img
-            src={coverImage}
-            alt={article.title || "Article Cover"}
-            className="w-full h-full object-cover opacity-95"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "/images/website_growth_blog.jpg";
-            }}
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-[#010504] via-transparent to-transparent opacity-60" />
         </div>
 
         {/* Article Body Content */}

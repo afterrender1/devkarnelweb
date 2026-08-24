@@ -55,15 +55,29 @@ export default function Footer() {
 
     const links = {
         solutions: [
-            { name: 'Logo Design', url: '#' },
-            { name: 'Website Development', url: '#' },
+            { name: 'UI/UX Design', url: '/services/ui-ux-design' },
+            { name: 'Web Design & Dev', url: '/services/website-development' },
+            { name: 'E-Commerce Studio', url: '/services/e-commerce' },
+            { name: 'Branding', url: '/services/branding' },
+            { name: 'Mobile App Dev', url: '/services/mobile-app-development' },
+            { name: 'SEO Optimization', url: '/services/seo-optimization' },
+            { name: 'Social Media Marketing', url: '/services/social-media-marketing' },
         ],
-        pages: [
+        ecommerce: [
+            { name: 'Shopify Automation', url: '/services/e-commerce/shopify-automation' },
+            { name: 'Amazon Store Setup', url: '/services/e-commerce/amazon-store-setup' },
+            { name: 'Ebay Automation', url: '/services/e-commerce/ebay-automation' },
+            { name: 'Walmart Automation', url: '/services/e-commerce/walmart-automation' },
+            { name: 'TikTok Shop Automation', url: '/services/e-commerce/tiktok-shop-automation' },
+            { name: 'WooCommerce Dev', url: '/services/e-commerce/woocommerce-development' },
+            { name: 'Etsy Shop Automation', url: '/services/e-commerce/etsy-automation' },
+        ],
+        company: [
             { name: 'Portfolio', url: '/portfolio' },
-            { name: 'Articles', url: '/articles' },
-            { name: 'Services', url: '#services' },
-            { name: 'Testimonials', url: '#reviews' },
-            { name: 'Contact', url: '#contact' },
+            { name: 'Articles & Insights', url: '/articles' },
+            { name: 'Our Services', url: '/#services' },
+            { name: 'Client Reviews', url: '/#reviews' },
+            { name: 'Contact Us', url: '/#contact' },
         ],
     };
 
@@ -71,23 +85,19 @@ export default function Footer() {
         <footer
             style={{
                 background: `
-    /* Top par darkness barhane ke liye radial shadows ko zyada intense kiya gaya hai */
     radial-gradient(circle at 10% 20%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, transparent 60%),
     radial-gradient(circle at 90% 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, transparent 70%),
     radial-gradient(circle at 50% -10%, rgba(0,0,0,0.9) 0%, transparent 60%),
-    
-    /* Bottom-left ki lighting ko thoda soft rakha hai */
     radial-gradient(circle at 100% 90%, rgba(0,0,0,0.4) 0%, transparent 0%),
-    
     linear-gradient(
       0deg, 
-      #24E8B2 10%,       /* Light color bottom par */
+      #24E8B2 10%,
       #1BC497 5%,
-      #0F7C6E 10%,      /* Yahan se transition jaldi start kar di */
+      #0F7C6E 10%,
       #0A4A42 45%,
-      #062B24 100%,      /* Dark color ab 65% se hi shuru ho jayega */
-      #010504 90%,      /* 90% tak aate aate kaafi dark ho jayega */
-      #000000 100%      /* Bilkul top par pure black */
+      #062B24 100%,
+      #010504 90%,
+      #000000 100%
     )
   `,
                 willChange: "opacity",
@@ -95,11 +105,8 @@ export default function Footer() {
             ref={footerRef} className={`relative bg-[#010504] overflow-hidden ${urbanist.className}`}>
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                {/* Radial Glow */}
                 <div className="absolute bottom-0 left-2/4 w-96 h-96 bg-[#2de8b0] opacity-30 blur-[120px] rounded-full" />
                 <div className="absolute bottom-0 right-1/2 w-96 h-96 bg-[#2de8b0] opacity-30 blur-[120px] rounded-full" />
-
-                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#010504]/50 to-[#010504]" />
             </div>
 
@@ -107,8 +114,9 @@ export default function Footer() {
             <div ref={contentRef} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
                 {/* Top Border */}
                 <div className="footer-animate border-t border-white/10 mb-10 sm:mb-12" />
+
                 {/* Main Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8 mb-10 sm:mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-8 mb-10 sm:mb-12">
                     {/* Left Section - Brand */}
                     <div className="footer-animate text-center md:text-left">
                         <Link href="/" className="inline-flex items-center mb-3 group">
@@ -117,11 +125,11 @@ export default function Footer() {
                                 alt="Devskarnel Logo"
                                 width={180}
                                 height={50}
-                                className="h-18 sm:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                className="h-18 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                             />
                         </Link>
                         <p className="text-white/60 text-sm sm:text-base mb-4 sm:mb-6 max-w-xs mx-auto md:mx-0">
-                            Crafting digital experiences that inspire and engage.
+                            Crafting digital experiences that inspire, transform, and grow your business.
                         </p>
                         {/* Social Icons */}
                         <div className="flex gap-3 justify-center md:justify-start">
@@ -142,72 +150,74 @@ export default function Footer() {
                                         <path d={social.icon} />
                                     </svg>
 
-                                    {/* Glow Effect on Hover */}
                                     <div className="absolute inset-0 rounded-lg bg-[#2de8b0]/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100 -z-10" />
                                 </a>
                             ))}
                         </div>
                     </div>
 
-                    {/* Middle Section - Links */}
-                    <div className="footer-animate lg:col-span-1 grid grid-cols-2 gap-8 md:gap-12 text-center md:text-left">
-                        {/* Solutions */}
-                        <div>
-                            <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
-                                Solutions
-                            </h3>
-                            <ul className="space-y-3">
-                                {links.solutions.map((link) => (
-                                    <li key={link.name}>
-                                        <a
-                                            href={link.url}
-                                            className="text-white/60 text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Pages */}
-                        <div>
-                            <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
-                                Company
-                            </h3>
-                            <ul className="space-y-3">
-                                {links.pages.map((link) => (
-                                    <li key={link.name}>
-                                        <a
-                                            href={link.url}
-                                            className="text-white/60 text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    {/* Solutions Column */}
+                    <div className="footer-animate text-center md:text-left">
+                        <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                            Solutions
+                        </h3>
+                        <ul className="space-y-2.5">
+                            {links.solutions.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.url}
+                                        className="text-white/60 text-sm sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
-                    {/* Right Section - Legal */}
-                    {/* <div className="footer-animate text-center md:text-left lg:text-right">
-                        <h4 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
-                            Legal
-                        </h4>
-                        <a
-                            href="#"
-                            className="inline-block text-white/60 text-base hover:text-[#2de8b0] transition-colors duration-300"
-                        >
-                            Privacy Policy
-                        </a>
-                    </div> */}
+                    {/* E-Commerce Automations Column */}
+                    <div className="footer-animate text-center md:text-left">
+                        <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                            E-Commerce
+                        </h3>
+                        <ul className="space-y-2.5">
+                            {links.ecommerce.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.url}
+                                        className="text-white/60 text-sm sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Company Column */}
+                    <div className="footer-animate text-center md:text-left">
+                        <h3 className="text-white font-semibold mb-4 text-base uppercase tracking-wider">
+                            Company
+                        </h3>
+                        <ul className="space-y-2.5">
+                            {links.company.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.url}
+                                        className="text-white/60 text-sm sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 {/* Bottom Border */}
                 <div className="footer-animate border-t border-white/10 pt-8">
                     <div className="text-center">
-                        <p className="text-white/40 text-base">
+                        <p className="text-white/40 text-sm sm:text-base">
                             © {new Date().getFullYear()} Devskarnel. All rights reserved.
                         </p>
                     </div>

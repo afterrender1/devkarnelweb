@@ -179,15 +179,19 @@ export default function LogoHero() {
                         We craft timeless logos that capture the essence of your business. Our design philosophy blends geometric precision with creative flair to build brands that stand out.
                     </p>
                     <div ref={btnsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-                        <a href="https://calendly.com/devskarnel/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                            <button className="w-full sm:w-auto cursor-pointer px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all bg-[#2de8b0] shadow-[0_8px_30px_rgba(45,232,176,0.25)] hover:shadow-[0_12px_40px_rgba(45,232,176,0.35)] hover:bg-[#3df7bf] whitespace-nowrap">
-                                Start Your Brand
-                            </button>
+                        <a
+                            href="https://calendly.com/devskarnel/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto cursor-pointer px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all bg-[#2de8b0] shadow-[0_8px_30px_rgba(45,232,176,0.25)] hover:shadow-[0_12px_40px_rgba(45,232,176,0.35)] hover:bg-[#3df7bf] whitespace-nowrap text-center block sm:inline-block"
+                        >
+                            Start Your Brand
                         </a>
-                        <a href="/portfolio" className="w-full sm:w-auto">
-                            <button className="w-full sm:w-auto cursor-pointer px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all whitespace-nowrap">
-                                View Portfolio
-                            </button>
+                        <a
+                            href="/portfolio"
+                            className="w-full sm:w-auto cursor-pointer px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all whitespace-nowrap text-center block sm:inline-block"
+                        >
+                            View Portfolio
                         </a>
                     </div>
                 </div>

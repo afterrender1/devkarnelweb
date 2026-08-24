@@ -134,21 +134,20 @@ export default function ServiceHero({
           ref={btnsRef}
           className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
         >
-          <a href={ctaHref} className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto px-6 sm:px-9 py-3.5 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap">
-              {ctaText}
-            </button>
+          <a
+            href={ctaHref}
+            className="w-full sm:w-auto px-6 sm:px-9 py-3.5 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
+          >
+            {ctaText}
           </a>
           {secondaryCtaText && (
             <a
               href={secondaryCtaHref}
               target={secondaryCtaHref.startsWith("http") ? "_blank" : undefined}
               rel={secondaryCtaHref.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto px-6 sm:px-9 py-3.5 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
             >
-              <button className="w-full sm:w-auto px-6 sm:px-9 py-3.5 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap">
-                {secondaryCtaText}
-              </button>
+              {secondaryCtaText}
             </a>
           )}
         </div>

@@ -267,15 +267,19 @@ export default function WebHero() {
             We build lightning-fast web applications using Next.js and GSAP. From bespoke design systems to complex e-commerce engines, we prioritize performance, SEO, and conversion-driven user experiences.
           </p>
           <div ref={btnsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-            <a href="https://calendly.com/devskarnel/30min" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-5 sm:px-8 py-3 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap">
-                Start Your Project
-              </button>
+            <a
+              href="https://calendly.com/devskarnel/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-5 sm:px-8 py-3 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
+            >
+              Start Your Project
             </a>
-            <a href="/portfolio" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-5 sm:px-8 py-3 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap">
-                View Portfolio
-              </button>
+            <a
+              href="/portfolio"
+              className="w-full sm:w-auto px-5 sm:px-8 py-3 rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
+            >
+              View Portfolio
             </a>
           </div>
         </div>

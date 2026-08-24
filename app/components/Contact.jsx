@@ -126,6 +126,7 @@ const ContactForm = () => {
             onChange={handle}
             className={inputCls}
             required
+            suppressHydrationWarning
           />
         </Field>
         <Field label="Email" htmlFor="email">
@@ -138,6 +139,7 @@ const ContactForm = () => {
             onChange={handle}
             className={inputCls}
             required
+            suppressHydrationWarning
           />
         </Field>
       </div>
@@ -150,6 +152,7 @@ const ContactForm = () => {
             onChange={handle}
             className="border border-white/10 rounded-lg px-2 text-sm text-white bg-white/5 outline-none cursor-pointer focus:border-[#2de8b0] transition-all"
             style={{ width: "72px" }}
+            suppressHydrationWarning
           >
             {COUNTRY_CODES.map((c) => (
               <option key={c} value={c} className="bg-[#0a4a42] text-white">
@@ -165,6 +168,7 @@ const ContactForm = () => {
             value={values.phone}
             onChange={handle}
             className={`${inputCls} flex-1`}
+            suppressHydrationWarning
           />
         </div>
       </Field>
@@ -178,6 +182,7 @@ const ContactForm = () => {
           onChange={handle}
           className={`${inputCls} resize-none`}
           required
+          suppressHydrationWarning
         />
       </Field>
       <fieldset>
@@ -197,6 +202,7 @@ const ContactForm = () => {
       </fieldset>
       <button
         type="submit"
+        suppressHydrationWarning
         className="group mt-2 w-full py-3 sm:py-3.5 rounded-xl bg-[#2de8b0] text-black font-bold text-sm sm:text-base tracking-wide transition-all duration-300 hover:bg-[#1bc497] hover:shadow-lg hover:shadow-[#2de8b0]/30 active:scale-[0.98]"
       >
         Get started →

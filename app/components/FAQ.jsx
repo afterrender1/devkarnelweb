@@ -90,6 +90,7 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => toggleItem(index)}
+                  suppressHydrationWarning
                   className="w-full px-5 sm:px-6 py-4.5 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer"
                 >
                   <span

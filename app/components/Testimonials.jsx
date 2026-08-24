@@ -97,6 +97,7 @@ const Testimonials = () => {
                         <button 
                             aria-label="Previous Testimonial" 
                             onClick={() => slide('prev')} 
+                            suppressHydrationWarning
                             className="p-2 sm:p-3 rounded-full border border-[#2de8b0]/20 bg-white/5 hover:bg-[#2de8b0] hover:text-black transition-all duration-300 text-white cursor-pointer active:scale-95 shadow-md"
                         >
                             <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
@@ -104,6 +105,7 @@ const Testimonials = () => {
                         <button 
                             aria-label="Next Testimonial" 
                             onClick={() => slide('next')} 
+                            suppressHydrationWarning
                             className="p-2 sm:p-3 rounded-full border border-[#2de8b0]/20 bg-white/5 hover:bg-[#2de8b0] hover:text-black transition-all duration-300 text-white cursor-pointer active:scale-95 shadow-md"
                         >
                             <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -171,6 +173,7 @@ const Testimonials = () => {
                         <button
                             key={dot}
                             onClick={() => scrollToDot(dot)}
+                            suppressHydrationWarning
                             aria-label={`Go to testimonial page ${dot + 1}`}
                             className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                                 activeIndex === dot ? 'w-8 bg-[#2de8b0]' : 'w-2 bg-white/20 hover:bg-white/40'

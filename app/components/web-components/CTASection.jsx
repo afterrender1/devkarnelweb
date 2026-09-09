@@ -86,6 +86,7 @@ export default function CTASection() {
                   src="/images/website_growth_blog.jpg"
                   alt="How a High-Converting Website Drives Business Growth"
                   fill
+                  sizes="(max-width: 768px) 100vw, 300px"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute top-3 left-3 bg-[#2de8b0] text-black font-bold text-[10px] sm:text-xs uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">

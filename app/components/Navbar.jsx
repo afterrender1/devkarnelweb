@@ -320,7 +320,6 @@ export default function Navbar() {
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const linksRef = useRef(null);
-  const iconsRef = useRef(null);
   const ctaRef = useRef(null);
   const dropdownRef = useRef(null);
   const sidebarRef = useRef(null);
@@ -422,16 +421,26 @@ export default function Navbar() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(
-        [logoRef.current, linksRef.current, iconsRef.current, ctaRef.current],
-        { opacity: 0, y: -12 },
-      );
+      const animatedElements = [
+        logoRef.current,
+        linksRef.current,
+        ctaRef.current,
+      ].filter(Boolean);
+
+      if (animatedElements.length > 0) {
+        gsap.set(animatedElements, { opacity: 0, y: -12 });
+      }
 
       const tl = gsap.timeline();
-      tl.to(logoRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.1)
-        .to(linksRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.2)
-        .to(iconsRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.3)
-        .to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.4);
+      if (logoRef.current) {
+        tl.to(logoRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.1);
+      }
+      if (linksRef.current) {
+        tl.to(linksRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.2);
+      }
+      if (ctaRef.current) {
+        tl.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.3);
+      }
 
       const handleScroll = () => {
         const scrollY = window.scrollY;

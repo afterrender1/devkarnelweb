@@ -88,7 +88,6 @@ const Services = () => {
                                             src={service.mobileImage}
                                             alt={service.title}
                                             fill
-                                            quality={100}
                                             unoptimized
                                             className="object-cover transition-all duration-700 group-hover:scale-105 sm:hidden"
                                             sizes="(max-width: 640px) 100vw"
@@ -97,7 +96,6 @@ const Services = () => {
                                             src={service.image}
                                             alt={service.title}
                                             fill
-                                            quality={100}
                                             unoptimized
                                             className="object-cover transition-all duration-700 group-hover:scale-105 hidden sm:block"
                                             sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 66vw, 800px"
@@ -108,7 +106,6 @@ const Services = () => {
                                         src={service.image}
                                         alt={service.title}
                                         fill
-                                        quality={100}
                                         unoptimized
                                         className="object-cover transition-all duration-700 group-hover:scale-105"
                                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 66vw, 800px"

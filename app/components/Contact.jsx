@@ -263,6 +263,7 @@ const Contact = () => {
               src="/images/contact1.webp"
               alt="Contact"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-center"
               priority
             />

@@ -406,6 +406,7 @@ export default function Articles() {
                   src={featuredArticle.thumbnail}
                   alt={featuredArticle.title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
@@ -467,6 +468,7 @@ export default function Articles() {
                         src={article.thumbnail}
                         alt={article.title}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         onError={(e) => {
                           e.target.src =
@@ -646,6 +648,7 @@ export default function Articles() {
                 src={activeArticle.thumbnail}
                 alt={activeArticle.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 800px"
                 className="object-cover"
               />
             </div>

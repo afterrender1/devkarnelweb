@@ -22,12 +22,15 @@ const inputCls =
 
 const Checkbox = ({ label, checked, onToggle }) => (
   <label className="flex items-center gap-2 cursor-pointer select-none group">
+    <input
+      type="checkbox"
+      className="sr-only peer"
+      checked={checked}
+      onChange={onToggle}
+    />
     <span
-      onClick={onToggle}
-      role="checkbox"
-      aria-label={label}
-      aria-checked={checked}
-      className="w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all duration-150"
+      aria-hidden="true"
+      className="w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all duration-150 peer-focus-visible:ring-2 peer-focus-visible:ring-[#2de8b0] peer-focus-visible:ring-offset-1 peer-focus-visible:ring-offset-black"
       style={{
         border: `1.5px solid ${checked ? "#2de8b0" : "rgba(255,255,255,0.2)"}`,
         background: checked ? "#2de8b0" : "transparent",

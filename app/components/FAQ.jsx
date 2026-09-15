@@ -57,24 +57,24 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className={`relative w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#010504] text-white ${urbanist.className}`}
+      className={`relative w-full py-10 xs:py-12 sm:py-24 px-3.5 xs:px-4 sm:px-6 lg:px-8 bg-[#010504] text-white ${urbanist.className}`}
     >
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-3.5 py-1 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+          <span className="text-[#2de8b0] text-[10px] sm:text-sm font-bold uppercase tracking-widest px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20">
             FAQ
           </span>
-          <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+          <h2 className="mt-2.5 sm:mt-4 text-2xl min-[360px]:text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
             Frequently Asked <span className="text-[#2de8b0]">Questions</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-white/60">
+          <p className="mt-2 sm:mt-3 text-xs sm:text-base text-white/60 leading-relaxed px-2">
             Everything you need to know about our web development process and solutions.
           </p>
         </div>
 
         {/* Simple Accordion List */}
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-2.5 sm:space-y-4">
           {FAQ_ITEMS.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -91,10 +91,10 @@ export default function FAQ() {
                   type="button"
                   onClick={() => toggleItem(index)}
                   suppressHydrationWarning
-                  className="w-full px-5 sm:px-6 py-4.5 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer"
+                  className="w-full px-4 xs:px-5 sm:px-6 py-3.5 xs:py-4 sm:py-5 flex items-center justify-between text-left gap-3 sm:gap-4 cursor-pointer"
                 >
                   <span
-                    className={`text-base sm:text-lg font-bold transition-colors ${
+                    className={`text-sm xs:text-base sm:text-lg font-bold leading-snug sm:leading-normal transition-colors ${
                       isOpen ? "text-[#2de8b0]" : "text-white"
                     }`}
                   >
@@ -102,22 +102,22 @@ export default function FAQ() {
                   </span>
 
                   <span
-                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
+                    className={`w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
                       isOpen
                         ? "bg-[#2de8b0] text-black"
                         : "bg-white/5 text-white/60 border border-white/10"
                     }`}
                   >
                     {isOpen ? (
-                      <Minus className="w-4 h-4" strokeWidth={2.5} />
+                      <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.5} />
                     ) : (
-                      <Plus className="w-4 h-4" strokeWidth={2.5} />
+                      <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2.5} />
                     )}
                   </span>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-xs sm:text-sm md:text-base text-white/70 leading-relaxed border-t border-white/5">
+                  <div className="px-4 xs:px-5 sm:px-6 pb-4 xs:pb-5 sm:pb-6 pt-1 text-xs xs:text-sm md:text-base text-white/70 leading-relaxed border-t border-white/5">
                     {faq.answer}
                   </div>
                 )}

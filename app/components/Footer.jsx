@@ -111,39 +111,39 @@ export default function Footer() {
             </div>
 
             {/* Content */}
-            <div ref={contentRef} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+            <div ref={contentRef} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 lg:py-20">
                 {/* Top Border */}
-                <div className="footer-animate border-t border-white/10 mb-10 sm:mb-12" />
+                <div className="footer-animate border-t border-white/10 mb-6 sm:mb-12" />
 
                 {/* Main Grid */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-8 lg:gap-8 mb-10 sm:mb-12">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 sm:gap-8 lg:gap-8 mb-8 sm:mb-12">
                     {/* Left Section - Brand */}
-                    <div className="footer-animate col-span-2 lg:col-span-1 text-center lg:text-left pb-4 lg:pb-0 border-b lg:border-b-0 border-white/10">
-                        <Link href="/" className="inline-flex items-center mb-3 group">
+                    <div className="footer-animate col-span-2 lg:col-span-1 text-center lg:text-left pb-5 lg:pb-0 border-b lg:border-b-0 border-white/10">
+                        <Link href="/" className="inline-flex items-center mb-2 sm:mb-3 group">
                             <Image
                                 src="/images/dklogo.webp"
                                 alt="Devskarnel Logo"
                                 width={180}
                                 height={50}
-                                className="h-16 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                className="h-14 xs:h-16 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                             />
                         </Link>
-                        <p className="text-white/60 text-xs sm:text-base mb-4 sm:mb-6 max-w-sm mx-auto lg:mx-0">
+                        <p className="text-white/60 text-xs sm:text-base mb-3.5 sm:mb-6 max-w-sm mx-auto lg:mx-0 leading-relaxed">
                             Crafting digital experiences that inspire, transform, and grow your business.
                         </p>
                         {/* Social Icons */}
-                        <div className="flex gap-3 justify-center lg:justify-start">
+                        <div className="flex gap-2.5 sm:gap-3 justify-center lg:justify-start">
                             {socialLinks.map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-[#2de8b0]/50 hover:scale-110"
+                                    className="group relative w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-white/10 hover:border-[#2de8b0]/50 hover:scale-110"
                                     aria-label={social.name}
                                 >
                                     <svg
-                                        className="w-4 h-4 sm:w-5 sm:h-5 text-white/70 transition-colors duration-300 group-hover:text-[#2de8b0]"
+                                        className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-white/70 transition-colors duration-300 group-hover:text-[#2de8b0]"
                                         fill="currentColor"
                                         viewBox="0 0 24 24"
                                     >
@@ -158,15 +158,15 @@ export default function Footer() {
 
                     {/* Solutions Column */}
                     <div className="footer-animate col-span-1 text-left">
-                        <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
+                        <h3 className="text-white font-bold sm:font-semibold mb-2 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
                             Solutions
                         </h3>
-                        <ul className="space-y-2 sm:space-y-2.5">
+                        <ul className="space-y-1.5 xs:space-y-2 sm:space-y-2.5">
                             {links.solutions.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.url}
-                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block leading-tight sm:leading-normal"
                                     >
                                         {link.name}
                                     </Link>
@@ -177,15 +177,15 @@ export default function Footer() {
 
                     {/* E-Commerce Automations Column */}
                     <div className="footer-animate col-span-1 text-left">
-                        <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
+                        <h3 className="text-white font-bold sm:font-semibold mb-2 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
                             E-Commerce
                         </h3>
-                        <ul className="space-y-2 sm:space-y-2.5">
+                        <ul className="space-y-1.5 xs:space-y-2 sm:space-y-2.5">
                             {links.ecommerce.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.url}
-                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block leading-tight sm:leading-normal"
                                     >
                                         {link.name}
                                     </Link>
@@ -196,15 +196,15 @@ export default function Footer() {
 
                     {/* Company Column */}
                     <div className="footer-animate col-span-2 sm:col-span-1 lg:col-span-1 text-left">
-                        <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
+                        <h3 className="text-white font-bold sm:font-semibold mb-2 sm:mb-4 text-xs sm:text-base uppercase tracking-wider">
                             Company
                         </h3>
-                        <ul className="space-y-2 sm:space-y-2.5">
+                        <ul className="space-y-1.5 xs:space-y-2 sm:space-y-2.5">
                             {links.company.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.url}
-                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block"
+                                        className="text-white/60 text-xs sm:text-base hover:text-[#2de8b0] transition-colors duration-300 inline-block leading-tight sm:leading-normal"
                                     >
                                         {link.name}
                                     </Link>
@@ -215,9 +215,9 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Border */}
-                <div className="footer-animate border-t border-white/10 pt-8">
+                <div className="footer-animate border-t border-white/10 pt-6 sm:pt-8">
                     <div className="text-center">
-                        <p className="text-white/40 text-sm sm:text-base">
+                        <p className="text-white/40 text-xs sm:text-base">
                             © {new Date().getFullYear()} Devskarnel. All rights reserved.
                         </p>
                     </div>

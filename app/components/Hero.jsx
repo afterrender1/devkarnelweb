@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { urbanist } from "../fonts";
 
@@ -38,6 +39,20 @@ export default function Hero() {
   const busyRef = useRef(false);  
   const pausedRef = useRef(false);
 
+  // Touch & drag gesture refs for thumb scrollable hero
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const startTranslateX = useRef(0);
+  const isDraggingRef = useRef(false);
+  const isSwipingRef = useRef(false);
+  const dragDistanceRef = useRef(0);
+  const resumeTimeoutRef = useRef(null);
+
+  const getCardWidth = () => {
+    const firstCard = trackRef.current?.firstElementChild;
+    return (firstCard?.offsetWidth ?? 0) + GAP;
+  };
+
   /**
    * Applies scale + blur to every card so the centre one is in focus and
    * the surrounding cards are dimmed.
@@ -73,6 +88,40 @@ export default function Hero() {
     });
   };
 
+  const snapToCard = (targetIdx, animate = true, duration = 0.5, ease = "power2.out") => {
+    if (!trackRef.current) return;
+    const cardW = getCardWidth();
+    if (!cardW) return;
+
+    idxRef.current = targetIdx;
+    const targetX = -(targetIdx * cardW);
+
+    if (animate) {
+      busyRef.current = true;
+      updateFocus(true);
+      gsap.to(trackRef.current, {
+        x: targetX,
+        duration,
+        ease,
+        onComplete: () => {
+          if (idxRef.current >= images.length * 2) {
+            idxRef.current -= images.length;
+            gsap.set(trackRef.current, { x: -(idxRef.current * cardW) });
+            updateFocus(false);
+          } else if (idxRef.current < images.length) {
+            idxRef.current += images.length;
+            gsap.set(trackRef.current, { x: -(idxRef.current * cardW) });
+            updateFocus(false);
+          }
+          busyRef.current = false;
+        },
+      });
+    } else {
+      gsap.set(trackRef.current, { x: targetX });
+      updateFocus(false);
+    }
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(
@@ -97,19 +146,7 @@ export default function Hero() {
 
   useEffect(() => {
     const snap = (animate = false) => {
-      const firstCard = trackRef.current?.firstElementChild;
-      if (!firstCard || !trackRef.current) return;
-
-      const itemW = firstCard.offsetWidth;
-      const target = -(idxRef.current * (itemW + GAP));
-
-      if (animate) {
-        gsap.to(trackRef.current, { x: target, duration: 0.5, ease: "power2.inOut" });
-      } else {
-        gsap.set(trackRef.current, { x: target });
-      }
-
-      updateFocus(animate);
+      snapToCard(idxRef.current, animate, 0.5, "power2.inOut");
     };
 
     const raf = requestAnimationFrame(() => {
@@ -126,37 +163,138 @@ export default function Hero() {
   useEffect(() => {
     const advance = () => {
       if (pausedRef.current || busyRef.current || !trackRef.current) return;
-      busyRef.current = true;
-
-      const firstCard = trackRef.current.firstElementChild;
-      const itemW = firstCard?.offsetWidth ?? 0;
-      const next = idxRef.current + 1;
-      idxRef.current = next;
-
-      updateFocus(true);
-
-      gsap.to(trackRef.current, {
-        x: -(next * (itemW + GAP)),
-        duration: 0.9,
-        ease: "power3.inOut",
-        onComplete: () => {
-          if (idxRef.current >= images.length * 2) {
-            idxRef.current = START;
-            gsap.set(trackRef.current, { x: -(START * (itemW + GAP)) });
-            updateFocus(false);
-          }
-          busyRef.current = false;
-        },
-      });
+      snapToCard(idxRef.current + 1, true, 0.8, "power3.inOut");
     };
 
-    const id = setInterval(advance, 2000);
-    return () => clearInterval(id);
+    const id = setInterval(advance, 2500);
+    return () => {
+      clearInterval(id);
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    };
   }, []); 
+
+  // ── Touch handlers (Thumb scrolling) ──────────────────────────────────────
+  const handleTouchStart = (e) => {
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    pausedRef.current = true;
+
+    gsap.killTweensOf(trackRef.current);
+    busyRef.current = false;
+
+    const touch = e.touches[0];
+    touchStartX.current = touch.clientX;
+    touchStartY.current = touch.clientY;
+    isDraggingRef.current = true;
+    isSwipingRef.current = false;
+    dragDistanceRef.current = 0;
+
+    const cardW = getCardWidth();
+    const currentX = gsap.getProperty(trackRef.current, "x");
+    startTranslateX.current =
+      typeof currentX === "number" ? currentX : -(idxRef.current * cardW);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDraggingRef.current || !trackRef.current) return;
+
+    const touch = e.touches[0];
+    const diffX = touch.clientX - touchStartX.current;
+    const diffY = touch.clientY - touchStartY.current;
+
+    // Detect direction: horizontal thumb swipe vs vertical page scroll
+    if (!isSwipingRef.current) {
+      if (Math.abs(diffX) > 6 && Math.abs(diffX) > Math.abs(diffY)) {
+        isSwipingRef.current = true;
+      } else if (Math.abs(diffY) > 6) {
+        isDraggingRef.current = false;
+        return;
+      }
+    }
+
+    if (isSwipingRef.current) {
+      dragDistanceRef.current = diffX;
+      gsap.set(trackRef.current, { x: startTranslateX.current + diffX });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDraggingRef.current) {
+      resumeTimeoutRef.current = setTimeout(() => {
+        pausedRef.current = false;
+      }, 2500);
+      return;
+    }
+
+    isDraggingRef.current = false;
+
+    if (isSwipingRef.current) {
+      const cardW = getCardWidth();
+      const diff = dragDistanceRef.current;
+      const threshold = Math.min(cardW * 0.15, 40);
+
+      let targetIdx = idxRef.current;
+      if (diff < -threshold) {
+        const count = Math.max(1, Math.round(Math.abs(diff) / cardW));
+        targetIdx += count;
+      } else if (diff > threshold) {
+        const count = Math.max(1, Math.round(Math.abs(diff) / cardW));
+        targetIdx -= count;
+      }
+
+      snapToCard(targetIdx, true, 0.45, "power2.out");
+    }
+
+    setTimeout(() => {
+      dragDistanceRef.current = 0;
+    }, 120);
+
+    resumeTimeoutRef.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, 2500);
+  };
+
+  // ── Mouse drag handlers (Desktop support) ─────────────────────────────────
+  const handleMouseDown = (e) => {
+    if (e.button !== 0) return;
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    pausedRef.current = true;
+
+    gsap.killTweensOf(trackRef.current);
+    busyRef.current = false;
+
+    touchStartX.current = e.clientX;
+    touchStartY.current = e.clientY;
+    isDraggingRef.current = true;
+    isSwipingRef.current = true;
+    dragDistanceRef.current = 0;
+
+    const cardW = getCardWidth();
+    const currentX = gsap.getProperty(trackRef.current, "x");
+    startTranslateX.current =
+      typeof currentX === "number" ? currentX : -(idxRef.current * cardW);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current || !trackRef.current) return;
+    const diffX = e.clientX - touchStartX.current;
+    dragDistanceRef.current = diffX;
+    gsap.set(trackRef.current, { x: startTranslateX.current + diffX });
+  };
+
+  const handleMouseUp = () => {
+    if (!isDraggingRef.current) return;
+    handleTouchEnd();
+  };
 
   // ── hover handlers (attached as React props on wrapRef's JSX element) ──────
   const handleMouseEnter = () => { pausedRef.current = true; };
-  const handleMouseLeave = () => { pausedRef.current = false; };
+  const handleMouseLeave = () => {
+    if (isDraggingRef.current) {
+      handleTouchEnd();
+    } else {
+      pausedRef.current = false;
+    }
+  };
 
   // ── render ────────────────────────────────────────────────────────────────
   return (
@@ -213,7 +351,15 @@ export default function Hero() {
 
             <div
               ref={wrapRef}
-              className="carousel-wrap w-full overflow-hidden"
+              className="carousel-wrap w-full overflow-hidden cursor-grab active:cursor-grabbing select-none"
+              style={{ touchAction: "pan-y" }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -228,8 +374,14 @@ export default function Hero() {
               >
                 {LOOP.map((src, i) => (
                   <div key={i} className="carousel-card shrink-0">
-                    <div
-                      className="w-full h-full aspect-video rounded-2xl overflow-hidden"
+                    <Link
+                      href="/portfolio"
+                      onClick={(e) => {
+                        if (Math.abs(dragDistanceRef.current) > 10) {
+                          e.preventDefault();
+                        }
+                      }}
+                      className="block w-full h-full aspect-video rounded-2xl overflow-hidden cursor-pointer"
                       style={{
                         background: "rgba(255,255,255,0.04)",
                         transformOrigin: "center center",
@@ -238,12 +390,12 @@ export default function Hero() {
                       <img
                         src={src}
                         alt={`Project ${(i % images.length) + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover pointer-events-none select-none"
                         draggable={false}
                         loading={i >= START && i < START + images.length ? "eager" : "lazy"}
                         fetchPriority={i === START ? "high" : undefined}
                       />
-                    </div>
+                    </Link>
                   </div>
                 ))}
               </div>

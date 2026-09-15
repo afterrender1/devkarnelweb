@@ -479,7 +479,7 @@ export default function Navbar() {
                 alt="Devskarnel Logo"
                 width={280}
                 height={80}
-                className="h-8 min-[360px]:h-24 min-[450px]:h-10 sm:h-12 md:h-14 lg:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-16 xs:h-20 sm:h-16 md:h-20 lg:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </Link>

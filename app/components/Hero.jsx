@@ -161,7 +161,7 @@ export default function Hero() {
   // ── render ────────────────────────────────────────────────────────────────
   return (
     <section
-      className={`relative min-h-fit sm:min-h-screen w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
+      className={`relative min-h-fit sm:min-h-100 w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
     >
 
       <div

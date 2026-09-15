@@ -58,7 +58,7 @@ export default function ServiceHero({
 
   return (
     <section
-      className={`relative w-full flex items-center justify-center overflow-hidden bg-[#010504] pt-32 sm:pt-36 md:pt-40 lg:pt-48 pb-20 sm:pb-24 lg:pb-32 ${urbanist.className}`}
+      className={`relative w-full flex items-center justify-center overflow-hidden bg-[#010504] pt-28 xs:pt-32 sm:pt-36 md:pt-40 lg:pt-48 pb-14 sm:pb-24 lg:pb-32 ${urbanist.className}`}
     >
       {/* Dynamic Background Atmosphere - Exact Main Hero Style */}
       <div
@@ -91,23 +91,23 @@ export default function ServiceHero({
       />
 
       {/* Main Container */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-3.5 xs:px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
         
         {/* Badge */}
         {badge && (
           <div
             ref={badgeRef}
-            className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(45,232,176,0.1)]"
+            className="inline-flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-6 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_0_20px_rgba(45,232,176,0.1)]"
           >
-            <span className="w-2 h-2 rounded-full bg-[#2de8b0] animate-pulse" />
-            <span className="text-[11px] sm:text-xs text-white/80 uppercase tracking-widest font-semibold">
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#2de8b0] animate-pulse" />
+            <span className="text-[10px] sm:text-xs text-white/80 uppercase tracking-widest font-semibold">
               {badge}
             </span>
           </div>
         )}
 
         {/* Heading */}
-        <h1 className="text-3xl min-[360px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6 px-2">
+        <h1 className="text-2xl min-[360px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] sm:leading-[1.1] tracking-tight text-white mb-3 sm:mb-6 px-1 xs:px-2">
           <span ref={headingLine1Ref} className="block wrap-break-word">
             {line1}
           </span>
@@ -123,7 +123,7 @@ export default function ServiceHero({
         {description && (
           <p
             ref={descRef}
-            className="text-white/70 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-8 sm:mb-10 max-w-2xl px-4"
+            className="text-white/70 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-10 max-w-2xl px-2 xs:px-4"
           >
             {description}
           </p>
@@ -132,11 +132,11 @@ export default function ServiceHero({
         {/* CTA Buttons */}
         <div
           ref={btnsRef}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto"
         >
           <a
             href={ctaHref}
-            className="w-full sm:w-auto px-6 sm:px-9 py-3.5 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
+            className="w-full sm:w-auto px-5 sm:px-9 py-3 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
           >
             {ctaText}
           </a>
@@ -145,13 +145,12 @@ export default function ServiceHero({
               href={secondaryCtaHref}
               target={secondaryCtaHref.startsWith("http") ? "_blank" : undefined}
               rel={secondaryCtaHref.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="w-full sm:w-auto px-6 sm:px-9 py-3.5 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
+              className="w-full sm:w-auto px-5 sm:px-9 py-3 sm:py-4 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-semibold text-white/80 hover:text-white transition-all duration-200 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
             >
               {secondaryCtaText}
             </a>
           )}
         </div>
-
       </div>
     </section>
   );

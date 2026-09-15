@@ -284,7 +284,7 @@ export function CardStack({
 function DefaultCard({ item }) {
   return (
     <div
-      className="relative h-full w-full p-6 sm:p-7 text-left flex flex-col justify-between overflow-hidden backdrop-blur-2xl"
+      className="relative h-full w-full p-4 xs:p-5 sm:p-7 text-left flex flex-col justify-between overflow-hidden backdrop-blur-2xl"
       style={{
         background:
           "linear-gradient(180deg, rgba(5, 37, 28, 0.95) 0%, rgba(2, 20, 15, 0.96) 50%, rgba(1, 5, 4, 0.98) 100%)",
@@ -295,33 +295,33 @@ function DefaultCard({ item }) {
 
       <div className="relative z-10">
         {/* Header Row: Icon + Tag */}
-        <div className="flex items-center justify-between gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-[#2de8b0]/15 border border-[#2de8b0]/30 text-[#2de8b0] flex items-center justify-center text-2xl shadow-md shrink-0">
+        <div className="flex items-center justify-between gap-3 mb-2.5 xs:mb-4">
+          <div className="w-9 h-9 xs:w-11 xs:h-11 sm:w-12 sm:h-12 rounded-xl bg-[#2de8b0]/15 border border-[#2de8b0]/30 text-[#2de8b0] flex items-center justify-center text-xl sm:text-2xl shadow-md shrink-0">
             {item.icon || "✨"}
           </div>
           {item.tag && (
-            <span className="px-3 py-1 rounded-full bg-[#2de8b0]/15 border border-[#2de8b0]/30 text-[#2de8b0] text-xs font-bold uppercase tracking-wider">
+            <span className="px-2.5 py-0.5 xs:px-3 xs:py-1 rounded-full bg-[#2de8b0]/15 border border-[#2de8b0]/30 text-[#2de8b0] text-[10px] xs:text-xs font-bold uppercase tracking-wider">
               {item.tag}
             </span>
           )}
         </div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
+        <h3 className="text-lg xs:text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
           {item.title}
         </h3>
 
         {/* Description */}
-        <p className="mt-2.5 text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
+        <p className="mt-1.5 xs:mt-2.5 text-[11px] xs:text-xs sm:text-sm text-white/80 leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
           {item.desc || item.description}
         </p>
       </div>
 
       {/* Bullets List */}
       {item.bullets && item.bullets.length > 0 && (
-        <ul className="relative z-10 mt-4 pt-3 border-t border-white/10 space-y-1.5">
+        <ul className="relative z-10 mt-2.5 xs:mt-4 pt-2 xs:pt-3 border-t border-white/10 space-y-1 xs:space-y-1.5">
           {item.bullets.map((bullet, idx) => (
-            <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-white/75 font-medium">
+            <li key={idx} className="flex items-center gap-2 text-[11px] xs:text-xs sm:text-sm text-white/75 font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#2de8b0] shrink-0" />
               <span>{bullet}</span>
             </li>

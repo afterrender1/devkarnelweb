@@ -67,7 +67,7 @@ export default function ServiceProcess({
     <section
       id="process"
       ref={containerRef}
-      className={`py-20 md:py-28 bg-[#010504] text-white relative overflow-hidden ${urbanist.className}`}
+      className={`py-12 sm:py-20 md:py-28 bg-[#010504] text-white relative overflow-hidden ${urbanist.className}`}
       style={{
         background: `
           radial-gradient(circle at 50% 100%, rgba(45, 232, 176, 0.08) 0%, transparent 60%),
@@ -76,40 +76,40 @@ export default function ServiceProcess({
         `,
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3.5 xs:px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#2de8b0] text-xs sm:text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
+          <span className="text-[#2de8b0] text-[10px] sm:text-sm font-bold uppercase tracking-widest px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)]">
             {badge}
           </span>
-          <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+          <h2 className="mt-2.5 sm:mt-4 text-2xl min-[360px]:text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
             {heading}
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-white/70">
+          <p className="mt-2 sm:mt-4 text-xs xs:text-sm sm:text-lg text-white/70 max-w-2xl mx-auto px-2">
             {subheading}
           </p>
         </div>
 
         {/* Steps */}
-        <div ref={stepsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <div ref={stepsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 relative">
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="relative p-8 rounded-2xl bg-white/2.5 border border-white/10 hover:border-[#2de8b0]/40 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between group"
+              className="relative p-5 xs:p-6 sm:p-8 rounded-2xl bg-white/2.5 border border-white/10 hover:border-[#2de8b0]/40 hover:bg-white/4 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] to-[#5eead4]">
+                <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] to-[#5eead4]">
                   {st.number}
                 </span>
-                <h3 className="mt-4 text-xl font-bold text-white group-hover:text-[#2de8b0] transition-colors">
+                <h3 className="mt-2.5 sm:mt-4 text-lg sm:text-xl font-bold text-white group-hover:text-[#2de8b0] transition-colors">
                   {st.title}
                 </h3>
-                <p className="mt-3 text-sm text-white/70 leading-relaxed font-normal">
+                <p className="mt-1.5 sm:mt-3 text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
                   {st.desc}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-[#2de8b0] font-semibold uppercase tracking-wider">
+              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5 flex items-center gap-2 text-[11px] sm:text-xs text-[#2de8b0] font-semibold uppercase tracking-wider">
                 <span>Phase {idx + 1}</span>
                 <span className="w-8 h-px bg-[#2de8b0]/40 group-hover:w-12 transition-all" />
               </div>

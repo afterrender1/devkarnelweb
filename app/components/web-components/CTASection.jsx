@@ -64,7 +64,7 @@ export default function CTASection() {
         background: `radial-gradient(circle at 0% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 0%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 0% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 100% 100%, rgba(0,0,0,1) 0%, transparent 70%), radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.4) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #000000 35%, #064e3b 50%, #000000 65%, #000000 100%)`,
       }}
       ref={containerRef}
-      className={`relative bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden ${urbanist.className}`}
+      className={`relative bg-black py-12 sm:py-20 lg:py-24 px-3.5 xs:px-4 sm:px-6 lg:px-8 overflow-hidden ${urbanist.className}`}
     >
       {/* Background Radial Glow */}
       <div
@@ -73,57 +73,10 @@ export default function CTASection() {
       />
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         
-        {/* Featured Article Card Above CTA Headline */}
-        <div className="mb-10 sm:mb-14 max-w-4xl mx-auto text-left">
-          <Link
-            href="/blog/how-a-high-converting-website-drives-10x-business-growth"
-            className="group relative block overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-linear-to-r from-emerald-950/50 via-zinc-950/80 to-black/90 p-4 sm:p-6 backdrop-blur-xl transition-all duration-500 hover:border-emerald-400 hover:shadow-[0_0_50px_rgba(45,232,176,0.25)]"
-          >
-            <div className="flex flex-col md:flex-row items-center gap-5 sm:gap-6">
-              {/* Image Thumbnail */}
-              <div className="relative w-full md:w-72 h-44 sm:h-48 shrink-0 overflow-hidden rounded-xl sm:rounded-2xl border border-white/10">
-                <Image
-                  src="/images/website_growth_blog.jpg"
-                  alt="How a High-Converting Website Drives Business Growth"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 300px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute top-3 left-3 bg-[#2de8b0] text-black font-bold text-[10px] sm:text-xs uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
-                  Featured Insight
-                </div>
-              </div>
-
-              {/* Card Info */}
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="flex items-center gap-2.5 text-xs text-white/50 mb-2 font-medium">
-                  <span className="text-[#2de8b0] font-semibold">Web Strategy</span>
-                  <span>•</span>
-                  <span>6 Min Read</span>
-                  <span>•</span>
-                  <span>Growth Guide</span>
-                </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white group-hover:text-[#2de8b0] transition-colors duration-300 line-clamp-2 leading-snug">
-                  How a High-Converting Website Drives 10x Business Growth in 2026
-                </h3>
-                <p className="text-white/70 text-xs sm:text-sm mt-2 line-clamp-2 leading-relaxed">
-                  Discover the 5 core architecture shifts top brands use to convert casual visitors into loyal high-ticket clients on autopilot.
-                </p>
-                <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#2de8b0] group-hover:translate-x-1.5 transition-transform duration-300">
-                  <span>Read Article & Growth Guide</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
         {/* Main Headline */}
         <h2
           ref={headlineRef}
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white"
+          className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight text-white"
         >
           Ready to Get a Website That <br className="hidden sm:inline" />
           <span className="bg-linear-to-r from-emerald-400 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
@@ -133,7 +86,7 @@ export default function CTASection() {
         {/* Bottom Paragraph */}
         <p
           ref={paragraphRef}
-          className="text-white/70 text-sm sm:text-base lg:text-lg xl:text-xl mt-6 sm:mt-8 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-white/70 text-xs xs:text-sm sm:text-base lg:text-lg xl:text-xl mt-4 sm:mt-8 mb-6 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2"
         >
           Let's discuss how we can transform your digital presence into a
           high-converting engine. Tell us about your project, ask questions, or
@@ -142,7 +95,7 @@ export default function CTASection() {
         {/* CTA Button and Contact */}
         <div
           ref={buttonRef}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8 w-full max-w-sm sm:max-w-none mx-auto"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 lg:gap-8 w-full max-w-sm sm:max-w-none mx-auto"
         >
           <a
             href="https://calendly.com/devskarnel/30min"

@@ -66,7 +66,7 @@ const Testimonials = () => {
 
     return (
         <section 
-            className={`relative py-16 sm:py-24 lg:py-32 bg-black overflow-hidden ${urbanist.className}`}
+            className={`relative py-10 sm:py-24 lg:py-32 bg-black overflow-hidden ${urbanist.className}`}
             style={{
                 background: `radial-gradient(circle at 50% 30%, rgba(45, 232, 176, 0.12) 0%, rgba(0, 0, 0, 0.98) 70%), #000`
             }}
@@ -74,16 +74,16 @@ const Testimonials = () => {
             {/* Ambient Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-87.5 bg-[#2de8b0]/10 blur-[130px] rounded-full pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Centered Header matching upper components */}
-                <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
-                    <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-3 px-3.5 py-1 rounded-full border border-[#2de8b0]/20 bg-[#2de8b0]/10 backdrop-blur-md">
-                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2de8b0]" fill="currentColor" viewBox="0 0 24 24">
+                <div className="text-center mb-6 sm:mb-14 max-w-2xl mx-auto">
+                    <div className="inline-flex items-center gap-1.5 sm:gap-2 mb-2.5 sm:mb-3 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full border border-[#2de8b0]/20 bg-[#2de8b0]/10 backdrop-blur-md">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-[#2de8b0]" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                         </svg>
-                        <span className="text-[11px] sm:text-xs text-[#2de8b0] uppercase tracking-widest font-bold">TESTIMONIALS</span>
+                        <span className="text-[10px] sm:text-xs text-[#2de8b0] uppercase tracking-widest font-bold">TESTIMONIALS</span>
                     </div>
-                    <h2 className="text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3">
+                    <h2 className="text-2xl min-[360px]:text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-2 sm:mb-3">
                         What our <span className="text-[#2de8b0]">satisfied clients</span> say
                     </h2>
                     <p className="text-white/60 text-xs sm:text-sm md:text-base font-normal leading-relaxed">
@@ -92,7 +92,7 @@ const Testimonials = () => {
                 </div>
 
                 {/* Navigation Buttons Row */}
-                <div className="flex justify-end mb-4">
+                <div className="flex justify-end mb-3 sm:mb-4">
                     <div className="flex gap-2 sm:gap-3">
                         <button 
                             aria-label="Previous Testimonial" 
@@ -117,16 +117,16 @@ const Testimonials = () => {
                 <div 
                     ref={containerRef} 
                     onScroll={handleScroll}
-                    className="flex gap-4 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0 no-scrollbar scroll-smooth snap-x snap-mandatory px-2 sm:px-4 py-6 sm:py-8 select-none"
+                    className="flex gap-3 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0 no-scrollbar scroll-smooth snap-x snap-mandatory px-1 sm:px-4 py-3 sm:py-8 select-none"
                     style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
                     {testimonials.map((item, index) => (
                         <div
                             key={index}
-                            className="w-70 min-w-70 xs:w-[320px] xs:min-w-[320px] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] shrink-0 snap-start group"
+                            className="w-64 min-w-64 xs:w-72 xs:min-w-72 sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] shrink-0 snap-start group"
                         >
                             <div 
-                                className="relative rounded-2xl sm:rounded-3xl p-5 xs:p-6 sm:p-8 border border-[#2de8b0]/35 backdrop-blur-xl flex flex-col items-center text-center shadow-[0_0_30px_rgba(45,232,176,0.08)] hover:border-[#2de8b0] hover:shadow-[0_0_40px_rgba(45,232,176,0.22)] transition-all duration-500 h-full justify-between min-h-82.5 sm:min-h-90 overflow-hidden"
+                                className="relative rounded-2xl sm:rounded-3xl p-4 xs:p-5 sm:p-8 border border-[#2de8b0]/35 backdrop-blur-xl flex flex-col items-center text-center shadow-[0_0_30px_rgba(45,232,176,0.08)] hover:border-[#2de8b0] hover:shadow-[0_0_40px_rgba(45,232,176,0.22)] transition-all duration-500 h-full justify-between min-h-68 xs:min-h-72 sm:min-h-90 overflow-hidden"
                                 style={{
                                     background: "linear-gradient(180deg, rgba(5, 36, 27, 0.85) 0%, rgba(2, 18, 12, 0.92) 50%, rgba(1, 5, 4, 0.98) 100%)"
                                 }}
@@ -136,7 +136,7 @@ const Testimonials = () => {
 
                                 <div className="w-full relative z-10">
                                     {/* Circular Avatar */}
-                                    <div className="relative w-20 h-20 xs:w-22 xs:h-22 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-5">
+                                    <div className="relative w-14 h-14 xs:w-16 xs:h-16 sm:w-24 sm:h-24 mx-auto mb-2.5 sm:mb-5">
                                         <img
                                             src={item.image}
                                             alt={item.name}
@@ -146,20 +146,20 @@ const Testimonials = () => {
                                     </div>
 
                                     {/* 5 Gold Stars */}
-                                    <div className="flex justify-center text-amber-400 text-base xs:text-lg sm:text-xl gap-1 mb-3 sm:mb-4">
+                                    <div className="flex justify-center text-amber-400 text-sm xs:text-base sm:text-xl gap-0.5 xs:gap-1 mb-2 sm:mb-4">
                                         {"★★★★★".split("").map((star, i) => (
                                             <span key={i}>{star}</span>
                                         ))}
                                     </div>
 
                                     {/* Client Name */}
-                                    <h3 className="text-white font-bold text-base sm:text-xl mb-2 tracking-tight">
+                                    <h3 className="text-white font-bold text-sm xs:text-base sm:text-xl mb-1.5 sm:mb-2 tracking-tight">
                                         {item.name}
                                     </h3>
 
                                     {/* Testimonial Quote */}
-                                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed font-normal italic px-1">
-                                        "{item.text}"
+                                    <p className="text-white/80 text-[11px] xs:text-xs sm:text-sm leading-relaxed font-normal italic px-1">
+                                        &ldquo;{item.text}&rdquo;
                                     </p>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@ const Testimonials = () => {
                 </div>
 
                 {/* Interactive Pagination Dots */}
-                <div className="flex justify-center gap-2 mt-6 sm:mt-10">
+                <div className="flex justify-center gap-2 mt-4 sm:mt-10">
                     {[0, 1, 2].map((dot) => (
                         <button
                             key={dot}

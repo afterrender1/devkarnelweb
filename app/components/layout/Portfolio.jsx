@@ -1,25 +1,25 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, ExternalLink, Layers } from "lucide-react";
 import { urbanist } from "@/app/fonts";
 
 const PROJECTS = [
-  { id: 0, title: "Prime Supps", subtitle: "Premium Supplements & Gym", category: "E-Commerce", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png", liveUrl: "https://prime-supps.vercel.app", tags: ["Next.js","Fitness","E-Commerce"], accent: "#ef4444", accentBg: "rgba(239,68,68,0.09)" },
-  { id: 1, title: "Magnetik", subtitle: "TikTok Shop Marketing", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/magnetik.png", liveUrl: "https://magnetik.vercel.app/", tags: ["Marketing","Strategy","TikTok"], accent: "#8b5cf6", accentBg: "rgba(139,92,246,0.09)" },
-  { id: 2, title: "Darkdrop Coffee", subtitle: "Artisanal Roastery", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/coffee.png", liveUrl: "https://darkdrop-coffee.vercel.app/", tags: ["Shopify","Small Batch","Next.js"], accent: "#b45309", accentBg: "rgba(180,83,9,0.09)" },
-  { id: 3, title: "Freelancer30", subtitle: "Freelancing Education Platform", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/freelancer30.png", liveUrl: "https://freelancer30xar.vercel.app/", tags: ["Custom Code","MongoDB","UX"], accent: "#0284c7", accentBg: "rgba(2,132,199,0.09)" },
-  { id: 4, title: "TMG Van", subtitle: "Trade Motor Group", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/tmgvan1.png", liveUrl: "https://tmgvan.vercel.app", tags: ["Next.js","Stripe","MongoDB"], accent: "#059669", accentBg: "rgba(5,150,105,0.09)" },
-  { id: 5, title: "NextTrip", subtitle: "Tour & Travel", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/nextrip.png", liveUrl: "https://nextripxar.vercel.app/", tags: ["Custom Code","Tailwind","UI/UX"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
-  { id: 7, title: "Mobee Medical", subtitle: "Healthcare Website", category: "Healthcare", platform: "Custom Code", thumbnail: "/images/our-work/mobeemedical.png", liveUrl: "https://mobeemedical.vercel.app", tags: ["Custom Code","Healthcare","UI/UX"], accent: "#10b981", accentBg: "rgba(16,185,129,0.09)" },
-  { id: 8, title: "Jave", subtitle: "E-Commerce Platform", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/jave.png", liveUrl: "https://javexafterrender.vercel.app", tags: ["Shopify","Next.js","Stripe"], accent: "#f59e0b", accentBg: "rgba(245,158,11,0.09)" },
-  { id: 9, title: "Deigo Hair Studio", subtitle: "Premium Salon", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/deigo.png", liveUrl: "https://deigo.vercel.app", tags: ["Next.js","Salon","UI/UX"], accent: "#ec4899", accentBg: "rgba(236,72,153,0.09)" },
-  { id: 10, title: "Render Store", subtitle: "Online Shop", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/renderstore.png", liveUrl: "https://renderstore.vercel.app", tags: ["Shopify","Firebase","Stripe"], accent: "#6366f1", accentBg: "rgba(99,102,241,0.09)" },
-  { id: 11, title: "Zero Ice Store", subtitle: "Online Shop", category: "E-Commerce", platform: "WordPress", thumbnail: "/images/our-work/zeroice.png", liveUrl: "https://zeroicexar.kesug.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
-  { id: 12, title: "WAVEBOX SaaS", subtitle: "SaaS Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/waveboxsaas.png", liveUrl: "https://indigo-dotterel-636649.hostingersite.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
-  { id: 13, title: "Outdoor Adventure Car Wash", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/outdoor.png", liveUrl: "https://steelblue-otter-789796.hostingersite.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
-  { id: 14, title: "Language Learning", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/langl.png", liveUrl: "https://darkseagreen-ferret-910390.hostingersite.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
-  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
+  { id: 0, title: "Prime Supps", subtitle: "Premium Supplements & Gym", category: "E-Commerce", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png", liveUrl: "https://prime-supps.vercel.app", tags: ["Next.js","Fitness","E-Commerce"] },
+  { id: 1, title: "Magnetik", subtitle: "TikTok Shop Marketing", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/magnetik.png", liveUrl: "https://magnetik.vercel.app/", tags: ["Marketing","Strategy","TikTok"] },
+  { id: 2, title: "Darkdrop Coffee", subtitle: "Artisanal Roastery", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/coffee.png", liveUrl: "https://darkdrop-coffee.vercel.app/", tags: ["Shopify","Small Batch","Next.js"] },
+  { id: 3, title: "Freelancer30", subtitle: "Freelancing Education Platform", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/freelancer30.png", liveUrl: "https://freelancer30xar.vercel.app/", tags: ["Custom Code","MongoDB","UX"] },
+  { id: 4, title: "TMG Van", subtitle: "Trade Motor Group", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/tmgvan1.png", liveUrl: "https://tmgvan.vercel.app", tags: ["Next.js","Stripe","MongoDB"] },
+  { id: 5, title: "NextTrip", subtitle: "Tour & Travel", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/nextrip.png", liveUrl: "https://nextripxar.vercel.app/", tags: ["Custom Code","Tailwind","UI/UX"] },
+  { id: 7, title: "Mobee Medical", subtitle: "Healthcare Website", category: "Healthcare", platform: "Custom Code", thumbnail: "/images/our-work/mobeemedical.png", liveUrl: "https://mobeemedical.vercel.app", tags: ["Custom Code","Healthcare","UI/UX"] },
+  { id: 8, title: "Jave", subtitle: "E-Commerce Platform", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/jave.png", liveUrl: "https://javexafterrender.vercel.app", tags: ["Shopify","Next.js","Stripe"] },
+  { id: 9, title: "Deigo Hair Studio", subtitle: "Premium Salon", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/deigo.png", liveUrl: "https://deigo.vercel.app", tags: ["Next.js","Salon","UI/UX"] },
+  { id: 10, title: "Render Store", subtitle: "Online Shop", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/renderstore.png", liveUrl: "https://renderstore.vercel.app", tags: ["Shopify","Firebase","Stripe"] },
+  { id: 11, title: "Zero Ice Store", subtitle: "Online Shop", category: "E-Commerce", platform: "WordPress", thumbnail: "/images/our-work/zeroice.png", liveUrl: "https://zeroicexar.kesug.com/", tags: ["WordPress","Elementor","Astra"] },
+  { id: 12, title: "WAVEBOX SaaS", subtitle: "SaaS Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/waveboxsaas.png", liveUrl: "https://indigo-dotterel-636649.hostingersite.com/", tags: ["WordPress","Elementor","Astra"] },
+  { id: 13, title: "Outdoor Adventure Car Wash", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/outdoor.png", liveUrl: "https://steelblue-otter-789796.hostingersite.com/", tags: ["WordPress","Elementor","Astra"] },
+  { id: 14, title: "Language Learning", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/langl.png", liveUrl: "https://darkseagreen-ferret-910390.hostingersite.com/", tags: ["WordPress","Elementor","Astra"] },
+  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"] },
 ];
 
 const FILTERS = [
@@ -35,142 +35,89 @@ const FILTERS = [
 const PLATFORM_COLORS = {
   WordPress: "#3858e9",
   Shopify: "#96bf48",
-  "Custom Code": "#23bcdf",
+  "Custom Code": "#2de8b0",
 };
 
 const ProjectCard = ({ project }) => {
-  const [hovered, setHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <article
-      ref={cardRef}
-      className="relative flex flex-col p-3 rounded-2xl overflow-hidden bg-white/3 border border-white/10 transition-all duration-300 hover:border-emerald-500/50 hover:bg-white/5 group project-card"
-      style={{
-        opacity: isVisible ? 1 : 0.6,
-        boxShadow: hovered ? "0 20px 50px rgba(16,185,129,0.15)" : "none",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className="group relative flex flex-col h-full p-2.5 sm:p-3 rounded-2xl overflow-hidden bg-white/3 border border-white/10 transition-all duration-300 hover:border-[#2de8b0]/40 hover:bg-white/5 hover:shadow-[0_20px_50px_rgba(45,232,176,0.12)]"
       aria-label={project.title}
     >
-      <div className="relative rounded-xl w-full overflow-hidden bg-black/40" style={{ aspectRatio: "16/10" }}>
+      <a
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative block rounded-xl w-full overflow-hidden bg-black/40 aspect-16/10"
+        aria-label={`View ${project.title} live site`}
+      >
         <Image
           src={project.thumbnail}
           alt={`${project.title} — ${project.subtitle}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500"
-          style={{ transform: hovered ? "scale(1.06)" : "scale(1)" }}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           onError={(e) => { e.target.src = `https://picsum.photos/seed/${project.id + 20}/800/500`; }}
         />
 
+        {/* Hover overlay (pointer devices only — on touch the whole image is a tap target) */}
         <div
-          className="absolute inset-0 flex items-center justify-center transition-opacity duration-280"
-          style={{
-            background: "rgba(9,13,22,0.7)",
-            backdropFilter: "blur(6px)",
-            opacity: hovered ? 1 : 0,
-          }}
-          aria-hidden={!hovered}
+          className="absolute inset-0 hidden sm:flex items-center justify-center bg-[#010504]/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          aria-hidden="true"
         >
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white no-underline font-semibold rounded-full shadow-lg"
-            style={{
-              background: project.accent,
-              padding: "10px 22px",
-              fontSize: "13px",
-              boxShadow: `0 8px 25px ${project.accent}66`,
-              transform: hovered ? "translateY(0) scale(1)" : "translateY(10px) scale(0.94)",
-              transition: "transform 0.28s ease",
-            }}
-            onClick={(e) => e.stopPropagation()}
-            aria-label={`View ${project.title} live site`}
-          >
-            <ExternalLink size={14} strokeWidth={2.5} aria-hidden="true" />
+          <span className="flex items-center gap-2 rounded-full bg-[#2de8b0] text-black font-bold text-[13px] px-5 py-2.5 shadow-[0_8px_25px_rgba(45,232,176,0.4)] translate-y-2.5 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-transform duration-300">
+            <ExternalLink size={14} strokeWidth={2.5} />
             View Live Site
-          </a>
+          </span>
         </div>
 
-        <div
-          className="absolute top-2.5 left-2.5 flex items-center gap-1.5 rounded-full px-2.5 py-1 bg-black/70 border border-white/20 text-white"
-          style={{ backdropFilter: "blur(8px)", fontSize: "10px", fontWeight: 600 }}
-        >
+        <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex items-center gap-1.5 rounded-full px-2.5 py-1 bg-black/70 border border-white/20 text-white text-[10px] font-semibold backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: PLATFORM_COLORS[project.platform] || "#2de8b0" }} aria-hidden="true" />
           {project.platform}
         </div>
 
         <div
-          className="absolute top-2.5 right-2.5 rounded-lg px-2 py-1 bg-black/60 border border-white/10 text-white/70"
-          style={{ backdropFilter: "blur(4px)", fontSize: "9px", fontWeight: 700, letterSpacing: "0.1em" }}
+          className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 rounded-lg px-2 py-1 bg-black/60 border border-white/10 text-white/70 text-[9px] font-bold tracking-widest backdrop-blur-sm"
           aria-hidden="true"
         >
           #{String(project.id).padStart(2, "0")}
         </div>
-      </div>
+      </a>
 
-      <div className="flex flex-col flex-1 px-3.5 pt-4 pb-3 sm:px-4 sm:pt-4 sm:pb-4">
+      <div className="flex flex-col flex-1 px-2 pt-3.5 pb-2 xs:px-3 sm:px-4 sm:pt-4 sm:pb-3">
         <div className="flex gap-1.5 flex-wrap mb-2.5">
           {project.tags.slice(0, 3).map((t) => (
             <span
               key={t}
-              className="rounded-full border border-white/10"
-              style={{ background: project.accentBg, color: project.accent, padding: "2.5px 8px", fontSize: "10px", letterSpacing: "0.04em", fontWeight: 600 }}
+              className="rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 text-[#2de8b0] px-2 py-0.5 text-[10px] font-semibold tracking-wide"
             >
               {t}
             </span>
           ))}
         </div>
 
-        <h3
-          className="font-bold leading-tight mb-1 text-white"
-          style={{ fontSize: "clamp(16px,2.5vw,18px)", letterSpacing: "-0.018em" }}
-        >
+        <h3 className="font-bold leading-tight mb-1 text-white text-base sm:text-lg tracking-tight transition-colors duration-300 group-hover:text-[#2de8b0]">
           {project.title}
         </h3>
 
-        <p className="text-white/60 mb-4 leading-relaxed" style={{ fontSize: "13px" }}>
+        <p className="text-white/60 mb-4 leading-relaxed text-xs xs:text-[13px]">
           {project.subtitle}
         </p>
 
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/10">
-          <span className="font-bold uppercase tracking-wider text-emerald-400" style={{ fontSize: "10px" }}>
+          <span className="font-bold uppercase tracking-wider text-[#2de8b0]/90 text-[10px]">
             {project.category}
           </span>
           <a
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 no-underline transition-all duration-200"
-            style={{ background: hovered ? project.accentBg : "rgba(255,255,255,0.05)", color: hovered ? project.accent : "#9ca3af" }}
-            onClick={(e) => e.stopPropagation()}
+            className="flex items-center justify-center w-9 h-9 sm:w-8 sm:h-8 rounded-full border border-white/10 bg-white/5 text-white/60 no-underline transition-all duration-200 group-hover:bg-[#2de8b0]/10 group-hover:border-[#2de8b0]/30 group-hover:text-[#2de8b0]"
             aria-label={`Open ${project.title}`}
           >
             <ArrowUpRight
               size={15}
-              style={{ transform: hovered ? "translate(1px,-1px)" : "none", transition: "transform 0.2s ease" }}
+              className="transition-transform duration-200 group-hover:translate-x-px group-hover:-translate-y-px"
               aria-hidden="true"
             />
           </a>
@@ -178,14 +125,7 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <div
-        className="absolute bottom-0 left-0 right-0"
-        style={{
-          height: "2.5px",
-          background: project.accent,
-          transformOrigin: "left",
-          transform: hovered ? "scaleX(1)" : "scaleX(0)",
-          transition: "transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)",
-        }}
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#2de8b0] to-[#0F7C6E] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-350 ease-out"
         aria-hidden="true"
       />
     </article>
@@ -195,15 +135,11 @@ const ProjectCard = ({ project }) => {
 const FilterPill = ({ label, isActive, onClick }) => (
   <button
     onClick={onClick}
-    className="filter-pill outline-none cursor-pointer rounded-full border font-semibold transition-all duration-200 whitespace-nowrap"
-    style={{
-      padding: "7px 18px",
-      fontSize: "13px",
-      background: isActive ? "#2de8b0" : "rgba(255,255,255,0.05)",
-      color: isActive ? "#000" : "rgba(255,255,255,0.7)",
-      borderColor: isActive ? "#2de8b0" : "rgba(255,255,255,0.1)",
-      boxShadow: isActive ? "0 4px 20px rgba(45,232,176,0.3)" : "none",
-    }}
+    className={`shrink-0 outline-none cursor-pointer rounded-full border font-semibold transition-all duration-200 whitespace-nowrap px-4 py-1.5 text-xs sm:px-5 sm:py-2 sm:text-[13px] focus-visible:ring-2 focus-visible:ring-[#2de8b0]/60 ${
+      isActive
+        ? "bg-[#2de8b0] text-black border-[#2de8b0] shadow-[0_4px_20px_rgba(45,232,176,0.3)]"
+        : "bg-white/5 text-white/70 border-white/10 hover:bg-white/10 hover:text-white"
+    }`}
     aria-pressed={isActive}
   >
     {label}
@@ -218,7 +154,7 @@ const Portfolio = () => {
   );
 
   return (
-    <section id="portfolio" aria-label="Portfolio" className={`relative min-h-screen w-full pt-28 sm:pt-36 lg:pt-44 pb-20 sm:pb-28 lg:pb-36 overflow-hidden bg-[#010504] text-white ${urbanist.className}`}>
+    <section id="portfolio" aria-label="Portfolio" className={`relative min-h-screen w-full pt-28 sm:pt-36 lg:pt-44 pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-[#010504] text-white ${urbanist.className}`}>
       {/* Hero Matching Background Gradients */}
       <div
         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -246,36 +182,38 @@ const Portfolio = () => {
         style={{ background: "radial-gradient(circle at 30% 50%,rgba(45,232,176,0.05) 0%,transparent 60%)" }}
       />
 
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-3.5 xs:px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
-        <header className="mb-10 sm:mb-12 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#2de8b0] text-xs font-bold uppercase tracking-widest mb-4">
+        <header className="mb-8 sm:mb-12 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#2de8b0]/10 border border-[#2de8b0]/20 shadow-[0_0_15px_rgba(45,232,176,0.1)] text-[#2de8b0] text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#2de8b0] animate-pulse" />
             Our Showcase Portfolio
           </div>
 
-          <h1
-            className="text-white font-extrabold leading-[1.15] text-3xl sm:text-5xl lg:text-6xl tracking-tight mb-4"
-          >
+          <h1 className="text-white font-extrabold leading-[1.15] text-2xl min-[360px]:text-3xl sm:text-5xl lg:text-6xl tracking-tight mb-3 sm:mb-4">
             Crafting Digital Products That{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/70">
               Drive Real Results
             </span>
           </h1>
 
-          <p className="text-white/70 text-base sm:text-lg leading-relaxed">
+          <p className="text-white/70 text-xs xs:text-sm sm:text-lg leading-relaxed px-2">
             Explore our curated showcase of live web platforms, e-commerce stores, custom SaaS applications, and mobile solutions.
           </p>
 
-          <div className="mt-4 text-xs font-semibold text-emerald-400/90 tracking-wide">
+          <div className="mt-3 sm:mt-4 text-[11px] sm:text-xs font-semibold text-[#2de8b0]/90 tracking-wide" aria-live="polite">
             Showing {filtered.length} project{filtered.length !== 1 ? "s" : ""}
             {activeFilter !== "All" && <span className="text-white/60 ml-1">· {activeFilter}</span>}
           </div>
         </header>
 
-        {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10 sm:mb-12" role="group" aria-label="Filter projects">
+        {/* Filters — swipeable row on mobile, wrapped & centered from sm up */}
+        <div
+          className="flex gap-2 overflow-x-auto no-scrollbar -mx-3.5 px-3.5 xs:-mx-4 xs:px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center sm:overflow-visible mb-8 sm:mb-12"
+          role="group"
+          aria-label="Filter projects"
+        >
           {FILTERS.map((f) => (
             <FilterPill
               key={f.key}
@@ -287,11 +225,11 @@ const Portfolio = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {filtered.length === 0 ? (
-            <div className="col-span-full flex flex-col items-center justify-center py-20 text-white/40">
-              <Layers size={42} strokeWidth={1} className="mb-4 opacity-40 text-emerald-400" aria-hidden="true" />
-              <p className="text-base font-medium">No projects match this filter</p>
+            <div className="col-span-full flex flex-col items-center justify-center py-16 sm:py-20 text-white/40">
+              <Layers size={42} strokeWidth={1} className="mb-4 opacity-40 text-[#2de8b0]" aria-hidden="true" />
+              <p className="text-sm sm:text-base font-medium">No projects match this filter</p>
             </div>
           ) : (
             filtered.map((project) => (
@@ -304,10 +242,10 @@ const Portfolio = () => {
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center mt-12 sm:mt-16">
+        <div className="flex justify-center mt-10 sm:mt-16 max-w-sm sm:max-w-none mx-auto">
           <a
             href="#contact"
-            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-base shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm sm:text-base shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
           >
             Start Your Project
             <ArrowRight className="w-5 h-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />

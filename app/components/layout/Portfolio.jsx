@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, ExternalLink, Layers } from "lucide-react";
 import { urbanist } from "@/app/fonts";
 
 const PROJECTS = [
+  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"] },
   { id: 0, title: "Prime Supps", subtitle: "Premium Supplements & Gym", category: "E-Commerce", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png", liveUrl: "https://prime-supps.vercel.app", tags: ["Next.js","Fitness","E-Commerce"] },
   { id: 1, title: "Magnetik", subtitle: "TikTok Shop Marketing", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/magnetik.png", liveUrl: "https://magnetik.vercel.app/", tags: ["Marketing","Strategy","TikTok"] },
   { id: 2, title: "Darkdrop Coffee", subtitle: "Artisanal Roastery", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/coffee.png", liveUrl: "https://darkdrop-coffee.vercel.app/", tags: ["Shopify","Small Batch","Next.js"] },
@@ -19,7 +20,6 @@ const PROJECTS = [
   { id: 12, title: "WAVEBOX SaaS", subtitle: "SaaS Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/waveboxsaas.png", liveUrl: "https://indigo-dotterel-636649.hostingersite.com/", tags: ["WordPress","Elementor","Astra"] },
   { id: 13, title: "Outdoor Adventure Car Wash", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/outdoor.png", liveUrl: "https://steelblue-otter-789796.hostingersite.com/", tags: ["WordPress","Elementor","Astra"] },
   { id: 14, title: "Language Learning", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/langl.png", liveUrl: "https://darkseagreen-ferret-910390.hostingersite.com/", tags: ["WordPress","Elementor","Astra"] },
-  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"] },
 ];
 
 const FILTERS = [

@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight, ExternalLink, Layers } from "lucide-react";
 import { urbanist } from "@/app/fonts";
 
 const PROJECTS = [
-  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"] },
+  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"], isNew: true },
   { id: 0, title: "Prime Supps", subtitle: "Premium Supplements & Gym", category: "E-Commerce", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1770205987/supps_vm41cl.png", liveUrl: "https://prime-supps.vercel.app", tags: ["Next.js","Fitness","E-Commerce"] },
   { id: 1, title: "Magnetik", subtitle: "TikTok Shop Marketing", category: "Business", platform: "Custom Code", thumbnail: "/images/our-work/magnetik.png", liveUrl: "https://magnetik.vercel.app/", tags: ["Marketing","Strategy","TikTok"] },
   { id: 2, title: "Darkdrop Coffee", subtitle: "Artisanal Roastery", category: "E-Commerce", platform: "Shopify", thumbnail: "/images/our-work/coffee.png", liveUrl: "https://darkdrop-coffee.vercel.app/", tags: ["Shopify","Small Batch","Next.js"] },
@@ -76,12 +76,19 @@ const ProjectCard = ({ project }) => {
           {project.platform}
         </div>
 
-        <div
-          className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 rounded-lg px-2 py-1 bg-black/60 border border-white/10 text-white/70 text-[9px] font-bold tracking-widest backdrop-blur-sm"
-          aria-hidden="true"
-        >
-          #{String(project.id).padStart(2, "0")}
-        </div>
+        {project.isNew ? (
+          <div className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 flex items-center gap-1.5 rounded-full px-2.5 py-1 bg-[#2de8b0] text-black text-[10px] font-extrabold uppercase tracking-widest shadow-[0_4px_16px_rgba(45,232,176,0.45)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" aria-hidden="true" />
+            New
+          </div>
+        ) : (
+          <div
+            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 rounded-lg px-2 py-1 bg-black/60 border border-white/10 text-white/70 text-[9px] font-bold tracking-widest backdrop-blur-sm"
+            aria-hidden="true"
+          >
+            #{String(project.id).padStart(2, "0")}
+          </div>
+        )}
       </a>
 
       <div className="flex flex-col flex-1 px-2 pt-3.5 pb-2 xs:px-3 sm:px-4 sm:pt-4 sm:pb-3">

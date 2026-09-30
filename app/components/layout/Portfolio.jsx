@@ -19,6 +19,7 @@ const PROJECTS = [
   { id: 12, title: "WAVEBOX SaaS", subtitle: "SaaS Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/waveboxsaas.png", liveUrl: "https://indigo-dotterel-636649.hostingersite.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
   { id: 13, title: "Outdoor Adventure Car Wash", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/outdoor.png", liveUrl: "https://steelblue-otter-789796.hostingersite.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
   { id: 14, title: "Language Learning", subtitle: "Landing Page", category: "Business", platform: "WordPress", thumbnail: "/images/our-work/langl.png", liveUrl: "https://darkseagreen-ferret-910390.hostingersite.com/", tags: ["WordPress","Elementor","Astra"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
+  { id: 15, title: "Skyline Real Estate", subtitle: "Real Estate Agency", category: "Business", platform: "Custom Code", thumbnail: "https://res.cloudinary.com/dlurrugno/image/upload/v1790781351/ec171a92-bb89-42ab-8e14-fa4c715f81d1.png", liveUrl: "https://skyline-real-estate-nine.vercel.app/", tags: ["Next js","Lenis","Gsap"], accent: "#0891b2", accentBg: "rgba(8,145,178,0.09)" },
 ];
 
 const FILTERS = [

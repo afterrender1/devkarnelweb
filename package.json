@@ -28,5 +28,11 @@
     "@firebase/util@1.15.3": true,
     "protobufjs@7.6.5": true,
     "unrs-resolver@1.11.1": true
-  }
+  },
+  "browserslist": [
+    "chrome 111",
+    "edge 111",
+    "firefox 111",
+    "safari 16.4"
+  ]
 }

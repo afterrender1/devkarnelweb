@@ -123,22 +123,14 @@ export default function Hero() {
   };
 
   useEffect(() => {
+    // Text entrance is pure CSS (.hero-in) so the SSR'd heading is visible
+    // at first paint and counts as LCP; only decorative layers animate here.
     const ctx = gsap.context(() => {
-      gsap.set(
-        [
-          headingLine1Ref.current, headingLine2Ref.current,
-          subRef.current, btnsRef.current,
-        ].filter(Boolean),
-        { opacity: 0, y: 40, filter: "blur(10px)" }
-      );
       gsap.set(bgGradientRef.current, { opacity: 0.6 });
       gsap.set(bgRevealRef.current, { opacity: 0.4 });
 
       const tl = gsap.timeline();
-      tl.to(headingLine1Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0)
-        .to(headingLine2Ref.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 0.15)
-        .to(btnsRef.current, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 0.3)
-        .to(bgGradientRef.current, { opacity: 0, duration: 1.2, ease: "power2.out" }, 1.2)
+      tl.to(bgGradientRef.current, { opacity: 0, duration: 1.2, ease: "power2.out" }, 1.2)
         .to(bgRevealRef.current, { opacity: 1, duration: 1.3, ease: "power2.out" }, 1.2);
     });
     return () => ctx.revert();
@@ -335,12 +327,12 @@ export default function Hero() {
         <div className="w-full flex flex-col items-center">
 
           <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6 px-2">
-            <span ref={headingLine1Ref} className="block wrap-break-word">
+            <span ref={headingLine1Ref} className="hero-in block wrap-break-word">
               Building high impact
             </span>
             <span
               ref={headingLine2Ref}
-              className="block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent wrap-break-word"
+              className="hero-in hero-in-2 block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent wrap-break-word"
             >
               digital experiences.
             </span>
@@ -487,7 +479,7 @@ export default function Hero() {
 
           <div
             ref={btnsRef}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-13"
+            className="hero-in hero-in-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-13"
           >
             <a
               href="#contact"

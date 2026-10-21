@@ -421,27 +421,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const animatedElements = [
-        logoRef.current,
-        linksRef.current,
-        ctaRef.current,
-      ].filter(Boolean);
-
-      if (animatedElements.length > 0) {
-        gsap.set(animatedElements, { opacity: 0, y: -12 });
-      }
-
-      const tl = gsap.timeline();
-      if (logoRef.current) {
-        tl.to(logoRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.1);
-      }
-      if (linksRef.current) {
-        tl.to(linksRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.2);
-      }
-      if (ctaRef.current) {
-        tl.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.6 }, 0.3);
-      }
-
+      // Entrance animation lives in CSS (.nav-in) so nothing is hidden until hydration.
       const handleScroll = () => {
         const scrollY = window.scrollY;
         if (navRef.current) {
@@ -472,7 +452,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-6">
           {/* Logo */}
-          <div ref={logoRef} className="shrink-0 flex items-center">
+          <div ref={logoRef} className="nav-in shrink-0 flex items-center">
             <Link href="/" className="flex items-center select-none group">
               <Image
                 src="/images/dklogo.webp"
@@ -488,7 +468,7 @@ export default function Navbar() {
           {/* Desktop Links */}
           <div
             ref={linksRef}
-            className="hidden lg:flex items-center border-[0.5px] border-white/10 rounded-lg overflow-visible backdrop-blur-sm bg-white/5"
+            className="nav-in nav-in-2 hidden lg:flex items-center border-[0.5px] border-white/10 rounded-lg overflow-visible backdrop-blur-sm bg-white/5"
           >
             {navLinks.map(({ label, hasDropdown, dropdownItems, href }) => (
               <div
@@ -664,7 +644,7 @@ export default function Navbar() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
-            <div ref={ctaRef} className="shrink-0">
+            <div ref={ctaRef} className="nav-in nav-in-3 shrink-0">
               <a
                 href="https://calendly.com/devskarnel/30min"
                 target="_blank"

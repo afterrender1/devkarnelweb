@@ -2,6 +2,9 @@
 const nextConfig = {
   compress: true,
   reactStrictMode: true,
+  experimental: {
+    inlineCss: true,
+  },
   images: {
     qualities: [70, 75, 100],
     formats: ['image/avif', 'image/webp'],

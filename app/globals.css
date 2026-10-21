@@ -32,3 +32,22 @@ html, body {
   scrollbar-width: none !important;  /* Firefox */
 }
 
+
+/* Entrance animations: transform-only so above-the-fold content is painted
+   immediately (keeps LCP measurable, no JS needed). */
+@keyframes hero-in {
+  from { transform: translateY(24px); }
+}
+@keyframes nav-in {
+  from { transform: translateY(-12px); }
+}
+.hero-in { animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-in-2 { animation-delay: 0.15s; }
+.hero-in-3 { animation-delay: 0.3s; }
+.nav-in { animation: nav-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+.nav-in-2 { animation-delay: 0.2s; }
+.nav-in-3 { animation-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in, .nav-in { animation: none; }
+}

@@ -6,29 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { urbanist } from "../fonts";
-import {
-  Palette,
-  Layout,
-  ShoppingBag,
-  Sparkles,
-  Smartphone,
-  TrendingUp,
-  Share2,
-  Store,
-  Tag,
-  ShoppingBasket,
-  Video,
-  Box,
-  Globe,
-  Code,
-  Cpu,
-  Activity,
-  Gift,
-  Zap,
-  Shirt,
-  BookOpen,
-  Briefcase,
-} from "lucide-react";
+import { BookOpen, Briefcase } from "lucide-react";
 
 // --- Icons ---
 const SearchIcon = () => (
@@ -184,74 +162,50 @@ const ecommerceSubmenu = [
   {
     label: "Shopify Automation",
     href: "/services/e-commerce/shopify-automation",
-    icon: Store,
-    color: "text-emerald-600 bg-emerald-50",
   },
   {
     label: "Ebay Automation",
     href: "/services/e-commerce/ebay-automation",
-    icon: Tag,
-    color: "text-blue-600 bg-blue-50",
   },
   {
     label: "Walmart Automation",
     href: "/services/e-commerce/walmart-automation",
-    icon: ShoppingBasket,
-    color: "text-amber-600 bg-amber-50",
   },
   {
     label: "TikTok Shop Automation",
     href: "/services/e-commerce/tiktok-shop-automation",
-    icon: Video,
-    color: "text-pink-600 bg-pink-50",
   },
   {
     label: "Temu Automation",
     href: "/services/e-commerce/temu-automation",
-    icon: Box,
-    color: "text-orange-600 bg-orange-50",
   },
   {
     label: "Shopee Marketplace Growth Service",
     href: "/services/e-commerce/shopee-growth",
-    icon: Globe,
-    color: "text-teal-600 bg-teal-50",
   },
   {
     label: "WooCommerce Store Development & Management",
     href: "/services/e-commerce/woocommerce-development",
-    icon: Code,
-    color: "text-purple-600 bg-purple-50",
   },
   {
     label: "Penties Automation",
     href: "/services/e-commerce/penties-automation",
-    icon: Cpu,
-    color: "text-indigo-600 bg-indigo-50",
   },
   {
     label: "Telehealth Automation",
     href: "/services/e-commerce/telehealth-automation",
-    icon: Activity,
-    color: "text-red-600 bg-red-50",
   },
   {
     label: "Etsy Shop Automation",
     href: "/services/e-commerce/etsy-automation",
-    icon: Gift,
-    color: "text-amber-700 bg-amber-50",
   },
   {
     label: "Amazon Store Setup & Growth Services",
     href: "/services/e-commerce/amazon-store-setup",
-    icon: Zap,
-    color: "text-yellow-600 bg-yellow-50",
   },
   {
     label: "Shopify Merchandise",
     href: "/services/e-commerce/shopify-merchandise",
-    icon: Shirt,
-    color: "text-sky-600 bg-sky-50",
   },
 ];
 
@@ -263,45 +217,31 @@ const navLinks = [
       {
         label: "UI/UX Design",
         href: "/services/ui-ux-design",
-        icon: Palette,
-        color: "text-purple-600 bg-purple-50",
       },
       {
         label: "Web Design",
         href: "/services/website-development",
-        icon: Layout,
-        color: "text-blue-600 bg-blue-50",
       },
       {
         label: "E-commerce",
         href: "/services/e-commerce",
-        icon: ShoppingBag,
-        color: "text-emerald-600 bg-emerald-50",
         subItems: ecommerceSubmenu,
       },
       {
         label: "Branding",
         href: "/services/branding",
-        icon: Sparkles,
-        color: "text-amber-600 bg-amber-50",
       },
       {
         label: "Mobile App",
         href: "/services/mobile-app-development",
-        icon: Smartphone,
-        color: "text-indigo-600 bg-indigo-50",
       },
       {
         label: "SEO",
         href: "/services/seo-optimization",
-        icon: TrendingUp,
-        color: "text-teal-600 bg-teal-50",
       },
       {
         label: "Social Media Marketing",
         href: "/services/social-media-marketing",
-        icon: Share2,
-        color: "text-rose-600 bg-rose-50",
       },
     ],
   },
@@ -321,11 +261,9 @@ export default function Navbar() {
   const logoRef = useRef(null);
   const linksRef = useRef(null);
   const ctaRef = useRef(null);
-  const dropdownRef = useRef(null);
   const sidebarRef = useRef(null);
   const overlayRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
-  const submenuTimeoutRef = useRef(null);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -360,38 +298,20 @@ export default function Navbar() {
     setIsDropdownOpen(true);
   };
 
+  // Single close timer for the whole Solutions area (trigger + menu + submenu).
   const handleMouseLeave = () => {
     if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
     dropdownTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
       setHoveredSubmenu(null);
-    }, 350);
+    }, 150);
   };
 
-  const handleSubmenuEnter = (label) => {
-    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-    if (submenuTimeoutRef.current) clearTimeout(submenuTimeoutRef.current);
-    setIsDropdownOpen(true);
-    setHoveredSubmenu(label);
-  };
-
-  const handleSubmenuLeaveWithDelay = () => {
-    if (submenuTimeoutRef.current) clearTimeout(submenuTimeoutRef.current);
-    submenuTimeoutRef.current = setTimeout(() => {
-      setHoveredSubmenu(null);
-    }, 450);
-  };
-
-  // --- Animations ---
   useEffect(() => {
-    if (isDropdownOpen && dropdownRef.current) {
-      gsap.fromTo(
-        dropdownRef.current,
-        { opacity: 0, y: -10, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: "power2.out" },
-      );
-    }
-  }, [isDropdownOpen]);
+    return () => {
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -479,155 +399,148 @@ export default function Navbar() {
               >
                 {hasDropdown ? (
                   <>
-                    <button suppressHydrationWarning className="relative flex items-center gap-1 px-5 py-2.5 text-[0.95rem] font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all duration-200 border-r border-white/10 after:content-[''] after:absolute after:top-full after:left-0 after:w-full after:h-4">
+                    <button
+                      type="button"
+                      suppressHydrationWarning
+                      aria-haspopup="menu"
+                      aria-expanded={isDropdownOpen}
+                      onClick={() => setIsDropdownOpen((v) => !v)}
+                      className={`flex items-center gap-1 px-5 py-2.5 text-[0.95rem] font-medium transition-colors duration-200 border-r border-white/10 cursor-pointer ${
+                        isDropdownOpen
+                          ? "text-white bg-white/5"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
                       {label}
                       <span
-                        className={`transition-transform duration-300 ${isDropdownOpen ? "rotate-180 text-emerald-400" : ""}`}
+                        className={`transition-transform duration-200 ${isDropdownOpen ? "rotate-180 text-emerald-400" : ""}`}
                       >
                         <ChevronDown />
                       </span>
                     </button>
 
-                    {isDropdownOpen && (
-                      <div
-                        ref={dropdownRef}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        className="absolute top-full pt-2 left-0 w-72 overflow-visible z-100 before:content-[''] before:absolute before:-top-3 before:left-0 before:right-0 before:h-4"
-                      >
-                        <div className="w-full bg-white border border-slate-200/90 rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.18)] space-y-0.5">
-                          {dropdownItems.map((item) => {
-                            const hasSubItems =
-                              Array.isArray(item.subItems) &&
-                              item.subItems.length > 0;
+                    {/* Always mounted and toggled with CSS so there is no mount/unmount flicker.
+                        pt-2 is an invisible hover bridge between the trigger and the panel. */}
+                    <div
+                      role="menu"
+                      className={`absolute top-full left-0 pt-2 z-100 transition-all duration-150 ease-out ${
+                        isDropdownOpen
+                          ? "opacity-100 translate-y-0 pointer-events-auto visible"
+                          : "opacity-0 -translate-y-1 pointer-events-none invisible"
+                      }`}
+                    >
+                      <div className="w-60 rounded-lg border border-slate-200 bg-white p-1 shadow-lg shadow-black/10">
+                        <p className="px-2.5 pt-1.5 pb-1 text-[11px] font-medium uppercase tracking-wider text-slate-400">
+                          Services
+                        </p>
+                        {dropdownItems.map((item) => {
+                          const hasSubItems =
+                            Array.isArray(item.subItems) &&
+                            item.subItems.length > 0;
+                          const isSubActive = hoveredSubmenu === item.label;
 
-                            const isSubActive = hoveredSubmenu === item.label;
-                            const ItemIcon = item.icon || Palette;
-
-                            return (
-                              <div
-                                key={item.label}
-                                className={
-                                  hasSubItems ? "relative group/sub" : ""
-                                }
-                                onMouseEnter={() => {
-                                  if (hasSubItems) {
-                                    handleSubmenuEnter(item.label);
-                                  } else {
-                                    handleMouseEnter();
-                                    handleSubmenuLeaveWithDelay();
-                                  }
-                                }}
-                                onMouseLeave={handleMouseLeave}
-                              >
-                                {hasSubItems ? (
-                                  <button
-                                    type="button"
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      handleSubmenuEnter(item.label);
-                                    }}
-                                    className={`w-full flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 text-left cursor-pointer ${
-                                      isSubActive
-                                        ? "bg-slate-100 text-slate-900 shadow-sm"
-                                        : "text-slate-700 hover:bg-slate-100/80 hover:text-slate-900"
-                                    }`}
+                          return (
+                            <div
+                              key={item.label}
+                              className="relative"
+                              onMouseEnter={() =>
+                                setHoveredSubmenu(
+                                  hasSubItems ? item.label : null,
+                                )
+                              }
+                            >
+                              {hasSubItems ? (
+                                <button
+                                  type="button"
+                                  role="menuitem"
+                                  aria-haspopup="menu"
+                                  aria-expanded={isSubActive}
+                                  onClick={() => setHoveredSubmenu(item.label)}
+                                  className={`w-full flex items-center justify-between rounded-md px-2.5 py-2 text-sm font-medium text-left cursor-pointer transition-colors duration-100 ${
+                                    isSubActive
+                                      ? "bg-slate-100 text-slate-900"
+                                      : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                                  }`}
+                                >
+                                  <span>{item.label}</span>
+                                  <svg
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="text-slate-400"
                                   >
-                                    <span className="flex items-center gap-3">
-                                      <div
-                                        className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}
-                                      >
-                                        <ItemIcon className="w-4 h-4" />
-                                      </div>
-                                      <span>{item.label}</span>
-                                    </span>
-                                    <span
-                                      className={`text-base font-bold transition-transform duration-200 ${isSubActive ? "text-emerald-600 translate-x-0.5" : "text-slate-400"}`}
-                                    >
-                                      ›
-                                    </span>
-                                  </button>
-                                ) : (
-                                  <Link
-                                    href={item.href}
-                                    onClick={(e) =>
-                                      handleNavClick(item.href, e)
-                                    }
-                                    className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100/80 transition-all duration-150 text-sm font-semibold"
-                                  >
-                                    <span className="flex items-center gap-3">
-                                      <div
-                                        className={`p-1.5 rounded-lg shrink-0 ${item.color || "bg-slate-100 text-slate-700"}`}
-                                      >
-                                        <ItemIcon className="w-4 h-4" />
-                                      </div>
-                                      <span>{item.label}</span>
-                                    </span>
-                                  </Link>
-                                )}
+                                    <polyline points="9 18 15 12 9 6" />
+                                  </svg>
+                                </button>
+                              ) : (
+                                <Link
+                                  href={item.href}
+                                  role="menuitem"
+                                  onClick={(e) => handleNavClick(item.href, e)}
+                                  className="flex items-center rounded-md px-2.5 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors duration-100"
+                                >
+                                  {item.label}
+                                </Link>
+                              )}
 
-                                {hasSubItems && (
+                              {hasSubItems && (
+                                /* pl-2 bridges the gap to the submenu without overlapping the parent panel. */
+                                <div
+                                  role="menu"
+                                  className={`absolute left-full -top-1 pl-2 transition-all duration-150 ease-out ${
+                                    isSubActive
+                                      ? "opacity-100 translate-x-0 pointer-events-auto visible"
+                                      : "opacity-0 -translate-x-1 pointer-events-none invisible"
+                                  }`}
+                                >
                                   <div
-                                    onMouseEnter={() =>
-                                      handleSubmenuEnter(item.label)
-                                    }
-                                    onMouseLeave={handleMouseLeave}
-                                    className={`pointer-events-auto absolute left-full top-0 pl-2 ${isSubActive ? "flex" : "hidden"} w-90 sm:w-95 flex-col z-50 before:content-[''] before:absolute before:-left-12 before:top-0 before:bottom-0 before:w-16`}
+                                    data-lenis-prevent
+                                    className="w-72 rounded-lg border border-slate-200 bg-white p-1 shadow-lg shadow-black/10 max-h-110 overflow-y-auto overscroll-contain [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
                                   >
-                                    <div
-                                      data-lenis-prevent
-                                      className="w-full bg-white border border-slate-200/90 shadow-[0_25px_60px_rgba(0,0,0,0.18)] rounded-2xl p-2 max-h-110 overflow-y-auto overscroll-contain touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent space-y-1"
+                                    <Link
+                                      href={item.href}
+                                      role="menuitem"
+                                      onClick={(e) =>
+                                        handleNavClick(item.href, e)
+                                      }
+                                      className="group flex items-center justify-between rounded-md px-2.5 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition-colors duration-100"
                                     >
-                                      {/* All Category CTA */}
-                                      <Link
-                                        href={item.href}
-                                        onClick={(e) =>
-                                          handleNavClick(item.href, e)
-                                        }
-                                        className="group flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/80 transition-all duration-200 mb-1.5"
-                                      >
-                                        <span className="text-xs font-extrabold text-emerald-800 tracking-wide">
-                                          All {item.label} Services
-                                        </span>
-                                        <span className="text-emerald-700 font-bold transition-transform duration-200 group-hover:translate-x-1">
-                                          →
-                                        </span>
-                                      </Link>
-
-                                      {/* Sub Category Items */}
-                                      {item.subItems.map((subObj) => {
-                                        const SubIcon = subObj.icon || Store;
-                                        const targetHref =
-                                          subObj.href || "/services/e-commerce";
-                                        return (
-                                          <Link
-                                            key={subObj.label}
-                                            href={targetHref}
-                                            onClick={(e) =>
-                                              handleNavClick(targetHref, e)
-                                            }
-                                            className="group flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-950 hover:bg-slate-100 border border-transparent hover:border-slate-200/60 transition-all duration-150"
-                                          >
-                                            <div
-                                              className={`p-1 rounded-lg shrink-0 transition-transform duration-200 group-hover:scale-110 ${subObj.color || "bg-slate-100 text-slate-600"}`}
-                                            >
-                                              <SubIcon className="w-3.5 h-3.5" />
-                                            </div>
-                                            <span className="leading-tight tracking-wide">
-                                              {subObj.label}
-                                            </span>
-                                          </Link>
-                                        );
-                                      })}
-                                    </div>
+                                      <span>All {item.label} Services</span>
+                                      <span className="text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-slate-700">
+                                        →
+                                      </span>
+                                    </Link>
+                                    <div className="-mx-1 my-1 h-px bg-slate-100" />
+                                    {item.subItems.map((subObj) => {
+                                      const targetHref =
+                                        subObj.href || "/services/e-commerce";
+                                      return (
+                                        <Link
+                                          key={subObj.label}
+                                          href={targetHref}
+                                          role="menuitem"
+                                          onClick={(e) =>
+                                            handleNavClick(targetHref, e)
+                                          }
+                                          className="block rounded-md px-2.5 py-1.5 text-[13px] font-medium leading-snug text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors duration-100"
+                                        >
+                                          {subObj.label}
+                                        </Link>
+                                      );
+                                    })}
                                   </div>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-                    )}
+                    </div>
                   </>
                 ) : (
                   <Link

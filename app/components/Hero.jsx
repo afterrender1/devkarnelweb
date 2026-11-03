@@ -1,9 +1,7 @@
-"use client";
-import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { gsap } from "gsap";
 import { urbanist } from "../fonts";
 import { TiltedGridHero } from "./ui/tilted-grid-hero";
+import RibbonGlow from "./ui/ribbon-glow";
 
 // Module-level so the reference is stable (the band preloads on `images`).
 const images = [
@@ -34,55 +32,19 @@ const images = [
 ];
 
 export default function Hero() {
-  const bgGradientRef = useRef(null);
-  const bgRevealRef = useRef(null);
-
-  useEffect(() => {
-    // Text entrance is pure CSS (.hero-in) so the SSR'd heading is visible
-    // at first paint and counts as LCP; only decorative layers animate here.
-    const ctx = gsap.context(() => {
-      gsap.set(bgGradientRef.current, { opacity: 0.6 });
-      gsap.set(bgRevealRef.current, { opacity: 0.4 });
-
-      const tl = gsap.timeline();
-      tl.to(bgGradientRef.current, { opacity: 0, duration: 1.2, ease: "power2.out" }, 1.2)
-        .to(bgRevealRef.current, { opacity: 1, duration: 1.3, ease: "power2.out" }, 1.2);
-    });
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       className={`relative min-h-fit sm:min-h-100 w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
     >
-      <div
-        ref={bgRevealRef}
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background: `
-            radial-gradient(circle at 10% 70%,  rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 20%, transparent 50%),
-            radial-gradient(circle at 40% -10%, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 30%, transparent 50%),
-            radial-gradient(circle at 90% 100%, rgba(0,0,0,0.7) 10%,rgba(0,0,0,0.3) 30%, transparent 55%),
-            radial-gradient(circle at 100% 90%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 25%, transparent 45%),
-            linear-gradient(180deg,#24E8B2 0%,#1BC497 5%,#0F7C6E 40%,#0A4A42 60%,#062B24 80%,#010504 100%)
-          `,
-          willChange: "opacity",
-        }}
+      {/* Animated WebGL ribbons, painted from the first frame (no delayed fade-in). */}
+      <RibbonGlow
+        background="#010504"
+        color1="#5dd98cff"
+        color2="#426e48ff"
+        className="absolute inset-0"
       />
-      <div className="absolute bg-black inset-0 w-full h-full opacity-40" />
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 z-5 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(1,5,4,0.6) 100%)" }}
-      />
-      <div
-        className="absolute inset-0 w-full h-full opacity-20"
-        style={{ background: "radial-gradient(ellipse at 50% 0%,rgba(45,232,176,0.1) 0%,transparent 70%)" }}
-      />
-      <div
-        ref={bgGradientRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ background: "radial-gradient(circle at 30% 50%,rgba(45,232,176,0.05) 0%,transparent 60%)" }}
-      />
+      {/* Blends the bottom edge into the next section's #010504. */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none bg-linear-to-b from-transparent to-[#010504]" />
 
       <div className="relative z-10 w-full max-w-500 mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-6 sm:py-20 lg:py-24 flex flex-col items-center justify-center text-center">
         <div className="w-full flex flex-col items-center">

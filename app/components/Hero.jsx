@@ -3,124 +3,39 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { urbanist } from "../fonts";
+import { TiltedGridHero } from "./ui/tilted-grid-hero";
 
+// Module-level so the reference is stable (the band preloads on `images`).
 const images = [
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1770205987/supps_vm41cl.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1778329047/tmg_sp66wu.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1778329047/mag_cahxej.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1778329076/free30_tkjqe8.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1778329174/next_poinns.png",
-  "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_500/v1778329174/javewe_k6n8sg.png",
+  {
+    src: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_1000/v1770205987/supps_vm41cl.png",
+    alt: "Supplements store project",
+  },
+  {
+    src: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_1000/v1778329047/tmg_sp66wu.png",
+    alt: "TMG website project",
+  },
+  {
+    src: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_1000/v1778329047/mag_cahxej.png",
+    alt: "Magazine website project",
+  },
+  {
+    src: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_1000/v1778329076/free30_tkjqe8.png",
+    alt: "Free30 landing page project",
+  },
+  {
+    src: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_1000/v1778329174/next_poinns.png",
+    alt: "Next.js web app project",
+  },
+  {
+    src: "https://res.cloudinary.com/dlurrugno/image/upload/f_auto,q_auto,w_1000/v1778329174/javewe_k6n8sg.png",
+    alt: "Javewe website project",
+  },
 ];
 
-const LOOP = [...images, ...images, ...images];
-const START = images.length;
-const GAP = 16;             
-
-
-function getCardsPerView() {
-  if (typeof window === "undefined") return 1;
-  if (window.innerWidth >= 1024) return 3;
-  if (window.innerWidth >= 640) return 2;
-  return 1;
-}
-
 export default function Hero() {
-  const headingLine1Ref = useRef(null);
-  const headingLine2Ref = useRef(null);
-  const subRef = useRef(null);
-  const btnsRef = useRef(null);
   const bgGradientRef = useRef(null);
   const bgRevealRef = useRef(null);
-
-  const wrapRef = useRef(null);   
-  const trackRef = useRef(null); 
-  const idxRef = useRef(START);   
-  const busyRef = useRef(false);  
-  const pausedRef = useRef(false);
-
-  // Touch & drag gesture refs for thumb scrollable hero
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const startTranslateX = useRef(0);
-  const isDraggingRef = useRef(false);
-  const isSwipingRef = useRef(false);
-  const dragDistanceRef = useRef(0);
-  const resumeTimeoutRef = useRef(null);
-
-  const getCardWidth = () => {
-    const firstCard = trackRef.current?.firstElementChild;
-    return (firstCard?.offsetWidth ?? 0) + GAP;
-  };
-
-  /**
-   * Applies scale + blur to every card so the centre one is in focus and
-   * the surrounding cards are dimmed.
-   *
-   * @param {boolean} animate  true  → smooth GSAP tween (0.55 s)
-   *                           false → instant gsap.set (after teleport / resize)
-   */
-  const updateFocus = (animate = true) => {
-    const cards = trackRef.current?.children;
-    if (!cards) return;
-
-    const cpv = getCardsPerView();
-    const centerOffset = Math.floor(cpv / 2);
-    const centerIdx = idxRef.current + centerOffset;
-
-    Array.from(cards).forEach((card, i) => {
-      const isCenter = i === centerIdx;
-      const props = {
-        scale: isCenter ? 1 : 0.88,
-        filter: isCenter ? "blur(0px)" : "blur(3px)",
-      };
-
-      if (animate) {
-        gsap.to(card, {
-          ...props,
-          duration: 0.55,
-          ease: "power2.inOut",
-          overwrite: "auto",
-        });
-      } else {
-        gsap.set(card, props);
-      }
-    });
-  };
-
-  const snapToCard = (targetIdx, animate = true, duration = 0.5, ease = "power2.out") => {
-    if (!trackRef.current) return;
-    const cardW = getCardWidth();
-    if (!cardW) return;
-
-    idxRef.current = targetIdx;
-    const targetX = -(targetIdx * cardW);
-
-    if (animate) {
-      busyRef.current = true;
-      updateFocus(true);
-      gsap.to(trackRef.current, {
-        x: targetX,
-        duration,
-        ease,
-        onComplete: () => {
-          if (idxRef.current >= images.length * 2) {
-            idxRef.current -= images.length;
-            gsap.set(trackRef.current, { x: -(idxRef.current * cardW) });
-            updateFocus(false);
-          } else if (idxRef.current < images.length) {
-            idxRef.current += images.length;
-            gsap.set(trackRef.current, { x: -(idxRef.current * cardW) });
-            updateFocus(false);
-          }
-          busyRef.current = false;
-        },
-      });
-    } else {
-      gsap.set(trackRef.current, { x: targetX });
-      updateFocus(false);
-    }
-  };
 
   useEffect(() => {
     // Text entrance is pure CSS (.hero-in) so the SSR'd heading is visible
@@ -136,164 +51,10 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    const snap = (animate = false) => {
-      snapToCard(idxRef.current, animate, 0.5, "power2.inOut");
-    };
-
-    const raf = requestAnimationFrame(() => {
-      snap(false);
-      gsap.to(wrapRef.current, { opacity: 1, duration: 0.6, ease: "power2.out" });
-    });
-
-    const ro = new ResizeObserver(() => snap(false));
-    if (wrapRef.current) ro.observe(wrapRef.current);
-
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
-  }, []);
-
-  useEffect(() => {
-    const advance = () => {
-      if (pausedRef.current || busyRef.current || !trackRef.current) return;
-      snapToCard(idxRef.current + 1, true, 0.8, "power3.inOut");
-    };
-
-    const id = setInterval(advance, 2500);
-    return () => {
-      clearInterval(id);
-      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-    };
-  }, []); 
-
-  // ── Touch handlers (Thumb scrolling) ──────────────────────────────────────
-  const handleTouchStart = (e) => {
-    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-    pausedRef.current = true;
-
-    gsap.killTweensOf(trackRef.current);
-    busyRef.current = false;
-
-    const touch = e.touches[0];
-    touchStartX.current = touch.clientX;
-    touchStartY.current = touch.clientY;
-    isDraggingRef.current = true;
-    isSwipingRef.current = false;
-    dragDistanceRef.current = 0;
-
-    const cardW = getCardWidth();
-    const currentX = gsap.getProperty(trackRef.current, "x");
-    startTranslateX.current =
-      typeof currentX === "number" ? currentX : -(idxRef.current * cardW);
-  };
-
-  const handleTouchMove = (e) => {
-    if (!isDraggingRef.current || !trackRef.current) return;
-
-    const touch = e.touches[0];
-    const diffX = touch.clientX - touchStartX.current;
-    const diffY = touch.clientY - touchStartY.current;
-
-    // Detect direction: horizontal thumb swipe vs vertical page scroll
-    if (!isSwipingRef.current) {
-      if (Math.abs(diffX) > 6 && Math.abs(diffX) > Math.abs(diffY)) {
-        isSwipingRef.current = true;
-      } else if (Math.abs(diffY) > 6) {
-        isDraggingRef.current = false;
-        return;
-      }
-    }
-
-    if (isSwipingRef.current) {
-      dragDistanceRef.current = diffX;
-      gsap.set(trackRef.current, { x: startTranslateX.current + diffX });
-    }
-  };
-
-  const handleTouchEnd = () => {
-    if (!isDraggingRef.current) {
-      resumeTimeoutRef.current = setTimeout(() => {
-        pausedRef.current = false;
-      }, 2500);
-      return;
-    }
-
-    isDraggingRef.current = false;
-
-    if (isSwipingRef.current) {
-      const cardW = getCardWidth();
-      const diff = dragDistanceRef.current;
-      const threshold = Math.min(cardW * 0.15, 40);
-
-      let targetIdx = idxRef.current;
-      if (diff < -threshold) {
-        const count = Math.max(1, Math.round(Math.abs(diff) / cardW));
-        targetIdx += count;
-      } else if (diff > threshold) {
-        const count = Math.max(1, Math.round(Math.abs(diff) / cardW));
-        targetIdx -= count;
-      }
-
-      snapToCard(targetIdx, true, 0.45, "power2.out");
-    }
-
-    setTimeout(() => {
-      dragDistanceRef.current = 0;
-    }, 120);
-
-    resumeTimeoutRef.current = setTimeout(() => {
-      pausedRef.current = false;
-    }, 2500);
-  };
-
-  // ── Mouse drag handlers (Desktop support) ─────────────────────────────────
-  const handleMouseDown = (e) => {
-    if (e.button !== 0) return;
-    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-    pausedRef.current = true;
-
-    gsap.killTweensOf(trackRef.current);
-    busyRef.current = false;
-
-    touchStartX.current = e.clientX;
-    touchStartY.current = e.clientY;
-    isDraggingRef.current = true;
-    isSwipingRef.current = true;
-    dragDistanceRef.current = 0;
-
-    const cardW = getCardWidth();
-    const currentX = gsap.getProperty(trackRef.current, "x");
-    startTranslateX.current =
-      typeof currentX === "number" ? currentX : -(idxRef.current * cardW);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDraggingRef.current || !trackRef.current) return;
-    const diffX = e.clientX - touchStartX.current;
-    dragDistanceRef.current = diffX;
-    gsap.set(trackRef.current, { x: startTranslateX.current + diffX });
-  };
-
-  const handleMouseUp = () => {
-    if (!isDraggingRef.current) return;
-    handleTouchEnd();
-  };
-
-  // ── hover handlers (attached as React props on wrapRef's JSX element) ──────
-  const handleMouseEnter = () => { pausedRef.current = true; };
-  const handleMouseLeave = () => {
-    if (isDraggingRef.current) {
-      handleTouchEnd();
-    } else {
-      pausedRef.current = false;
-    }
-  };
-
-  // ── render ────────────────────────────────────────────────────────────────
   return (
     <section
       className={`relative min-h-fit sm:min-h-100 w-full flex items-start overflow-hidden bg-[#010504] ${urbanist.className}`}
     >
-
       <div
         ref={bgRevealRef}
         className="absolute inset-0 w-full h-full"
@@ -327,160 +88,38 @@ export default function Hero() {
         <div className="w-full flex flex-col items-center">
 
           <h1 className="text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[5rem] font-semibold leading-[1.1] tracking-tight text-white mb-4 sm:mb-6 px-2">
-            <span ref={headingLine1Ref} className="hero-in block wrap-break-word">
+            <span className="hero-in block wrap-break-word">
               Building high impact
             </span>
-            <span
-              ref={headingLine2Ref}
-              className="hero-in hero-in-2 block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent wrap-break-word"
-            >
+            <span className="hero-in hero-in-2 block bg-linear-to-r from-[#2de8b0] to-[#2de8b0]/60 bg-clip-text text-transparent wrap-break-word">
               digital experiences.
             </span>
           </h1>
 
           <div className="w-full mb-6 sm:mb-12">
-
-
-            <div
-              ref={wrapRef}
-              className="carousel-wrap w-full overflow-hidden cursor-grab active:cursor-grabbing select-none"
-              style={{ touchAction: "pan-y" }}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div
-                ref={trackRef}
-                className="flex"
-                style={{
-                  gap: `${GAP}px`,
-                  willChange: "transform",
-                  transform: "translate3d(0,0,0)",
-                }}
-              >
-                {LOOP.map((src, i) => (
-                  <div key={i} className="carousel-card shrink-0">
-                    <Link
-                      href="/portfolio"
-                      onClick={(e) => {
-                        if (Math.abs(dragDistanceRef.current) > 10) {
-                          e.preventDefault();
-                        }
-                      }}
-                      className="block w-full h-full aspect-video rounded-2xl overflow-hidden cursor-pointer"
-                      style={{
-                        background: "rgba(255,255,255,0.04)",
-                        transformOrigin: "center center",
-                      }}
-                    >
-                      <img
-                        src={src}
-                        alt={`Project ${(i % images.length) + 1}`}
-                        className="w-full h-full object-cover pointer-events-none select-none"
-                        draggable={false}
-                        loading={i >= START && i < START + images.length ? "eager" : "lazy"}
-                        fetchPriority={i === START ? "high" : undefined}
-                      />
-                    </Link>
-                  </div>
-                ))}
-              </div>
+            {/* Edge-to-edge band, broken out of the content padding. */}
+            <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+              <TiltedGridHero
+                images={images}
+                tileHeight={72}
+                gap={14}
+                axis={50}
+                curve={45}
+                fade={14}
+                speed={4}
+                className="w-full h-60 sm:h-90 lg:h-110"
+              />
             </div>
 
-            <style jsx>{`
-              /* ── card dimensions — slightly larger than before ── */
-              .carousel-card {
-                width:            calc(100vw - 32px);
-                height:           260px;
-                transform-origin: center center;
-              }
-              @media (min-width: 480px) {
-                .carousel-card {
-                  height: 300px;
-                }
-              }
-              @media (min-width: 640px) {
-                .carousel-card {
-                  width:  calc((100vw - 48px  - ${GAP}px)     / 2);
-                  height: 400px;
-                }
-              }
-
-              @media (min-width: 1024px) {
-                .carousel-card {
-                  width:  calc((100vw - 64px  - ${GAP * 2}px) / 3);
-                  height: 360px;
-                }
-              }
-
-              /* ── edge fade mask ── */
-              .carousel-wrap {
-                -webkit-mask-image: linear-gradient(
-                  to right,
-                  transparent   0%,
-                  black         6%,
-                  black        94%,
-                  transparent 100%
-                );
-                mask-image: linear-gradient(
-                  to right,
-                  transparent   0%,
-                  black         6%,
-                  black        94%,
-                  transparent 100%
-                );
-              }
-
-              @media (min-width: 640px) {
-                .carousel-wrap {
-                  -webkit-mask-image: linear-gradient(
-                    to right,
-                    transparent    0%,
-                    black         12%,
-                    black         88%,
-                    transparent  100%
-                  );
-                  mask-image: linear-gradient(
-                    to right,
-                    transparent    0%,
-                    black         12%,
-                    black         88%,
-                    transparent  100%
-                  );
-                }
-              }
-
-              @media (min-width: 1024px) {
-                .carousel-wrap {
-                  -webkit-mask-image: linear-gradient(
-                    to right,
-                    transparent    0%,
-                    black         20%,
-                    black         80%,
-                    transparent  100%
-                  );
-                  mask-image: linear-gradient(
-                    to right,
-                    transparent    0%,
-                    black         20%,
-                    black         80%,
-                    transparent  100%
-                  );
-                }
-              }
-            `}</style>
+            <Link
+              href="/portfolio"
+              className="inline-block mt-4 text-sm text-white/60 hover:text-[#2de8b0] transition-colors"
+            >
+              View our work →
+            </Link>
           </div>
 
-          <div
-            ref={btnsRef}
-            className="hero-in hero-in-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-13"
-          >
+          <div className="hero-in hero-in-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto min-h-13">
             <a
               href="#contact"
               className="w-full sm:w-auto px-5 sm:px-8 py-3 sm:py-3.5 rounded-xl sm:rounded-lg text-xs min-[360px]:text-sm sm:text-base font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 bg-[#2de8b0] shadow-lg shadow-[#2de8b0]/25 cursor-pointer whitespace-nowrap text-center block sm:inline-block"
